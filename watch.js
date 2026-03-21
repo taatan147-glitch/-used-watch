@@ -176,44 +176,32 @@ async function search2ndStreet(page, rule) {
     sortBy: "arrival",
   });
 
-  await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
-
-  // 商品カードが表示されるまで待機
-  await page.waitForSelector('.itemCard, .item-card, [class*="itemCard"], .listItem', {
-    timeout: 15000,
-  }).catch(() => {});
-
-  await sleep(2000);
+  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+  await sleep(3000);
 
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
 
-    // 商品リンクを探す（複数パターン対応）
-    const links = document.querySelectorAll('a[href*="/goods/"]');
-    links.forEach((link) => {
-      const href = link.href;
+    // セカストの商品リンクパターン
+    document.querySelectorAll('a').forEach((link) => {
+      const href = link.href || "";
       const idMatch = href.match(/\/goods\/(\d+)\//);
       if (!idMatch) return;
       const id = idMatch[1];
       if (seen.has(id)) return;
       seen.add(id);
 
-      // タイトルと価格を周辺から取得
-      const card = link.closest("li, article, [class*='item'], [class*='card']") || link;
+      const card = link.closest("li, article, div") || link;
       const img = card.querySelector("img");
-      const title = img?.alt || link.textContent?.trim() || "";
-      const priceEl = card.querySelector("[class*='price'], .price");
-      const priceText = priceEl?.textContent?.replace(/[^\d]/g, "") || "0";
+      const title = img?.alt || "";
+      const priceText = card.textContent.match(/[\d,]+円|¥[\d,]+/) ;
+      const price = priceText
+        ? Number(priceText[0].replace(/[^\d]/g, ""))
+        : 0;
 
       if (title && title.length > 2) {
-        results.push({
-          site: "2ndstreet",
-          id,
-          title,
-          price: Number(priceText) || 0,
-          url: href,
-        });
+        results.push({ site: "2ndstreet", id, title, price, url: href });
       }
     });
     return results;
