@@ -130,12 +130,16 @@ async function searchMercari(page, rule) {
     order: "desc",
   });
 
-  await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
+  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
 
   // 商品一覧が表示されるまで待機
   await page.waitForSelector('li[data-testid="item-cell"], [data-testid="no-result"]', {
     timeout: 15000,
   }).catch(() => {});
+
+  // 少し下にスクロールして追加読み込みを促す
+  await page.evaluate(() => window.scrollBy(0, 1000));
+  await sleep(2000);
 
   const items = await page.evaluate((keyword) => {
     const cells = document.querySelectorAll('li[data-testid="item-cell"]');
@@ -177,28 +181,15 @@ async function search2ndStreet(page, rule) {
   });
 
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
-  await sleep(3000);
-
-  // デバッグ用：ページのリンク数とURLを確認
-const debug = await page.evaluate(() => {
-  const allLinks = document.querySelectorAll('a[href*="/goods/"]');
-  const pageTitle = document.title;
-  const bodyText = document.body.innerText.slice(0, 200);
-  return {
-    goodsLinks: allLinks.length,
-    pageTitle,
-    bodyText,
-  };
-});
-console.log("  デバッグ:", JSON.stringify(debug));
+  await sleep(4000);
 
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
 
-    // セカストの商品リンクパターン
-    document.querySelectorAll('a').forEach((link) => {
-      const href = link.href || "";
+    const links = document.querySelectorAll('a[href*="/goods/"]');
+    links.forEach((link) => {
+      const href = link.href;
       const idMatch = href.match(/\/goods\/(\d+)\//);
       if (!idMatch) return;
       const id = idMatch[1];
@@ -207,11 +198,16 @@ console.log("  デバッグ:", JSON.stringify(debug));
 
       const card = link.closest("li, article, div") || link;
       const img = card.querySelector("img");
-      const title = img?.alt || "";
-      const priceText = card.textContent.match(/[\d,]+円|¥[\d,]+/) ;
-      const price = priceText
-        ? Number(priceText[0].replace(/[^\d]/g, ""))
-        : 0;
+
+      // タイトル取得：alt → クラス名にnameやtitleを含む要素 → テキスト
+      const title =
+        img?.alt?.trim() ||
+        card.querySelector('[class*="name"],[class*="title"],[class*="itemName"]')?.textContent?.trim() ||
+        link.textContent?.trim() || "";
+
+      // 価格取得：¥マークを含むテキストを探す
+      const priceMatch = card.textContent.match(/[¥￥]([\d,]+)/);
+      const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
 
       if (title && title.length > 2) {
         results.push({ site: "2ndstreet", id, title, price, url: href });
@@ -233,13 +229,8 @@ async function searchTrefac(page, rule) {
     step: "1",
   });
 
-  await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
-
-  await page.waitForSelector('[class*="item"], .item-list, .product', {
-    timeout: 15000,
-  }).catch(() => {});
-
-  await sleep(1000);
+  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+  await sleep(3000);
 
   const items = await page.evaluate(() => {
     const results = [];
@@ -254,20 +245,19 @@ async function searchTrefac(page, rule) {
       if (seen.has(id)) return;
       seen.add(id);
 
-      const card = link.closest("li, article, [class*='item'], [class*='product']") || link;
+      const card = link.closest("li, article, div") || link;
       const img = card.querySelector("img");
-      const title = img?.alt || link.textContent?.trim() || "";
-      const priceEl = card.querySelector("[class*='price'], .price");
-      const priceText = priceEl?.textContent?.replace(/[^\d]/g, "") || "0";
+
+      const title =
+        img?.alt?.trim() ||
+        card.querySelector('[class*="name"],[class*="title"]')?.textContent?.trim() ||
+        link.textContent?.trim() || "";
+
+      const priceMatch = card.textContent.match(/[¥￥]([\d,]+)/);
+      const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
 
       if (title && title.length > 2) {
-        results.push({
-          site: "trefac",
-          id,
-          title,
-          price: Number(priceText) || 0,
-          url: href,
-        });
+        results.push({ site: "trefac", id, title, price, url: href });
       }
     });
     return results;
