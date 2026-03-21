@@ -179,6 +179,19 @@ async function search2ndStreet(page, rule) {
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
   await sleep(3000);
 
+  // デバッグ用：ページのリンク数とURLを確認
+const debug = await page.evaluate(() => {
+  const allLinks = document.querySelectorAll('a[href*="/goods/"]');
+  const pageTitle = document.title;
+  const bodyText = document.body.innerText.slice(0, 200);
+  return {
+    goodsLinks: allLinks.length,
+    pageTitle,
+    bodyText,
+  };
+});
+console.log("  デバッグ:", JSON.stringify(debug));
+
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
