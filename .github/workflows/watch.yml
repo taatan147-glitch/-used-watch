@@ -1,0 +1,44 @@
+name: 中古サイト新着監視
+
+on:
+  schedule:
+    # 5分おきに実行（UTC表記 → 日本時間 -9h）
+    # パブリックリポジトリなら実行時間無制限・完全無料
+    - cron: "*/15 * * * *"
+  workflow_dispatch: # 手動実行ボタンも有効化
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      # 既読データ（seen.json）をキャッシュから復元
+      # → 再起動しても「通知済み」が消えない
+      - name: 既読キャッシュを復元
+        uses: actions/cache@v4
+        with:
+          path: seen.json
+          key: seen-cache-${{ github.run_id }}
+          restore-keys: |
+            seen-cache-
+
+      - name: Node.js セットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 監視スクリプト実行
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          WATCH_RULES: ${{ secrets.WATCH_RULES }}
+        run: node --input-type=module < watch.js
+
+      # 実行後の既読データを必ずキャッシュに保存
+      - name: 既読キャッシュを保存
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: seen.json
+          key: seen-cache-${{ github.run_id }}
