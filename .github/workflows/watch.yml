@@ -43,13 +43,13 @@ jobs:
           WATCH_RULES: ${{ secrets.WATCH_RULES }}
         run: node watch.js
 
-        - name: デバッグ画像をアップロード
-  if: always()
-  uses: actions/upload-artifact@v4
-  with:
-    name: debug-screenshots
-    path: "*.png"
-
+       - name: デバッグ画像をアップロード
+　　　　　if: always()
+  　　　　uses: actions/upload-artifact@v4
+ 　　　　 with:
+    　　　　name: debug-screenshots
+   　　　　 path: "*.png"
+        
       - name: 既読キャッシュを保存
         if: always()
         uses: actions/cache/save@v4
