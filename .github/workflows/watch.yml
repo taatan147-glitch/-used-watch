@@ -2,10 +2,8 @@ name: 中古サイト新着監視
 
 on:
   schedule:
-    # 5分おきに実行（UTC表記 → 日本時間 -9h）
-    # パブリックリポジトリなら実行時間無制限・完全無料
-    - cron: "*/15 * * * *"
-  workflow_dispatch: # 手動実行ボタンも有効化
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
 
 jobs:
   watch:
@@ -14,8 +12,6 @@ jobs:
       - name: リポジトリをチェックアウト
         uses: actions/checkout@v4
 
-      # 既読データ（seen.json）をキャッシュから復元
-      # → 再起動しても「通知済み」が消えない
       - name: 既読キャッシュを復元
         uses: actions/cache@v4
         with:
@@ -29,13 +25,24 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Chromium の依存パッケージをインストール
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 libatk1.0-0 libatk-bridge2.0-0 \
+            libcups2 libdrm2 libxkbcommon0 libxcomposite1 \
+            libxdamage1 libxfixes3 libxrandr2 libgbm1 \
+            libasound2t64 libpango-1.0-0 libcairo2
+
+      - name: Puppeteer をインストール
+        run: npm install puppeteer
+
       - name: 監視スクリプト実行
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           WATCH_RULES: ${{ secrets.WATCH_RULES }}
-        run: node --input-type=module < watch.js
+        run: node watch.js
 
-      # 実行後の既読データを必ずキャッシュに保存
       - name: 既読キャッシュを保存
         if: always()
         uses: actions/cache/save@v4
