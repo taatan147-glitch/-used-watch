@@ -183,6 +183,21 @@ async function search2ndStreet(page, rule) {
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
   await sleep(4000);
 
+  // デバッグ：スクリーンショットを保存
+await page.screenshot({ path: "debug_2ndstreet.png", fullPage: false });
+console.log("  スクリーンショット保存");
+
+const debug = await page.evaluate(() => {
+  const links = document.querySelectorAll('a[href*="/goods/"]');
+  const sample = links[0] ? {
+    href: links[0].href,
+    alt: links[0].closest("li,article,div")?.querySelector("img")?.alt,
+    text: links[0].closest("li,article,div")?.textContent?.slice(0, 80),
+  } : "リンクなし";
+  return { count: links.length, sample };
+});
+console.log("  デバッグ:", JSON.stringify(debug, null, 0));
+
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
