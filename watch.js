@@ -134,73 +134,35 @@ async function searchMercari(rule) {
 
 // ============================================================
 // セカンドストリート検索
-// 正式URL: https://www.2ndstreet.jp/buy
+// 正式検索URL: https://www.2ndstreet.jp/search?keyword=ANSNAM
 // ============================================================
 async function search2ndStreet(rule) {
-  // JSON API を試す
-  const apiUrl = "https://www.2ndstreet.jp/api/search?" + new URLSearchParams({
+  const url = "https://www.2ndstreet.jp/search?" + new URLSearchParams({
     keyword: rule.keyword,
-    count: "30",
-    page: "1",
-    sort: "new",
   });
 
-  const apiRes = await fetchWithRetry(apiUrl, {
+  const res = await fetchWithRetry(url, {
     headers: {
-      "accept": "application/json",
+      "accept": "text/html,application/xhtml+xml",
       "accept-language": "ja-JP,ja;q=0.9",
-      "x-requested-with": "XMLHttpRequest",
-      "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
-      "referer": "https://www.2ndstreet.jp/buy",
-      "origin": "https://www.2ndstreet.jp",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+      "referer": "https://www.2ndstreet.jp/",
     },
   });
 
-  if (apiRes.ok && (apiRes.headers.get("content-type") || "").includes("application/json")) {
-    const data = await apiRes.json();
-    const raw = data?.items ?? data?.products ?? data?.data ?? data?.result ?? [];
-    if (Array.isArray(raw) && raw.length > 0) {
-      return raw.map((item) => ({
-        site: "2ndstreet",
-        id: String(item.id ?? item.goodsId ?? ""),
-        title: String(item.name ?? item.goodsName ?? item.title ?? ""),
-        price: Number(item.price ?? item.sellingPrice ?? 0),
-        url: item.url ?? `https://www.2ndstreet.jp/goods/${item.id ?? item.goodsId}/`,
-      }))
-      .filter((i) => i.id)
-      .filter((i) => matchRule(i, rule));
-    }
-  }
-
-  // フォールバック: HTML検索
-  const htmlUrl = "https://www.2ndstreet.jp/buy?" + new URLSearchParams({
-    keyword: rule.keyword,
-    sort: "new",
-  });
-
-  const htmlRes = await fetchWithRetry(htmlUrl, {
-    headers: {
-      "accept": "text/html",
-      "accept-language": "ja-JP,ja;q=0.9",
-      "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
-      "referer": "https://www.2ndstreet.jp/buy",
-    },
-  });
-
-  if (!htmlRes.ok) throw new Error(`${htmlRes.status} ${htmlRes.statusText}`);
-  const html = await htmlRes.text();
+  if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+  const html = await res.text();
   return parse2ndStreetHtml(html).filter((i) => matchRule(i, rule));
 }
 
 // ============================================================
 // トレファクファッション検索
-// 正式URL: https://www.trefac.jp/
-// 検索URL: https://www.trefac.jp/store/search_result.html?keyword=...
+// 正式検索URL: https://www.trefac.jp/store/search_result.html?q=ANSNAM&searchbox=1
 // ============================================================
 async function searchTrefac(rule) {
   const url = "https://www.trefac.jp/store/search_result.html?" + new URLSearchParams({
-    keyword: rule.keyword,
-    order: "newer", // 新着順
+    q: rule.keyword,
+    searchbox: "1",
     step: "1",
   });
 
@@ -208,13 +170,12 @@ async function searchTrefac(rule) {
     headers: {
       "accept": "text/html,application/xhtml+xml",
       "accept-language": "ja-JP,ja;q=0.9",
-      "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
       "referer": "https://www.trefac.jp/",
     },
   });
 
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-
   const html = await res.text();
   return parseTrefacHtml(html).filter((i) => matchRule(i, rule));
 }
@@ -241,40 +202,47 @@ function parse2ndStreetHtml(html) {
 
 // ============================================================
 // HTML パーサー: トレファクファッション
-// www.trefac.jp の商品リンクは /store/detail.html?item=XXXXX 形式
+// 商品URL例: /store/detail.html?item=XXXXX
 // ============================================================
 function parseTrefacHtml(html) {
   const out = [];
   const seen = new Set();
 
-  // 商品詳細ページのリンクパターン
-  const re = /href="(\/store\/detail\.html\?[^"]*item=([^"&]+)[^"]*)"/gi;
-  let m;
-  while ((m = re.exec(html)) !== null) {
-    const [, path, id] = m;
-    if (seen.has(id)) continue;
-    seen.add(id);
+  // パターン1: /store/detail.html?item=XXX
+  const re1 = /href="(\/store\/detail\.html\?[^"]*item=([^"&\s]+)[^"]*)"/gi;
+  // パターン2: /store/tcXXXpsb/?item=XXX 形式
+  const re2 = /href="(\/store\/[^"]*\?[^"]*item=([^"&\s]+)[^"]*)"/gi;
 
-    const block = html.slice(Math.max(0, m.index - 2000), m.index + 5000);
+  for (const re of [re1, re2]) {
+    let m;
+    while ((m = re.exec(html)) !== null) {
+      const [, path, id] = m;
+      if (seen.has(id)) continue;
+      seen.add(id);
 
-    const title = decodeHtml(
-      firstMatch(block, /alt="([^"]{4,100})"/) ??
-      firstMatch(block, /<p[^>]*class="[^"]*item[_-]name[^"]*"[^>]*>([^<]+)/i) ??
-      firstMatch(block, /<h[23][^>]*>\s*([^<]{4,80})\s*<\/h[23]>/i) ??
-      "タイトル不明"
-    );
+      const block = html.slice(Math.max(0, m.index - 2000), m.index + 5000);
 
-    const price = yenToNumber(
-      firstMatch(block, /[¥￥]\s*([\d,]+)/) ?? ""
-    ) ?? 0;
+      const title = decodeHtml(
+        firstMatch(block, /alt="([^"]{4,100})"/) ??
+        firstMatch(block, /<p[^>]*class="[^"]*(?:item|goods)[_-]?name[^"]*"[^>]*>\s*([^<]{4,80})/) ??
+        firstMatch(block, /<h[23][^>]*>\s*([^<]{4,80})\s*<\/h[23]>/i) ??
+        "タイトル不明"
+      );
 
-    out.push({
-      site: "trefac",
-      id,
-      title,
-      price,
-      url: "https://www.trefac.jp" + path,
-    });
+      const price = yenToNumber(
+        firstMatch(block, /[¥￥]\s*([\d,]+)/) ?? ""
+      ) ?? 0;
+
+      if (title === "タイトル不明") continue;
+
+      out.push({
+        site: "trefac",
+        id,
+        title,
+        price,
+        url: "https://www.trefac.jp" + path,
+      });
+    }
   }
   return out;
 }
