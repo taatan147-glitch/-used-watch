@@ -1,32 +1,23 @@
 /**
- * watch.js — GitHub Actions 上で動く監視スクリプト
- * Node.js 18以上で動作（fetch built-in）
+ * watch.js — Puppeteer版（GitHub Actions用）
+ * Node.js 20 + puppeteer で動作
  *
- * GitHub Secrets に登録する環境変数:
- *   DISCORD_WEBHOOK_URL  — Discord の Webhook URL
- *   WATCH_RULES          — 監視ルールのJSON文字列（下記参照）
+ * GitHub Secrets:
+ *   DISCORD_WEBHOOK_URL  — Discord Webhook URL
+ *   WATCH_RULES          — 監視ルールJSON
  *
- * WATCH_RULES の例:
+ * WATCH_RULES例:
  * [
  *   {"keyword":"ansnam","site":"mercari"},
  *   {"keyword":"ansnam","site":"2ndstreet"},
  *   {"keyword":"ansnam","site":"trefac"},
- *   {"keyword":"Andrea Ya'aqov","site":"mercari"},
- *   {"keyword":"Andrea Ya'aqov","site":"2ndstreet"},
- *   {"keyword":"Andrea Ya'aqov","site":"trefac"},
- *   {"keyword":"Andrea Incontri","site":"mercari"},
- *   {"keyword":"Andrea Incontri","site":"2ndstreet"},
- *   {"keyword":"Andrea Incontri","site":"trefac"}
+ *   ...
  * ]
- *
- * サイトを追加したい場合は下部の「サイト追加ガイド」を参照
  */
 
+import puppeteer from "puppeteer";
 import { readFileSync, writeFileSync, existsSync } from "fs";
 
-// ============================================================
-// 既読管理（seen.json → Actionsのキャッシュで永続化）
-// ============================================================
 const SEEN_FILE = "seen.json";
 
 function loadSeen() {
@@ -37,6 +28,10 @@ function loadSeen() {
 
 function saveSeen(seen) {
   writeFileSync(SEEN_FILE, JSON.stringify(seen), "utf8");
+}
+
+function sleep(ms) {
+  return new Promise((r) => setTimeout(r, ms));
 }
 
 // ============================================================
@@ -51,41 +46,73 @@ async function main() {
 
   const rules = JSON.parse(rulesRaw);
   const seen = loadSeen();
+
+  const browser = await puppeteer.launch({
+    headless: "new",
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu",
+      "--no-first-run",
+      "--no-zygote",
+      "--single-process",
+    ],
+  });
+
   let notified = 0;
   let skipped = 0;
 
-  for (const rule of rules) {
-    const site = String(rule.site || "").toLowerCase();
-    console.log(`\n[${site}] "${rule.keyword}" を監視中...`);
+  try {
+    for (const rule of rules) {
+      const site = String(rule.site || "").toLowerCase();
+      console.log(`\n[${site}] "${rule.keyword}" を監視中...`);
 
-    let items = [];
-    try {
-      if      (site === "mercari")   items = await searchMercari(rule);
-      else if (site === "2ndstreet") items = await search2ndStreet(rule);
-      else if (site === "trefac")    items = await searchTrefac(rule);
-      // ↓ サイト追加時はここに追記
-      // else if (site === "offmall")   items = await searchOffmall(rule);
-      else { console.log("  → 未対応サイト（スキップ）"); continue; }
-      console.log(`  → ${items.length} 件取得`);
-    } catch (e) {
-      console.error(`  → エラー: ${e.message}`);
-      continue;
-    }
-
-    for (const item of items) {
-      const key = `${site}:${rule.keyword}:${item.id}`;
-      if (seen[key]) { skipped++; continue; }
-
+      let items = [];
       try {
-        await sendDiscord(webhookUrl, item, rule);
-        seen[key] = Date.now();
-        notified++;
-        console.log(`  → 通知済: ${item.title}`);
-        await sleep(500); // Discord レート制限対策
+        const page = await browser.newPage();
+
+        // Bot検知対策
+        await page.setUserAgent(
+          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        );
+        await page.setExtraHTTPHeaders({
+          "accept-language": "ja-JP,ja;q=0.9",
+        });
+
+        if (site === "mercari")        items = await searchMercari(page, rule);
+        else if (site === "2ndstreet") items = await search2ndStreet(page, rule);
+        else if (site === "trefac")    items = await searchTrefac(page, rule);
+        else {
+          console.log("  → 未対応サイト");
+          await page.close();
+          continue;
+        }
+
+        await page.close();
+        console.log(`  → ${items.length} 件取得`);
       } catch (e) {
-        console.error(`  → Discord送信エラー: ${e.message}`);
+        console.error(`  → エラー: ${e.message}`);
+        continue;
+      }
+
+      for (const item of items) {
+        const key = `${site}:${rule.keyword}:${item.id}`;
+        if (seen[key]) { skipped++; continue; }
+
+        try {
+          await sendDiscord(webhookUrl, item, rule);
+          seen[key] = Date.now();
+          notified++;
+          console.log(`  → 通知: ${item.title}`);
+          await sleep(500);
+        } catch (e) {
+          console.error(`  → Discord送信エラー: ${e.message}`);
+        }
       }
     }
+  } finally {
+    await browser.close();
   }
 
   saveSeen(seen);
@@ -94,164 +121,170 @@ async function main() {
 
 // ============================================================
 // メルカリ検索
-// 正式URL: https://jp.mercari.com/
-// API:     https://api.mercari.jp/v2/entities:search
 // ============================================================
-async function searchMercari(rule) {
-  const url = "https://api.mercari.jp/v2/entities:search?" + new URLSearchParams({
+async function searchMercari(page, rule) {
+  const url = "https://jp.mercari.com/search?" + new URLSearchParams({
     keyword: rule.keyword,
-    limit: "30",
-    sort: "SORT_CREATED_TIME",
-    order: "ORDER_DESC",
-    status: "STATUS_ON_SALE",
+    status: "on_sale",
+    sort: "created_time",
+    order: "desc",
   });
 
-  const res = await fetchWithRetry(url, {
-    headers: {
-      "accept": "application/json",
-      "accept-language": "ja-JP,ja;q=0.9",
-      "x-platform": "web",
-      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-      "referer": "https://jp.mercari.com/",
-      "origin": "https://jp.mercari.com",
-    },
-  });
+  await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 
-  if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+  // 商品一覧が表示されるまで待機
+  await page.waitForSelector('li[data-testid="item-cell"], [data-testid="no-result"]', {
+    timeout: 15000,
+  }).catch(() => {});
 
-  const data = await res.json();
-  return (data?.items ?? [])
-    .map((item) => ({
-      site: "mercari",
-      id: String(item.id || ""),
-      title: String(item.name || ""),
-      price: Number(item.price || 0),
-      url: `https://jp.mercari.com/item/${item.id}`,
-    }))
-    .filter((i) => i.id && i.title)
-    .filter((i) => matchRule(i, rule));
+  const items = await page.evaluate((keyword) => {
+    const cells = document.querySelectorAll('li[data-testid="item-cell"]');
+    const results = [];
+    cells.forEach((cell) => {
+      const link = cell.querySelector("a");
+      const img = cell.querySelector("img");
+      const priceEl = cell.querySelector('[data-testid="item-cell-price"], .merPrice, [class*="price"]');
+
+      const href = link?.href || "";
+      const idMatch = href.match(/\/item\/(m\w+)/);
+      const id = idMatch ? idMatch[1] : "";
+      const title = img?.alt || link?.textContent?.trim() || "";
+      const priceText = priceEl?.textContent?.replace(/[^\d]/g, "") || "0";
+
+      if (id && title) {
+        results.push({
+          site: "mercari",
+          id,
+          title,
+          price: Number(priceText) || 0,
+          url: href,
+        });
+      }
+    });
+    return results;
+  }, rule.keyword);
+
+  return items.filter((i) => matchRule(i, rule));
 }
 
 // ============================================================
 // セカンドストリート検索
-// 正式検索URL: https://www.2ndstreet.jp/search?keyword=ANSNAM
 // ============================================================
-async function search2ndStreet(rule) {
+async function search2ndStreet(page, rule) {
   const url = "https://www.2ndstreet.jp/search?" + new URLSearchParams({
     keyword: rule.keyword,
+    sortBy: "arrival",
   });
 
-  const res = await fetchWithRetry(url, {
-    headers: {
-      "accept": "text/html,application/xhtml+xml",
-      "accept-language": "ja-JP,ja;q=0.9",
-      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-      "referer": "https://www.2ndstreet.jp/",
-    },
+  await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
+
+  // 商品カードが表示されるまで待機
+  await page.waitForSelector('.itemCard, .item-card, [class*="itemCard"], .listItem', {
+    timeout: 15000,
+  }).catch(() => {});
+
+  await sleep(2000);
+
+  const items = await page.evaluate(() => {
+    const results = [];
+    const seen = new Set();
+
+    // 商品リンクを探す（複数パターン対応）
+    const links = document.querySelectorAll('a[href*="/goods/"]');
+    links.forEach((link) => {
+      const href = link.href;
+      const idMatch = href.match(/\/goods\/(\d+)\//);
+      if (!idMatch) return;
+      const id = idMatch[1];
+      if (seen.has(id)) return;
+      seen.add(id);
+
+      // タイトルと価格を周辺から取得
+      const card = link.closest("li, article, [class*='item'], [class*='card']") || link;
+      const img = card.querySelector("img");
+      const title = img?.alt || link.textContent?.trim() || "";
+      const priceEl = card.querySelector("[class*='price'], .price");
+      const priceText = priceEl?.textContent?.replace(/[^\d]/g, "") || "0";
+
+      if (title && title.length > 2) {
+        results.push({
+          site: "2ndstreet",
+          id,
+          title,
+          price: Number(priceText) || 0,
+          url: href,
+        });
+      }
+    });
+    return results;
   });
 
-  if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-  const html = await res.text();
-  return parse2ndStreetHtml(html).filter((i) => matchRule(i, rule));
+  return items.filter((i) => matchRule(i, rule));
 }
 
 // ============================================================
 // トレファクファッション検索
-// 正式検索URL: https://www.trefac.jp/store/search_result.html?q=ANSNAM&searchbox=1
 // ============================================================
-async function searchTrefac(rule) {
+async function searchTrefac(page, rule) {
   const url = "https://www.trefac.jp/store/search_result.html?" + new URLSearchParams({
     q: rule.keyword,
     searchbox: "1",
     step: "1",
   });
 
-  const res = await fetchWithRetry(url, {
-    headers: {
-      "accept": "text/html,application/xhtml+xml",
-      "accept-language": "ja-JP,ja;q=0.9",
-      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-      "referer": "https://www.trefac.jp/",
-    },
-  });
+  await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 
-  if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-  const html = await res.text();
-  return parseTrefacHtml(html).filter((i) => matchRule(i, rule));
-}
+  await page.waitForSelector('[class*="item"], .item-list, .product', {
+    timeout: 15000,
+  }).catch(() => {});
 
-// ============================================================
-// HTML パーサー: セカンドストリート
-// ============================================================
-function parse2ndStreetHtml(html) {
-  const out = [];
-  const seen = new Set();
-  const re = /href="(\/goods\/(\d+)\/[^"]+)"/g;
-  let m;
-  while ((m = re.exec(html)) !== null) {
-    const [, path, id] = m;
-    if (seen.has(id)) continue;
-    seen.add(id);
-    const block = html.slice(Math.max(0, m.index - 2000), m.index + 5000);
-    const title = decodeHtml(firstMatch(block, /alt="([^"]{4,100})"/) ?? "タイトル不明");
-    const price = yenToNumber(firstMatch(block, /[¥￥]\s*([\d,]+)/) ?? "") ?? 0;
-    out.push({ site: "2ndstreet", id, title, price, url: "https://www.2ndstreet.jp" + path });
-  }
-  return out;
-}
+  await sleep(1000);
 
-// ============================================================
-// HTML パーサー: トレファクファッション
-// 商品URL例: /store/detail.html?item=XXXXX
-// ============================================================
-function parseTrefacHtml(html) {
-  const out = [];
-  const seen = new Set();
+  const items = await page.evaluate(() => {
+    const results = [];
+    const seen = new Set();
 
-  // パターン1: /store/detail.html?item=XXX
-  const re1 = /href="(\/store\/detail\.html\?[^"]*item=([^"&\s]+)[^"]*)"/gi;
-  // パターン2: /store/tcXXXpsb/?item=XXX 形式
-  const re2 = /href="(\/store\/[^"]*\?[^"]*item=([^"&\s]+)[^"]*)"/gi;
-
-  for (const re of [re1, re2]) {
-    let m;
-    while ((m = re.exec(html)) !== null) {
-      const [, path, id] = m;
-      if (seen.has(id)) continue;
+    const links = document.querySelectorAll('a[href*="item="]');
+    links.forEach((link) => {
+      const href = link.href;
+      const idMatch = href.match(/item=([^&]+)/);
+      if (!idMatch) return;
+      const id = idMatch[1];
+      if (seen.has(id)) return;
       seen.add(id);
 
-      const block = html.slice(Math.max(0, m.index - 2000), m.index + 5000);
+      const card = link.closest("li, article, [class*='item'], [class*='product']") || link;
+      const img = card.querySelector("img");
+      const title = img?.alt || link.textContent?.trim() || "";
+      const priceEl = card.querySelector("[class*='price'], .price");
+      const priceText = priceEl?.textContent?.replace(/[^\d]/g, "") || "0";
 
-      const title = decodeHtml(
-        firstMatch(block, /alt="([^"]{4,100})"/) ??
-        firstMatch(block, /<p[^>]*class="[^"]*(?:item|goods)[_-]?name[^"]*"[^>]*>\s*([^<]{4,80})/) ??
-        firstMatch(block, /<h[23][^>]*>\s*([^<]{4,80})\s*<\/h[23]>/i) ??
-        "タイトル不明"
-      );
+      if (title && title.length > 2) {
+        results.push({
+          site: "trefac",
+          id,
+          title,
+          price: Number(priceText) || 0,
+          url: href,
+        });
+      }
+    });
+    return results;
+  });
 
-      const price = yenToNumber(
-        firstMatch(block, /[¥￥]\s*([\d,]+)/) ?? ""
-      ) ?? 0;
-
-      if (title === "タイトル不明") continue;
-
-      out.push({
-        site: "trefac",
-        id,
-        title,
-        price,
-        url: "https://www.trefac.jp" + path,
-      });
-    }
-  }
-  return out;
+  return items.filter((i) => matchRule(i, rule));
 }
 
 // ============================================================
 // Discord 通知
 // ============================================================
 async function sendDiscord(webhookUrl, item, rule) {
-  const label = { mercari: "メルカリ", "2ndstreet": "セカスト", trefac: "トレファク" }[item.site] ?? item.site;
+  const label = {
+    mercari: "メルカリ",
+    "2ndstreet": "セカスト",
+    trefac: "トレファク",
+  }[item.site] ?? item.site;
+
   const text = [
     `🆕 **${label}** ／ ${rule.keyword}`,
     item.title,
@@ -264,22 +297,13 @@ async function sendDiscord(webhookUrl, item, rule) {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ content: text }),
   });
+
   if (!res.ok) throw new Error(`discord: ${res.status}`);
 }
 
 // ============================================================
 // ユーティリティ
 // ============================================================
-async function fetchWithRetry(url, opts, retries = 2) {
-  for (let i = 0; i <= retries; i++) {
-    try { return await fetch(url, opts); }
-    catch (e) {
-      if (i === retries) throw e;
-      await sleep(1000 * (i + 1));
-    }
-  }
-}
-
 function matchRule(item, rule) {
   const title = (item.title || "").toLowerCase();
   const keyword = (rule.keyword || "").toLowerCase();
@@ -294,44 +318,4 @@ function matchRule(item, rule) {
   return true;
 }
 
-function firstMatch(text, re) { return text.match(re)?.[1] ?? null; }
-
-function decodeHtml(t) {
-  return String(t)
-    .replace(/&quot;/g, '"').replace(/&#x27;/g, "'")
-    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-}
-
-function yenToNumber(v) {
-  const n = String(v || "").replace(/[^\d]/g, "");
-  return n ? Number(n) : null;
-}
-
-function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
-
 main().catch((e) => { console.error(e); process.exit(1); });
-
-// ============================================================
-// サイト追加ガイド（あとから追加するときはここを参考に）
-// ============================================================
-//
-// 1. async function searchXxx(rule) { ... } を追加
-//    - fetchWithRetry でHTMLかJSONを取得
-//    - 商品を { site, id, title, price, url } の配列で返す
-//    - .filter((i) => matchRule(i, rule)) を忘れずに
-//
-// 2. main() の if/else if チェーンに追記:
-//    else if (site === "xxx") items = await searchXxx(rule);
-//
-// 3. WATCH_RULES に {"keyword":"...","site":"xxx"} を追加
-//
-// 例: オフモール追加の場合
-// async function searchOffmall(rule) {
-//   const url = "https://www.offmall.jp/item/search/?" + new URLSearchParams({
-//     keyword: rule.keyword, sort: "newer"
-//   });
-//   const res = await fetchWithRetry(url, { headers: { "user-agent": "Mozilla/5.0..." } });
-//   if (!res.ok) throw new Error(`offmall: ${res.status}`);
-//   const html = await res.text();
-//   // HTMLをパースして配列を返す...
-// }
