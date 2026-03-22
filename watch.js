@@ -41,10 +41,17 @@ async function main() {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
   if (!webhookUrl) throw new Error("DISCORD_WEBHOOK_URL が未設定です");
 
-  const rulesRaw = process.env.WATCH_RULES;
-  if (!rulesRaw) throw new Error("WATCH_RULES が未設定です");
+  const workerUrl = process.env.WORKER_URL;
+  if (!workerUrl) throw new Error("WORKER_URL が未設定です");
 
-  const rules = JSON.parse(rulesRaw);
+  // WorkerのKVから最新のルールを取得
+  console.log(`設定を取得中: ${workerUrl}/settings`);
+  const settingsRes = await fetch(`${workerUrl}/settings`);
+  if (!settingsRes.ok) throw new Error(`設定取得失敗: ${settingsRes.status}`);
+  const settings = await settingsRes.json();
+  const rules = Array.isArray(settings.rules) ? settings.rules : [];
+  if (!rules.length) throw new Error("rulesが0件です");
+  console.log(`ルール${rules.length}件を取得しました`);
   const seen = loadSeen();
 
   const browser = await puppeteer.launch({
