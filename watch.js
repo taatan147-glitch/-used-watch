@@ -239,7 +239,7 @@ async function search2ndStreet(page, rule) {
   });
 
   // サムネが取れていない商品はgoodsIdからURL構築を試みる
-  // cdn2.2ndstreet.jp/img/pc/goods/XXXXXX/XX/XXXXX/1_tn.jpg 形式
+  // cdn2.2ndstreet.jp/img/pc/goods/XXXXXX/XX/XXXXX/1.jpg 形式
   // goodsId例: 2337943794993 → 233794/37/94993
   for (const item of items) {
     if (!item.thumbnail && item.id.length >= 10) {
@@ -247,7 +247,7 @@ async function search2ndStreet(page, rule) {
       const part1 = id.slice(0, 6);
       const part2 = id.slice(6, 8);
       const part3 = id.slice(8);
-      item.thumbnail = `https://cdn2.2ndstreet.jp/img/pc/goods/${part1}/${part2}/${part3}/1_tn.jpg`;
+      item.thumbnail = `https://cdn2.2ndstreet.jp/img/pc/goods/${part1}/${part2}/${part3}/1.jpg`;
     }
   }
 
@@ -326,36 +326,64 @@ async function sendDiscord(webhookUrl, item, rule) {
 
   const priceText = item.price ? `¥${Number(item.price).toLocaleString("ja-JP")}` : "価格不明";
 
-  // サムネがある場合はEmbedで送信
+  const text = [
+    `🆕 **${label}** ／ ${rule.keyword}`,
+    item.title,
+    priceText,
+    item.url,
+  ].join("\n");
+
+  // サムネがある場合は画像をダウンロードしてDiscordに添付
   if (item.thumbnail) {
-    const payload = {
-      embeds: [{
-        title: `🆕 ${label} ／ ${rule.keyword}`,
-        description: `${item.title}\n${priceText}`,
-        url: item.url,
-        image: { url: item.thumbnail },
-      }],
-    };
-    const res = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new Error(`discord: ${res.status}`);
-  } else {
-    const text = [
-      `🆕 **${label}** ／ ${rule.keyword}`,
-      item.title,
-      priceText,
-      item.url,
-    ].join("\n");
-    const res = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ content: text }),
-    });
-    if (!res.ok) throw new Error(`discord: ${res.status}`);
+    try {
+      const imgRes = await fetch(item.thumbnail, {
+        headers: { "referer": "https://www.2ndstreet.jp/" },
+      });
+      if (imgRes.ok) {
+        const imgBuf = await imgRes.arrayBuffer();
+        const imgBytes = new Uint8Array(imgBuf);
+        const ext = item.thumbnail.split(".").pop() || "jpg";
+        const filename = `thumb.${ext}`;
+
+        // FormDataで画像を添付して送信
+        const boundary = "----DiscordBoundary" + Date.now();
+        const payloadJson = JSON.stringify({ content: text });
+        const payloadBytes = new TextEncoder().encode(payloadJson);
+
+        // multipart/form-data を手動構築
+        const parts = [];
+        const enc = (s) => new TextEncoder().encode(s);
+        parts.push(enc(`--${boundary}\r\nContent-Disposition: form-data; name="payload_json"\r\nContent-Type: application/json\r\n\r\n`));
+        parts.push(payloadBytes);
+        parts.push(enc(`\r\n--${boundary}\r\nContent-Disposition: form-data; name="files[0]"; filename="${filename}"\r\nContent-Type: image/jpeg\r\n\r\n`));
+        parts.push(imgBytes);
+        parts.push(enc(`\r\n--${boundary}--`));
+
+        const totalLen = parts.reduce((a, b) => a + b.length, 0);
+        const body = new Uint8Array(totalLen);
+        let offset = 0;
+        for (const p of parts) { body.set(p, offset); offset += p.length; }
+
+        const res = await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "content-type": `multipart/form-data; boundary=${boundary}` },
+          body: body,
+        });
+        if (!res.ok) throw new Error(`discord multipart: ${res.status}`);
+        return;
+      }
+    } catch (e) {
+      // 画像取得失敗時はテキストのみで送信
+    }
   }
+
+  // テキストのみで送信
+  const res = await fetch(webhookUrl, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ content: text }),
+  });
+  if (!res.ok) throw new Error(`discord: ${res.status}`);
 }
 
 // ============================================================
