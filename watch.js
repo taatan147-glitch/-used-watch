@@ -180,24 +180,29 @@ async function search2ndStreet(page, rule) {
     sortBy: "arrival",
   });
 
+  // クッキーを事前に設定してダイアログを回避
+  await page.setCookie({
+    name: "OptanonAlertBoxClosed",
+    value: new Date().toISOString(),
+    domain: ".2ndstreet.jp",
+  });
+
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
-  await sleep(4000);
+  await sleep(3000);
 
-  // デバッグ：スクリーンショットを保存
-await page.screenshot({ path: "debug_2ndstreet.png", fullPage: false });
-console.log("  スクリーンショット保存");
+  // クッキーダイアログが出た場合は閉じる
+  await page.evaluate(() => {
+    const btns = document.querySelectorAll("button");
+    for (const btn of btns) {
+      if (btn.textContent.includes("Accept") || btn.textContent.includes("同意")) {
+        btn.click();
+        break;
+      }
+    }
+  });
+  await sleep(2000);
 
-const debug = await page.evaluate(() => {
-  const links = document.querySelectorAll('a[href*="/goods/"]');
-  const sample = links[0] ? {
-    href: links[0].href,
-    alt: links[0].closest("li,article,div")?.querySelector("img")?.alt,
-    text: links[0].closest("li,article,div")?.textContent?.slice(0, 80),
-  } : "リンクなし";
-  return { count: links.length, sample };
-});
-console.log("  デバッグ:", JSON.stringify(debug, null, 0));
-
+  // URLから直接goodsIdを取得し、商品名はdata属性やaria-labelから取る
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
@@ -205,7 +210,9 @@ console.log("  デバッグ:", JSON.stringify(debug, null, 0));
     const links = document.querySelectorAll('a[href*="/goods/"]');
     links.forEach((link) => {
       const href = link.href;
-      const idMatch = href.match(/\/goods\/(\d+)\//);
+
+      // goodsId/XXXXX 形式に対応
+      const idMatch = href.match(/goodsId[=/](\d+)/) || href.match(/\/goods\/(\d+)/);
       if (!idMatch) return;
       const id = idMatch[1];
       if (seen.has(id)) return;
@@ -214,21 +221,25 @@ console.log("  デバッグ:", JSON.stringify(debug, null, 0));
       const card = link.closest("li, article, div") || link;
       const img = card.querySelector("img");
 
-      // タイトル取得：alt → クラス名にnameやtitleを含む要素 → テキスト
+      // タイトル取得の優先順位を広げる
       const title =
         img?.alt?.trim() ||
-        card.querySelector('[class*="name"],[class*="title"],[class*="itemName"]')?.textContent?.trim() ||
-        link.textContent?.trim() || "";
+        img?.getAttribute("data-src")?.split("/").pop()?.split("?")[0] ||
+        link.getAttribute("aria-label")?.trim() ||
+        card.querySelector('[class*="name"],[class*="title"],[class*="item-name"],[class*="goods-name"]')?.textContent?.trim() ||
+        card.querySelector("p, span, h2, h3")?.textContent?.trim() ||
+        "";
 
-      // 価格取得：¥マークを含むテキストを探す
-      const priceMatch = card.textContent.match(/[¥￥]([\d,]+)/);
-      const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
+      const priceMatch = card.innerHTML.match(/[\d,]{3,}(?=\s*(?:円|<))/);
+      const price = priceMatch ? Number(priceMatch[0].replace(/,/g, "")) : 0;
 
-      if (title && title.length > 2) {
-        results.push({ site: "2ndstreet", id, title, price, url: href });
-      }
-    });
-    return results;
+      // タイトルが空でもURLから仮タイトルを作る
+      const finalTitle = title.length > 1 ? title : `商品ID:${id}`;
+
+      results.push({ site: "2ndstreet", id, finalTitle, price, url: href, _raw: title });
+    }).valueOf();
+
+    return results.map(r => ({ ...r, title: r.finalTitle }));
   });
 
   return items.filter((i) => matchRule(i, rule));
