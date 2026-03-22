@@ -236,10 +236,10 @@ async function search2ndStreet(page, rule) {
       // タイトルが空でもURLから仮タイトルを作る
       const finalTitle = title.length > 1 ? title : `商品ID:${id}`;
 
-      results.push({ site: "2ndstreet", id, finalTitle, price, url: href, _raw: title });
-    }).valueOf();
+      results.push({ site: "2ndstreet", id, title: finalTitle, price, url: href });
+    });
 
-    return results.map(r => ({ ...r, title: r.finalTitle }));
+    return results;
   });
 
   return items.filter((i) => matchRule(i, rule));
