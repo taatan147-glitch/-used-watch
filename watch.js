@@ -244,6 +244,15 @@ async function search2ndStreet(page, rule) {
   const items = [];
   const seen = new Set();
 
+  // dataLayerの内容をデバッグ出力（サムネ確認用）
+  if (dataLayerItems.length > 0) {
+    const sample = dataLayerItems[0];
+    console.log("  dataLayer sample:", JSON.stringify(sample).slice(0, 300));
+  }
+  console.log("  supplementData keys:", Object.keys(supplementData).slice(0, 3));
+  const firstKey = Object.keys(supplementData)[0];
+  if (firstKey) console.log("  supplement sample:", JSON.stringify(supplementData[firstKey]));
+
   // dataLayerから商品情報を構築
   if (dataLayerItems.length > 0) {
     for (const dl of dataLayerItems) {
@@ -253,8 +262,8 @@ async function search2ndStreet(page, rule) {
 
       const sup = supplementData[id] || {};
       const url = sup.shopsId
-        ? `https://www.2ndstreet.jp/goods/detail/goodsId/${id}/shopsId/${sup.shopsId}/`
-        : `https://www.2ndstreet.jp/goods/detail/goodsId/${id}/`;
+        ? `https://www.2ndstreet.jp/goods/detail/goodsId/${id}/shopsId/${sup.shopsId}`
+        : `https://www.2ndstreet.jp/goods/detail/goodsId/${id}`;
 
       items.push({
         site: "2ndstreet",
@@ -276,8 +285,8 @@ async function search2ndStreet(page, rule) {
         title: `セカスト商品 ${gid}`,
         price: 0,
         url: sup.shopsId
-          ? `https://www.2ndstreet.jp/goods/detail/goodsId/${gid}/shopsId/${sup.shopsId}/`
-          : `https://www.2ndstreet.jp/goods/detail/goodsId/${gid}/`,
+          ? `https://www.2ndstreet.jp/goods/detail/goodsId/${gid}/shopsId/${sup.shopsId}`
+          : `https://www.2ndstreet.jp/goods/detail/goodsId/${gid}`,
         thumbnail: sup.thumbnail || "",
       });
     }
@@ -344,38 +353,20 @@ async function sendDiscord(webhookUrl, item, rule) {
 
   const priceText = item.price ? `¥${Number(item.price).toLocaleString("ja-JP")}` : "価格不明";
 
-  // サムネがある場合はEmbedで送信（画像付き）
-  if (item.thumbnail) {
-    const payload = {
-      content: `🆕 **${label}** ／ ${rule.keyword}`,
-      embeds: [{
-        title: item.title,
-        url: item.url,
-        description: priceText,
-        thumbnail: { url: item.thumbnail },
-      }],
-    };
-    const res = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new Error(`discord: ${res.status}`);
-  } else {
-    // サムネなしはテキストのみ
-    const text = [
-      `🆕 **${label}** ／ ${rule.keyword}`,
-      item.title,
-      priceText,
-      item.url,
-    ].join("\n");
-    const res = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ content: text }),
-    });
-    if (!res.ok) throw new Error(`discord: ${res.status}`);
-  }
+  // テキストのみで送信 → DiscordがURLのOGPからサムネを自動取得
+  const text = [
+    `🆕 **${label}** ／ ${rule.keyword}`,
+    item.title,
+    priceText,
+    item.url,
+  ].join("\n");
+
+  const res = await fetch(webhookUrl, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ content: text }),
+  });
+  if (!res.ok) throw new Error(`discord: ${res.status}`);
 }
 
 // ============================================================
