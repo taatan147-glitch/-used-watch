@@ -198,99 +198,40 @@ async function search2ndStreet(page, rule) {
   await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
   await sleep(4000);
 
-  // dataLayer（Googleアナリティクス用）から商品情報を取得
-  const dataLayerItems = await page.evaluate(() => {
-    try {
-      if (!window.dataLayer) return [];
-      const impressions = [];
-      window.dataLayer.forEach((entry) => {
-        if (entry.ecommerce && entry.ecommerce.impressions) {
-          impressions.push(...entry.ecommerce.impressions);
-        }
-        if (entry.ecommerce && entry.ecommerce.items) {
-          impressions.push(...entry.ecommerce.items);
-        }
-      });
-      return impressions;
-    } catch (e) { return []; }
-  });
+  const items = await page.evaluate(() => {
+    const results = [];
+    const seen = new Set();
 
-  // HTMLソースからgoodsId+shopsIdのペアとサムネを抽出
-  const supplementData = await page.evaluate(() => {
-    const html = document.documentElement.innerHTML;
-    const result = {};
+    // li.itemCard[goodsid] から直接取得
+    document.querySelectorAll("li.itemCard[goodsid], li[goodsid], li[class*=itemCard]").forEach((card) => {
+      const goodsId = card.getAttribute("goodsid") || "";
+      if (!goodsId || seen.has(goodsId)) return;
+      seen.add(goodsId);
 
-    // goodsId/XXXXX/shopsId/XXXXX パターンを抽出
-    const pairRe = /goodsId(?:\/|%2F|=)(\d{10,})(?:\/|%2F)shopsId(?:\/|%2F|=)(\d+)/g;
-    let m;
-    while ((m = pairRe.exec(html)) !== null) {
-      const gid = m[1], sid = m[2];
-      if (!result[gid]) result[gid] = { shopsId: sid, thumbnail: "" };
-    }
+      // URL: a.itemCard_inner[href]
+      const link = card.querySelector("a.itemCard_inner, a[href*=goodsId]");
+      const url = link?.href || "";
 
-    // imgタグからサムネを抽出
-    document.querySelectorAll("img").forEach((img) => {
-      const src = img.src || img.dataset?.src || img.dataset?.lazySrc || "";
-      if (!src || (!src.includes("2ndstreet") && !src.includes("cdn2"))) return;
-      const gm = src.match(/(\d{10,})/);
-      if (gm && result[gm[1]] && !result[gm[1]].thumbnail) {
-        result[gm[1]].thumbnail = src;
+      // サムネ: div.itemCard_img img
+      const img = card.querySelector(".itemCard_img img, img");
+      const thumbnail = img?.src || img?.currentSrc || img?.dataset?.src || "";
+
+      // タイトル: .itemCard_body 内のテキスト
+      const body = card.querySelector(".itemCard_body, .itemCard_label, [class*=itemCard_name]");
+      const title = body?.textContent?.trim().replace(/\s+/g, " ").slice(0, 100) || "";
+
+      // 価格
+      const priceEl = card.querySelector("[class*=price], [class*=Price]");
+      const priceMatch = (priceEl?.textContent || card.textContent).match(/[\d,]{3,}(?=\s*(?:円|税))/);
+      const price = priceMatch ? Number(priceMatch[0].replace(/,/g, "")) : 0;
+
+      if (url) {
+        results.push({ site: "2ndstreet", id: goodsId, title: title || `セカスト商品 ${goodsId}`, price, url, thumbnail });
       }
     });
 
-    return result;
+    return results;
   });
-
-  const items = [];
-  const seen = new Set();
-
-  // dataLayerの内容をデバッグ出力（サムネ確認用）
-  if (dataLayerItems.length > 0) {
-    const sample = dataLayerItems[0];
-    console.log("  dataLayer sample:", JSON.stringify(sample).slice(0, 300));
-  }
-  console.log("  supplementData keys:", Object.keys(supplementData).slice(0, 3));
-  const firstKey = Object.keys(supplementData)[0];
-  if (firstKey) console.log("  supplement sample:", JSON.stringify(supplementData[firstKey]));
-
-  // dataLayerから商品情報を構築
-  if (dataLayerItems.length > 0) {
-    for (const dl of dataLayerItems) {
-      const id = String(dl.id || dl.item_id || "");
-      if (!id || seen.has(id)) continue;
-      seen.add(id);
-
-      const sup = supplementData[id] || {};
-      const url = sup.shopsId
-        ? `https://www.2ndstreet.jp/goods/detail/goodsId/${id}/shopsId/${sup.shopsId}`
-        : `https://www.2ndstreet.jp/goods/detail/goodsId/${id}`;
-
-      items.push({
-        site: "2ndstreet",
-        id,
-        title: dl.name || dl.item_name || `セカスト商品 ${id}`,
-        price: Number(dl.price || 0),
-        url,
-        thumbnail: sup.thumbnail || "",
-      });
-    }
-  } else {
-    // dataLayerが空の場合はHTMLソースのみで構築
-    for (const [gid, sup] of Object.entries(supplementData)) {
-      if (seen.has(gid)) continue;
-      seen.add(gid);
-      items.push({
-        site: "2ndstreet",
-        id: gid,
-        title: `セカスト商品 ${gid}`,
-        price: 0,
-        url: sup.shopsId
-          ? `https://www.2ndstreet.jp/goods/detail/goodsId/${gid}/shopsId/${sup.shopsId}`
-          : `https://www.2ndstreet.jp/goods/detail/goodsId/${gid}`,
-        thumbnail: sup.thumbnail || "",
-      });
-    }
-  }
 
   return items;
 }
@@ -298,9 +239,8 @@ async function search2ndStreet(page, rule) {
 // トレファクファッション検索
 // ============================================================
 async function searchTrefac(page, rule) {
-  const url = "https://www.trefac.jp/store/search_result.html?" + new URLSearchParams({
-    q: rule.keyword,
-    searchbox: "1",
+  const url = "https://www.trefac.jp/store/tcpsb/?" + new URLSearchParams({
+    srchword: rule.keyword,
     step: "1",
   });
 
@@ -311,30 +251,45 @@ async function searchTrefac(page, rule) {
     const results = [];
     const seen = new Set();
 
-    const links = document.querySelectorAll('a[href*="item="]');
-    links.forEach((link) => {
-      const href = link.href;
-      const idMatch = href.match(/item=([^&]+)/);
+    // トレファクの商品リンクパターンを複数試す
+    const allLinks = document.querySelectorAll("a");
+    allLinks.forEach((link) => {
+      const href = link.href || "";
+      // 商品詳細ページのパターン：/store/detail.html?item=XXX または /item/XXX
+      const idMatch =
+        href.match(/[?&]item=([^&]+)/) ||
+        href.match(/\/item\/([^/?]+)/) ||
+        href.match(/detail[^?]*[?&]?.*item[=\/]([^&/]+)/);
       if (!idMatch) return;
       const id = idMatch[1];
-      if (seen.has(id)) return;
+      if (seen.has(id) || id.length < 3) return;
       seen.add(id);
 
       const card = link.closest("li, article, div") || link;
-      const img = card.querySelector("img");
+      const img = card?.querySelector("img");
 
       const title =
         img?.alt?.trim() ||
-        card.querySelector('[class*="name"],[class*="title"]')?.textContent?.trim() ||
+        card?.querySelector('[class*="name"],[class*="item"],[class*="title"]')?.textContent?.trim() ||
         link.textContent?.trim() || "";
 
-      const priceMatch = card.textContent.match(/[¥￥]([\d,]+)/);
+      const priceMatch = card?.textContent?.match(/[¥￥]([\d,]+)/);
       const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
+      const thumbnail = img?.src || img?.dataset?.src || "";
 
       if (title && title.length > 2) {
-        results.push({ site: "trefac", id, title, price, url: href });
+        results.push({ site: "trefac", id, title, price, url: href, thumbnail });
       }
     });
+
+    // デバッグ：リンク数とサンプルを返す
+    if (results.length === 0) {
+      const linkCount = document.querySelectorAll("a").length;
+      const sampleHrefs = Array.from(document.querySelectorAll("a"))
+        .map(a => a.href).filter(h => h.includes("trefac")).slice(0, 5);
+      console.log("trefac debug: links=" + linkCount + " samples=" + JSON.stringify(sampleHrefs));
+    }
+
     return results;
   });
 
