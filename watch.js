@@ -27,7 +27,7 @@ function loadSeen() {
 }
 
 function saveSeen(seen) {
-  writeFileSync(SEEN_FILE, JSON.stringify(seen), "utf8");
+  writeFileSync(SEEN_FILE, JSON.stringify(seen, null, 2), "utf8");
 }
 
 function sleep(ms) {
@@ -105,17 +105,39 @@ async function main() {
 
       for (const item of items) {
         const key = `${site}:${rule.keyword}:${item.id}`;
-        if (seen[key]) { skipped++; continue; }
+        const existing = seen[key];
 
-        try {
-          await sendDiscord(webhookUrl, item, rule);
-          seen[key] = Date.now();
-          notified++;
-          console.log(`  → 通知: ${item.title}`);
-          await sleep(500);
-        } catch (e) {
-          console.error(`  → Discord送信エラー: ${e.message}`);
+        // 新着判定
+        if (!existing) {
+          try {
+            await sendDiscord(webhookUrl, item, rule, "new");
+            seen[key] = { price: item.price, ts: Date.now() };
+            notified++;
+            console.log(`  → 新着通知: ${item.title}`);
+            await sleep(500);
+          } catch (e) {
+            console.error(`  → Discord送信エラー: ${e.message}`);
+          }
+          continue;
         }
+
+        // 値下げ判定（価格が記録されていて、かつ下がっている場合）
+        const prevPrice = existing.price || 0;
+        const curPrice = item.price || 0;
+        if (prevPrice > 0 && curPrice > 0 && curPrice < prevPrice) {
+          try {
+            await sendDiscord(webhookUrl, item, rule, "price_down", prevPrice);
+            seen[key] = { price: curPrice, ts: Date.now() };
+            notified++;
+            console.log(`  → 値下げ通知: ${item.title} ¥${prevPrice}→¥${curPrice}`);
+            await sleep(500);
+          } catch (e) {
+            console.error(`  → Discord送信エラー: ${e.message}`);
+          }
+          continue;
+        }
+
+        skipped++;
       }
     }
   } finally {
@@ -322,17 +344,21 @@ async function searchTrefac(page, rule) {
 // ============================================================
 // Discord 通知
 // ============================================================
-async function sendDiscord(webhookUrl, item, rule) {
+async function sendDiscord(webhookUrl, item, rule, type = "new", prevPrice = 0) {
   const label = {
     mercari: "メルカリ",
     "2ndstreet": "セカスト",
     trefac: "トレファク",
   }[item.site] ?? item.site;
 
-  const priceText = item.price ? `¥${Number(item.price).toLocaleString("ja-JP")}` : "価格不明";
+  const curPriceText = item.price ? `¥${Number(item.price).toLocaleString("ja-JP")}` : "価格不明";
+  const priceText = type === "price_down"
+    ? `~~¥${Number(prevPrice).toLocaleString("ja-JP")}~~ → **${curPriceText}** 📉`
+    : curPriceText;
+  const emoji = type === "price_down" ? "📉" : "🆕";
 
   const text = [
-    `🆕 **${label}** ／ ${rule.keyword}`,
+    `${emoji} **${label}** ／ ${rule.keyword}`,
     item.title,
     priceText,
     item.url,
