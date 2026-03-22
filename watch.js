@@ -202,36 +202,54 @@ async function search2ndStreet(page, rule) {
     const results = [];
     const seen = new Set();
 
-    // li.itemCard[goodsid] から直接取得
-    document.querySelectorAll("li.itemCard[goodsid], li[goodsid], li[class*=itemCard]").forEach((card) => {
+    document.querySelectorAll("li.itemCard[goodsid], li[goodsid]").forEach((card) => {
       const goodsId = card.getAttribute("goodsid") || "";
       if (!goodsId || seen.has(goodsId)) return;
       seen.add(goodsId);
 
-      // URL: a.itemCard_inner[href]
+      // URL（goodsId + shopsId が含まれている）
       const link = card.querySelector("a.itemCard_inner, a[href*=goodsId]");
       const url = link?.href || "";
 
-      // サムネ: div.itemCard_img img
-      const img = card.querySelector(".itemCard_img img, img");
-      const thumbnail = img?.src || img?.currentSrc || img?.dataset?.src || "";
+      // サムネ：loading=lazyなのでsrc属性を直接取得
+      const img = card.querySelector(".itemCard_img img");
+      const imgSrc = img?.getAttribute("src") || img?.src || "";
+      // srcがbase64やblankの場合はgoodsIdからURL構築
+      const thumbnail = imgSrc.startsWith("https://cdn2") ? imgSrc : "";
 
-      // タイトル: .itemCard_body 内のテキスト
-      const body = card.querySelector(".itemCard_body, .itemCard_label, [class*=itemCard_name]");
-      const title = body?.textContent?.trim().replace(/\s+/g, " ").slice(0, 100) || "";
+      // タイトル：itemCard_labelListの最初のli（ブランド名/商品名の部分）
+      const labelList = card.querySelector(".itemCard_labelList, .itemCard_body");
+      // itemCard_bodyのテキストから最初の行だけ取る
+      const bodyText = labelList?.textContent?.trim().replace(/\s+/g, " ") || "";
+      // 「サイズ」や「商品の状態」より前の部分がタイトル
+      const title = bodyText.split(/サイズ|商品の状態/)[0].trim() || `セカスト商品 ${goodsId}`;
 
-      // 価格
+      // 価格：¥マーク付きの数値を探す
       const priceEl = card.querySelector("[class*=price], [class*=Price]");
-      const priceMatch = (priceEl?.textContent || card.textContent).match(/[\d,]{3,}(?=\s*(?:円|税))/);
-      const price = priceMatch ? Number(priceMatch[0].replace(/,/g, "")) : 0;
+      const priceText = priceEl?.textContent || "";
+      const priceMatch = priceText.match(/([\d,]+)/);
+      const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
 
       if (url) {
-        results.push({ site: "2ndstreet", id: goodsId, title: title || `セカスト商品 ${goodsId}`, price, url, thumbnail });
+        results.push({ site: "2ndstreet", id: goodsId, title, price, url, thumbnail });
       }
     });
 
     return results;
   });
+
+  // サムネが取れていない商品はgoodsIdからURL構築を試みる
+  // cdn2.2ndstreet.jp/img/pc/goods/XXXXXX/XX/XXXXX/1_tn.jpg 形式
+  // goodsId例: 2337943794993 → 233794/37/94993
+  for (const item of items) {
+    if (!item.thumbnail && item.id.length >= 10) {
+      const id = item.id;
+      const part1 = id.slice(0, 6);
+      const part2 = id.slice(6, 8);
+      const part3 = id.slice(8);
+      item.thumbnail = `https://cdn2.2ndstreet.jp/img/pc/goods/${part1}/${part2}/${part3}/1_tn.jpg`;
+    }
+  }
 
   return items;
 }
@@ -308,20 +326,36 @@ async function sendDiscord(webhookUrl, item, rule) {
 
   const priceText = item.price ? `¥${Number(item.price).toLocaleString("ja-JP")}` : "価格不明";
 
-  // テキストのみで送信 → DiscordがURLのOGPからサムネを自動取得
-  const text = [
-    `🆕 **${label}** ／ ${rule.keyword}`,
-    item.title,
-    priceText,
-    item.url,
-  ].join("\n");
-
-  const res = await fetch(webhookUrl, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ content: text }),
-  });
-  if (!res.ok) throw new Error(`discord: ${res.status}`);
+  // サムネがある場合はEmbedで送信
+  if (item.thumbnail) {
+    const payload = {
+      embeds: [{
+        title: `🆕 ${label} ／ ${rule.keyword}`,
+        description: `${item.title}\n${priceText}`,
+        url: item.url,
+        image: { url: item.thumbnail },
+      }],
+    };
+    const res = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error(`discord: ${res.status}`);
+  } else {
+    const text = [
+      `🆕 **${label}** ／ ${rule.keyword}`,
+      item.title,
+      priceText,
+      item.url,
+    ].join("\n");
+    const res = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ content: text }),
+    });
+    if (!res.ok) throw new Error(`discord: ${res.status}`);
+  }
 }
 
 // ============================================================
