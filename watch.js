@@ -144,9 +144,11 @@ async function searchMercari(page, rule) {
     timeout: 15000,
   }).catch(() => {});
 
-  // 少し下にスクロールして追加読み込みを促す
-  await page.evaluate(() => window.scrollBy(0, 1000));
-  await sleep(2000);
+  // 複数回スクロールして追加読み込みを促す
+  for (let i = 0; i < 3; i++) {
+    await page.evaluate(() => window.scrollBy(0, 1500));
+    await sleep(1500);
+  }
 
   const items = await page.evaluate((keyword) => {
     const cells = document.querySelectorAll('li[data-testid="item-cell"]');
@@ -193,66 +195,145 @@ async function search2ndStreet(page, rule) {
     domain: ".2ndstreet.jp",
   });
 
-  await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
-  await sleep(4000);
-
-  // goodsIdとshopsIdのペアをリンクから収集
-  const goodsPairs = await page.evaluate(() => {
-    const seen = new Set();
-    const pairs = [];
-    document.querySelectorAll("a").forEach((link) => {
-      const href = link.href || "";
-      if (!href.includes("2ndstreet.jp")) return;
-      const gm = href.match(/goodsId[/=](\d+)/);
-      const sm = href.match(/shopsId[/=](\d+)/);
-      if (!gm || seen.has(gm[1])) return;
-      seen.add(gm[1]);
-      const card = link.closest("li,article,div") || link.parentElement;
-      const img = card?.querySelector("img");
-      const thumb = img?.src || img?.dataset?.src || "";
-      pairs.push({ goodsId: gm[1], shopsId: sm ? sm[1] : "", thumb });
-    });
-    return pairs;
-  });
-
-  // 各商品の詳細をAPIで取得
-  const items = [];
-  for (const { goodsId, shopsId, thumb } of goodsPairs) {
-    let title = `セカスト商品 ${goodsId}`;
-    let price = 0;
-    let thumbnail = thumb;
-    const itemUrl = shopsId
-      ? `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/shopsId/${shopsId}/`
-      : `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/`;
-
+  // ネットワークリクエストを傍受して商品APIのレスポンスを取得
+  const apiResponses = [];
+  await page.setRequestInterception(true);
+  page.on("request", (req) => req.continue());
+  page.on("response", async (res) => {
     try {
-      const apiUrl = `https://www.2ndstreet.jp/searchapi/getGoodsDetail?goodsId=${goodsId}` +
-                     (shopsId ? `&shopsId=${shopsId}` : "");
-      const res = await fetch(apiUrl, {
-        headers: {
-          "accept": "application/json",
-          "x-requested-with": "XMLHttpRequest",
-          "referer": searchUrl,
-        },
-      });
-      if (res.ok) {
-        const ct = res.headers.get("content-type") || "";
-        if (ct.includes("application/json")) {
-          const data = await res.json();
-          const g = data.goods || data.item || data;
-          if (g.name || g.goodsName) title = g.name || g.goodsName;
-          if (g.price || g.sellingPrice) price = Number(g.price || g.sellingPrice);
-          if (g.image || g.imageUrl) thumbnail = g.image || g.imageUrl;
+      const url = res.url();
+      if (url.includes("searchapi") || url.includes("getGoods") || url.includes("search/goods")) {
+        const ct = res.headers()["content-type"] || "";
+        if (ct.includes("json")) {
+          const body = await res.json().catch(() => null);
+          if (body) apiResponses.push(body);
         }
       }
     } catch (e) {}
+  });
 
-    items.push({ site: "2ndstreet", id: goodsId, title, price, url: itemUrl, thumbnail });
+  await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
+  await sleep(4000);
+
+  // ページ内の__NEXT_DATA__またはwindow変数からデータを取得
+  const pageData = await page.evaluate(() => {
+    // Next.jsのデータ
+    const nextData = document.getElementById("__NEXT_DATA__");
+    if (nextData) {
+      try { return { type: "next", data: JSON.parse(nextData.textContent) }; }
+      catch (e) {}
+    }
+    // script内のJSONデータを探す
+    const scripts = document.querySelectorAll("script:not([src])");
+    for (const s of scripts) {
+      const text = s.textContent || "";
+      // 商品データっぽいJSONを探す
+      const match = text.match(/window\.__(?:INITIAL|PAGE|STORE)_(?:DATA|STATE)__\s*=\s*(\{.+?\});/s);
+      if (match) {
+        try { return { type: "window", data: JSON.parse(match[1]) }; }
+        catch (e) {}
+      }
+    }
+    // HTML内の構造化データ（JSON-LD）
+    const jsonlds = document.querySelectorAll('script[type="application/ld+json"]');
+    for (const j of jsonlds) {
+      try {
+        const d = JSON.parse(j.textContent);
+        if (d["@type"] === "ItemList" || d.itemListElement) {
+          return { type: "jsonld", data: d };
+        }
+      } catch (e) {}
+    }
+    // viewHistory cookieから既存goodsIdを取得
+    const vh = document.cookie.match(/viewHistory=([^;]+)/);
+    if (vh) {
+      try { return { type: "cookie", data: JSON.parse(decodeURIComponent(vh[1])) }; }
+      catch (e) {}
+    }
+    return null;
+  });
+
+  // ページ内のdataLayerから商品情報を取得（Googleアナリティクス用データ）
+  const dataLayerItems = await page.evaluate(() => {
+    try {
+      if (!window.dataLayer) return [];
+      const impressions = [];
+      window.dataLayer.forEach((entry) => {
+        if (entry.ecommerce && entry.ecommerce.impressions) {
+          impressions.push(...entry.ecommerce.impressions);
+        }
+        if (entry.ecommerce && entry.ecommerce.items) {
+          impressions.push(...entry.ecommerce.items);
+        }
+      });
+      return impressions;
+    } catch (e) { return []; }
+  });
+
+  const items = [];
+  const seen = new Set();
+
+  // dataLayerから商品情報を取得（最も信頼性が高い）
+  if (dataLayerItems.length > 0) {
+    for (const dl of dataLayerItems) {
+      const id = String(dl.id || dl.item_id || "");
+      if (!id || seen.has(id)) continue;
+      seen.add(id);
+
+      // URLはdataLayerに含まれないので別途組み立て
+      // shopsIdはURLから取得する必要があるため一旦IDのみのURLを設定
+      items.push({
+        site: "2ndstreet",
+        id,
+        title: dl.name || dl.item_name || `セカスト商品 ${id}`,
+        price: Number(dl.price || 0),
+        url: `https://www.2ndstreet.jp/goods/detail/goodsId/${id}/`,
+        thumbnail: "",
+      });
+    }
   }
 
+  // dataLayerで取れなかった場合はHTMLのリンクからshopsId付きURLを構築
+  if (items.length === 0) {
+    const pairs = await page.evaluate(() => {
+      const seen = new Set();
+      const pairs = [];
+      // ページのHTMLソースから直接パターンを検索
+      const html = document.documentElement.innerHTML;
+      const re = /goodsId["\/=]+(\d{10,})["\/]*(?:[^}]*shopsId["\/=]+(\d+))?/g;
+      let m;
+      while ((m = re.exec(html)) !== null) {
+        const goodsId = m[1];
+        const shopsId = m[2] || "";
+        if (seen.has(goodsId)) continue;
+        seen.add(goodsId);
+        pairs.push({ goodsId, shopsId });
+      }
+      return pairs.slice(0, 30);
+    });
+
+    for (const { goodsId, shopsId } of pairs) {
+      if (seen.has(goodsId)) continue;
+      seen.add(goodsId);
+      items.push({
+        site: "2ndstreet",
+        id: goodsId,
+        title: `セカスト商品 ${goodsId}`,
+        price: 0,
+        url: shopsId
+          ? `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/shopsId/${shopsId}/`
+          : `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/`,
+        thumbnail: "",
+      });
+    }
+  }
+
+  // shopsIdが取れていないものをdataLayerのURLと照合して補完
+  // （今後の改善ポイント）
+
+  await page.setRequestInterception(false);
   return items;
 }
-
 // ============================================================
 // トレファクファッション検索
 // ============================================================
