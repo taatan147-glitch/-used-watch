@@ -8,17 +8,11 @@ on:
 jobs:
   watch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: リポジトリをチェックアウト
         uses: actions/checkout@v4
-
-      - name: 既読キャッシュを復元
-        uses: actions/cache@v4
-        with:
-          path: seen.json
-          key: seen-cache-${{ github.run_id }}
-          restore-keys: |
-            seen-cache-
 
       - name: Node.js セットアップ
         uses: actions/setup-node@v4
@@ -43,9 +37,11 @@ jobs:
           WORKER_URL: ${{ secrets.WORKER_URL }}
         run: node watch.js
 
-      - name: 既読キャッシュを保存
+      - name: seen.json をコミット
         if: always()
-        uses: actions/cache/save@v4
-        with:
-          path: seen.json
-          key: seen-cache-${{ github.run_id }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add seen.json
+          git diff --cached --quiet || git commit -m "Update seen.json [skip ci]"
+          git push
