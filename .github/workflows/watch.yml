@@ -40,17 +40,9 @@ jobs:
       - name: 監視スクリプト実行
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          WATCH_RULES: ${{ secrets.WATCH_RULES }}
+          WORKER_URL: ${{ secrets.WORKER_URL }}
         run: node watch.js
-        
-      - name: デバッグ画像をアップロード
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-           name: debug-screenshots
-           path: "*.png"   
 
-        
       - name: 既読キャッシュを保存
         if: always()
         uses: actions/cache/save@v4
