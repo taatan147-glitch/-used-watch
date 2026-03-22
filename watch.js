@@ -195,65 +195,10 @@ async function search2ndStreet(page, rule) {
     domain: ".2ndstreet.jp",
   });
 
-  // ネットワークリクエストを傍受して商品APIのレスポンスを取得
-  const apiResponses = [];
-  await page.setRequestInterception(true);
-  page.on("request", (req) => req.continue());
-  page.on("response", async (res) => {
-    try {
-      const url = res.url();
-      if (url.includes("searchapi") || url.includes("getGoods") || url.includes("search/goods")) {
-        const ct = res.headers()["content-type"] || "";
-        if (ct.includes("json")) {
-          const body = await res.json().catch(() => null);
-          if (body) apiResponses.push(body);
-        }
-      }
-    } catch (e) {}
-  });
-
   await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
   await sleep(4000);
 
-  // ページ内の__NEXT_DATA__またはwindow変数からデータを取得
-  const pageData = await page.evaluate(() => {
-    // Next.jsのデータ
-    const nextData = document.getElementById("__NEXT_DATA__");
-    if (nextData) {
-      try { return { type: "next", data: JSON.parse(nextData.textContent) }; }
-      catch (e) {}
-    }
-    // script内のJSONデータを探す
-    const scripts = document.querySelectorAll("script:not([src])");
-    for (const s of scripts) {
-      const text = s.textContent || "";
-      // 商品データっぽいJSONを探す
-      const match = text.match(/window\.__(?:INITIAL|PAGE|STORE)_(?:DATA|STATE)__\s*=\s*(\{.+?\});/s);
-      if (match) {
-        try { return { type: "window", data: JSON.parse(match[1]) }; }
-        catch (e) {}
-      }
-    }
-    // HTML内の構造化データ（JSON-LD）
-    const jsonlds = document.querySelectorAll('script[type="application/ld+json"]');
-    for (const j of jsonlds) {
-      try {
-        const d = JSON.parse(j.textContent);
-        if (d["@type"] === "ItemList" || d.itemListElement) {
-          return { type: "jsonld", data: d };
-        }
-      } catch (e) {}
-    }
-    // viewHistory cookieから既存goodsIdを取得
-    const vh = document.cookie.match(/viewHistory=([^;]+)/);
-    if (vh) {
-      try { return { type: "cookie", data: JSON.parse(decodeURIComponent(vh[1])) }; }
-      catch (e) {}
-    }
-    return null;
-  });
-
-  // ページ内のdataLayerから商品情報を取得（Googleアナリティクス用データ）
+  // dataLayer（Googleアナリティクス用）から商品情報を取得
   const dataLayerItems = await page.evaluate(() => {
     try {
       if (!window.dataLayer) return [];
@@ -270,108 +215,74 @@ async function search2ndStreet(page, rule) {
     } catch (e) { return []; }
   });
 
+  // HTMLソースからgoodsId+shopsIdのペアとサムネを抽出
+  const supplementData = await page.evaluate(() => {
+    const html = document.documentElement.innerHTML;
+    const result = {};
+
+    // goodsId/XXXXX/shopsId/XXXXX パターンを抽出
+    const pairRe = /goodsId(?:\/|%2F|=)(\d{10,})(?:\/|%2F)shopsId(?:\/|%2F|=)(\d+)/g;
+    let m;
+    while ((m = pairRe.exec(html)) !== null) {
+      const gid = m[1], sid = m[2];
+      if (!result[gid]) result[gid] = { shopsId: sid, thumbnail: "" };
+    }
+
+    // imgタグからサムネを抽出
+    document.querySelectorAll("img").forEach((img) => {
+      const src = img.src || img.dataset?.src || img.dataset?.lazySrc || "";
+      if (!src || (!src.includes("2ndstreet") && !src.includes("cdn2"))) return;
+      const gm = src.match(/(\d{10,})/);
+      if (gm && result[gm[1]] && !result[gm[1]].thumbnail) {
+        result[gm[1]].thumbnail = src;
+      }
+    });
+
+    return result;
+  });
+
   const items = [];
   const seen = new Set();
 
-  // dataLayerから商品情報を取得（最も信頼性が高い）
+  // dataLayerから商品情報を構築
   if (dataLayerItems.length > 0) {
     for (const dl of dataLayerItems) {
       const id = String(dl.id || dl.item_id || "");
       if (!id || seen.has(id)) continue;
       seen.add(id);
 
-      // URLはdataLayerに含まれないので別途組み立て
-      // shopsIdはURLから取得する必要があるため一旦IDのみのURLを設定
+      const sup = supplementData[id] || {};
+      const url = sup.shopsId
+        ? `https://www.2ndstreet.jp/goods/detail/goodsId/${id}/shopsId/${sup.shopsId}/`
+        : `https://www.2ndstreet.jp/goods/detail/goodsId/${id}/`;
+
       items.push({
         site: "2ndstreet",
         id,
         title: dl.name || dl.item_name || `セカスト商品 ${id}`,
         price: Number(dl.price || 0),
-        url: `https://www.2ndstreet.jp/goods/detail/goodsId/${id}/`,
-        thumbnail: "",
+        url,
+        thumbnail: sup.thumbnail || "",
       });
     }
-  }
-
-  // dataLayerで取れなかった場合はHTMLのリンクからshopsId付きURLを構築
-  if (items.length === 0) {
-    const pairs = await page.evaluate(() => {
-      const seen = new Set();
-      const pairs = [];
-      // ページのHTMLソースから直接パターンを検索
-      const html = document.documentElement.innerHTML;
-      const re = /goodsId["\/=]+(\d{10,})["\/]*(?:[^}]*shopsId["\/=]+(\d+))?/g;
-      let m;
-      while ((m = re.exec(html)) !== null) {
-        const goodsId = m[1];
-        const shopsId = m[2] || "";
-        if (seen.has(goodsId)) continue;
-        seen.add(goodsId);
-        pairs.push({ goodsId, shopsId });
-      }
-      return pairs.slice(0, 30);
-    });
-
-    for (const { goodsId, shopsId } of pairs) {
-      if (seen.has(goodsId)) continue;
-      seen.add(goodsId);
+  } else {
+    // dataLayerが空の場合はHTMLソースのみで構築
+    for (const [gid, sup] of Object.entries(supplementData)) {
+      if (seen.has(gid)) continue;
+      seen.add(gid);
       items.push({
         site: "2ndstreet",
-        id: goodsId,
-        title: `セカスト商品 ${goodsId}`,
+        id: gid,
+        title: `セカスト商品 ${gid}`,
         price: 0,
-        url: shopsId
-          ? `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/shopsId/${shopsId}/`
-          : `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/`,
-        thumbnail: "",
+        url: sup.shopsId
+          ? `https://www.2ndstreet.jp/goods/detail/goodsId/${gid}/shopsId/${sup.shopsId}/`
+          : `https://www.2ndstreet.jp/goods/detail/goodsId/${gid}/`,
+        thumbnail: sup.thumbnail || "",
       });
     }
   }
 
-  // shopsIdとサムネをHTMLソースから補完
-  if (items.length > 0) {
-    const supplementData = await page.evaluate(() => {
-      const html = document.documentElement.innerHTML;
-      const result = {};
-
-      // goodsId と shopsId のペアを抽出
-      // パターン例: goodsId/2339213273061/shopsId/31295
-      const pairRe = /goodsId["\/]+(\d{10,})["\/]+shopsId["\/]+(\d+)/g;
-      let m;
-      while ((m = pairRe.exec(html)) !== null) {
-        const gid = m[1], sid = m[2];
-        if (!result[gid]) result[gid] = { shopsId: sid, thumbnail: "" };
-      }
-
-      // サムネURL抽出（imgのsrcかdata-srcから）
-      document.querySelectorAll("img").forEach((img) => {
-        const src = img.src || img.dataset?.src || img.dataset?.lazySrc || "";
-        if (!src.includes("2ndstreet") && !src.includes("cdn2")) return;
-        // URLからgoodsIdを推測
-        const gm = src.match(/(\d{10,})/);
-        if (gm && result[gm[1]]) {
-          result[gm[1]].thumbnail = src;
-        }
-      });
-
-      return result;
-    });
-
-    // itemsにshopsIdとサムネを補完
-    for (const item of items) {
-      const sup = supplementData[item.id];
-      if (sup) {
-        if (sup.shopsId) {
-          item.url = `https://www.2ndstreet.jp/goods/detail/goodsId/${item.id}/shopsId/${sup.shopsId}/`;
-        }
-        if (sup.thumbnail && !item.thumbnail) {
-          item.thumbnail = sup.thumbnail;
-        }
-      }
-    }
-  }
-
-  await page.setRequestInterception(false);
   return items;
 }
 // ============================================================
