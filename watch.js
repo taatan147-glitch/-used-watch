@@ -198,6 +198,25 @@ async function search2ndStreet(page, rule) {
   await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
   await sleep(4000);
 
+  // dataLayerから商品名・価格を取得（最も信頼性が高い）
+  const dataLayerMap = await page.evaluate(() => {
+    const map = {};
+    try {
+      if (!window.dataLayer) return map;
+      window.dataLayer.forEach((entry) => {
+        const impressions = entry?.ecommerce?.impressions || entry?.ecommerce?.items || [];
+        impressions.forEach((item) => {
+          const id = String(item.id || item.item_id || "");
+          if (id) map[id] = {
+            name: item.name || item.item_name || "",
+            price: Number(item.price || 0),
+          };
+        });
+      });
+    } catch (e) {}
+    return map;
+  });
+
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
@@ -207,51 +226,49 @@ async function search2ndStreet(page, rule) {
       if (!goodsId || seen.has(goodsId)) return;
       seen.add(goodsId);
 
-      // URL（goodsId + shopsId が含まれている）
       const link = card.querySelector("a.itemCard_inner, a[href*=goodsId]");
       const url = link?.href || "";
 
-      // サムネ：loading=lazyなのでsrc属性を直接取得
       const img = card.querySelector(".itemCard_img img");
-      const imgSrc = img?.getAttribute("src") || img?.src || "";
-      // srcがbase64やblankの場合はgoodsIdからURL構築
+      const imgSrc = img?.getAttribute("src") || "";
       const thumbnail = imgSrc.startsWith("https://cdn2") ? imgSrc : "";
 
-      // タイトル：itemCard_labelListの最初のli（ブランド名/商品名の部分）
-      const labelList = card.querySelector(".itemCard_labelList, .itemCard_body");
-      // itemCard_bodyのテキストから最初の行だけ取る
-      const bodyText = labelList?.textContent?.trim().replace(/\s+/g, " ") || "";
-      // 「サイズ」や「商品の状態」より前の部分がタイトル
-      const title = bodyText.split(/サイズ|商品の状態/)[0].trim() || `セカスト商品 ${goodsId}`;
+      // タイトル：itemCard_bodyのテキストから「サイズ」より前を取得
+      const body = card.querySelector(".itemCard_body");
+      const bodyText = body?.textContent?.trim().replace(/\s+/g, " ") || "";
+      const titleFromHtml = bodyText.split(/サイズ|商品の状態/)[0].trim();
 
-      // 価格：¥マーク付きの数値を探す
+      // 価格
       const priceEl = card.querySelector("[class*=price], [class*=Price]");
-      const priceText = priceEl?.textContent || "";
-      const priceMatch = priceText.match(/([\d,]+)/);
+      const priceMatch = (priceEl?.textContent || "").match(/([\d,]+)/);
       const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
 
       if (url) {
-        results.push({ site: "2ndstreet", id: goodsId, title, price, url, thumbnail });
+        results.push({ site: "2ndstreet", id: goodsId, titleFromHtml, price, url, thumbnail });
       }
     });
-
     return results;
   });
 
-  // サムネが取れていない商品はgoodsIdからURL構築を試みる
-  // cdn2.2ndstreet.jp/img/pc/goods/XXXXXX/XX/XXXXX/1.jpg 形式
-  // goodsId例: 2337943794993 → 233794/37/94993
-  for (const item of items) {
-    if (!item.thumbnail && item.id.length >= 10) {
-      const id = item.id;
-      const part1 = id.slice(0, 6);
-      const part2 = id.slice(6, 8);
-      const part3 = id.slice(8);
-      item.thumbnail = `https://cdn2.2ndstreet.jp/img/pc/goods/${part1}/${part2}/${part3}/1.jpg`;
-    }
-  }
+  // dataLayerの商品名でタイトルを補完、サムネURLを構築
+  const enriched = items.map((item) => {
+    const dl = dataLayerMap[item.id];
+    const title = (item.titleFromHtml && item.titleFromHtml.length > 3)
+      ? item.titleFromHtml
+      : (dl?.name || `セカスト商品 ${item.id}`);
+    const price = item.price || dl?.price || 0;
 
-  return items;
+    // サムネがない場合はgoodsIdから構築
+    let thumbnail = item.thumbnail;
+    if (!thumbnail && item.id.length >= 10) {
+      const id = item.id;
+      thumbnail = `https://cdn2.2ndstreet.jp/img/pc/goods/${id.slice(0,6)}/${id.slice(6,8)}/${id.slice(8)}/1.jpg`;
+    }
+
+    return { site: "2ndstreet", id: item.id, title, price, url: item.url, thumbnail };
+  });
+
+  return enriched;
 }
 // ============================================================
 // トレファクファッション検索
