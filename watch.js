@@ -182,7 +182,7 @@ async function searchMercari(page, rule) {
 // セカンドストリート検索
 // ============================================================
 async function search2ndStreet(page, rule) {
-  const url = "https://www.2ndstreet.jp/search?" + new URLSearchParams({
+  const searchUrl = "https://www.2ndstreet.jp/search?" + new URLSearchParams({
     keyword: rule.keyword,
     sortBy: "arrival",
   });
@@ -193,71 +193,62 @@ async function search2ndStreet(page, rule) {
     domain: ".2ndstreet.jp",
   });
 
-  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+  await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
   await sleep(4000);
 
-  const items = await page.evaluate(() => {
-    const results = [];
+  // goodsIdとshopsIdのペアをリンクから収集
+  const goodsPairs = await page.evaluate(() => {
     const seen = new Set();
-
+    const pairs = [];
     document.querySelectorAll("a").forEach((link) => {
-      const href = link.href;
+      const href = link.href || "";
       if (!href.includes("2ndstreet.jp")) return;
-
-      // goodsId と shopsId の両方を取得
-      const goodsMatch = href.match(/goodsId[/=](\d+)/);
-      const shopsMatch = href.match(/shopsId[/=](\d+)/);
-      if (!goodsMatch) return;
-
-      const goodsId = goodsMatch[1];
-      const shopsId = shopsMatch ? shopsMatch[1] : "";
-      if (seen.has(goodsId)) return;
-      seen.add(goodsId);
-
-      // 正しいURLを組み立て
-      const cleanUrl = shopsId
-        ? `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/shopsId/${shopsId}/`
-        : `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/`;
-
-      // カード要素を取得
-      const card = link.closest("li, article, [class*='item'], [class*='card'], [class*='goods']") || link.parentElement;
-
-      // サムネイル取得
+      const gm = href.match(/goodsId[/=](\d+)/);
+      const sm = href.match(/shopsId[/=](\d+)/);
+      if (!gm || seen.has(gm[1])) return;
+      seen.add(gm[1]);
+      const card = link.closest("li,article,div") || link.parentElement;
       const img = card?.querySelector("img");
-      const thumbnail = img?.src || img?.dataset?.src || "";
-
-      // タイトル取得（JSON-LDから取得を試みる）
-      let title = "";
-      // data-* 属性から試みる
-      title = link.getAttribute("data-name") ||
-              link.getAttribute("aria-label") ||
-              card?.getAttribute("data-name") || "";
-
-      // それでも空なら画像のdata属性から
-      if (!title && img) {
-        title = img.getAttribute("data-alt") || img.getAttribute("data-title") || "";
-      }
-
-      // 最終的に空なら商品IDで代替
-      if (!title) title = `セカスト商品 ${goodsId}`;
-
-      // 価格取得
-      const priceEl = card?.querySelector('[class*="price"],[class*="Price"]');
-      const priceMatch = (priceEl?.textContent || card?.textContent || "").match(/[\d,]+(?=\s*円)/);
-      const price = priceMatch ? Number(priceMatch[0].replace(/,/g, "")) : 0;
-
-      results.push({
-        site: "2ndstreet",
-        id: goodsId,
-        title,
-        price,
-        url: cleanUrl,
-        thumbnail,
-      });
+      const thumb = img?.src || img?.dataset?.src || "";
+      pairs.push({ goodsId: gm[1], shopsId: sm ? sm[1] : "", thumb });
     });
-
-    return results;
+    return pairs;
   });
+
+  // 各商品の詳細をAPIで取得
+  const items = [];
+  for (const { goodsId, shopsId, thumb } of goodsPairs) {
+    let title = `セカスト商品 ${goodsId}`;
+    let price = 0;
+    let thumbnail = thumb;
+    const itemUrl = shopsId
+      ? `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/shopsId/${shopsId}/`
+      : `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/`;
+
+    try {
+      const apiUrl = `https://www.2ndstreet.jp/searchapi/getGoodsDetail?goodsId=${goodsId}` +
+                     (shopsId ? `&shopsId=${shopsId}` : "");
+      const res = await fetch(apiUrl, {
+        headers: {
+          "accept": "application/json",
+          "x-requested-with": "XMLHttpRequest",
+          "referer": searchUrl,
+        },
+      });
+      if (res.ok) {
+        const ct = res.headers.get("content-type") || "";
+        if (ct.includes("application/json")) {
+          const data = await res.json();
+          const g = data.goods || data.item || data;
+          if (g.name || g.goodsName) title = g.name || g.goodsName;
+          if (g.price || g.sellingPrice) price = Number(g.price || g.sellingPrice);
+          if (g.image || g.imageUrl) thumbnail = g.image || g.imageUrl;
+        }
+      }
+    } catch (e) {}
+
+    items.push({ site: "2ndstreet", id: goodsId, title, price, url: itemUrl, thumbnail });
+  }
 
   return items;
 }
