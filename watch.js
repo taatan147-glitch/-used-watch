@@ -180,7 +180,6 @@ async function search2ndStreet(page, rule) {
     sortBy: "arrival",
   });
 
-  // クッキー同意を事前設定
   await page.setCookie({
     name: "OptanonAlertBoxClosed",
     value: new Date().toISOString(),
@@ -194,37 +193,65 @@ async function search2ndStreet(page, rule) {
     const results = [];
     const seen = new Set();
 
-    // すべてのaタグからgoodsIdを含むURLを抽出
     document.querySelectorAll("a").forEach((link) => {
       const href = link.href;
       if (!href.includes("2ndstreet.jp")) return;
 
-      // goodsId/XXXXX 形式と /goods/XXXXX/ 形式の両方に対応
-      const idMatch =
-        href.match(/goodsId[/=](\d+)/) ||
-        href.match(/\/goods\/(\d+)/);
-      if (!idMatch) return;
+      // goodsId と shopsId の両方を取得
+      const goodsMatch = href.match(/goodsId[/=](\d+)/);
+      const shopsMatch = href.match(/shopsId[/=](\d+)/);
+      if (!goodsMatch) return;
 
-      const id = idMatch[1];
-      if (seen.has(id)) return;
-      seen.add(id);
+      const goodsId = goodsMatch[1];
+      const shopsId = shopsMatch ? shopsMatch[1] : "";
+      if (seen.has(goodsId)) return;
+      seen.add(goodsId);
 
-      // URLを /goods/detail/ 形式に統一
-      const cleanUrl = `https://www.2ndstreet.jp/goods/detail/goodsId/${id}/`;
+      // 正しいURLを組み立て
+      const cleanUrl = shopsId
+        ? `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/shopsId/${shopsId}/`
+        : `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/`;
+
+      // カード要素を取得
+      const card = link.closest("li, article, [class*='item'], [class*='card'], [class*='goods']") || link.parentElement;
+
+      // サムネイル取得
+      const img = card?.querySelector("img");
+      const thumbnail = img?.src || img?.dataset?.src || "";
+
+      // タイトル取得（JSON-LDから取得を試みる）
+      let title = "";
+      // data-* 属性から試みる
+      title = link.getAttribute("data-name") ||
+              link.getAttribute("aria-label") ||
+              card?.getAttribute("data-name") || "";
+
+      // それでも空なら画像のdata属性から
+      if (!title && img) {
+        title = img.getAttribute("data-alt") || img.getAttribute("data-title") || "";
+      }
+
+      // 最終的に空なら商品IDで代替
+      if (!title) title = `セカスト商品 ${goodsId}`;
+
+      // 価格取得
+      const priceEl = card?.querySelector('[class*="price"],[class*="Price"]');
+      const priceMatch = (priceEl?.textContent || card?.textContent || "").match(/[\d,]+(?=\s*円)/);
+      const price = priceMatch ? Number(priceMatch[0].replace(/,/g, "")) : 0;
 
       results.push({
         site: "2ndstreet",
-        id,
-        title: `セカスト商品 ${id}`,  // タイトルはIDで代替
-        price: 0,
+        id: goodsId,
+        title,
+        price,
         url: cleanUrl,
+        thumbnail,
       });
     });
 
     return results;
   });
 
-  // matchRuleはキーワードチェックをスキップ（タイトルが取れないため）
   return items;
 }
 
@@ -285,20 +312,40 @@ async function sendDiscord(webhookUrl, item, rule) {
     trefac: "トレファク",
   }[item.site] ?? item.site;
 
-  const text = [
-    `🆕 **${label}** ／ ${rule.keyword}`,
-    item.title,
-    item.price ? `¥${Number(item.price).toLocaleString("ja-JP")}` : "価格不明",
-    item.url,
-  ].join("\n");
+  const priceText = item.price ? `¥${Number(item.price).toLocaleString("ja-JP")}` : "価格不明";
 
-  const res = await fetch(webhookUrl, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ content: text }),
-  });
-
-  if (!res.ok) throw new Error(`discord: ${res.status}`);
+  // サムネがある場合はEmbedで送信（画像付き）
+  if (item.thumbnail) {
+    const payload = {
+      content: `🆕 **${label}** ／ ${rule.keyword}`,
+      embeds: [{
+        title: item.title,
+        url: item.url,
+        description: priceText,
+        thumbnail: { url: item.thumbnail },
+      }],
+    };
+    const res = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error(`discord: ${res.status}`);
+  } else {
+    // サムネなしはテキストのみ
+    const text = [
+      `🆕 **${label}** ／ ${rule.keyword}`,
+      item.title,
+      priceText,
+      item.url,
+    ].join("\n");
+    const res = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ content: text }),
+    });
+    if (!res.ok) throw new Error(`discord: ${res.status}`);
+  }
 }
 
 // ============================================================
