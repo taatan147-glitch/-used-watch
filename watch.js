@@ -277,6 +277,7 @@ async function searchTrefac(page, rule) {
   const url = "https://www.trefac.jp/store/tcpsb/?" + new URLSearchParams({
     srchword: rule.keyword,
     step: "1",
+    order: "new",
   });
 
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
