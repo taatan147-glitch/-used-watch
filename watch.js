@@ -269,51 +269,38 @@ async function searchTrefac(page, rule) {
     const results = [];
     const seen = new Set();
 
-    // トレファクの商品リンクパターンを複数試す
-    const allLinks = document.querySelectorAll("a");
-    allLinks.forEach((link) => {
-      const href = link.href || "";
-      // 商品詳細ページのパターン：/store/detail.html?item=XXX または /item/XXX
-      const idMatch =
-        href.match(/[?&]item=([^&]+)/) ||
-        href.match(/\/item\/([^/?]+)/) ||
-        href.match(/detail[^?]*[?&]?.*item[=\/]([^&/]+)/);
+    // li.p-itemlist_item が商品カード
+    document.querySelectorAll("li.p-itemlist_item").forEach((card) => {
+      // URL: a.p-itemlist_btn[href]
+      const link = card.querySelector("a.p-itemlist_btn");
+      const href = link?.href || "";
+      if (!href) return;
+
+      // IDはURLから抽出
+      const idMatch = href.match(/\/store\/(\d+)\//);
       if (!idMatch) return;
       const id = idMatch[1];
-      if (seen.has(id) || id.length < 3) return;
+      if (seen.has(id)) return;
       seen.add(id);
 
-      const card = link.closest("li, article, div") || link;
-      const img = card?.querySelector("img");
+      // サムネ・タイトル: p.p-itemlist_img img
+      const img = card.querySelector("p.p-itemlist_img img, .p-itemlist_img img");
+      const thumbnail = img?.src || img?.getAttribute("src") || "";
+      const title = img?.alt?.trim() || `トレファク商品 ${id}`;
 
-      const title =
-        img?.alt?.trim() ||
-        card?.querySelector('[class*="name"],[class*="item"],[class*="title"]')?.textContent?.trim() ||
-        link.textContent?.trim() || "";
-
-      const priceMatch = card?.textContent?.match(/[¥￥]([\d,]+)/);
+      // 価格
+      const priceEl = card.querySelector("[class*=price], [class*=Price]");
+      const priceMatch = (priceEl?.textContent || card.textContent).match(/([\d,]+)(?=\s*(?:円|税))/);
       const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
-      const thumbnail = img?.src || img?.dataset?.src || "";
 
-      if (title && title.length > 2) {
-        results.push({ site: "trefac", id, title, price, url: href, thumbnail });
-      }
+      results.push({ site: "trefac", id, title, price, url: href, thumbnail });
     });
-
-    // デバッグ：リンク数とサンプルを返す
-    if (results.length === 0) {
-      const linkCount = document.querySelectorAll("a").length;
-      const sampleHrefs = Array.from(document.querySelectorAll("a"))
-        .map(a => a.href).filter(h => h.includes("trefac")).slice(0, 5);
-      console.log("trefac debug: links=" + linkCount + " samples=" + JSON.stringify(sampleHrefs));
-    }
 
     return results;
   });
 
   return items.filter((i) => matchRule(i, rule));
 }
-
 // ============================================================
 // Discord 通知
 // ============================================================
