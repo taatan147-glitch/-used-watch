@@ -328,8 +328,48 @@ async function search2ndStreet(page, rule) {
     }
   }
 
-  // shopsIdが取れていないものをdataLayerのURLと照合して補完
-  // （今後の改善ポイント）
+  // shopsIdとサムネをHTMLソースから補完
+  if (items.length > 0) {
+    const supplementData = await page.evaluate(() => {
+      const html = document.documentElement.innerHTML;
+      const result = {};
+
+      // goodsId と shopsId のペアを抽出
+      // パターン例: goodsId/2339213273061/shopsId/31295
+      const pairRe = /goodsId["\/]+(\d{10,})["\/]+shopsId["\/]+(\d+)/g;
+      let m;
+      while ((m = pairRe.exec(html)) !== null) {
+        const gid = m[1], sid = m[2];
+        if (!result[gid]) result[gid] = { shopsId: sid, thumbnail: "" };
+      }
+
+      // サムネURL抽出（imgのsrcかdata-srcから）
+      document.querySelectorAll("img").forEach((img) => {
+        const src = img.src || img.dataset?.src || img.dataset?.lazySrc || "";
+        if (!src.includes("2ndstreet") && !src.includes("cdn2")) return;
+        // URLからgoodsIdを推測
+        const gm = src.match(/(\d{10,})/);
+        if (gm && result[gm[1]]) {
+          result[gm[1]].thumbnail = src;
+        }
+      });
+
+      return result;
+    });
+
+    // itemsにshopsIdとサムネを補完
+    for (const item of items) {
+      const sup = supplementData[item.id];
+      if (sup) {
+        if (sup.shopsId) {
+          item.url = `https://www.2ndstreet.jp/goods/detail/goodsId/${item.id}/shopsId/${sup.shopsId}/`;
+        }
+        if (sup.thumbnail && !item.thumbnail) {
+          item.thumbnail = sup.thumbnail;
+        }
+      }
+    }
+  }
 
   await page.setRequestInterception(false);
   return items;
