@@ -184,14 +184,16 @@ async function searchMercari(page, rule) {
       const idMatch = href.match(/\/item\/(m\w+)/);
       const id = idMatch ? idMatch[1] : "";
       const title = img?.alt || link?.textContent?.trim() || "";
-      const priceText = priceEl?.textContent?.replace(/[^\d]/g, "") || "0";
+      // 価格テキストから最初の数値のみ取得（¥219,000 → 219000）
+      const priceMatch = priceEl?.textContent?.match(/([\d,]+)/);
+      const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
 
       if (id && title) {
         results.push({
           site: "mercari",
           id,
           title,
-          price: Number(priceText) || 0,
+          price,
           url: href,
         });
       }
