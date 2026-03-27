@@ -184,8 +184,10 @@ async function searchMercari(page, rule) {
       const idMatch = href.match(/\/item\/(m\w+)/);
       const id = idMatch ? idMatch[1] : "";
       const title = img?.alt || link?.textContent?.trim() || "";
-      // 価格テキストから最初の数値のみ取得（¥219,000 → 219000）
-      const priceMatch = priceEl?.textContent?.match(/([\d,]+)/);
+      // 価格取得：data-testid="price" → span の数値
+      const priceSpan = cell.querySelector('[data-testid="price"] span:not([class*="currency"]), [data-testid="item-cell-price"] span');
+      const priceText2 = priceSpan?.textContent?.trim() || priceEl?.textContent?.trim() || "";
+      const priceMatch = priceText2.match(/([\d,]+)/);
       const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
 
       if (id && title) {
