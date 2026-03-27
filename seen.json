@@ -2524,8 +2524,8 @@
     "ts": 1774625576449
   },
   "mercari:kyoji maruyama:m67200101222": {
-    "price": 85,
-    "ts": 1774625577112
+    "price": 82,
+    "ts": 1774649482877
   },
   "mercari:kyoji maruyama:m45767163505": {
     "price": 111,
@@ -5452,8 +5452,8 @@
     "ts": 1774627048253
   },
   "mercari:Bergfabel:m88141893008": {
-    "price": 255,
-    "ts": 1774627049207
+    "price": 249,
+    "ts": 1774650113677
   },
   "mercari:Bergfabel:m99891258375": {
     "price": 98,
@@ -7868,8 +7868,8 @@
     "ts": 1774628528159
   },
   "mercari:Innerraum:m37540887136": {
-    "price": 51,
-    "ts": 1774628528772
+    "price": 48,
+    "ts": 1774650925011
   },
   "mercari:Innerraum:m11418678414": {
     "price": 62,
@@ -13464,12 +13464,12 @@
     "ts": 1774638511315
   },
   "mercari:BERNHARD WILLHELM:m89583428438": {
-    "price": 296,
-    "ts": 1774638511926
+    "price": 279,
+    "ts": 1774650417837
   },
   "mercari:BERNHARD WILLHELM:m63225388417": {
-    "price": 296,
-    "ts": 1774638512556
+    "price": 279,
+    "ts": 1774650415900
   },
   "mercari:BERNHARD WILLHELM:m80091088816": {
     "price": 513,
@@ -14510,5 +14510,377 @@
   "mercari:Henrik Vibskov:m17954117827": {
     "price": 62,
     "ts": 1774645597780
+  },
+  "mercari:GUIDI:m80192865520": {
+    "price": 12,
+    "ts": 1774649193418
+  },
+  "mercari:cerruti:m65700222890": {
+    "price": 13,
+    "ts": 1774649252102
+  },
+  "mercari:cerruti:m19375969556": {
+    "price": 55,
+    "ts": 1774649252738
+  },
+  "mercari:cerruti:m31052954861": {
+    "price": 12,
+    "ts": 1774649253340
+  },
+  "mercari:cerruti:m29882149746": {
+    "price": 49,
+    "ts": 1774649253982
+  },
+  "mercari:art comes first:m53734898941": {
+    "price": 328,
+    "ts": 1774649386235
+  },
+  "mercari:art comes first:m83105024554": {
+    "price": 32,
+    "ts": 1774649386874
+  },
+  "mercari:kyoji maruyama:m16219052886": {
+    "price": 45,
+    "ts": 1774649483592
+  },
+  "mercari:nostrasantissima:m21751848071": {
+    "price": 164,
+    "ts": 1774649600145
+  },
+  "mercari:nostrasantissima:m63010980879": {
+    "price": 329,
+    "ts": 1774649600740
+  },
+  "mercari:mixed up:m87400763307": {
+    "price": 14,
+    "ts": 1774649620589
+  },
+  "mercari:LIEN:m43981447776": {
+    "price": 9,
+    "ts": 1774649693806
+  },
+  "mercari:LIEN:m57038362293": {
+    "price": 21,
+    "ts": 1774649694437
+  },
+  "mercari:LIEN:m98401110201": {
+    "price": 46,
+    "ts": 1774649695049
+  },
+  "mercari:LIEN:m43603302491": {
+    "price": 723,
+    "ts": 1774649695650
+  },
+  "mercari:LIEN:m86808123111": {
+    "price": 11,
+    "ts": 1774649696360
+  },
+  "mercari:LIEN:m75904022199": {
+    "price": 382,
+    "ts": 1774649696983
+  },
+  "mercari:LIEN:m75260069351": {
+    "price": 13,
+    "ts": 1774649697587
+  },
+  "mercari:CASEY CASEY:m93334360945": {
+    "price": 658,
+    "ts": 1774650016411
+  },
+  "mercari:manamis:m82781217351": {
+    "price": 263,
+    "ts": 1774650188587
+  },
+  "mercari:manamis:m59708670641": {
+    "price": 454,
+    "ts": 1774650189215
+  },
+  "mercari:w&lt:m93533831041": {
+    "price": 53,
+    "ts": 1774650208079
+  },
+  "mercari:Walter Van Beirendonck:m16614380410": {
+    "price": 368,
+    "ts": 1774650229881
+  },
+  "mercari:BERNHARD WILLHELM:m87634924938": {
+    "price": 210,
+    "ts": 1774650416498
+  },
+  "mercari:BERNHARD WILLHELM:m27008186776": {
+    "price": 49,
+    "ts": 1774650417186
+  },
+  "mercari:OSS:m31789924460": {
+    "price": 27,
+    "ts": 1774651273858
+  },
+  "mercari:OSS:m22120989220": {
+    "price": 10,
+    "ts": 1774651274472
+  },
+  "mercari:OSS:m59818977645": {
+    "price": 7,
+    "ts": 1774651275074
+  },
+  "mercari:OSS:m40959265686": {
+    "price": 7,
+    "ts": 1774651275813
+  },
+  "mercari:OSS:m76895785707": {
+    "price": 16,
+    "ts": 1774651276509
+  },
+  "mercari:OSS:m23182229679": {
+    "price": 26,
+    "ts": 1774651277112
+  },
+  "mercari:OSS:m67740501681": {
+    "price": 32,
+    "ts": 1774651277730
+  },
+  "mercari:OSS:m96752073919": {
+    "price": 595,
+    "ts": 1774651278410
+  },
+  "mercari:OSS:m99966815761": {
+    "price": 13,
+    "ts": 1774651279006
+  },
+  "mercari:OSS:m86016748540": {
+    "price": 30,
+    "ts": 1774651279712
+  },
+  "mercari:OSS:m11554594105": {
+    "price": 6,
+    "ts": 1774651280459
+  },
+  "mercari:OSS:m10989180800": {
+    "price": 59,
+    "ts": 1774651281102
+  },
+  "mercari:OSS:m79901102642": {
+    "price": 21,
+    "ts": 1774651281714
+  },
+  "mercari:OSS:m12948861410": {
+    "price": 39,
+    "ts": 1774651282578
+  },
+  "mercari:OSS:m57876013737": {
+    "price": 25,
+    "ts": 1774651283169
+  },
+  "mercari:OSS:m62802299667": {
+    "price": 34,
+    "ts": 1774651283791
+  },
+  "mercari:OSS:m45773068004": {
+    "price": 342,
+    "ts": 1774651284567
+  },
+  "mercari:OSS:m79211935908": {
+    "price": 2,
+    "ts": 1774651285223
+  },
+  "mercari:OSS:m84917788579": {
+    "price": 3,
+    "ts": 1774651285991
+  },
+  "mercari:OSS:m79249803283": {
+    "price": 23,
+    "ts": 1774651286694
+  },
+  "mercari:OSS:m10611956741": {
+    "price": 5,
+    "ts": 1774651287345
+  },
+  "mercari:OSS:m84504257764": {
+    "price": 5,
+    "ts": 1774651287977
+  },
+  "mercari:OSS:m44967876467": {
+    "price": 30,
+    "ts": 1774651288579
+  },
+  "mercari:OSS:m12533091028": {
+    "price": 1,
+    "ts": 1774651289267
+  },
+  "mercari:OSS:m46638346786": {
+    "price": 16,
+    "ts": 1774651289880
+  },
+  "mercari:OSS:m81184539280": {
+    "price": 46,
+    "ts": 1774651290493
+  },
+  "mercari:OSS:m90034139358": {
+    "price": 5,
+    "ts": 1774651291230
+  },
+  "mercari:OSS:m81773047878": {
+    "price": 11,
+    "ts": 1774651291932
+  },
+  "mercari:OSS:m19798669812": {
+    "price": 1,
+    "ts": 1774651292560
+  },
+  "mercari:OSS:m26531284742": {
+    "price": 44,
+    "ts": 1774651293173
+  },
+  "mercari:OSS:m37168746193": {
+    "price": 36,
+    "ts": 1774651293829
+  },
+  "mercari:OSS:m57100366081": {
+    "price": 61,
+    "ts": 1774651294440
+  },
+  "mercari:OSS:m88629353156": {
+    "price": 26,
+    "ts": 1774651295189
+  },
+  "mercari:OSS:m14382010480": {
+    "price": 14,
+    "ts": 1774651295826
+  },
+  "mercari:OSS:m69616741200": {
+    "price": 59,
+    "ts": 1774651296567
+  },
+  "trefac:OSS:1009008417192009": {
+    "price": 3300,
+    "ts": 1774651310205
+  },
+  "trefac:OSS:3054002458182671": {
+    "price": 16500,
+    "ts": 1774651311012
+  },
+  "trefac:OSS:1074004044871610": {
+    "price": 5500,
+    "ts": 1774651312183
+  },
+  "trefac:OSS:3079001896339477": {
+    "price": 19800,
+    "ts": 1774651313152
+  },
+  "trefac:OSS:3086000799332370": {
+    "price": 5500,
+    "ts": 1774651313975
+  },
+  "trefac:OSS:3086000919976370": {
+    "price": 5500,
+    "ts": 1774651314804
+  },
+  "trefac:OSS:3076001067097335": {
+    "price": 13200,
+    "ts": 1774651315696
+  },
+  "trefac:OSS:3068001225096321": {
+    "price": 7700,
+    "ts": 1774651316566
+  },
+  "trefac:OSS:3090062702131125": {
+    "price": 13200,
+    "ts": 1774651317590
+  },
+  "trefac:OSS:3016009863888352": {
+    "price": 16500,
+    "ts": 1774651318615
+  },
+  "trefac:OSS:3101000557932245": {
+    "price": 11000,
+    "ts": 1774651319904
+  },
+  "trefac:OSS:3011008916221056": {
+    "price": 6600,
+    "ts": 1774651320706
+  },
+  "trefac:OSS:3046003024190243": {
+    "price": 5500,
+    "ts": 1774651321846
+  },
+  "trefac:OSS:3035005351724234": {
+    "price": 30800,
+    "ts": 1774651323081
+  },
+  "trefac:OSS:3083001844603315": {
+    "price": 5500,
+    "ts": 1774651323899
+  },
+  "trefac:OSS:3056002518637463": {
+    "price": 6600,
+    "ts": 1774651324664
+  },
+  "trefac:OSS:1023009175677027": {
+    "price": 14300,
+    "ts": 1774651325563
+  },
+  "trefac:OSS:3052003914157367": {
+    "price": 11000,
+    "ts": 1774651326488
+  },
+  "trefac:OSS:3015009178190063": {
+    "price": 25300,
+    "ts": 1774651327364
+  },
+  "mercari:Araki Yuu:m78807366796": {
+    "price": 650,
+    "ts": 1774651671784
+  },
+  "mercari:Andrew Driftwood:m28814612032": {
+    "price": 1302,
+    "ts": 1774651709802
+  },
+  "mercari:Andrew Driftwood:m72827972652": {
+    "price": 197,
+    "ts": 1774651710507
+  },
+  "mercari:Camiel Fortgens:m27551972911": {
+    "price": 76,
+    "ts": 1774651729632
+  },
+  "mercari:Camiel Fortgens:m80701270728": {
+    "price": 230,
+    "ts": 1774651730282
+  },
+  "mercari:Camiel Fortgens:m36348083090": {
+    "price": 98,
+    "ts": 1774651730956
+  },
+  "mercari:Hannes Roether:m20964711878": {
+    "price": 26,
+    "ts": 1774651809874
+  },
+  "mercari:Hannes Roether:m78544069107": {
+    "price": 117,
+    "ts": 1774651810503
+  },
+  "mercari:Hannes Roether:m57054893302": {
+    "price": 156,
+    "ts": 1774651811215
+  },
+  "mercari:Story mfg.:m44748410900": {
+    "price": 78,
+    "ts": 1774651955780
+  },
+  "mercari:Story mfg.:m42098215045": {
+    "price": 440,
+    "ts": 1774651956374
+  },
+  "mercari:Story mfg.:m69344292660": {
+    "price": 75,
+    "ts": 1774651957031
+  },
+  "mercari:Pero:m25190443775": {
+    "price": 26,
+    "ts": 1774651995494
+  },
+  "mercari:General Idea:m93019893388": {
+    "price": 25,
+    "ts": 1774652419347
   }
 }
