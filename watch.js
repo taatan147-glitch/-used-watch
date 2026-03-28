@@ -152,60 +152,85 @@ async function main() {
 // メルカリ検索
 // ============================================================
 async function searchMercari(page, rule) {
-  const url = "https://jp.mercari.com/search?" + new URLSearchParams({
+  const searchUrl = "https://jp.mercari.com/search?" + new URLSearchParams({
     keyword: rule.keyword,
     status: "on_sale",
     sort: "created_time",
     order: "desc",
   });
 
-  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+  // APIレスポンスを傍受
+  const apiItems = [];
+  page.on("response", async (res) => {
+    try {
+      const url = res.url();
+      if (url.includes("api.mercari.jp") && url.includes("search")) {
+        const ct = res.headers()["content-type"] || "";
+        if (ct.includes("json")) {
+          const data = await res.json().catch(() => null);
+          if (data?.items?.length) {
+            apiItems.push(...data.items);
+          }
+        }
+      }
+    } catch (e) {}
+  });
 
-  // 商品一覧が表示されるまで待機
-  await page.waitForSelector('li[data-testid="item-cell"], [data-testid="no-result"]', {
-    timeout: 15000,
-  }).catch(() => {});
+  await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
 
-  // 複数回スクロールして追加読み込みを促す
+  // スクロールして追加読み込み
   for (let i = 0; i < 3; i++) {
     await page.evaluate(() => window.scrollBy(0, 1500));
     await sleep(1500);
   }
 
-  const items = await page.evaluate((keyword) => {
-    const cells = document.querySelectorAll('li[data-testid="item-cell"]');
+  // APIから取れた場合はそちらを優先
+  if (apiItems.length > 0) {
+    const seen = new Set();
+    return apiItems
+      .filter((item) => {
+        if (seen.has(item.id)) return false;
+        seen.add(item.id);
+        return true;
+      })
+      .map((item) => ({
+        site: "mercari",
+        id: String(item.id || ""),
+        title: String(item.name || ""),
+        price: Number(item.price || 0),
+        url: `https://jp.mercari.com/item/${item.id}`,
+        thumbnail: item.thumbnails?.[0] || "",
+      }))
+      .filter((i) => i.id && i.title)
+      .filter((i) => matchRule(i, rule));
+  }
+
+  // APIから取れなかった場合はHTMLから取得
+  const items = await page.evaluate(() => {
     const results = [];
-    cells.forEach((cell) => {
+    const seen = new Set();
+    document.querySelectorAll('li[data-testid="item-cell"]').forEach((cell) => {
       const link = cell.querySelector("a");
       const img = cell.querySelector("img");
-      const priceEl = cell.querySelector('[data-testid="item-cell-price"], .merPrice, [class*="price"]');
-
       const href = link?.href || "";
       const idMatch = href.match(/\/item\/(m\w+)/);
       const id = idMatch ? idMatch[1] : "";
-      const title = img?.alt || link?.textContent?.trim() || "";
-      // 価格取得：data-testid="price" → span の数値
-      const priceSpan = cell.querySelector('[data-testid="price"] span:not([class*="currency"]), [data-testid="item-cell-price"] span');
-      const priceText2 = priceSpan?.textContent?.trim() || priceEl?.textContent?.trim() || "";
-      const priceMatch = priceText2.match(/([\d,]+)/);
-      const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
-
+      if (!id || seen.has(id)) return;
+      seen.add(id);
+      const title = img?.alt?.trim() || "";
+      // 価格：data-testid="price"内のspan（通貨記号以外）
+      const priceEl = cell.querySelector('[data-testid="price"]');
+      const priceText = priceEl?.textContent?.replace(/[^0-9]/g, "") || "0";
+      const price = Number(priceText) || 0;
       if (id && title) {
-        results.push({
-          site: "mercari",
-          id,
-          title,
-          price,
-          url: href,
-        });
+        results.push({ site: "mercari", id, title, price, url: href, thumbnail: img?.src || "" });
       }
     });
     return results;
-  }, rule.keyword);
+  });
 
   return items.filter((i) => matchRule(i, rule));
 }
-
 // ============================================================
 // セカンドストリート検索
 // ============================================================
