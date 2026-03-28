@@ -42,9 +42,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git stash
-          git pull --rebase
-          git stash pop || true
+          git fetch origin main
+          git checkout -- .
+          git checkout main
+          cp seen.json /tmp/seen.json
+          git pull origin main
+          cp /tmp/seen.json seen.json
           git add seen.json
           git diff --cached --quiet || git commit -m "Update seen.json [skip ci]"
-          git push
+          git push origin main
