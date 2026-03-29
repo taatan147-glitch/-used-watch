@@ -114,7 +114,7 @@ async function main() {
             seen[key] = { price: item.price, ts: Date.now() };
             notified++;
             console.log(`  → 新着通知: ${item.title}`);
-            await sleep(500);
+            await sleep(2000);
           } catch (e) {
             console.error(`  → Discord送信エラー: ${e.message}`);
           }
@@ -130,7 +130,7 @@ async function main() {
             seen[key] = { price: curPrice, ts: Date.now() };
             notified++;
             console.log(`  → 値下げ通知: ${item.title} ¥${prevPrice}→¥${curPrice}`);
-            await sleep(500);
+            await sleep(2000);
           } catch (e) {
             console.error(`  → Discord送信エラー: ${e.message}`);
           }
@@ -198,7 +198,10 @@ async function searchMercari(page, rule) {
         id: String(item.id || ""),
         title: String(item.name || ""),
         price: Number(item.price || 0),
-        url: `https://jp.mercari.com/item/${item.id}`,
+        // ShopsはURLが異なる
+        url: item.shopName
+          ? `https://jp.mercari.com/shops/product/${item.id}`
+          : `https://jp.mercari.com/item/${item.id}`,
         thumbnail: item.thumbnails?.[0] || "",
       }))
       .filter((i) => i.id && i.title)
@@ -393,8 +396,41 @@ async function sendDiscord(webhookUrl, item, rule, type = "new", prevPrice = 0) 
     item.url,
   ].join("\n");
 
+  // Discord送信（429レート制限時はリトライ）
+  const sendWithRetry = async (fetchFn, retries = 3) => {
+    for (let i = 0; i < retries; i++) {
+      const res = await fetchFn();
+      if (res.status === 429) {
+        const retryAfter = Number(res.headers.get("retry-after") || "5");
+        console.log(`  レート制限: ${retryAfter}秒待機...`);
+        await sleep(retryAfter * 1000 + 500);
+        continue;
+      }
+      if (!res.ok) throw new Error(`discord: ${res.status}`);
+      return res;
+    }
+    throw new Error("discord: 429 リトライ上限");
+  };
+
+  // メルカリはサムネURLをそのまま使う（static.mercdn.netはDiscordが読める）
+  // セカストはダウンロードして添付
+  const needsDownload = item.site === "2ndstreet" || item.site === "trefac";
+
+  if (item.thumbnail && !needsDownload) {
+    // URLのまま埋め込み送信
+    const payload = {
+      content: `${text}`,
+    };
+    await sendWithRetry(() => fetch(webhookUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload),
+    }));
+    return;
+  }
+
   // サムネがある場合は画像をダウンロードしてDiscordに添付
-  if (item.thumbnail) {
+  if (item.thumbnail && needsDownload) {
     try {
       const imgRes = await fetch(item.thumbnail, {
         headers: { "referer": "https://www.2ndstreet.jp/" },
@@ -424,12 +460,11 @@ async function sendDiscord(webhookUrl, item, rule, type = "new", prevPrice = 0) 
         let offset = 0;
         for (const p of parts) { body.set(p, offset); offset += p.length; }
 
-        const res = await fetch(webhookUrl, {
+        await sendWithRetry(() => fetch(webhookUrl, {
           method: "POST",
           headers: { "content-type": `multipart/form-data; boundary=${boundary}` },
           body: body,
-        });
-        if (!res.ok) throw new Error(`discord multipart: ${res.status}`);
+        }));
         return;
       }
     } catch (e) {
@@ -438,12 +473,11 @@ async function sendDiscord(webhookUrl, item, rule, type = "new", prevPrice = 0) 
   }
 
   // テキストのみで送信
-  const res = await fetch(webhookUrl, {
+  await sendWithRetry(() => fetch(webhookUrl, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ content: text }),
-  });
-  if (!res.ok) throw new Error(`discord: ${res.status}`);
+  }));
 }
 
 // ============================================================
