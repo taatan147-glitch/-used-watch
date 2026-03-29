@@ -16944,8 +16944,8 @@
     "ts": 1774780295940
   },
   "mercari:individual sentiments:m56021265440": {
-    "price": 15000,
-    "ts": 1774780298025
+    "price": 13000,
+    "ts": 1774826582812
   },
   "mercari:individual sentiments:m46006010264": {
     "price": 30000,
@@ -17104,8 +17104,8 @@
     "ts": 1774780433151
   },
   "mercari:carpe diem:m48042863428": {
-    "price": 1222,
-    "ts": 1774780435330
+    "price": 1111,
+    "ts": 1774826642909
   },
   "mercari:carpe diem:m28871896362": {
     "price": 2450,
@@ -21864,8 +21864,8 @@
     "ts": 1774784199173
   },
   "mercari:Professor.E:m96844344166": {
-    "price": 45000,
-    "ts": 1774784274942
+    "price": 44000,
+    "ts": 1774827836779
   },
   "mercari:Professor.E:m28694226731": {
     "price": 20000,
@@ -22892,8 +22892,8 @@
     "ts": 1774785378144
   },
   "mercari:Second/Layer:m57261501566": {
-    "price": 33333,
-    "ts": 1774785380255
+    "price": 30000,
+    "ts": 1774828384759
   },
   "mercari:Second/Layer:m16547013098": {
     "price": 80000,
@@ -25310,5 +25310,53 @@
   "mercari:augusta:m26736934918": {
     "price": 2600,
     "ts": 1774819310642
+  },
+  "mercari:GUIDI:m20792397562": {
+    "price": 2480,
+    "ts": 1774826202068
+  },
+  "mercari:GUIDI:m72275911993": {
+    "price": 3580,
+    "ts": 1774826204167
+  },
+  "mercari:cerruti:m51074438132": {
+    "price": 15100,
+    "ts": 1774826252579
+  },
+  "mercari:cerruti:m51295484429": {
+    "price": 33000,
+    "ts": 1774826254865
+  },
+  "mercari:cerruti:m93628880038": {
+    "price": 4199,
+    "ts": 1774826257024
+  },
+  "mercari:LIEN:m39615076984": {
+    "price": 1600,
+    "ts": 1774826600147
+  },
+  "mercari:LIEN:m87725684890": {
+    "price": 2580,
+    "ts": 1774826602330
+  },
+  "mercari:LIEN:m77004219131": {
+    "price": 3590,
+    "ts": 1774826604580
+  },
+  "mercari:LIEN:m60059271056": {
+    "price": 1880,
+    "ts": 1774826606773
+  },
+  "mercari:incarnation:m24613163362": {
+    "price": 3500,
+    "ts": 1774826660323
+  },
+  "mercari:ensou:m61404386067": {
+    "price": 34000,
+    "ts": 1774826738027
+  },
+  "mercari:augusta:m91332765628": {
+    "price": 850,
+    "ts": 1774826974956
   }
 }
