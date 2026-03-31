@@ -21868,8 +21868,8 @@
     "ts": 1774870466545
   },
   "mercari:Professor.E:m28694226731": {
-    "price": 14000,
-    "ts": 1774961071973
+    "price": 13000,
+    "ts": 1775000415440
   },
   "mercari:Professor.E:NQaRbKcitgkCocmwbkcGb": {
     "price": 15800,
@@ -22140,8 +22140,8 @@
     "ts": 1774784671566
   },
   "mercari:Camiel Fortgens:m79403928870": {
-    "price": 18100,
-    "ts": 1774916951494
+    "price": 18000,
+    "ts": 1775000662160
   },
   "mercari:Camiel Fortgens:AFvQETXWxqUeR2Wx55Jf2J": {
     "price": 42594,
@@ -22328,8 +22328,8 @@
     "ts": 1774784772672
   },
   "mercari:Camiel Fortgens:m30274104056": {
-    "price": 32000,
-    "ts": 1774784774884
+    "price": 30000,
+    "ts": 1775000664268
   },
   "mercari:Camiel Fortgens:m78706304730": {
     "price": 22900,
@@ -23908,8 +23908,8 @@
     "ts": 1774794329863
   },
   "mercari:GUIDI:m21420561890": {
-    "price": 239000,
-    "ts": 1774959053369
+    "price": 219999,
+    "ts": 1774998802692
   },
   "mercari:GUIDI:m88042509026": {
     "price": 212222,
@@ -23928,8 +23928,8 @@
     "ts": 1774794372668
   },
   "mercari:GUIDI:m86948909961": {
-    "price": 209900,
-    "ts": 1774975308451
+    "price": 205000,
+    "ts": 1774998807145
   },
   "mercari:GUIDI:m55438662575": {
     "price": 245000,
@@ -24928,8 +24928,8 @@
     "ts": 1774800670189
   },
   "mercari:LIEN:m30702744560": {
-    "price": 1099,
-    "ts": 1774915457209
+    "price": 999,
+    "ts": 1774999198854
   },
   "mercari:LIEN:m59041576384": {
     "price": 800,
@@ -25356,8 +25356,8 @@
     "ts": 1774826738027
   },
   "mercari:augusta:m91332765628": {
-    "price": 850,
-    "ts": 1774826974956
+    "price": 799,
+    "ts": 1774999573154
   },
   "mercari:Paul Harnden:m25891224102": {
     "price": 35700,
@@ -27652,8 +27652,8 @@
     "ts": 1774939232939
   },
   "mercari:Camiel Fortgens:m48284619131": {
-    "price": 33000,
-    "ts": 1774977710431
+    "price": 32800,
+    "ts": 1775000660015
   },
   "mercari:Song for the Mute:m99128173869": {
     "price": 37500,
@@ -29134,5 +29134,45 @@
   "mercari:Professor.E:m68132577480": {
     "price": 40000,
     "ts": 1774996369270
+  },
+  "mercari:GUIDI:m86553405899": {
+    "price": 22000,
+    "ts": 1774998805060
+  },
+  "mercari:golem:2JPDPQKC5sLp84TPgDPe6Y": {
+    "price": 300,
+    "ts": 1774998826306
+  },
+  "mercari:BONEVILLE:m83423234705": {
+    "price": 59200,
+    "ts": 1774998919154
+  },
+  "mercari:LIEN:m97495998171": {
+    "price": 1990,
+    "ts": 1774999196734
+  },
+  "mercari:LIEN:m48904080864": {
+    "price": 5980,
+    "ts": 1774999200973
+  },
+  "mercari:LIEN:m41890273869": {
+    "price": 3870,
+    "ts": 1774999203105
+  },
+  "mercari:LIEN:m65099932283": {
+    "price": 677,
+    "ts": 1774999205210
+  },
+  "mercari:carpe diem:2JPDWBRMGUidWDusxuFN5o": {
+    "price": 14480,
+    "ts": 1774999241321
+  },
+  "mercari:ensou:m77468447699": {
+    "price": 1650,
+    "ts": 1774999338231
+  },
+  "mercari:BERNHARD WILLHELM:m42069385813": {
+    "price": 10000,
+    "ts": 1774999804723
   }
 }
