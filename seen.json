@@ -15740,8 +15740,8 @@
     "ts": 1774779312108
   },
   "mercari:cerruti:2JNyxJF9aMRxhkHBoWWd5e": {
-    "price": 14191,
-    "ts": 1774779314244
+    "price": 13641,
+    "ts": 1775065548223
   },
   "mercari:cerruti:m60934007906": {
     "price": 300,
@@ -19152,8 +19152,8 @@
     "ts": 1774781887398
   },
   "mercari:augusta:m63593513868": {
-    "price": 1230,
-    "ts": 1774959949923
+    "price": 1130,
+    "ts": 1775066276506
   },
   "mercari:augusta:m34498625104": {
     "price": 2500,
@@ -19200,8 +19200,8 @@
     "ts": 1774781913745
   },
   "mercari:augusta:m67670203664": {
-    "price": 3080,
-    "ts": 1774988179011
+    "price": 2980,
+    "ts": 1775066274373
   },
   "mercari:augusta:m68274775725": {
     "price": 1000,
@@ -19756,8 +19756,8 @@
     "ts": 1774782337181
   },
   "mercari:Walter Van Beirendonck:m73787509095": {
-    "price": 46000,
-    "ts": 1774960261250
+    "price": 45900,
+    "ts": 1775066475971
   },
   "mercari:Walter Van Beirendonck:m98248524132": {
     "price": 8000,
@@ -19952,8 +19952,8 @@
     "ts": 1774782491928
   },
   "mercari:masahiko maruyama:m97617760451": {
-    "price": 13500,
-    "ts": 1774976616695
+    "price": 13400,
+    "ts": 1775066527038
   },
   "mercari:masahiko maruyama:m87786638172": {
     "price": 7900,
@@ -20080,8 +20080,8 @@
     "ts": 1774782562628
   },
   "mercari:HUSSEIN CHALAYAN:m89677782212": {
-    "price": 6900,
-    "ts": 1775056927760
+    "price": 6600,
+    "ts": 1775066545001
   },
   "mercari:HUSSEIN CHALAYAN:m67701504349": {
     "price": 54000,
@@ -30280,8 +30280,8 @@
     "ts": 1775056121937
   },
   "mercari:LIEN:m10211790134": {
-    "price": 20999,
-    "ts": 1775056138674
+    "price": 19499,
+    "ts": 1775065901654
   },
   "mercari:LIEN:m80976500635": {
     "price": 2800,
@@ -30638,5 +30638,225 @@
   "mercari:Camiel Fortgens:2JPFArnsPRobpYb6EbkdGH": {
     "price": 26780,
     "ts": 1775057894759
+  },
+  "mercari:golem:m65668073763": {
+    "price": 27600,
+    "ts": 1775065512518
+  },
+  "mercari:cerruti:2JPFHSbt8cufU7JxLVDP9q": {
+    "price": 7344,
+    "ts": 1775065543875
+  },
+  "mercari:cerruti:m74955805389": {
+    "price": 1334,
+    "ts": 1775065546122
+  },
+  "mercari:ansnam:m72136881846": {
+    "price": 23000,
+    "ts": 1775065799817
+  },
+  "mercari:LIEN:m54850822371": {
+    "price": 89800,
+    "ts": 1775065899524
+  },
+  "mercari:DEVOA:m77436832631": {
+    "price": 14000,
+    "ts": 1775066075185
+  },
+  "mercari:DEVOA:m87687396956": {
+    "price": 50400,
+    "ts": 1775066077282
+  },
+  "mercari:DANIEL ANDRESEN:m45762116491": {
+    "price": 28000,
+    "ts": 1775066109845
+  },
+  "mercari:CASEY CASEY:2JPFF5BMdXxLuUYwXBExDh": {
+    "price": 35600,
+    "ts": 1775066171974
+  },
+  "mercari:Boris Bidjan:m92193275536": {
+    "price": 188000,
+    "ts": 1775066223058
+  },
+  "2ndstreet:Boris Bidjan:2340440211344": {
+    "price": 32890,
+    "ts": 1775066231719
+  },
+  "2ndstreet:w&lt:2342474002431": {
+    "price": 9790,
+    "ts": 1775066349398
+  },
+  "2ndstreet:w&lt:2342702723909": {
+    "price": 19690,
+    "ts": 1775066352414
+  },
+  "2ndstreet:w&lt:2342401048402": {
+    "price": 10890,
+    "ts": 1775066355793
+  },
+  "2ndstreet:w&lt:2342702723916": {
+    "price": 21890,
+    "ts": 1775066360753
+  },
+  "2ndstreet:w&lt:2340964482787": {
+    "price": 9790,
+    "ts": 1775066365128
+  },
+  "2ndstreet:w&lt:2340377324988": {
+    "price": 11990,
+    "ts": 1775066369355
+  },
+  "2ndstreet:w&lt:2336476685891": {
+    "price": 6490,
+    "ts": 1775066373609
+  },
+  "2ndstreet:w&lt:2335634503237": {
+    "price": 6490,
+    "ts": 1775066376786
+  },
+  "2ndstreet:w&lt:2334137761250": {
+    "price": 7590,
+    "ts": 1775066379980
+  },
+  "2ndstreet:w&lt:2336065832576": {
+    "price": 4290,
+    "ts": 1775066383140
+  },
+  "2ndstreet:w&lt:2334137786789": {
+    "price": 10890,
+    "ts": 1775066386297
+  },
+  "2ndstreet:w&lt:2334137786772": {
+    "price": 17490,
+    "ts": 1775066389559
+  },
+  "2ndstreet:w&lt:2334137786826": {
+    "price": 16390,
+    "ts": 1775066392603
+  },
+  "2ndstreet:w&lt:2334137786796": {
+    "price": 10890,
+    "ts": 1775066395740
+  },
+  "2ndstreet:w&lt:2328656211617": {
+    "price": 9790,
+    "ts": 1775066399230
+  },
+  "2ndstreet:w&lt:2320293655595": {
+    "price": 14190,
+    "ts": 1775066402406
+  },
+  "2ndstreet:w&lt:2319145475122": {
+    "price": 11990,
+    "ts": 1775066405706
+  },
+  "2ndstreet:w&lt:2318766097058": {
+    "price": 25190,
+    "ts": 1775066409695
+  },
+  "2ndstreet:w&lt:2243111196806": {
+    "price": 7590,
+    "ts": 1775066412714
+  },
+  "2ndstreet:w&lt:2348680964570": {
+    "price": 9790,
+    "ts": 1775066415918
+  },
+  "2ndstreet:w&lt:2347461151390": {
+    "price": 120890,
+    "ts": 1775066419072
+  },
+  "2ndstreet:w&lt:2347171284388": {
+    "price": 4290,
+    "ts": 1775066421968
+  },
+  "2ndstreet:w&lt:2346073547386": {
+    "price": 8690,
+    "ts": 1775066425194
+  },
+  "2ndstreet:w&lt:2344292992963": {
+    "price": 38390,
+    "ts": 1775066428131
+  },
+  "2ndstreet:w&lt:2344523280692": {
+    "price": 6490,
+    "ts": 1775066431013
+  },
+  "2ndstreet:w&lt:2342453976487": {
+    "price": 6490,
+    "ts": 1775066434195
+  },
+  "2ndstreet:w&lt:2338726676758": {
+    "price": 4290,
+    "ts": 1775066437253
+  },
+  "2ndstreet:w&lt:2336269849455": {
+    "price": 6490,
+    "ts": 1775066440509
+  },
+  "2ndstreet:w&lt:2336362832316": {
+    "price": 6490,
+    "ts": 1775066443821
+  },
+  "2ndstreet:w&lt:2326384729480": {
+    "price": 9790,
+    "ts": 1775066446984
+  },
+  "2ndstreet:w&lt:2328343041299": {
+    "price": 10890,
+    "ts": 1775066450232
+  },
+  "2ndstreet:w&lt:2328076622635": {
+    "price": 9790,
+    "ts": 1775066453517
+  },
+  "2ndstreet:w&lt:2326384729503": {
+    "price": 6490,
+    "ts": 1775066456447
+  },
+  "2ndstreet:w&lt:2325603404351": {
+    "price": 19690,
+    "ts": 1775066460195
+  },
+  "2ndstreet:w&lt:2328975687346": {
+    "price": 8690,
+    "ts": 1775066463050
+  },
+  "2ndstreet:Walter Van Beirendonck:2338401401750": {
+    "price": 17490,
+    "ts": 1775066485457
+  },
+  "mercari:thom krom:m27042994956": {
+    "price": 22000,
+    "ts": 1775066510365
+  },
+  "2ndstreet:HUSSEIN CHALAYAN:2338401401767": {
+    "price": 11990,
+    "ts": 1775066553493
+  },
+  "mercari:Nemeth:m23863936813": {
+    "price": 9999,
+    "ts": 1775066626414
+  },
+  "mercari:11 by Boris:m65516096835": {
+    "price": 43000,
+    "ts": 1775066691143
+  },
+  "mercari:Carol Christian Poell:m59514017250": {
+    "price": 170000,
+    "ts": 1775066816574
+  },
+  "2ndstreet:Camiel Fortgens:2340440210460": {
+    "price": 14190,
+    "ts": 1775067506325
+  },
+  "mercari:Song for the Mute:2JMQtPrUBVo3X9Dh6zq8d4": {
+    "price": 19850,
+    "ts": 1775067532060
+  },
+  "mercari:Marc Le Bihan:m25415761154": {
+    "price": 40000,
+    "ts": 1775067611130
   }
 }
