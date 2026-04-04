@@ -18624,8 +18624,8 @@
     "ts": 1775041034708
   },
   "mercari:Boris Bidjan:m59061323130": {
-    "price": 55000,
-    "ts": 1774959892163
+    "price": 53000,
+    "ts": 1775324179335
   },
   "mercari:Boris Bidjan:m60873703446": {
     "price": 18300,
@@ -20644,8 +20644,8 @@
     "ts": 1775041513606
   },
   "mercari:Nemeth:m17171650126": {
-    "price": 20400,
-    "ts": 1775041518172
+    "price": 20000,
+    "ts": 1775324435476
   },
   "mercari:Nemeth:2JLBFfpDyG8FSDu3SVxmxF": {
     "price": 48780,
@@ -20948,8 +20948,8 @@
     "ts": 1774783185716
   },
   "mercari:11 by Boris:m14829090211": {
-    "price": 23900,
-    "ts": 1775228128052
+    "price": 23000,
+    "ts": 1775324501952
   },
   "mercari:11 by Boris:m99500927877": {
     "price": 60800,
@@ -35430,5 +35430,17 @@
   "mercari:Nemeth:m29491512038": {
     "price": 4555,
     "ts": 1775319672397
+  },
+  "mercari:cerruti:m23718660345": {
+    "price": 6100,
+    "ts": 1775323508116
+  },
+  "2ndstreet:Walter Van Beirendonck:2320725272604": {
+    "price": 43890,
+    "ts": 1775324304095
+  },
+  "2ndstreet:m.a+:2319437305717": {
+    "price": 6490,
+    "ts": 1775324883947
   }
 }
