@@ -22172,8 +22172,8 @@
     "ts": 1774784688838
   },
   "mercari:Camiel Fortgens:m94824486447": {
-    "price": 14600,
-    "ts": 1775320573297
+    "price": 14500,
+    "ts": 1775422809783
   },
   "mercari:Camiel Fortgens:m13067216481": {
     "price": 24900,
@@ -35432,8 +35432,8 @@
     "ts": 1775319672397
   },
   "mercari:cerruti:m23718660345": {
-    "price": 6100,
-    "ts": 1775323508116
+    "price": 6000,
+    "ts": 1775421035588
   },
   "2ndstreet:Walter Van Beirendonck:2320725272604": {
     "price": 32890,
@@ -35990,5 +35990,33 @@
   "mercari:BERNHARD WILLHELM:m35136240177": {
     "price": 5000,
     "ts": 1775413781627
+  },
+  "mercari:cerruti:m48864412485": {
+    "price": 4700,
+    "ts": 1775421033432
+  },
+  "mercari:ensou:m54728225135": {
+    "price": 6580,
+    "ts": 1775421484586
+  },
+  "mercari:ensou:m77887295060": {
+    "price": 15000,
+    "ts": 1775421486709
+  },
+  "mercari:CASEY CASEY:m61126814716": {
+    "price": 15100,
+    "ts": 1775421626591
+  },
+  "2ndstreet:CASEY CASEY:2334454931954": {
+    "price": 14190,
+    "ts": 1775421637500
+  },
+  "2ndstreet:CASEY CASEY:2318853810515": {
+    "price": 19690,
+    "ts": 1775421640705
+  },
+  "mercari:Walter Van Beirendonck:m96588943219": {
+    "price": 49500,
+    "ts": 1775421799621
   }
 }
