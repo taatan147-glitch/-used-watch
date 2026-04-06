@@ -29132,8 +29132,8 @@
     "ts": 1774995733237
   },
   "mercari:Professor.E:m68132577480": {
-    "price": 39600,
-    "ts": 1775378148347
+    "price": 39500,
+    "ts": 1775507887337
   },
   "mercari:GUIDI:m86553405899": {
     "price": 22000,
@@ -36542,5 +36542,9 @@
   "mercari:Never Enough:m58507342197": {
     "price": 0,
     "ts": 1775498666280
+  },
+  "mercari:Camiel Fortgens:m22088836939": {
+    "price": 0,
+    "ts": 1775508152637
   }
 }
