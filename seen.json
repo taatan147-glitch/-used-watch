@@ -15544,8 +15544,8 @@
     "ts": 1774779094779
   },
   "mercari:KAVAL:m48716007878": {
-    "price": 48600,
-    "ts": 1775574148505
+    "price": 48500,
+    "ts": 1775597688605
   },
   "mercari:KAVAL:m13849517073": {
     "price": 159800,
@@ -17248,8 +17248,8 @@
     "ts": 1775457117776
   },
   "mercari:carpe diem:m99049953368": {
-    "price": 800,
-    "ts": 1774780513069
+    "price": 600,
+    "ts": 1775598182435
   },
   "mercari:incarnation:m34804759341": {
     "price": 1000,
@@ -23464,8 +23464,8 @@
     "ts": 1774793987392
   },
   "mercari:Paul Harnden:2JHWQrpJvqkcoFXd3sW7VV": {
-    "price": 80790,
-    "ts": 1774882622524
+    "price": 72631,
+    "ts": 1775597617962
   },
   "mercari:Paul Harnden:m89656606810": {
     "price": 45000,
@@ -37098,5 +37098,21 @@
   "mercari:w&lt:m46932145732": {
     "price": 10500,
     "ts": 1775586667528
+  },
+  "mercari:Paul Harnden:m80772894482": {
+    "price": 72000,
+    "ts": 1775597615710
+  },
+  "mercari:by Walid:m51529837340": {
+    "price": 140000,
+    "ts": 1775598465423
+  },
+  "mercari:HUSSEIN CHALAYAN:m66989911865": {
+    "price": 2600,
+    "ts": 1775598662064
+  },
+  "mercari:BERNHARD WILLHELM:TBiSCMJ3afCocJiMt44fwL": {
+    "price": 19380,
+    "ts": 1775598755748
   }
 }
