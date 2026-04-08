@@ -16304,8 +16304,8 @@
     "ts": 1774779837727
   },
   "mercari:final home:m81986484006": {
-    "price": 22100,
-    "ts": 1775456937499
+    "price": 22000,
+    "ts": 1775675105202
   },
   "mercari:final home:E83JwGH2fVKsg2oXeog3Eg": {
     "price": 6690,
@@ -16744,8 +16744,8 @@
     "ts": 1774780130147
   },
   "mercari:nostrasantissima:m87611384457": {
-    "price": 9400,
-    "ts": 1775123525838
+    "price": 9000,
+    "ts": 1775675154619
   },
   "mercari:nostrasantissima:m61965504546": {
     "price": 9800,
@@ -17496,8 +17496,8 @@
     "ts": 1774780785374
   },
   "mercari:DEVOA:m75941091746": {
-    "price": 53800,
-    "ts": 1775559152028
+    "price": 53000,
+    "ts": 1775675401767
   },
   "mercari:DEVOA:m71045626750": {
     "price": 13800,
@@ -18760,8 +18760,8 @@
     "ts": 1775112493444
   },
   "mercari:BIEK VERSTAPPEN:m69353552154": {
-    "price": 76000,
-    "ts": 1775486118420
+    "price": 75000,
+    "ts": 1775675566508
   },
   "mercari:BIEK VERSTAPPEN:m52178822387": {
     "price": 222000,
@@ -22908,8 +22908,8 @@
     "ts": 1774785386628
   },
   "mercari:Rynshu:9ZQAbdro6dk3NJuCKiDv2L": {
-    "price": 4262,
-    "ts": 1775487578572
+    "price": 4049,
+    "ts": 1775676965707
   },
   "mercari:Rynshu:MuNopfdCzc34pZ99F3gVF3": {
     "price": 62700,
@@ -32420,8 +32420,8 @@
     "ts": 1775148051089
   },
   "mercari:Camiel Fortgens:m15445297965": {
-    "price": 25000,
-    "ts": 1775148901049
+    "price": 23000,
+    "ts": 1775676652260
   },
   "mercari:Marc Le Bihan:m33360508443": {
     "price": 7000,
@@ -34284,8 +34284,8 @@
     "ts": 1775280048820
   },
   "mercari:cerruti:m28744595838": {
-    "price": 1899,
-    "ts": 1775280050912
+    "price": 1799,
+    "ts": 1775674891974
   },
   "mercari:cerruti:m98330509357": {
     "price": 6300,
@@ -36992,8 +36992,8 @@
     "ts": 1775574997010
   },
   "mercari:CASEY CASEY:m55951607206": {
-    "price": 88000,
-    "ts": 1775661403687
+    "price": 85000,
+    "ts": 1775675497271
   },
   "mercari:augusta:2JPWkBpgiSpTrt9NkYuQqC": {
     "price": 236800,
@@ -37280,8 +37280,8 @@
     "ts": 1775630562722
   },
   "mercari:Ordinary People:m36511457754": {
-    "price": 10000,
-    "ts": 1775662882192
+    "price": 8500,
+    "ts": 1775676918792
   },
   "2ndstreet:Second/Layer:2347101394026": {
     "price": 6490,
@@ -37546,5 +37546,29 @@
   "mercari:Patrik Ervell:2JPZ3jBUtbYcS7FsN4s98p": {
     "price": 14752,
     "ts": 1775663036274
+  },
+  "mercari:golem:2JPZPsfdL7MGJ8wU8L5SQ5": {
+    "price": 10999,
+    "ts": 1775674860924
+  },
+  "mercari:incarnation:m38310163651": {
+    "price": 899,
+    "ts": 1775675274125
+  },
+  "mercari:CHRISTIAN PEAU:m28896684687": {
+    "price": 15000,
+    "ts": 1775675464222
+  },
+  "mercari:Poell:m43190570051": {
+    "price": 556000,
+    "ts": 1775675516846
+  },
+  "mercari:by Walid:m98016795866": {
+    "price": 169000,
+    "ts": 1775675533518
+  },
+  "mercari:Carol Christian Poell:m43190570051": {
+    "price": 556000,
+    "ts": 1775675984739
   }
 }
