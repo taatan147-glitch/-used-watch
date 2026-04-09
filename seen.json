@@ -20416,12 +20416,12 @@
     "ts": 1774782818114
   },
   "mercari:DAMIR DOMA:2JNN2My8DyXF4a5dvPFL3s": {
-    "price": 20480,
-    "ts": 1774782820266
+    "price": 18542,
+    "ts": 1775766594834
   },
   "mercari:DAMIR DOMA:2JNN2MvS7buG7kFCte7GtH": {
-    "price": 20480,
-    "ts": 1774782822458
+    "price": 18542,
+    "ts": 1775766597044
   },
   "mercari:DAMIR DOMA:m17791126188": {
     "price": 16900,
@@ -20504,8 +20504,8 @@
     "ts": 1774782865290
   },
   "mercari:DAMIR DOMA:m79164962669": {
-    "price": 55000,
-    "ts": 1774782869058
+    "price": 53000,
+    "ts": 1775766601396
   },
   "mercari:DAMIR DOMA:m30384623278": {
     "price": 30000,
@@ -22156,12 +22156,12 @@
     "ts": 1774784680249
   },
   "mercari:Camiel Fortgens:2JJioHo73vdkRs2Ljemp3g": {
-    "price": 21050,
-    "ts": 1774784682344
+    "price": 20452,
+    "ts": 1775767465795
   },
   "mercari:Camiel Fortgens:2JJioHb3KrgptbfBgxkNjf": {
-    "price": 21050,
-    "ts": 1774784684454
+    "price": 20452,
+    "ts": 1775767468021
   },
   "mercari:Camiel Fortgens:m93663576848": {
     "price": 18500,
@@ -22172,8 +22172,8 @@
     "ts": 1774784688838
   },
   "mercari:Camiel Fortgens:m94824486447": {
-    "price": 14400,
-    "ts": 1775560497143
+    "price": 14300,
+    "ts": 1775767475348
   },
   "mercari:Camiel Fortgens:m13067216481": {
     "price": 24900,
@@ -25088,8 +25088,8 @@
     "ts": 1774813792196
   },
   "mercari:unravel project:2JNGJMbzAce8zzUeELuCEt": {
-    "price": 13600,
-    "ts": 1775573960197
+    "price": 13300,
+    "ts": 1775765387571
   },
   "mercari:unravel project:vHCfZtTqnvSqzs4JHTrbBe": {
     "price": 5125,
@@ -26492,8 +26492,8 @@
     "ts": 1775302465644
   },
   "mercari:Camiel Fortgens:m77278616993": {
-    "price": 22100,
-    "ts": 1775630288766
+    "price": 22000,
+    "ts": 1775767472428
   },
   "mercari:Song for the Mute:ikCwNMVk7GSKKNWggNAPSU": {
     "price": 11000,
@@ -34100,8 +34100,8 @@
     "ts": 1775227971757
   },
   "mercari:DAMIR DOMA:m48064665793": {
-    "price": 39380,
-    "ts": 1775646177181
+    "price": 39280,
+    "ts": 1775766599248
   },
   "mercari:Nemeth:2JPLGySep6cqhqtaZEyP9z": {
     "price": 27800,
@@ -35168,8 +35168,8 @@
     "ts": 1775298858838
   },
   "mercari:Camiel Fortgens:m62947519478": {
-    "price": 31000,
-    "ts": 1775576210511
+    "price": 30800,
+    "ts": 1775767470232
   },
   "mercari:YVES ANDRIEUX:m32205495795": {
     "price": 5000,
@@ -37998,5 +37998,37 @@
   "mercari:Song for the Mute:rEXC4akGrQmGY3vQNFoQ9g": {
     "price": 21945,
     "ts": 1775753247279
+  },
+  "mercari:BONEVILLE:m29190553746": {
+    "price": 110000,
+    "ts": 1775765765650
+  },
+  "mercari:ensou:m57384043518": {
+    "price": 3000,
+    "ts": 1775766156834
+  },
+  "mercari:DEVOA:m60701297666": {
+    "price": 21800,
+    "ts": 1775766206924
+  },
+  "mercari:CASEY CASEY:m23813701714": {
+    "price": 110000,
+    "ts": 1775766299099
+  },
+  "mercari:by Walid:m48961158982": {
+    "price": 169900,
+    "ts": 1775766333031
+  },
+  "mercari:Camiel Fortgens:2JM2NhMVxBRzZVCduW5spf": {
+    "price": 33820,
+    "ts": 1775767457065
+  },
+  "mercari:Camiel Fortgens:2JM2NkZvGU2KK8C3gj8qvT": {
+    "price": 22420,
+    "ts": 1775767459344
+  },
+  "mercari:Camiel Fortgens:e4Y6bTZdDgLHa4CYtyasoM": {
+    "price": 41610,
+    "ts": 1775767461538
   }
 }
