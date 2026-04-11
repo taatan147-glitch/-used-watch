@@ -15272,8 +15272,8 @@
     "ts": 1775158823354
   },
   "mercari:taichi murakami:2JHorHLTFWZKYw62A8AyHc": {
-    "price": 25800,
-    "ts": 1775226588794
+    "price": 24800,
+    "ts": 1775923420167
   },
   "mercari:taichi murakami:2JN8en4pFh8W7d5WW6AtCt": {
     "price": 76780,
@@ -16728,8 +16728,8 @@
     "ts": 1774780121455
   },
   "mercari:nostrasantissima:2JMd8ZBgfg3kv7bULZ7DGa": {
-    "price": 5980,
-    "ts": 1775832492998
+    "price": 5880,
+    "ts": 1775923936960
   },
   "mercari:nostrasantissima:m76012464417": {
     "price": 9500,
@@ -23556,8 +23556,8 @@
     "ts": 1775831926771
   },
   "mercari:MITTAN:m13076961656": {
-    "price": 20480,
-    "ts": 1775831938037
+    "price": 20380,
+    "ts": 1775923502776
   },
   "mercari:MITTAN:m34831055411": {
     "price": 12200,
@@ -28260,8 +28260,8 @@
     "ts": 1775832153911
   },
   "mercari:cerruti:m20094631064": {
-    "price": 999,
-    "ts": 1775311776931
+    "price": 800,
+    "ts": 1775923668036
   },
   "mercari:art comes first:2JPCLn8MPszg9s8SooTp87": {
     "price": 5900,
@@ -39134,5 +39134,17 @@
   "mercari:Araki Yuu:m18439815136": {
     "price": 97800,
     "ts": 1775919313019
+  },
+  "mercari:GUIDI:m51142959183": {
+    "price": 46000,
+    "ts": 1775923617239
+  },
+  "mercari:GUIDI:m68024250395": {
+    "price": 135000,
+    "ts": 1775923619347
+  },
+  "mercari:individual sentiments:m77969670513": {
+    "price": 29500,
+    "ts": 1775923999890
   }
 }
