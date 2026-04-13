@@ -20156,8 +20156,8 @@
     "ts": 1775752239671
   },
   "mercari:HUSSEIN CHALAYAN:m75503120527": {
-    "price": 6780,
-    "ts": 1775497991420
+    "price": 6680,
+    "ts": 1776112457781
   },
   "mercari:HUSSEIN CHALAYAN:m72548420736": {
     "price": 14000,
@@ -20316,8 +20316,8 @@
     "ts": 1776066763047
   },
   "mercari:first aid to the injured:m42405557637": {
-    "price": 22000,
-    "ts": 1774782723089
+    "price": 21900,
+    "ts": 1776112474502
   },
   "mercari:first aid to the injured:m94145064242": {
     "price": 6900,
@@ -25088,8 +25088,8 @@
     "ts": 1774813792196
   },
   "mercari:unravel project:2JNGJMbzAce8zzUeELuCEt": {
-    "price": 13000,
-    "ts": 1775930566337
+    "price": 12600,
+    "ts": 1776111330003
   },
   "mercari:unravel project:vHCfZtTqnvSqzs4JHTrbBe": {
     "price": 5000,
@@ -25216,8 +25216,8 @@
     "ts": 1775226555357
   },
   "mercari:unravel project:m54911370480": {
-    "price": 19700,
-    "ts": 1774813864934
+    "price": 19600,
+    "ts": 1776111332147
   },
   "mercari:unravel project:m63391231974": {
     "price": 5900,
@@ -38032,8 +38032,8 @@
     "ts": 1775767461538
   },
   "mercari:GUIDI:m40500490714": {
-    "price": 131000,
-    "ts": 1776065536495
+    "price": 130000,
+    "ts": 1776111566015
   },
   "mercari:golem:2JPchQeuRUZXeVebxpJn42": {
     "price": 2680,
@@ -38120,8 +38120,8 @@
     "ts": 1775817657303
   },
   "mercari:GUIDI:m20342816029": {
-    "price": 131000,
-    "ts": 1776065533340
+    "price": 130000,
+    "ts": 1776111563857
   },
   "2ndstreet:GUIDI:2318715216158": {
     "price": 153890,
@@ -40234,5 +40234,33 @@
   "mercari:Rynshu:m92521339766": {
     "price": 80000,
     "ts": 1776099885624
+  },
+  "mercari:GUIDI:m68708761842": {
+    "price": 218000,
+    "ts": 1776111561676
+  },
+  "mercari:ansnam:m34922278155": {
+    "price": 150000,
+    "ts": 1776111876763
+  },
+  "mercari:mixed up:2JPnTNGf7XA3oMuC7x5adR": {
+    "price": 22980,
+    "ts": 1776111910133
+  },
+  "mercari:ensou:m55622027345": {
+    "price": 1979,
+    "ts": 1776112103128
+  },
+  "mercari:Boris Bidjan:m84852178488": {
+    "price": 57400,
+    "ts": 1776112284811
+  },
+  "mercari:w&lt:m92649916005": {
+    "price": 32000,
+    "ts": 1776112387109
+  },
+  "mercari:Walter Van Beirendonck:m92649916005": {
+    "price": 32000,
+    "ts": 1776112398295
   }
 }
