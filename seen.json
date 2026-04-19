@@ -20700,8 +20700,8 @@
     "ts": 1774782991153
   },
   "mercari:Nemeth:m35822307262": {
-    "price": 26500,
-    "ts": 1776522833548
+    "price": 26400,
+    "ts": 1776629819680
   },
   "mercari:Nemeth:2JLrqU5mus98HWm47m2AqR": {
     "price": 22420,
@@ -41936,8 +41936,8 @@
     "ts": 1776424099804
   },
   "mercari:BERNHARD WILLHELM:2JPwpsxJuyzwMza99wK8iV": {
-    "price": 12400,
-    "ts": 1776424102065
+    "price": 12100,
+    "ts": 1776629838519
   },
   "mercari:11 by Boris:2JPwKBbcE9rPkjB7goYCKA": {
     "price": 19459,
@@ -43210,5 +43210,21 @@
   "mercari:Professor.E:m44950688189": {
     "price": 59800,
     "ts": 1776620463415
+  },
+  "mercari:HUSSEIN CHALAYAN:m97976829119": {
+    "price": 22800,
+    "ts": 1776629733427
+  },
+  "mercari:Nemeth:m99100068935": {
+    "price": 11000,
+    "ts": 1776629815253
+  },
+  "mercari:Nemeth:m96523710929": {
+    "price": 97777,
+    "ts": 1776629817540
+  },
+  "mercari:BERNHARD WILLHELM:m38685252640": {
+    "price": 12000,
+    "ts": 1776629836326
   }
 }
