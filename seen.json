@@ -43312,8 +43312,8 @@
     "ts": 1776670551000
   },
   "mercari:art comes first:m41019446482": {
-    "price": 17800,
-    "ts": 1776686802547
+    "price": 17600,
+    "ts": 1776715295689
   },
   "mercari:art comes first:m36413866344": {
     "price": 24999,
@@ -43674,5 +43674,21 @@
   "2ndstreet:LAYER-0:2332874396339": {
     "price": 16390,
     "ts": 1776711270006
+  },
+  "mercari:augusta:2JQ7v4ucsenvbqX2bJveyA": {
+    "price": 19480,
+    "ts": 1776715939924
+  },
+  "mercari:augusta:2JQ7v4QJ34bSe5HTAFn7ZC": {
+    "price": 15980,
+    "ts": 1776715942113
+  },
+  "2ndstreet:Nemeth:2344513398659": {
+    "price": 16390,
+    "ts": 1776716154756
+  },
+  "2ndstreet:TEO+NG:2341798920094": {
+    "price": 16390,
+    "ts": 1776716890980
   }
 }
