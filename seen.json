@@ -20792,8 +20792,8 @@
     "ts": 1774783067866
   },
   "mercari:BERNHARD WILLHELM:m59682425379": {
-    "price": 17100,
-    "ts": 1776777566133
+    "price": 17000,
+    "ts": 1776885513668
   },
   "mercari:BERNHARD WILLHELM:2JNiZ6iyUtoxxsU8a56Gzk": {
     "price": 16120,
@@ -32428,8 +32428,8 @@
     "ts": 1775576321643
   },
   "mercari:Christopher Raeburn:m92447721864": {
-    "price": 12000,
-    "ts": 1776778737136
+    "price": 11900,
+    "ts": 1776886673788
   },
   "mercari:LIEN:m29879151102": {
     "price": 21000,
@@ -34656,8 +34656,8 @@
     "ts": 1775281166921
   },
   "mercari:HUSSEIN CHALAYAN:m49678671681": {
-    "price": 42100,
-    "ts": 1776784296227
+    "price": 42000,
+    "ts": 1776885419728
   },
   "mercari:HUSSEIN CHALAYAN:m28169569770": {
     "price": 4200,
@@ -36868,8 +36868,8 @@
     "ts": 1775559351279
   },
   "mercari:augusta:m17010250024": {
-    "price": 2630,
-    "ts": 1776788477795
+    "price": 2530,
+    "ts": 1776885284988
   },
   "mercari:w&lt:m45646679965": {
     "price": 2000,
@@ -38252,8 +38252,8 @@
     "ts": 1776822304280
   },
   "mercari:BERNHARD WILLHELM:m50122381277": {
-    "price": 19800,
-    "ts": 1776784383937
+    "price": 19700,
+    "ts": 1776885511554
   },
   "mercari:BERNHARD WILLHELM:m79832686215": {
     "price": 25600,
@@ -44648,8 +44648,8 @@
     "ts": 1776880592300
   },
   "mercari:christophe lemaire:m82082987902": {
-    "price": 10000,
-    "ts": 1776880857176
+    "price": 8000,
+    "ts": 1776884752911
   },
   "mercari:ensou:m19989994245": {
     "price": 5000,
@@ -44658,5 +44658,21 @@
   "mercari:ensou:m76175010949": {
     "price": 7000,
     "ts": 1776881172058
+  },
+  "mercari:GUIDI:m16444430751": {
+    "price": 49000,
+    "ts": 1776884557177
+  },
+  "2ndstreet:masahiko maruyama:2340265274463": {
+    "price": 17490,
+    "ts": 1776885404996
+  },
+  "2ndstreet:masahiko maruyama:2340265274456": {
+    "price": 27390,
+    "ts": 1776885407720
+  },
+  "mercari:DAMIR DOMA:m50194896801": {
+    "price": 17500,
+    "ts": 1776885479856
   }
 }
