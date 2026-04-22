@@ -36564,8 +36564,8 @@
     "ts": 1775514161896
   },
   "mercari:GUIDI:m86152426509": {
-    "price": 116500,
-    "ts": 1776753284604
+    "price": 111000,
+    "ts": 1776874018178
   },
   "mercari:cerruti:m90190763514": {
     "price": 3000,
@@ -37240,8 +37240,8 @@
     "ts": 1775629068212
   },
   "mercari:augusta:m51217370397": {
-    "price": 1700,
-    "ts": 1776359807155
+    "price": 1600,
+    "ts": 1776874788049
   },
   "mercari:HUSSEIN CHALAYAN:m79979469235": {
     "price": 4500,
@@ -41632,8 +41632,8 @@
     "ts": 1776361038644
   },
   "mercari:Song for the Mute:m69690961916": {
-    "price": 7200,
-    "ts": 1776361066067
+    "price": 6800,
+    "ts": 1776875915840
   },
   "mercari:CASEY CASEY:y55LSQ2pAKcA64Y7GZW2yc": {
     "price": 41800,
@@ -42924,8 +42924,8 @@
     "ts": 1776591516237
   },
   "mercari:GUIDI:m94632500920": {
-    "price": 97800,
-    "ts": 1776591576904
+    "price": 97500,
+    "ts": 1776874020479
   },
   "mercari:golem:m34732675780": {
     "price": 4800,
@@ -44618,5 +44618,29 @@
   "mercari:Ordinary People:m35552768564": {
     "price": 28000,
     "ts": 1776871562517
+  },
+  "mercari:cerruti:2JQCce2T8Aq2odLJaDRk9V": {
+    "price": 9999,
+    "ts": 1776874069271
+  },
+  "mercari:CASEY CASEY:m62247422289": {
+    "price": 50000,
+    "ts": 1776874696501
+  },
+  "mercari:Bergfabel:m68727986448": {
+    "price": 19990,
+    "ts": 1776874771359
+  },
+  "mercari:augusta:m23230687555": {
+    "price": 4380,
+    "ts": 1776874790226
+  },
+  "mercari:augusta:m73108652160": {
+    "price": 2930,
+    "ts": 1776874792470
+  },
+  "2ndstreet:House of the Very Island’s:2326384791654": {
+    "price": 8690,
+    "ts": 1776876121744
   }
 }
