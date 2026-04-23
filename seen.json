@@ -36868,8 +36868,8 @@
     "ts": 1775559351279
   },
   "mercari:augusta:m17010250024": {
-    "price": 2530,
-    "ts": 1776885284988
+    "price": 2430,
+    "ts": 1776971453270
   },
   "mercari:w&lt:m45646679965": {
     "price": 2000,
@@ -43528,8 +43528,8 @@
     "ts": 1776687632992
   },
   "mercari:augusta:m49932886742": {
-    "price": 3680,
-    "ts": 1776870250699
+    "price": 3580,
+    "ts": 1776971449066
   },
   "mercari:augusta:m31272602155": {
     "price": 1480,
@@ -45130,5 +45130,29 @@
   "mercari:11 by Boris:m86664588478": {
     "price": 8800,
     "ts": 1776965459186
+  },
+  "mercari:carpe diem:PUcsHHeZx9eEePd9Pzc6fG": {
+    "price": 6339,
+    "ts": 1776971131010
+  },
+  "mercari:cornelian taurus:m50883366310": {
+    "price": 12000,
+    "ts": 1776971303897
+  },
+  "mercari:Boris Bidjan:m67260379994": {
+    "price": 12000,
+    "ts": 1776971391446
+  },
+  "mercari:augusta:m37357232369": {
+    "price": 400,
+    "ts": 1776971451174
+  },
+  "mercari:Walter Van Beirendonck:m75204836492": {
+    "price": 37800,
+    "ts": 1776971527828
+  },
+  "mercari:11 by Boris:m67260379994": {
+    "price": 12000,
+    "ts": 1776971732184
   }
 }
