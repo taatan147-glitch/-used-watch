@@ -15844,8 +15844,8 @@
     "ts": 1776182306579
   },
   "mercari:cerruti:m90722236276": {
-    "price": 5380,
-    "ts": 1776949506379
+    "price": 5280,
+    "ts": 1777049830437
   },
   "mercari:cerruti:m25159145970": {
     "price": 880,
@@ -16120,8 +16120,8 @@
     "ts": 1774779690906
   },
   "mercari:kyoji maruyama:m44534160103": {
-    "price": 7900,
-    "ts": 1774779693127
+    "price": 7800,
+    "ts": 1777049998648
   },
   "mercari:kyoji maruyama:m88852380510": {
     "price": 49000,
@@ -17284,8 +17284,8 @@
     "ts": 1776066291964
   },
   "mercari:Nicolo Ceschi Berrini:m50375505237": {
-    "price": 34600,
-    "ts": 1776511455851
+    "price": 34500,
+    "ts": 1777050262205
   },
   "mercari:Nicolo Ceschi Berrini:m64614760799": {
     "price": 28000,
@@ -32728,8 +32728,8 @@
     "ts": 1775196355688
   },
   "mercari:carpe diem:sT9STsNfEiaijPdGCDZXC7": {
-    "price": 463,
-    "ts": 1776939960796
+    "price": 459,
+    "ts": 1777050197636
   },
   "mercari:carpe diem:2JMCNZuvGiemKrQbWFRdsS": {
     "price": 14480,
@@ -36160,8 +36160,8 @@
     "ts": 1775457122080
   },
   "mercari:carpe diem:DQLg2zoGNQAeWiVqJZUHdT": {
-    "price": 463,
-    "ts": 1776939958096
+    "price": 459,
+    "ts": 1777050195481
   },
   "mercari:DEVOA:2JKYvvUgMwFSm8rUHHGUWX": {
     "price": 22375,
@@ -44632,8 +44632,8 @@
     "ts": 1776958237812
   },
   "mercari:augusta:m23230687555": {
-    "price": 4380,
-    "ts": 1776874790226
+    "price": 4280,
+    "ts": 1777050513136
   },
   "mercari:augusta:m73108652160": {
     "price": 2930,
@@ -45686,5 +45686,9 @@
   "mercari:w&lt:m87680664731": {
     "price": 25500,
     "ts": 1777047425222
+  },
+  "mercari:thom krom:m20601567995": {
+    "price": 13800,
+    "ts": 1777050609415
   }
 }
