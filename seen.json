@@ -24192,8 +24192,8 @@
     "ts": 1775311852979
   },
   "mercari:BONEVILLE:m73887749773": {
-    "price": 94600,
-    "ts": 1776787867750
+    "price": 94500,
+    "ts": 1777138623985
   },
   "mercari:BONEVILLE:2JMifnWEAAAYw4LRw5hFnP": {
     "price": 10340,
@@ -46202,5 +46202,9 @@
   "mercari:Second/Layer:m64634942859": {
     "price": 95000,
     "ts": 1777136950774
+  },
+  "mercari:ISAAC SELLAM:m57547062999": {
+    "price": 45000,
+    "ts": 1777138481774
   }
 }
