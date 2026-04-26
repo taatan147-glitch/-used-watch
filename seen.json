@@ -17984,8 +17984,8 @@
     "ts": 1776164908820
   },
   "mercari:CHRISTIAN PEAU:m55462228912": {
-    "price": 18000,
-    "ts": 1776123995272
+    "price": 17500,
+    "ts": 1777243331181
   },
   "mercari:CHRISTIAN PEAU:m42967851916": {
     "price": 18905,
@@ -22768,8 +22768,8 @@
     "ts": 1776672778545
   },
   "mercari:Injiri:2JMJxFgCi4PFt5bsXjABA8": {
-    "price": 76000,
-    "ts": 1774785188576
+    "price": 72200,
+    "ts": 1777244649997
   },
   "mercari:Injiri:m21782680059": {
     "price": 118000,
@@ -23296,8 +23296,8 @@
     "ts": 1774785752596
   },
   "mercari:Andrea Incontri:m70452340982": {
-    "price": 12750,
-    "ts": 1775393021889
+    "price": 12650,
+    "ts": 1777244908518
   },
   "mercari:Andrea Incontri:m42938890018": {
     "price": 35000,
@@ -39340,8 +39340,8 @@
     "ts": 1775976585850
   },
   "mercari:Private White V.C.:m39495430193": {
-    "price": 1299,
-    "ts": 1777038329318
+    "price": 1259,
+    "ts": 1777244619465
   },
   "mercari:Injiri:m53574606102": {
     "price": 58900,
@@ -43140,8 +43140,8 @@
     "ts": 1776608731303
   },
   "mercari:augusta:m77831527125": {
-    "price": 4399,
-    "ts": 1777160763709
+    "price": 4299,
+    "ts": 1777243454568
   },
   "mercari:A1923:m76572648218": {
     "price": 1999,
@@ -46560,12 +46560,12 @@
     "ts": 1777208190853
   },
   "mercari:w&lt:m68928989208": {
-    "price": 62900,
-    "ts": 1777208555837
+    "price": 62000,
+    "ts": 1777243514884
   },
   "mercari:Walter Van Beirendonck:m68928989208": {
-    "price": 62900,
-    "ts": 1777208569600
+    "price": 62000,
+    "ts": 1777243526866
   },
   "mercari:BERNHARD WILLHELM:m61597072419": {
     "price": 9800,
@@ -46686,5 +46686,9 @@
   "mercari:Never Enough:m29235882944": {
     "price": 2300,
     "ts": 1777240613048
+  },
+  "mercari:Nemeth:2JQPhvEtMo9mpJP3JhPbxJ": {
+    "price": 17000,
+    "ts": 1777243658828
   }
 }
