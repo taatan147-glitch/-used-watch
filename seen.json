@@ -17424,8 +17424,8 @@
     "ts": 1776066377737
   },
   "mercari:DEVOA:m26553723770": {
-    "price": 1200,
-    "ts": 1776098234435
+    "price": 1100,
+    "ts": 1777221893763
   },
   "mercari:DEVOA:m23511781525": {
     "price": 44500,
@@ -20772,8 +20772,8 @@
     "ts": 1775575364179
   },
   "mercari:BERNHARD WILLHELM:m76208595171": {
-    "price": 3500,
-    "ts": 1774783058980
+    "price": 3000,
+    "ts": 1777222288183
   },
   "mercari:BERNHARD WILLHELM:eAHmHunGukWUso9rM8Gjp4": {
     "price": 13743,
@@ -23500,8 +23500,8 @@
     "ts": 1774794008344
   },
   "mercari:Paul Harnden:m48015715009": {
-    "price": 25399,
-    "ts": 1774794010624
+    "price": 24299,
+    "ts": 1777221212794
   },
   "mercari:Paul Harnden:m26104543683": {
     "price": 130000,
@@ -35376,8 +35376,8 @@
     "ts": 1776196668350
   },
   "mercari:Paul Harnden:m34471893410": {
-    "price": 45000,
-    "ts": 1777199973417
+    "price": 40000,
+    "ts": 1777221214982
   },
   "mercari:KAVAL:m29968703612": {
     "price": 56666,
@@ -35884,8 +35884,8 @@
     "ts": 1775398574324
   },
   "mercari:final home:m56182771749": {
-    "price": 11300,
-    "ts": 1776448160547
+    "price": 11200,
+    "ts": 1777221614996
   },
   "mercari:carpe diem:m18595536914": {
     "price": 2555,
@@ -37240,8 +37240,8 @@
     "ts": 1775629068212
   },
   "mercari:augusta:m51217370397": {
-    "price": 1500,
-    "ts": 1776965194344
+    "price": 1400,
+    "ts": 1777222071884
   },
   "mercari:HUSSEIN CHALAYAN:m79979469235": {
     "price": 4500,
@@ -42104,8 +42104,8 @@
     "ts": 1776448116364
   },
   "mercari:final home:m40622934649": {
-    "price": 7300,
-    "ts": 1776448149612
+    "price": 7200,
+    "ts": 1777221612785
   },
   "mercari:final home:m59010903456": {
     "price": 13200,
@@ -42800,8 +42800,8 @@
     "ts": 1776556819870
   },
   "mercari:cornelian taurus:m69835492161": {
-    "price": 7777,
-    "ts": 1777191977368
+    "price": 6666,
+    "ts": 1777221941490
   },
   "mercari:CASEY CASEY:m60540814863": {
     "price": 30000,
@@ -46320,8 +46320,8 @@
     "ts": 1777179737149
   },
   "mercari:DEVOA:m99410765795": {
-    "price": 68000,
-    "ts": 1777180311446
+    "price": 66000,
+    "ts": 1777221895946
   },
   "mercari:CASEY CASEY:m14652546475": {
     "price": 12000,
@@ -46670,5 +46670,13 @@
   "mercari:Araki Yuu:m88681034734": {
     "price": 96800,
     "ts": 1777219699018
+  },
+  "mercari:BERNHARD WILLHELM:m13134820050": {
+    "price": 13000,
+    "ts": 1777222285921
+  },
+  "mercari:BERNHARD WILLHELM:m72026229974": {
+    "price": 3500,
+    "ts": 1777222290354
   }
 }
