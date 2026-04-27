@@ -17200,8 +17200,8 @@
     "ts": 1774780484987
   },
   "mercari:carpe diem:m69467204404": {
-    "price": 14980,
-    "ts": 1776468042988
+    "price": 14800,
+    "ts": 1777330266009
   },
   "mercari:carpe diem:m30556093520": {
     "price": 1700,
@@ -19024,8 +19024,8 @@
     "ts": 1777302877040
   },
   "mercari:Bergfabel:m28778175233": {
-    "price": 17800,
-    "ts": 1776934493962
+    "price": 15800,
+    "ts": 1777330563405
   },
   "mercari:Bergfabel:m20581084643": {
     "price": 28000,
@@ -29792,8 +29792,8 @@
     "ts": 1775040299912
   },
   "mercari:andrew mackenzie:m27228181738": {
-    "price": 24400,
-    "ts": 1776807778845
+    "price": 15000,
+    "ts": 1777329951481
   },
   "mercari:christophe lemaire:2JJTaxpVCjePHVjLeQkeBs": {
     "price": 8740,
@@ -41208,8 +41208,8 @@
     "ts": 1776298251280
   },
   "mercari:cerruti:m39641610743": {
-    "price": 17400,
-    "ts": 1777248368754
+    "price": 17300,
+    "ts": 1777329920301
   },
   "mercari:ansnam:m57220548547": {
     "price": 150000,
@@ -46336,12 +46336,12 @@
     "ts": 1777180524742
   },
   "mercari:w&lt:m84588443735": {
-    "price": 59000,
-    "ts": 1777276323454
+    "price": 58000,
+    "ts": 1777330640897
   },
   "mercari:Walter Van Beirendonck:m84588443735": {
-    "price": 58900,
-    "ts": 1777302968455
+    "price": 58000,
+    "ts": 1777330652173
   },
   "mercari:MITTAN:m40884450764": {
     "price": 19800,
@@ -47008,8 +47008,8 @@
     "ts": 1777286741791
   },
   "mercari:MITTAN:m68342015531": {
-    "price": 17500,
-    "ts": 1777323362927
+    "price": 17250,
+    "ts": 1777329773359
   },
   "2ndstreet:LAYER-0:2347920784107": {
     "price": 36190,
@@ -47210,5 +47210,9 @@
   "mercari:Walter Van Beirendonck:m69711571622": {
     "price": 38000,
     "ts": 1777319376846
+  },
+  "mercari:Evan Kinori:m30738147169": {
+    "price": 26000,
+    "ts": 1777331555392
   }
 }
