@@ -37684,8 +37684,8 @@
     "ts": 1777267764863
   },
   "mercari:Camiel Fortgens:m19510483504": {
-    "price": 18500,
-    "ts": 1777255549370
+    "price": 18400,
+    "ts": 1777335532434
   },
   "mercari:Injiri:m57349284052": {
     "price": 21000,
@@ -37764,8 +37764,8 @@
     "ts": 1776591658830
   },
   "mercari:cerruti:m78704179860": {
-    "price": 2900,
-    "ts": 1775730534181
+    "price": 2700,
+    "ts": 1777333824141
   },
   "mercari:cerruti:2JPazfNaoc6BJP24aJb8J9": {
     "price": 16226,
@@ -38116,8 +38116,8 @@
     "ts": 1775802295550
   },
   "mercari:GUIDI:m22166259272": {
-    "price": 59500,
-    "ts": 1777207741136
+    "price": 59400,
+    "ts": 1777333775052
   },
   "mercari:GUIDI:m20342816029": {
     "price": 120000,
@@ -42428,8 +42428,8 @@
     "ts": 1776500682694
   },
   "mercari:augusta:m16419881953": {
-    "price": 1300,
-    "ts": 1777180522599
+    "price": 1200,
+    "ts": 1777334488127
   },
   "mercari:A1923:2JPzTCTKQXPC2hrL3Cvqpt": {
     "price": 6570,
@@ -43140,8 +43140,8 @@
     "ts": 1776608731303
   },
   "mercari:augusta:m77831527125": {
-    "price": 4299,
-    "ts": 1777243454568
+    "price": 4199,
+    "ts": 1777334492505
   },
   "mercari:A1923:m76572648218": {
     "price": 1999,
@@ -44652,8 +44652,8 @@
     "ts": 1776884752911
   },
   "mercari:ensou:m19989994245": {
-    "price": 4700,
-    "ts": 1777292998048
+    "price": 4400,
+    "ts": 1777334260824
   },
   "mercari:ensou:m76175010949": {
     "price": 7000,
@@ -44888,8 +44888,8 @@
     "ts": 1776933751079
   },
   "mercari:cerruti:m78907606240": {
-    "price": 9800,
-    "ts": 1776980575452
+    "price": 9300,
+    "ts": 1777333821989
   },
   "mercari:kyoji maruyama:2JQEM58bznfdFe5z7EqRHa": {
     "price": 18900,
@@ -45408,8 +45408,8 @@
     "ts": 1777022469464
   },
   "mercari:Nemeth:m40552432264": {
-    "price": 84480,
-    "ts": 1777114531579
+    "price": 79800,
+    "ts": 1777334691776
   },
   "2ndstreet:Nemeth:2319573234704": {
     "price": 98890,
@@ -45832,8 +45832,8 @@
     "ts": 1777293531346
   },
   "mercari:Camiel Fortgens:m45609467246": {
-    "price": 30000,
-    "ts": 1777277299446
+    "price": 27000,
+    "ts": 1777335530298
   },
   "mercari:Camiel Fortgens:2JQJxzrnUqpuFpPPCJwBTH": {
     "price": 24490,
@@ -47214,5 +47214,17 @@
   "mercari:Evan Kinori:m30738147169": {
     "price": 26000,
     "ts": 1777331555392
+  },
+  "mercari:augusta:m17844570043": {
+    "price": 3900,
+    "ts": 1777334485666
+  },
+  "mercari:augusta:2JJp5Wj3khEKZUjZbx3zHi": {
+    "price": 1144,
+    "ts": 1777334490314
+  },
+  "mercari:La Haine Inside Us:m70472207262": {
+    "price": 22222,
+    "ts": 1777335068368
   }
 }
