@@ -16580,8 +16580,8 @@
     "ts": 1774780023242
   },
   "mercari:ansnam:m80738026156": {
-    "price": 64100,
-    "ts": 1774780025371
+    "price": 63800,
+    "ts": 1777410439133
   },
   "mercari:ansnam:m78437235347": {
     "price": 29800,
@@ -42728,8 +42728,8 @@
     "ts": 1776524049800
   },
   "mercari:Paul Harnden:m95671302259": {
-    "price": 42000,
-    "ts": 1776531987803
+    "price": 40000,
+    "ts": 1777410050612
   },
   "mercari:GUIDI:m76035517178": {
     "price": 126169,
@@ -47690,5 +47690,29 @@
   "mercari:m.a+:m27071456812": {
     "price": 17550,
     "ts": 1777405462481
+  },
+  "mercari:KAVAL:2JQUirofZqvh6NTn3A5yra": {
+    "price": 39800,
+    "ts": 1777410111483
+  },
+  "mercari:KAVAL:2JQUirVd9tZuD5nSpW7YnA": {
+    "price": 39800,
+    "ts": 1777410113652
+  },
+  "mercari:KAVAL:2JQUiJJfxKUaawhdbZrLQd": {
+    "price": 38800,
+    "ts": 1777410115942
+  },
+  "mercari:carpe diem:2JQUj4NRoAM5XgMnWefpkr": {
+    "price": 14480,
+    "ts": 1777410549322
+  },
+  "mercari:ensou:2JQUjEezDYC4XbnTn5DgnQ": {
+    "price": 32800,
+    "ts": 1777410635786
+  },
+  "mercari:manamis:m56283523247": {
+    "price": 40000,
+    "ts": 1777410896736
   }
 }
