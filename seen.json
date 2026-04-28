@@ -20188,8 +20188,8 @@
     "ts": 1775056925581
   },
   "mercari:HUSSEIN CHALAYAN:m23462173335": {
-    "price": 4100,
-    "ts": 1774782638605
+    "price": 3800,
+    "ts": 1777398443147
   },
   "mercari:HUSSEIN CHALAYAN:m36290018395": {
     "price": 38400,
@@ -35432,8 +35432,8 @@
     "ts": 1775319672397
   },
   "mercari:cerruti:m23718660345": {
-    "price": 5600,
-    "ts": 1776794229204
+    "price": 5400,
+    "ts": 1777397677726
   },
   "2ndstreet:Walter Van Beirendonck:2320725272604": {
     "price": 32890,
@@ -37476,8 +37476,8 @@
     "ts": 1775660714692
   },
   "mercari:cerruti:m14115170623": {
-    "price": 40000,
-    "ts": 1777302143493
+    "price": 39700,
+    "ts": 1777397679940
   },
   "mercari:cerruti:m11986480550": {
     "price": 22000,
@@ -41332,8 +41332,8 @@
     "ts": 1776324710685
   },
   "mercari:Nemeth:m65221982810": {
-    "price": 6800,
-    "ts": 1777218887329
+    "price": 6500,
+    "ts": 1777398515450
   },
   "2ndstreet:Nemeth:2333513972846": {
     "price": 6490,
@@ -46140,8 +46140,8 @@
     "ts": 1777127068684
   },
   "mercari:Walter Van Beirendonck:m12545969709": {
-    "price": 44480,
-    "ts": 1777213109664
+    "price": 43980,
+    "ts": 1777398383454
   },
   "mercari:HUSSEIN CHALAYAN:m86467742877": {
     "price": 29800,
@@ -47674,5 +47674,13 @@
   "mercari:Yuta Matsuoka:m87036613415": {
     "price": 39800,
     "ts": 1777392467466
+  },
+  "mercari:HUSSEIN CHALAYAN:m24855436744": {
+    "price": 5500,
+    "ts": 1777398440972
+  },
+  "mercari:Innerraum:m30154104849": {
+    "price": 135000,
+    "ts": 1777398855276
   }
 }
