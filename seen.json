@@ -38940,8 +38940,8 @@
     "ts": 1777167739297
   },
   "mercari:DEVOA:m97706804990": {
-    "price": 95000,
-    "ts": 1776687442451
+    "price": 90000,
+    "ts": 1777420731418
   },
   "mercari:DEVOA:m14929251348": {
     "price": 110000,
@@ -40636,8 +40636,8 @@
     "ts": 1776183268360
   },
   "mercari:Nemeth:m96168487555": {
-    "price": 7500,
-    "ts": 1776864046160
+    "price": 6000,
+    "ts": 1777421265181
   },
   "mercari:BERNHARD WILLHELM:m12094668792": {
     "price": 29000,
@@ -42032,8 +42032,8 @@
     "ts": 1776557682692
   },
   "mercari:Nemeth:m97211017072": {
-    "price": 8600,
-    "ts": 1777022491898
+    "price": 8500,
+    "ts": 1777421263052
   },
   "mercari:Never Enough:m87462943315": {
     "price": 5800,
@@ -42868,8 +42868,8 @@
     "ts": 1776619567393
   },
   "mercari:augusta:m21119624509": {
-    "price": 3980,
-    "ts": 1776580555797
+    "price": 3780,
+    "ts": 1777420957056
   },
   "mercari:augusta:m83740883861": {
     "price": 1290,
@@ -44788,8 +44788,8 @@
     "ts": 1777379847002
   },
   "mercari:Boris Bidjan:m14438126120": {
-    "price": 26900,
-    "ts": 1777192074229
+    "price": 25800,
+    "ts": 1777420865534
   },
   "mercari:augusta:m16596559224": {
     "price": 1500,
@@ -46560,12 +46560,12 @@
     "ts": 1777208190853
   },
   "mercari:w&lt:m68928989208": {
-    "price": 40000,
-    "ts": 1777293335773
+    "price": 30000,
+    "ts": 1777421065890
   },
   "mercari:Walter Van Beirendonck:m68928989208": {
-    "price": 40000,
-    "ts": 1777293347656
+    "price": 30000,
+    "ts": 1777421088132
   },
   "mercari:BERNHARD WILLHELM:m61597072419": {
     "price": 8300,
@@ -46636,8 +46636,8 @@
     "ts": 1777213627950
   },
   "mercari:Camiel Fortgens:m14719763337": {
-    "price": 30000,
-    "ts": 1777294361208
+    "price": 24000,
+    "ts": 1777422462719
   },
   "mercari:incarnation:m87115840412": {
     "price": 79800,
@@ -47232,8 +47232,8 @@
     "ts": 1777341288212
   },
   "mercari:christophe lemaire:m19817933050": {
-    "price": 13000,
-    "ts": 1777354272606
+    "price": 10000,
+    "ts": 1777420355644
   },
   "mercari:ansnam:m32745094479": {
     "price": 8600,
@@ -47722,5 +47722,17 @@
   "mercari:Camiel Fortgens:m84618132915": {
     "price": 9999,
     "ts": 1777416506548
+  },
+  "mercari:ansnam:m53940275314": {
+    "price": 12000,
+    "ts": 1777420465201
+  },
+  "mercari:augusta:m46719288156": {
+    "price": 1390,
+    "ts": 1777420954950
+  },
+  "mercari:BERNHARD WILLHELM:m43263390329": {
+    "price": 28000,
+    "ts": 1777421283377
   }
 }
