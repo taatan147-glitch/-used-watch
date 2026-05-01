@@ -17656,8 +17656,8 @@
     "ts": 1774976016718
   },
   "mercari:DEVOA:m55375558657": {
-    "price": 28000,
-    "ts": 1776359588949
+    "price": 27500,
+    "ts": 1777676082092
   },
   "mercari:DEVOA:m54489165183": {
     "price": 17800,
@@ -19716,8 +19716,8 @@
     "ts": 1777537277258
   },
   "mercari:Walter Van Beirendonck:m98164660204": {
-    "price": 7900,
-    "ts": 1777450625314
+    "price": 7800,
+    "ts": 1777676340216
   },
   "mercari:Walter Van Beirendonck:ocMobnRNHyThkbHvfnAYq6": {
     "price": 19850,
@@ -45980,8 +45980,8 @@
     "ts": 1777114232625
   },
   "mercari:Boris Bidjan:m47843986953": {
-    "price": 26000,
-    "ts": 1777324142211
+    "price": 25000,
+    "ts": 1777676221513
   },
   "mercari:Nemeth:m55610701888": {
     "price": 14500,
@@ -45996,8 +45996,8 @@
     "ts": 1777527920574
   },
   "mercari:11 by Boris:m47843986953": {
-    "price": 26000,
-    "ts": 1777324454750
+    "price": 25000,
+    "ts": 1777676546488
   },
   "mercari:Carol Christian Poell:2JQKp9YPKCmMWwhZvGS7NF": {
     "price": 273900,
@@ -46824,16 +46824,16 @@
     "ts": 1777267324773
   },
   "mercari:BERNHARD WILLHELM:m74410209753": {
-    "price": 8900,
-    "ts": 1777267329082
+    "price": 8600,
+    "ts": 1777676495808
   },
   "2ndstreet:Professor.E:2337761713589": {
     "price": 19690,
     "ts": 1777267949030
   },
   "mercari:Rigards:m73431003688": {
-    "price": 76500,
-    "ts": 1777594472391
+    "price": 76000,
+    "ts": 1777677155651
   },
   "mercari:Andrew Driftwood:2JQQG59MZjrETJoX3cwGu9": {
     "price": 156170,
@@ -48688,8 +48688,8 @@
     "ts": 1777654105703
   },
   "mercari:GUIDI:m44863009807": {
-    "price": 23000,
-    "ts": 1777561527350
+    "price": 18000,
+    "ts": 1777675534799
   },
   "mercari:cerruti:m17782702113": {
     "price": 20000,
@@ -48824,8 +48824,8 @@
     "ts": 1777600850297
   },
   "mercari:cerruti:m68660089644": {
-    "price": 3980,
-    "ts": 1777600857038
+    "price": 3490,
+    "ts": 1777675586480
   },
   "mercari:carpe diem:8UoeofAqJi7ehDyv8jJCAE": {
     "price": 39848,
@@ -49338,5 +49338,17 @@
   "mercari:Injiri:m20514446627": {
     "price": 14000,
     "ts": 1777671244456
+  },
+  "mercari:Nemeth:2JQceuUxQdtXrPDfFNPSNs": {
+    "price": 27200,
+    "ts": 1777676476223
+  },
+  "mercari:Nemeth:2JQcebESTZQV7NJLGHksop": {
+    "price": 18200,
+    "ts": 1777676478460
+  },
+  "mercari:Song for the Mute:2JGBtCzQPLmtrkhotp9XTF": {
+    "price": 11008,
+    "ts": 1777677404865
   }
 }
