@@ -15544,8 +15544,8 @@
     "ts": 1774779094779
   },
   "mercari:KAVAL:m48716007878": {
-    "price": 35000,
-    "ts": 1777726080500
+    "price": 34900,
+    "ts": 1777754072710
   },
   "mercari:KAVAL:m13849517073": {
     "price": 159800,
@@ -47112,12 +47112,12 @@
     "ts": 1777441629541
   },
   "mercari:John Alexander Skelton:m64469295746": {
-    "price": 150000,
-    "ts": 1777303512489
+    "price": 130000,
+    "ts": 1777755391750
   },
   "mercari:John Alexander Skelton:m10702913967": {
-    "price": 120000,
-    "ts": 1777737865843
+    "price": 89000,
+    "ts": 1777755389603
   },
   "mercari:John Alexander Skelton:m52831361130": {
     "price": 166666,
@@ -49902,5 +49902,9 @@
   "mercari:Boris Bidjan:9YFmPyqycMSMy4bCzdiEKS": {
     "price": 221592,
     "ts": 1777752102410
+  },
+  "mercari:DEVOA:87Lu8nDbzHwru6XcKbEgqL": {
+    "price": 27479,
+    "ts": 1777754660270
   }
 }
