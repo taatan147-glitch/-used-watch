@@ -43824,8 +43824,8 @@
     "ts": 1776833269392
   },
   "mercari:ansnam:m58159636882": {
-    "price": 63000,
-    "ts": 1777572773810
+    "price": 62000,
+    "ts": 1777751731080
   },
   "mercari:mixed up:2JQ8xEHMHEYDG2EwxFqnnr": {
     "price": 1500,
@@ -47592,8 +47592,8 @@
     "ts": 1777379932581
   },
   "mercari:A1923:m39193100197": {
-    "price": 3400,
-    "ts": 1777641125649
+    "price": 3300,
+    "ts": 1777752162765
   },
   "mercari:Carol Christian Poell:2JQTjm62CCabc4vaUMubYi": {
     "price": 160000,
@@ -49524,8 +49524,8 @@
     "ts": 1777699691019
   },
   "mercari:Suzusan:m99493884287": {
-    "price": 20000,
-    "ts": 1777699731053
+    "price": 11000,
+    "ts": 1777753210358
   },
   "2ndstreet:Injiri:2346431861840": {
     "price": 32890,
@@ -49898,5 +49898,9 @@
   "mercari:final home:RAL2NyJ8jN7WMLdGwbQxpU": {
     "price": 16164,
     "ts": 1777747836869
+  },
+  "mercari:Boris Bidjan:9YFmPyqycMSMy4bCzdiEKS": {
+    "price": 221592,
+    "ts": 1777752102410
   }
 }
