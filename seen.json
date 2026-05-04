@@ -38116,8 +38116,8 @@
     "ts": 1775802295550
   },
   "mercari:GUIDI:m22166259272": {
-    "price": 54000,
-    "ts": 1777892676578
+    "price": 53000,
+    "ts": 1777932056368
   },
   "mercari:GUIDI:m20342816029": {
     "price": 120000,
@@ -46364,8 +46364,8 @@
     "ts": 1777187461871
   },
   "mercari:Bergfabel:m39472156244": {
-    "price": 24000,
-    "ts": 1777428714271
+    "price": 23000,
+    "ts": 1777932766992
   },
   "mercari:w&lt:m57819477773": {
     "price": 40000,
@@ -46580,8 +46580,8 @@
     "ts": 1777809900364
   },
   "mercari:Rigards:m32902689209": {
-    "price": 55000,
-    "ts": 1777209386060
+    "price": 54000,
+    "ts": 1777933652007
   },
   "2ndstreet:TEO+NG:2340838123426": {
     "price": 11990,
@@ -50870,5 +50870,13 @@
   "mercari:Ordinary People:m86969329486": {
     "price": 17000,
     "ts": 1777930554942
+  },
+  "mercari:BERNHARD WILLHELM:2JQkRf8Y97PZPPBw5z85of": {
+    "price": 8400,
+    "ts": 1777933010017
+  },
+  "mercari:BERNHARD WILLHELM:2JQkRXHMYgyKvZcA844gHV": {
+    "price": 5600,
+    "ts": 1777933012157
   }
 }
