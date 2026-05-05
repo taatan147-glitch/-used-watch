@@ -38116,8 +38116,8 @@
     "ts": 1775802295550
   },
   "mercari:GUIDI:m22166259272": {
-    "price": 52000,
-    "ts": 1777987221753
+    "price": 50000,
+    "ts": 1778015006139
   },
   "mercari:GUIDI:m20342816029": {
     "price": 120000,
@@ -47272,8 +47272,8 @@
     "ts": 1777563128676
   },
   "mercari:Song for the Mute:2JQSjakaDkWf8Szi2bKsji": {
-    "price": 60015,
-    "ts": 1777343404282
+    "price": 59195,
+    "ts": 1778016802696
   },
   "mercari:MITTAN:ZDHUAQJsGvmnBuxdDmQfD6": {
     "price": 1520,
@@ -47820,8 +47820,8 @@
     "ts": 1777440211428
   },
   "mercari:GUIDI:2JQVYoqGHe5XRmnZNmQtES": {
-    "price": 279561,
-    "ts": 1777440213617
+    "price": 275433,
+    "ts": 1778015008369
   },
   "mercari:GUIDI:m71131344083": {
     "price": 118000,
@@ -50092,8 +50092,8 @@
     "ts": 1777794803954
   },
   "mercari:individual sentiments:m49237032172": {
-    "price": 7850,
-    "ts": 1777795021460
+    "price": 7000,
+    "ts": 1778015368178
   },
   "mercari:C DIEM:m70336553935": {
     "price": 2000,
@@ -50272,8 +50272,8 @@
     "ts": 1777813208282
   },
   "mercari:Song for the Mute:2JQgrZ8BS7egNCTfZq42FH": {
-    "price": 42847,
-    "ts": 1777814500615
+    "price": 42783,
+    "ts": 1778016804888
   },
   "mercari:andrew mackenzie:m59818279029": {
     "price": 12000,
@@ -50308,8 +50308,8 @@
     "ts": 1777824302038
   },
   "mercari:Rigards:2JQgtK8biKYkKdekqmgsPP": {
-    "price": 89249,
-    "ts": 1777819066779
+    "price": 89117,
+    "ts": 1778016568873
   },
   "mercari:Song for the Mute:m23788318215": {
     "price": 15000,
@@ -52968,8 +52968,8 @@
     "ts": 1777968077538
   },
   "mercari:Camiel Fortgens:m22809816499": {
-    "price": 9900,
-    "ts": 1777998185996
+    "price": 9800,
+    "ts": 1778016771608
   },
   "mercari:Camiel Fortgens:m79385021290": {
     "price": 9000,
@@ -53394,5 +53394,9 @@
   "mercari:Avant Toi:2JQnhwAx7YXAboVh4V9Hjk": {
     "price": 117950,
     "ts": 1778009546201
+  },
+  "mercari:Bergfabel:m13433524801": {
+    "price": 9000,
+    "ts": 1778015709167
   }
 }
