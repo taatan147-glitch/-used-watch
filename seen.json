@@ -15844,8 +15844,8 @@
     "ts": 1777551263273
   },
   "mercari:cerruti:m90722236276": {
-    "price": 4280,
-    "ts": 1777996276731
+    "price": 4180,
+    "ts": 1778088908694
   },
   "mercari:cerruti:m25159145970": {
     "price": 880,
@@ -39564,8 +39564,8 @@
     "ts": 1775995070971
   },
   "mercari:ansnam:m18901084162": {
-    "price": 64000,
-    "ts": 1777390931158
+    "price": 63000,
+    "ts": 1778089149464
   },
   "mercari:corpo nove:m29414914169": {
     "price": 12500,
@@ -43824,8 +43824,8 @@
     "ts": 1776833269392
   },
   "mercari:ansnam:m58159636882": {
-    "price": 61000,
-    "ts": 1777794947006
+    "price": 60000,
+    "ts": 1778089147060
   },
   "mercari:mixed up:2JQ8xEHMHEYDG2EwxFqnnr": {
     "price": 1500,
@@ -44448,8 +44448,8 @@
     "ts": 1777551956313
   },
   "mercari:DAMIR DOMA:m52394001021": {
-    "price": 23500,
-    "ts": 1777547172622
+    "price": 19800,
+    "ts": 1778089772829
   },
   "2ndstreet:TEO+NG:2346160159188": {
     "price": 14190,
@@ -48192,8 +48192,8 @@
     "ts": 1777476162361
   },
   "mercari:w&lt:m24480521682": {
-    "price": 2500,
-    "ts": 1777726958266
+    "price": 2000,
+    "ts": 1778089640615
   },
   "mercari:w&lt:m91328644681": {
     "price": 10000,
@@ -50080,8 +50080,8 @@
     "ts": 1777966906080
   },
   "mercari:cerruti:m98866503105": {
-    "price": 2992,
-    "ts": 1778065685959
+    "price": 2892,
+    "ts": 1778088906534
   },
   "mercari:cerruti:2JQg4WRuSB3S2TLtDaeCVs": {
     "price": 7805,
@@ -53830,5 +53830,13 @@
   "mercari:BERNHARD WILLHELM:m19820161717": {
     "price": 48000,
     "ts": 1778082573207
+  },
+  "mercari:taichi murakami:m63190821970": {
+    "price": 85000,
+    "ts": 1778088590873
+  },
+  "mercari:Nemeth:m75743142757": {
+    "price": 15000,
+    "ts": 1778089790645
   }
 }
