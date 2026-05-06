@@ -20504,8 +20504,8 @@
     "ts": 1777391619445
   },
   "mercari:DAMIR DOMA:m79164962669": {
-    "price": 50000,
-    "ts": 1776098665294
+    "price": 49000,
+    "ts": 1778096801957
   },
   "mercari:DAMIR DOMA:m30384623278": {
     "price": 30000,
@@ -20700,8 +20700,8 @@
     "ts": 1774782991153
   },
   "mercari:Nemeth:m35822307262": {
-    "price": 25200,
-    "ts": 1778009406536
+    "price": 25100,
+    "ts": 1778096820585
   },
   "mercari:Nemeth:2JLrqU5mus98HWm47m2AqR": {
     "price": 22420,
@@ -53838,5 +53838,25 @@
   "mercari:Nemeth:m75743142757": {
     "price": 15000,
     "ts": 1778089790645
+  },
+  "mercari:cerruti:m70749108012": {
+    "price": 3000,
+    "ts": 1778095922958
+  },
+  "mercari:CASEY CASEY:m47256447264": {
+    "price": 110000,
+    "ts": 1778096511210
+  },
+  "mercari:CASEY CASEY:m84814109137": {
+    "price": 109900,
+    "ts": 1778096513326
+  },
+  "mercari:CASEY CASEY:2JMXazDESmmTwVDzNGrsQg": {
+    "price": 31400,
+    "ts": 1778096515501
+  },
+  "mercari:m.a+:m51496698842": {
+    "price": 33000,
+    "ts": 1778097259002
   }
 }
