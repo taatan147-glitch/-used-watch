@@ -17552,8 +17552,8 @@
     "ts": 1774780815978
   },
   "mercari:DEVOA:m83273189379": {
-    "price": 42000,
-    "ts": 1777841208451
+    "price": 41000,
+    "ts": 1778112107281
   },
   "mercari:DEVOA:m93309500741": {
     "price": 25000,
@@ -26936,8 +26936,8 @@
     "ts": 1774894372414
   },
   "mercari:christophe lemaire:m14331718788": {
-    "price": 3000,
-    "ts": 1775817864910
+    "price": 2000,
+    "ts": 1778111759438
   },
   "mercari:final home:m16092189938": {
     "price": 15100,
@@ -34292,8 +34292,8 @@
     "ts": 1775280057281
   },
   "mercari:cerruti:m13149563504": {
-    "price": 7500,
-    "ts": 1776359045044
+    "price": 7100,
+    "ts": 1778111619742
   },
   "mercari:cerruti:2JPMYcECTt2D2CoA9ESjwE": {
     "price": 1800,
@@ -39768,8 +39768,8 @@
     "ts": 1776031493726
   },
   "mercari:GUIDI:m83273189379": {
-    "price": 42000,
-    "ts": 1777840674544
+    "price": 41000,
+    "ts": 1778111572710
   },
   "mercari:cerruti:m48078285734": {
     "price": 2500,
@@ -41208,8 +41208,8 @@
     "ts": 1776298251280
   },
   "mercari:cerruti:m39641610743": {
-    "price": 16300,
-    "ts": 1778032767061
+    "price": 16200,
+    "ts": 1778111621915
   },
   "mercari:ansnam:m57220548547": {
     "price": 150000,
@@ -43312,8 +43312,8 @@
     "ts": 1776670551000
   },
   "mercari:art comes first:m41019446482": {
-    "price": 14200,
-    "ts": 1778081708295
+    "price": 14100,
+    "ts": 1778111713365
   },
   "mercari:art comes first:m36413866344": {
     "price": 23900,
@@ -44624,8 +44624,8 @@
     "ts": 1776874069271
   },
   "mercari:CASEY CASEY:m62247422289": {
-    "price": 37000,
-    "ts": 1778082221757
+    "price": 35000,
+    "ts": 1778112197856
   },
   "mercari:Bergfabel:m68727986448": {
     "price": 19590,
@@ -49104,8 +49104,8 @@
     "ts": 1777629223284
   },
   "mercari:ansnam:m56524555591": {
-    "price": 32000,
-    "ts": 1777957487673
+    "price": 31000,
+    "ts": 1778111861907
   },
   "mercari:carpe diem:JfTuQmV5q7Hfn996REToa7": {
     "price": 3564,
@@ -50224,8 +50224,8 @@
     "ts": 1777808649497
   },
   "mercari:by Walid:m88576631113": {
-    "price": 28000,
-    "ts": 1778056139848
+    "price": 25000,
+    "ts": 1778112232038
   },
   "mercari:DAMIR DOMA:m65068759628": {
     "price": 24000,
@@ -52772,8 +52772,8 @@
     "ts": 1777966467773
   },
   "mercari:CAPERTICA:m65727065008": {
-    "price": 10500,
-    "ts": 1777966469965
+    "price": 10400,
+    "ts": 1778111234245
   },
   "mercari:CAPERTICA:2JKorKHupdnm66GHSzsk6t": {
     "price": 9680,
@@ -53882,5 +53882,9 @@
   "mercari:Walter Van Beirendonck:2JQqfvEDMpW8NWiD9hQRR7": {
     "price": 6050,
     "ts": 1778108682868
+  },
+  "mercari:augusta:m53368566509": {
+    "price": 3500,
+    "ts": 1778112292061
   }
 }
