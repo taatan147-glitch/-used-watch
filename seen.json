@@ -23416,8 +23416,8 @@
     "ts": 1774793961397
   },
   "mercari:Paul Harnden:m82617654514": {
-    "price": 251450,
-    "ts": 1778131871312
+    "price": 250890,
+    "ts": 1778197938774
   },
   "mercari:Paul Harnden:2JMvDr9mgXEhoTiS8KdKeG": {
     "price": 62000,
@@ -41572,8 +41572,8 @@
     "ts": 1777465575105
   },
   "mercari:CASEY CASEY:m43934819702": {
-    "price": 8500,
-    "ts": 1778176472374
+    "price": 8000,
+    "ts": 1778198682591
   },
   "mercari:CASEY CASEY:m10429278906": {
     "price": 33000,
@@ -43312,8 +43312,8 @@
     "ts": 1776670551000
   },
   "mercari:art comes first:m41019446482": {
-    "price": 14100,
-    "ts": 1778111713365
+    "price": 14000,
+    "ts": 1778198201269
   },
   "mercari:art comes first:m36413866344": {
     "price": 23800,
@@ -43712,8 +43712,8 @@
     "ts": 1776735339865
   },
   "mercari:BERNHARD WILLHELM:m99436206773": {
-    "price": 15000,
-    "ts": 1776735867992
+    "price": 13000,
+    "ts": 1778198989214
   },
   "mercari:Second/Layer:m23026603149": {
     "price": 7500,
@@ -46212,16 +46212,16 @@
     "ts": 1777142288820
   },
   "mercari:incarnation:m56478105355": {
-    "price": 140000,
-    "ts": 1777687092664
+    "price": 130000,
+    "ts": 1778198470302
   },
   "mercari:DEVOA:m44044253564": {
-    "price": 9000,
-    "ts": 1777687216060
+    "price": 8500,
+    "ts": 1778198595249
   },
   "mercari:DEVOA:m66360248210": {
-    "price": 9000,
-    "ts": 1777687218236
+    "price": 8500,
+    "ts": 1778198592961
   },
   "mercari:CASEY CASEY:rMxzpzXstDiKa8dWQkvyDY": {
     "price": 57700,
@@ -46452,8 +46452,8 @@
     "ts": 1777197335898
   },
   "mercari:ensou:m11864341224": {
-    "price": 38000,
-    "ts": 1777197413173
+    "price": 36000,
+    "ts": 1778198546489
   },
   "mercari:Bergfabel:m77743881564": {
     "price": 39000,
@@ -50080,8 +50080,8 @@
     "ts": 1778132008054
   },
   "mercari:cerruti:m98866503105": {
-    "price": 2492,
-    "ts": 1778182585425
+    "price": 2392,
+    "ts": 1778198109595
   },
   "mercari:cerruti:2JQg4WRuSB3S2TLtDaeCVs": {
     "price": 7805,
@@ -50424,8 +50424,8 @@
     "ts": 1777859656564
   },
   "mercari:cerruti:m91379281339": {
-    "price": 13980,
-    "ts": 1777859707432
+    "price": 12980,
+    "ts": 1778198104263
   },
   "mercari:CHRISTIAN PEAU:2JQi9D5e8jdjBDibuAmqwx": {
     "price": 27500,
@@ -53836,8 +53836,8 @@
     "ts": 1778088590873
   },
   "mercari:Nemeth:m75743142757": {
-    "price": 14999,
-    "ts": 1778176836273
+    "price": 13999,
+    "ts": 1778198972554
   },
   "mercari:cerruti:m70749108012": {
     "price": 3000,
@@ -54346,5 +54346,9 @@
   "mercari:GUIDI:m81044271578": {
     "price": 139800,
     "ts": 1778194918173
+  },
+  "mercari:GUIDI:m53505224546": {
+    "price": 118000,
+    "ts": 1778198058416
   }
 }
