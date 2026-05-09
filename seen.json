@@ -1900,8 +1900,8 @@
     "ts": 1774625222951
   },
   "mercari:andrew mackenzie:m68146936382": {
-    "price": 19800,
-    "ts": 1778331862362
+    "price": 19700,
+    "ts": 1778345546993
   },
   "mercari:andrew mackenzie:m99250568146": {
     "price": 3980,
@@ -10009,8 +10009,8 @@
     "ts": 1774629929343
   },
   "2ndstreet:Camiel Fortgens:2337881064721": {
-    "price": 20,
-    "ts": 1778122418390
+    "price": 11352,
+    "ts": 1778347212421
   },
   "2ndstreet:Camiel Fortgens:2338554478050": {
     "price": 54890,
@@ -24197,8 +24197,8 @@
     "ts": 1775311852979
   },
   "mercari:BONEVILLE:m73887749773": {
-    "price": 94300,
-    "ts": 1777975695048
+    "price": 94200,
+    "ts": 1778345575084
   },
   "mercari:BONEVILLE:2JMifnWEAAAYw4LRw5hFnP": {
     "price": 10340,
@@ -25997,8 +25997,8 @@
     "ts": 1774868544127
   },
   "mercari:cerruti:m43359376583": {
-    "price": 1580,
-    "ts": 1778236121265
+    "price": 1980,
+    "ts": 1778345518761
   },
   "mercari:cerruti:m87992211802": {
     "price": 1800,
@@ -43970,8 +43970,8 @@
     "ts": 1776768000487
   },
   "mercari:BONEVILLE:m77204200384": {
-    "price": 14000,
-    "ts": 1778175914974
+    "price": 13500,
+    "ts": 1778345575084
   },
   "mercari:ansnam:2JQ9StPqz8QRyQdVQ6NSye": {
     "price": 20400,
@@ -45359,8 +45359,8 @@
     "ts": 1777021527823
   },
   "mercari:BONEVILLE:m47421891118": {
-    "price": 9777,
-    "ts": 1778251599328
+    "price": 9666,
+    "ts": 1778345575084
   },
   "trefac:BONEVILLE:3008010420969051": {
     "price": 22000,
@@ -45691,8 +45691,8 @@
     "ts": 1777046590370
   },
   "mercari:carpe diem:m68365983526": {
-    "price": 14000,
-    "ts": 1778332193719
+    "price": 13900,
+    "ts": 1778345862790
   },
   "mercari:ensou:m88866589594": {
     "price": 6900,
@@ -46167,8 +46167,9 @@
     "ts": 1777127068684
   },
   "mercari:Walter Van Beirendonck:m12545969709": {
-    "price": 37780,
-    "ts": 1778258751351
+    "price": 36780,
+    "lastNotifiedPrice": 36780,
+    "ts": 1778346235398
   },
   "mercari:HUSSEIN CHALAYAN:m86467742877": {
     "price": 28800,
@@ -49721,8 +49722,8 @@
     "ts": 1777716148264
   },
   "mercari:Poell:m92642620724": {
-    "price": 77100,
-    "ts": 1777716532076
+    "price": 77000,
+    "ts": 1778346094249
   },
   "2ndstreet:thom krom:2338401438183": {
     "price": 14190,
@@ -49741,8 +49742,8 @@
     "ts": 1777716848398
   },
   "mercari:Carol Christian Poell:m92642620724": {
-    "price": 77100,
-    "ts": 1777717032632
+    "price": 77000,
+    "ts": 1778346545247
   },
   "mercari:m.a+:m25039002570": {
     "price": 150000,
@@ -50357,8 +50358,9 @@
     "ts": 1778333807079
   },
   "mercari:C DIEM:m65843858389": {
-    "price": 24000,
-    "ts": 1778332175768
+    "price": 23000,
+    "lastNotifiedPrice": 23000,
+    "ts": 1778345845979
   },
   "mercari:DEVOA:m18608960623": {
     "price": 14000,
@@ -53531,8 +53533,8 @@
     "ts": 1778045399648
   },
   "mercari:KAVAL:m40133109082": {
-    "price": 50500,
-    "ts": 1778055355155
+    "price": 50300,
+    "ts": 1778345420577
   },
   "mercari:KAVAL:m75410374706": {
     "price": 50600,
@@ -54838,8 +54840,8 @@
     "ts": 1778257992676
   },
   "mercari:Poell:m45263026902": {
-    "price": 35000,
-    "ts": 1778332443012
+    "price": 35100,
+    "ts": 1778346094249
   },
   "mercari:augusta:m37093927033": {
     "price": 23000,
@@ -54851,8 +54853,8 @@
     "ts": 1778337653038
   },
   "mercari:Carol Christian Poell:m45263026902": {
-    "price": 35000,
-    "ts": 1778332915732
+    "price": 35100,
+    "ts": 1778346545247
   },
   "mercari:cerruti:m90022289043": {
     "price": 2180,
@@ -55387,5 +55389,29 @@
   "mercari:augusta:m71544307296": {
     "price": 900,
     "ts": 1778342666724
+  },
+  "mercari:ISABEL BENENATO:2JQ62rfPsqTXQVwihWmacE": {
+    "price": 34800,
+    "ts": 1778345060297
+  },
+  "mercari:ISABEL BENENATO:2JQ63eDzDC9idxc62gEJBW": {
+    "price": 59800,
+    "ts": 1778345062627
+  },
+  "mercari:ISABEL BENENATO:2JQ63d3Gc9sntGrnuXqKXb": {
+    "price": 53800,
+    "ts": 1778345064812
+  },
+  "mercari:ISABEL BENENATO:2JQ63PygMdhJN6N8kaGDbF": {
+    "price": 55800,
+    "ts": 1778345066965
+  },
+  "mercari:ISABEL BENENATO:2JQ63PsGynpmmdGnhTNGbR": {
+    "price": 55800,
+    "ts": 1778345069305
+  },
+  "mercari:Paul Harnden:m58694664159": {
+    "price": 220000,
+    "ts": 1778345361468
   }
 }
