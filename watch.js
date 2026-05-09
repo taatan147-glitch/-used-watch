@@ -121,20 +121,56 @@ async function main() {
           continue;
         }
 
-        // 値下げ判定（価格が記録されていて、かつ下がっている場合）
+        // 値下げ判定
         const prevPrice = existing.price || 0;
         const curPrice = item.price || 0;
-        if (prevPrice > 0 && curPrice > 0 && curPrice < prevPrice) {
-          try {
-            await sendDiscord(webhookUrl, item, rule, "price_down", prevPrice);
-            seen[key] = { price: curPrice, ts: Date.now() };
-            notified++;
-            console.log(`  → 値下げ通知: ${item.title} ¥${prevPrice}→¥${curPrice}`);
-            await sleep(2000);
-          } catch (e) {
-            console.error(`  → Discord送信エラー: ${e.message}`);
+
+        if (prevPrice > 0 && curPrice > 0) {
+          if (curPrice > prevPrice) {
+            // 値上がり → 通知しない・記録だけ更新（セカストのセール終了など）
+            seen[key] = { ...existing, price: curPrice, ts: Date.now() };
+            console.log(`  → 値上がり（記録更新のみ）: ${item.title} ¥${prevPrice}→¥${curPrice}`);
+            continue;
           }
-          continue;
+
+          if (curPrice < prevPrice) {
+            const drop = prevPrice - curPrice;
+
+            // メルカリは累計1000円以上値下がりした時のみ通知
+            if (site === "mercari") {
+              const lastNotifiedPrice = existing.lastNotifiedPrice || prevPrice;
+              const totalDrop = lastNotifiedPrice - curPrice;
+              if (totalDrop < 1000) {
+                // 累計未達 → 記録更新のみ
+                seen[key] = { ...existing, price: curPrice, ts: Date.now() };
+                console.log(`  → メルカリ累計値下げ ${totalDrop}円（1000円未満のためスキップ）: ${item.title}`);
+                continue;
+              }
+              // 累計1000円以上 → 通知＋lastNotifiedPriceをリセット
+              try {
+                await sendDiscord(webhookUrl, item, rule, "price_down", lastNotifiedPrice);
+                seen[key] = { price: curPrice, lastNotifiedPrice: curPrice, ts: Date.now() };
+                notified++;
+                console.log(`  → メルカリ累計値下げ通知 -${totalDrop}円: ${item.title}`);
+                await sleep(2000);
+              } catch (e) {
+                console.error(`  → Discord送信エラー: ${e.message}`);
+              }
+              continue;
+            }
+
+            // セカスト・トレファクは即通知
+            try {
+              await sendDiscord(webhookUrl, item, rule, "price_down", prevPrice);
+              seen[key] = { price: curPrice, lastNotifiedPrice: curPrice, ts: Date.now() };
+              notified++;
+              console.log(`  → 値下げ通知: ${item.title} ¥${prevPrice}→¥${curPrice}`);
+              await sleep(2000);
+            } catch (e) {
+              console.error(`  → Discord送信エラー: ${e.message}`);
+            }
+            continue;
+          }
         }
 
         skipped++;
