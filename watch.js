@@ -292,10 +292,17 @@ async function search2ndStreet(page, rule) {
       const bodyText = body?.textContent?.trim().replace(/\s+/g, " ") || "";
       const titleFromHtml = bodyText.split(/サイズ|商品の状態/)[0].trim();
 
-      // 価格
-      const priceEl = card.querySelector("[class*=price], [class*=Price]");
-      const priceMatch = (priceEl?.textContent || "").match(/([\d,]+)/);
-      const price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
+      // 価格：itemprop="price"のcontent属性が最も正確（20%OFFバッジの誤取得を防ぐ）
+      const priceElWithContent = card.querySelector("[itemprop='price'][content]");
+      let price = 0;
+      if (priceElWithContent) {
+        price = Number(priceElWithContent.getAttribute("content")) || 0;
+      } else {
+        // fallback: priceNumクラスのテキスト（先頭の数値のみ）
+        const priceNumEl = card.querySelector("[class*=priceNum], [class*=price-num]");
+        const priceMatch = (priceNumEl?.textContent || "").match(/^[\s¥￥]*([\d,]+)/);
+        price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
+      }
 
       if (url) {
         results.push({ site: "2ndstreet", id: goodsId, titleFromHtml, price, url, thumbnail });
