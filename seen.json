@@ -19130,8 +19130,8 @@
     "ts": 1775172172659
   },
   "mercari:augusta:m27490328728": {
-    "price": 1158,
-    "ts": 1777916441774
+    "price": 1058,
+    "ts": 1778349958015
   },
   "mercari:augusta:m34504214237": {
     "price": 3600,
@@ -46308,8 +46308,8 @@
     "ts": 1777167168230
   },
   "mercari:MITTAN:m34335595943": {
-    "price": 20580,
-    "ts": 1778257117672
+    "price": 20480,
+    "ts": 1778349132374
   },
   "mercari:GUIDI:m76688452700": {
     "price": 138000,
@@ -48825,8 +48825,8 @@
     "ts": 1777589607406
   },
   "mercari:augusta:m12848412575": {
-    "price": 4280,
-    "ts": 1778176590452
+    "price": 4080,
+    "ts": 1778349958015
   },
   "mercari:Camiel Fortgens:2JQaHGSydiDgFnQ4RoBUW5": {
     "price": 14800,
@@ -52304,8 +52304,8 @@
     "ts": 1777966108244
   },
   "mercari:ISABEL BENENATO:2JQiNXyHsAsPUUtGi45F85": {
-    "price": 113800,
-    "ts": 1777966110618
+    "price": 114800,
+    "ts": 1778348822989
   },
   "mercari:ISABEL BENENATO:D7puqatvFVqqzZNEuRDZSB": {
     "price": 29800,
@@ -54828,8 +54828,8 @@
     "ts": 1778344001429
   },
   "mercari:cerruti:m95406870453": {
-    "price": 24999,
-    "ts": 1778257988302
+    "price": 24899,
+    "ts": 1778349282064
   },
   "mercari:cerruti:2JQv7oKRRXEaiE7j6FeR7i": {
     "price": 3428,
@@ -54840,8 +54840,8 @@
     "ts": 1778257992676
   },
   "mercari:Poell:m45263026902": {
-    "price": 35100,
-    "ts": 1778346094249
+    "price": 35200,
+    "ts": 1778349882573
   },
   "mercari:augusta:m37093927033": {
     "price": 23000,
@@ -54853,8 +54853,8 @@
     "ts": 1778337653038
   },
   "mercari:Carol Christian Poell:m45263026902": {
-    "price": 35100,
-    "ts": 1778346545247
+    "price": 35200,
+    "ts": 1778350347242
   },
   "mercari:cerruti:m90022289043": {
     "price": 2180,
@@ -55413,5 +55413,9 @@
   "mercari:Paul Harnden:m58694664159": {
     "price": 220000,
     "ts": 1778345361468
+  },
+  "mercari:GUIDI:m86865590494": {
+    "price": 158000,
+    "ts": 1778349236025
   }
 }
