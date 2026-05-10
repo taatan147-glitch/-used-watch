@@ -22838,8 +22838,9 @@
     "ts": 1778333807079
   },
   "mercari:Johan Ku:2JNdcZhVrMzZb3pQWQJAab": {
-    "price": 2980,
-    "ts": 1778434004005
+    "price": 1788,
+    "lastNotifiedPrice": 1788,
+    "ts": 1778437535524
   },
   "mercari:Ordinary People:m36752392876": {
     "price": 0,
@@ -27265,8 +27266,8 @@
     "ts": 1774937081466
   },
   "mercari:cerruti:m72766001664": {
-    "price": 9600,
-    "ts": 1778002072685
+    "price": 9200,
+    "ts": 1778435628525
   },
   "mercari:cerruti:m65572393715": {
     "price": 400,
@@ -35608,9 +35609,9 @@
     "ts": 1777957447315
   },
   "mercari:ansnam:soNnxsBoNM37dC5gAQEsp9": {
-    "price": 18128,
+    "price": 22660,
     "lastNotifiedPrice": 18128,
-    "ts": 1778363336297
+    "ts": 1778435864613
   },
   "mercari:incarnation:m51007412816": {
     "price": 6500,
@@ -39099,8 +39100,8 @@
     "ts": 1777284643355
   },
   "mercari:Poeme Bohemien:2JPgh9x6ZSkVNfm62Zazm4": {
-    "price": 21700,
-    "ts": 1778175967965
+    "price": 21200,
+    "ts": 1778435730628
   },
   "mercari:final home:m70538373586": {
     "price": 8800,
@@ -53870,9 +53871,9 @@
     "ts": 1778258739179
   },
   "mercari:DAMIR DOMA:2JQpR6QdBgk2GjpCPsiMZn": {
-    "price": 24680,
+    "price": 28064,
     "lastNotifiedPrice": 24680,
-    "ts": 1778432896234
+    "ts": 1778436473918
   },
   "2ndstreet:TEO+NG:2319122805652": {
     "price": 11990,
@@ -53989,8 +53990,8 @@
     "ts": 1778082326015
   },
   "mercari:HUSSEIN CHALAYAN:m98117174923": {
-    "price": 13900,
-    "ts": 1778319215837
+    "price": 13800,
+    "ts": 1778436416956
   },
   "mercari:BERNHARD WILLHELM:m19820161717": {
     "price": 48000,
@@ -56193,5 +56194,9 @@
   "mercari:CASEY CASEY:2JNH6Yagpa2orFErVZuez4": {
     "price": 42900,
     "ts": 1778432608025
+  },
+  "mercari:augusta:m59647331599": {
+    "price": 6890,
+    "ts": 1778436289166
   }
 }
