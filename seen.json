@@ -22853,9 +22853,9 @@
     "ts": 1778333807079
   },
   "mercari:Johan Ku:2JNdcZhVrMzZb3pQWQJAab": {
-    "price": 2980,
+    "price": 1688,
     "lastNotifiedPrice": 1788,
-    "ts": 1778524371065
+    "ts": 1778531173685
   },
   "mercari:Ordinary People:m36752392876": {
     "price": 0,
@@ -27284,8 +27284,8 @@
     "ts": 1774937081466
   },
   "mercari:cerruti:m72766001664": {
-    "price": 9200,
-    "ts": 1778435628525
+    "price": 9100,
+    "ts": 1778529191608
   },
   "mercari:cerruti:m65572393715": {
     "price": 400,
@@ -38394,8 +38394,8 @@
     "ts": 1776164172103
   },
   "mercari:cerruti:m95015473247": {
-    "price": 4780,
-    "ts": 1777710252294
+    "price": 4480,
+    "ts": 1778529191608
   },
   "mercari:cerruti:2JPdhaz7RnKaakSwpeVmnR": {
     "price": 5907,
@@ -42381,8 +42381,8 @@
     "ts": 1778157593891
   },
   "mercari:andrew mackenzie:m62885046270": {
-    "price": 2999,
-    "ts": 1778318392470
+    "price": 2799,
+    "ts": 1778529221762
   },
   "mercari:final home:m22833481839": {
     "price": 18000,
@@ -53113,8 +53113,8 @@
     "ts": 1777966812095
   },
   "mercari:golem:2JQmGq7o5zDyrg5fHcxYwP": {
-    "price": 1118,
-    "ts": 1778418267425
+    "price": 1111,
+    "ts": 1778529162069
   },
   "mercari:cerruti:m77755594606": {
     "price": 1750,
@@ -56127,8 +56127,9 @@
     "ts": 1778418244068
   },
   "mercari:GUIDI:m65310887960": {
-    "price": 234800,
-    "ts": 1778418246190
+    "price": 229800,
+    "lastNotifiedPrice": 229800,
+    "ts": 1778529145343
   },
   "mercari:GUIDI:m20839952136": {
     "price": 120000,
