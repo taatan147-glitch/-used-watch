@@ -42125,8 +42125,9 @@
     "ts": 1776437930610
   },
   "mercari:CASEY CASEY:m84497831837": {
-    "price": 58000,
-    "ts": 1776438535054
+    "price": 55000,
+    "lastNotifiedPrice": 55000,
+    "ts": 1778535125882
   },
   "mercari:CASEY CASEY:m31111496615": {
     "price": 45000,
@@ -49186,8 +49187,8 @@
     "ts": 1777623780744
   },
   "mercari:BERNHARD WILLHELM:2JQb8aqRsBejFUvoYQcUGy": {
-    "price": 59700,
-    "ts": 1778493798074
+    "price": 59800,
+    "ts": 1778535449305
   },
   "mercari:masnada:m19666231250": {
     "price": 15000,
@@ -53874,8 +53875,9 @@
     "ts": 1778083579928
   },
   "mercari:Atelier Inscrire:m36998421469": {
-    "price": 32000,
-    "ts": 1778065110296
+    "price": 30000,
+    "lastNotifiedPrice": 30000,
+    "ts": 1778534031085
   },
   "mercari:ISABEL BENENATO:m35183611784": {
     "price": 37800,
@@ -55128,8 +55130,9 @@
     "ts": 1778292734114
   },
   "mercari:Boris Bidjan:m67420289656": {
-    "price": 27500,
-    "ts": 1778292784766
+    "price": 25500,
+    "lastNotifiedPrice": 25500,
+    "ts": 1778535174712
   },
   "mercari:w&lt:m93269363742": {
     "price": 38000,
@@ -56630,8 +56633,9 @@
     "ts": 1778504054622
   },
   "mercari:Poell:m96309094288": {
-    "price": 300000,
-    "ts": 1778504414301
+    "price": 280000,
+    "lastNotifiedPrice": 280000,
+    "ts": 1778535144000
   },
   "mercari:augusta:m51059967929": {
     "price": 1300,
@@ -56646,8 +56650,9 @@
     "ts": 1778504560794
   },
   "mercari:Carol Christian Poell:m96309094288": {
-    "price": 300000,
-    "ts": 1778504894598
+    "price": 280000,
+    "lastNotifiedPrice": 280000,
+    "ts": 1778535621376
   },
   "mercari:BLS Hafnia:m23907378915": {
     "price": 2300,
@@ -56720,5 +56725,9 @@
   "mercari:Camiel Fortgens:m96533661193": {
     "price": 23300,
     "ts": 1778524140997
+  },
+  "mercari:carpe diem:m39634523148": {
+    "price": 1111,
+    "ts": 1778534899385
   }
 }
