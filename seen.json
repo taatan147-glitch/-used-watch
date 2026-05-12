@@ -4295,8 +4295,9 @@
     "ts": 1774626510303
   },
   "mercari:DEVOA:m56970275755": {
-    "price": 42800,
-    "ts": 1778332336229
+    "price": 41800,
+    "lastNotifiedPrice": 41800,
+    "ts": 1778611749700
   },
   "mercari:DEVOA:m82974890142": {
     "price": 18000,
@@ -22873,9 +22874,9 @@
     "ts": 1778333807079
   },
   "mercari:Johan Ku:2JNdcZhVrMzZb3pQWQJAab": {
-    "price": 1688,
+    "price": 2980,
     "lastNotifiedPrice": 1788,
-    "ts": 1778531173685
+    "ts": 1778613321276
   },
   "mercari:Ordinary People:m36752392876": {
     "price": 0,
@@ -32826,8 +32827,8 @@
     "ts": 1775196355688
   },
   "mercari:carpe diem:sT9STsNfEiaijPdGCDZXC7": {
-    "price": 405,
-    "ts": 1778515824803
+    "price": 401,
+    "ts": 1778611612813
   },
   "mercari:carpe diem:2JMCNZuvGiemKrQbWFRdsS": {
     "price": 14480,
@@ -41144,8 +41145,8 @@
     "ts": 1776265456842
   },
   "mercari:cerruti:m46077146152": {
-    "price": 14100,
-    "ts": 1777980149528
+    "price": 13500,
+    "ts": 1778611262399
   },
   "mercari:cerruti:m15149769521": {
     "price": 8000,
@@ -44228,8 +44229,8 @@
     "ts": 1776783271154
   },
   "mercari:Paul Harnden:m40251715024": {
-    "price": 20700,
-    "ts": 1778602902981
+    "price": 21000,
+    "ts": 1778611103350
   },
   "mercari:ensou:m37336272631": {
     "price": 5000,
@@ -46475,8 +46476,8 @@
     "ts": 1777167168230
   },
   "mercari:MITTAN:m34335595943": {
-    "price": 20380,
-    "ts": 1778522298952
+    "price": 20280,
+    "ts": 1778611120414
   },
   "mercari:GUIDI:m76688452700": {
     "price": 138000,
@@ -50554,8 +50555,9 @@
     "ts": 1778319950742
   },
   "mercari:Song for the Mute:m23788318215": {
-    "price": 10000,
-    "ts": 1778224235219
+    "price": 7000,
+    "lastNotifiedPrice": 7000,
+    "ts": 1778613131566
   },
   "mercari:Song for the Mute:2JQgsVcY4jAtuZ57WjrQJ7": {
     "price": 43314,
@@ -56684,9 +56686,9 @@
     "ts": 1778503913288
   },
   "mercari:final home:m51871358002": {
-    "price": 29800,
-    "lastNotifiedPrice": 29800,
-    "ts": 1778594808787
+    "price": 24800,
+    "lastNotifiedPrice": 24800,
+    "ts": 1778611470247
   },
   "mercari:ansnam:m49333922093": {
     "price": 18000,
@@ -57340,8 +57342,9 @@
     "ts": 1778596407186
   },
   "mercari:ISABEL BENENATO:m29961845450": {
-    "price": 48000,
-    "ts": 1778602606464
+    "price": 42000,
+    "lastNotifiedPrice": 42000,
+    "ts": 1778610820305
   },
   "mercari:GUIDI:m87816010832": {
     "price": 209000,
@@ -57370,5 +57373,13 @@
   "mercari:Ordinary People:2JR7KtKsMmTqVbwEGyWfaD": {
     "price": 12420,
     "ts": 1778605059595
+  },
+  "mercari:MITTAN:m64732864788": {
+    "price": 14500,
+    "ts": 1778611118413
+  },
+  "mercari:Professor.E:m13529237043": {
+    "price": 28500,
+    "ts": 1778612858451
   }
 }
