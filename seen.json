@@ -3288,8 +3288,8 @@
     "ts": 1778332151887
   },
   "mercari:individual sentiments:m72241723599": {
-    "price": 31400,
-    "ts": 1778515785369
+    "price": 31300,
+    "ts": 1778618476971
   },
   "mercari:individual sentiments:m49702971774": {
     "price": 357,
@@ -22874,9 +22874,9 @@
     "ts": 1778333807079
   },
   "mercari:Johan Ku:2JNdcZhVrMzZb3pQWQJAab": {
-    "price": 2980,
+    "price": 1788,
     "lastNotifiedPrice": 1788,
-    "ts": 1778613321276
+    "ts": 1778620092082
   },
   "mercari:Ordinary People:m36752392876": {
     "price": 0,
@@ -25040,9 +25040,9 @@
     "ts": 1778332336229
   },
   "mercari:DEVOA:2JMHL6ngXg987CYTqwYRjA": {
-    "price": 37900,
+    "price": 42125,
     "lastNotifiedPrice": 37900,
-    "ts": 1778400966832
+    "ts": 1778618647230
   },
   "mercari:DEVOA:2JMxAtVRXRSqEfUQGhi4CA": {
     "price": 13900,
@@ -43344,8 +43344,8 @@
     "ts": 1777035619815
   },
   "mercari:MITTAN:m28024768259": {
-    "price": 16280,
-    "ts": 1778515315039
+    "price": 16180,
+    "ts": 1778618025136
   },
   "mercari:GUIDI:m34769602200": {
     "price": 98000,
@@ -45250,8 +45250,8 @@
     "ts": 1776957929853
   },
   "mercari:DEVOA:2JLR8vtUAYz4MkE5H92n76": {
-    "price": 85500,
-    "ts": 1778392167338
+    "price": 95000,
+    "ts": 1778618647230
   },
   "mercari:DEVOA:2JMe4BCAYpkKWDy3kGU2k7": {
     "price": 51600,
@@ -53877,8 +53877,8 @@
     "ts": 1778055326645
   },
   "mercari:KAVAL:m32800188690": {
-    "price": 6800,
-    "ts": 1778457366329
+    "price": 6460,
+    "ts": 1778618068312
   },
   "mercari:GUIDI:m87189327272": {
     "price": 25000,
@@ -54697,9 +54697,9 @@
     "ts": 1778334023067
   },
   "mercari:Portaille:m17074040704": {
-    "price": 15100,
+    "price": 15200,
     "lastNotifiedPrice": 15100,
-    "ts": 1778594379648
+    "ts": 1778617995953
   },
   "mercari:MITTAN:m73969907240": {
     "price": 19800,
@@ -56984,9 +56984,9 @@
     "ts": 1778565564654
   },
   "mercari:Nemeth:m41781507827": {
-    "price": 50000,
-    "lastNotifiedPrice": 50000,
-    "ts": 1778595509737
+    "price": 48000,
+    "lastNotifiedPrice": 48000,
+    "ts": 1778619024868
   },
   "mercari:BERNHARD WILLHELM:m29832887483": {
     "price": 18000,
@@ -57381,5 +57381,13 @@
   "mercari:Professor.E:m13529237043": {
     "price": 28500,
     "ts": 1778612858451
+  },
+  "mercari:HALLELUJAH:2JR7mzFLu8D8iegbuHv8gn": {
+    "price": 5203,
+    "ts": 1778617587707
+  },
+  "mercari:D.HYGEN:m50979245576": {
+    "price": 20500,
+    "ts": 1778619272721
   }
 }
