@@ -22898,9 +22898,9 @@
     "ts": 1778333807079
   },
   "mercari:Johan Ku:2JNdcZhVrMzZb3pQWQJAab": {
-    "price": 1788,
+    "price": 2980,
     "lastNotifiedPrice": 1788,
-    "ts": 1778620092082
+    "ts": 1778703267232
   },
   "mercari:Ordinary People:m36752392876": {
     "price": 0,
@@ -39188,8 +39188,8 @@
     "ts": 1777284643355
   },
   "mercari:Poeme Bohemien:2JPgh9x6ZSkVNfm62Zazm4": {
-    "price": 20600,
-    "ts": 1778522554862
+    "price": 20100,
+    "ts": 1778701393391
   },
   "mercari:final home:m70538373586": {
     "price": 8800,
@@ -40418,8 +40418,8 @@
     "ts": 1776111910133
   },
   "mercari:ensou:m55622027345": {
-    "price": 1979,
-    "ts": 1776112103128
+    "price": 1749,
+    "ts": 1778701736319
   },
   "mercari:Boris Bidjan:m84852178488": {
     "price": 57300,
@@ -45573,16 +45573,16 @@
     "ts": 1777021623666
   },
   "mercari:avec ces freres:m79413474665": {
-    "price": 4800,
-    "ts": 1778681911846
+    "price": 5500,
+    "ts": 1778701364236
   },
   "mercari:art comes first:m15335894445": {
     "price": 13500,
     "ts": 1778432108468
   },
   "mercari:art comes first:m79413474665": {
-    "price": 4800,
-    "ts": 1778681927835
+    "price": 5500,
+    "ts": 1778701378563
   },
   "2ndstreet:art comes first:2337881279668": {
     "price": 8690,
@@ -57858,8 +57858,8 @@
     "ts": 1778672926860
   },
   "mercari:augusta:m83871199358": {
-    "price": 700,
-    "ts": 1778693797672
+    "price": 800,
+    "ts": 1778701969401
   },
   "mercari:augusta:2JLTW7mEzMPEYnquo7uGxr": {
     "price": 1952,
@@ -57902,8 +57902,9 @@
     "ts": 1778681035430
   },
   "mercari:Paul Harnden:m27828241604": {
-    "price": 70000,
-    "ts": 1778681617003
+    "price": 65000,
+    "lastNotifiedPrice": 65000,
+    "ts": 1778701122103
   },
   "mercari:Paul Harnden:m67825150106": {
     "price": 84999,
@@ -58004,5 +58005,9 @@
   "mercari:incarnation:m16497854208": {
     "price": 199500,
     "ts": 1778693493764
+  },
+  "mercari:cerruti:m76602304571": {
+    "price": 2200,
+    "ts": 1778701289886
   }
 }
