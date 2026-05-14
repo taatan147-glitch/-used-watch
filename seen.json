@@ -5461,8 +5461,8 @@
     "ts": 1778332503273
   },
   "mercari:Bergfabel:m67012516704": {
-    "price": 43600,
-    "ts": 1778585859239
+    "price": 43500,
+    "ts": 1778717517333
   },
   "mercari:Bergfabel:m79120580800": {
     "price": 2500,
@@ -25256,8 +25256,8 @@
     "ts": 1777073573886
   },
   "mercari:unravel project:m65622536483": {
-    "price": 14700,
-    "ts": 1778465194724
+    "price": 14600,
+    "ts": 1778716605327
   },
   "mercari:unravel project:2JLGqAEsbB776AB2NE7BHz": {
     "price": 9280,
@@ -25753,8 +25753,8 @@
     "ts": 1776557482929
   },
   "mercari:augusta:m79749234808": {
-    "price": 4700,
-    "ts": 1774852735752
+    "price": 4400,
+    "ts": 1778717531942
   },
   "mercari:augusta:m12722745718": {
     "price": 1400,
@@ -45578,8 +45578,8 @@
     "ts": 1778701364236
   },
   "mercari:art comes first:m15335894445": {
-    "price": 13500,
-    "ts": 1778432108468
+    "price": 13000,
+    "ts": 1778716948140
   },
   "mercari:art comes first:m79413474665": {
     "price": 5500,
@@ -53796,9 +53796,9 @@
     "ts": 1778033536559
   },
   "mercari:DAMIR DOMA:m16888942723": {
-    "price": 20000,
+    "price": 19500,
     "lastNotifiedPrice": 20000,
-    "ts": 1778653194997
+    "ts": 1778717718490
   },
   "mercari:Ordinary People:2JQoFnnCASvnG5HAZdmFgU": {
     "price": 1500,
@@ -54745,14 +54745,14 @@
     "ts": 1778206742004
   },
   "mercari:BERNHARD WILLHELM:m99070485043": {
-    "price": 47000,
-    "lastNotifiedPrice": 47000,
-    "ts": 1778682775485
+    "price": 46000,
+    "lastNotifiedPrice": 46000,
+    "ts": 1778717754516
   },
   "mercari:BERNHARD WILLHELM:m55926925616": {
-    "price": 44000,
-    "lastNotifiedPrice": 44000,
-    "ts": 1778682777670
+    "price": 43000,
+    "lastNotifiedPrice": 43000,
+    "ts": 1778717750272
   },
   "mercari:John Alexander Skelton:m79751588511": {
     "price": 99999,
@@ -55406,9 +55406,9 @@
     "ts": 1778312341210
   },
   "mercari:BERNHARD WILLHELM:m24193726377": {
-    "price": 43000,
-    "lastNotifiedPrice": 43000,
-    "ts": 1778682769014
+    "price": 42000,
+    "lastNotifiedPrice": 42000,
+    "ts": 1778717752384
   },
   "mercari:BERNHARD WILLHELM:m29563212213": {
     "price": 33000,
@@ -58016,5 +58016,33 @@
   "mercari:augusta:m47027910288": {
     "price": 400,
     "ts": 1778708288715
+  },
+  "mercari:KAVAL:m13701131406": {
+    "price": 49999,
+    "ts": 1778716750857
+  },
+  "mercari:GUIDI:m95789969848": {
+    "price": 59999,
+    "ts": 1778716812155
+  },
+  "mercari:ensou:m73715346340": {
+    "price": 78000,
+    "ts": 1778717298396
+  },
+  "mercari:ensou:m19840295407": {
+    "price": 3980,
+    "ts": 1778717300592
+  },
+  "mercari:CASEY CASEY:2JLNLopwoXFT4n7qCvR75S": {
+    "price": 28800,
+    "ts": 1778717436214
+  },
+  "mercari:Nemeth:m78308438342": {
+    "price": 12800,
+    "ts": 1778717733231
+  },
+  "mercari:Professor.E:m83339738804": {
+    "price": 35000,
+    "ts": 1778718351344
   }
 }
