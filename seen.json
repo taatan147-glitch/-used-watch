@@ -15913,8 +15913,8 @@
     "ts": 1776949495259
   },
   "mercari:cerruti:m22135131115": {
-    "price": 3180,
-    "ts": 1778652265203
+    "price": 3080,
+    "ts": 1778867412230
   },
   "mercari:cerruti:m63501502969": {
     "price": 400,
@@ -15925,8 +15925,8 @@
     "ts": 1778681820627
   },
   "mercari:cerruti:m90722236276": {
-    "price": 3480,
-    "ts": 1778751471550
+    "price": 3380,
+    "ts": 1778867412230
   },
   "mercari:cerruti:m25159145970": {
     "price": 880,
@@ -55451,9 +55451,9 @@
     "ts": 1778311149229
   },
   "mercari:MITTAN:m19308150335": {
-    "price": 36000,
-    "lastNotifiedPrice": 36000,
-    "ts": 1778661683671
+    "price": 35000,
+    "lastNotifiedPrice": 35000,
+    "ts": 1778867258194
   },
   "2ndstreet:LAYER-0:2334828910660": {
     "price": 6490,
@@ -59020,8 +59020,8 @@
     "ts": 1778838856037
   },
   "mercari:mixed up:m81807785250": {
-    "price": 1100,
-    "ts": 1778838919117
+    "price": 1300,
+    "ts": 1778867681888
   },
   "mercari:carpe diem:m90734779718": {
     "price": 18800,
@@ -59275,5 +59275,21 @@
   "mercari:D.GNAK:m12973966278": {
     "price": 12000,
     "ts": 1778862521375
+  },
+  "mercari:GUIDI:m28966024507": {
+    "price": 259880,
+    "ts": 1778867365277
+  },
+  "mercari:augusta:eiq8zqRDPaakvqopSXPaCd": {
+    "price": 1686,
+    "ts": 1778868091721
+  },
+  "mercari:first aid to the injured:m19663302829": {
+    "price": 22000,
+    "ts": 1778868237285
+  },
+  "mercari:first aid to the injured:m60091037629": {
+    "price": 5000,
+    "ts": 1778868239407
   }
 }
