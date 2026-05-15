@@ -7683,8 +7683,8 @@
     "ts": 1778332990513
   },
   "mercari:D.HYGEN:m92434586405": {
-    "price": 48000,
-    "ts": 1778412373624
+    "price": 47900,
+    "ts": 1778879968761
   },
   "mercari:D.HYGEN:m73738058786": {
     "price": 415,
@@ -22963,9 +22963,9 @@
     "ts": 1778333807079
   },
   "mercari:Johan Ku:2JNdcZhVrMzZb3pQWQJAab": {
-    "price": 1728,
+    "price": 2980,
     "lastNotifiedPrice": 1788,
-    "ts": 1778792819860
+    "ts": 1778880818725
   },
   "mercari:Ordinary People:m36752392876": {
     "price": 0,
@@ -25381,8 +25381,8 @@
     "ts": 1774813853517
   },
   "mercari:unravel project:m94588948444": {
-    "price": 5000,
-    "ts": 1778410943046
+    "price": 4900,
+    "ts": 1778878630250
   },
   "mercari:unravel project:m77773301917": {
     "price": 35000,
@@ -28097,8 +28097,8 @@
     "ts": 1774959960607
   },
   "mercari:augusta:m94351862508": {
-    "price": 2800,
-    "ts": 1777873398512
+    "price": 2600,
+    "ts": 1778879515846
   },
   "mercari:augusta:m74860685764": {
     "price": 1180,
@@ -39472,9 +39472,9 @@
     "ts": 1777935292776
   },
   "mercari:BONEVILLE:m31925761858": {
-    "price": 50000,
-    "lastNotifiedPrice": 50000,
-    "ts": 1778652324842
+    "price": 40000,
+    "lastNotifiedPrice": 40000,
+    "ts": 1778878934727
   },
   "mercari:christophe lemaire:m69214298200": {
     "price": 6000,
@@ -59296,5 +59296,13 @@
   "mercari:HALLELUJAH:2JRFRrcee2Jv7pN2mZBUqu": {
     "price": 5203,
     "ts": 1778872594727
+  },
+  "mercari:MITTAN:m66299411698": {
+    "price": 12000,
+    "ts": 1778878731426
+  },
+  "mercari:Nemeth:m66418100177": {
+    "price": 40000,
+    "ts": 1778879715156
   }
 }
