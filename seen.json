@@ -17647,9 +17647,9 @@
     "ts": 1774780815978
   },
   "mercari:DEVOA:m83273189379": {
-    "price": 37000,
-    "lastNotifiedPrice": 37000,
-    "ts": 1778682341521
+    "price": 36000,
+    "lastNotifiedPrice": 36000,
+    "ts": 1778873655648
   },
   "mercari:DEVOA:m93309500741": {
     "price": 25000,
@@ -40020,9 +40020,9 @@
     "ts": 1778195413341
   },
   "mercari:GUIDI:m83273189379": {
-    "price": 37000,
-    "lastNotifiedPrice": 37000,
-    "ts": 1778681766969
+    "price": 36000,
+    "lastNotifiedPrice": 36000,
+    "ts": 1778873128957
   },
   "mercari:cerruti:m48078285734": {
     "price": 2500,
@@ -48986,9 +48986,9 @@
     "ts": 1777812957401
   },
   "mercari:DEVOA:m18015409152": {
-    "price": 153000,
-    "lastNotifiedPrice": 153000,
-    "ts": 1778693610423
+    "price": 150000,
+    "lastNotifiedPrice": 150000,
+    "ts": 1778873658079
   },
   "mercari:CHRISTIAN PEAU:m44237879552": {
     "price": 15000,
@@ -49060,9 +49060,9 @@
     "ts": 1777552020280
   },
   "mercari:D.HYGEN:m18015409152": {
-    "price": 153000,
-    "lastNotifiedPrice": 153000,
-    "ts": 1778683018873
+    "price": 150000,
+    "lastNotifiedPrice": 150000,
+    "ts": 1778874273299
   },
   "2ndstreet:TEO+NG:2338783096834": {
     "price": 21890,
@@ -56166,8 +56166,8 @@
     "ts": 1778400810818
   },
   "mercari:carpe diem:m88936635693": {
-    "price": 3599,
-    "ts": 1778839024646
+    "price": 3499,
+    "ts": 1778873522482
   },
   "mercari:CASEY CASEY:m94070049949": {
     "price": 8000,
@@ -58158,8 +58158,9 @@
     "ts": 1778683649541
   },
   "mercari:HALLELUJAH:m44198877186": {
-    "price": 15000,
-    "ts": 1778692126774
+    "price": 9999,
+    "lastNotifiedPrice": 9999,
+    "ts": 1778872592605
   },
   "mercari:HALLELUJAH:m18965466220": {
     "price": 4500,
@@ -59291,5 +59292,9 @@
   "mercari:first aid to the injured:m60091037629": {
     "price": 5000,
     "ts": 1778868239407
+  },
+  "mercari:HALLELUJAH:2JRFRrcee2Jv7pN2mZBUqu": {
+    "price": 5203,
+    "ts": 1778872594727
   }
 }
