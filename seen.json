@@ -3305,8 +3305,9 @@
     "ts": 1778332151887
   },
   "mercari:individual sentiments:m72241723599": {
-    "price": 31100,
-    "ts": 1778861669490
+    "price": 30000,
+    "lastNotifiedPrice": 30000,
+    "ts": 1778950866617
   },
   "mercari:individual sentiments:m49702971774": {
     "price": 357,
@@ -11213,8 +11214,8 @@
     "ts": 1774630543614
   },
   "mercari:Rochambeau:m41211915572": {
-    "price": 15500,
-    "ts": 1778333807079
+    "price": 15000,
+    "ts": 1778952484164
   },
   "mercari:Rochambeau:m79759608219": {
     "price": 9800,
@@ -15932,8 +15933,8 @@
     "ts": 1778681820627
   },
   "mercari:cerruti:m90722236276": {
-    "price": 3380,
-    "ts": 1778867412230
+    "price": 3280,
+    "ts": 1778950562890
   },
   "mercari:cerruti:m25159145970": {
     "price": 880,
@@ -18672,9 +18673,9 @@
     "ts": 1774781509354
   },
   "mercari:Boris Bidjan:F3q5Fk3aYFTD5bMt62vuJY": {
-    "price": 107573,
-    "lastNotifiedPrice": 107573,
-    "ts": 1778791505477
+    "price": 105908,
+    "lastNotifiedPrice": 105908,
+    "ts": 1778951180947
   },
   "mercari:Boris Bidjan:2JNgQwt8osg38BGL4DP2P5": {
     "price": 22320,
@@ -45504,8 +45505,8 @@
     "ts": 1776971131010
   },
   "mercari:cornelian taurus:m50883366310": {
-    "price": 8000,
-    "ts": 1778910070647
+    "price": 7500,
+    "ts": 1778951091196
   },
   "mercari:Boris Bidjan:m67260379994": {
     "price": 9000,
@@ -46368,8 +46369,8 @@
     "ts": 1777929207149
   },
   "mercari:Nemeth:m55610701888": {
-    "price": 12700,
-    "ts": 1778760617655
+    "price": 12600,
+    "ts": 1778951424822
   },
   "mercari:11 by Boris:m70278914688": {
     "price": 48000,
@@ -47734,8 +47735,8 @@
     "ts": 1777354114452
   },
   "mercari:art comes first:m27583552758": {
-    "price": 8700,
-    "ts": 1778775602820
+    "price": 8550,
+    "ts": 1778950650232
   },
   "mercari:n/07:m30554891786": {
     "price": 22000,
@@ -47766,9 +47767,9 @@
     "ts": 1777354587387
   },
   "mercari:DEVOA:m56728938037": {
-    "price": 20000,
+    "price": 19600,
     "lastNotifiedPrice": 20000,
-    "ts": 1778776036074
+    "ts": 1778951047940
   },
   "mercari:augusta:m92959087321": {
     "price": 5680,
@@ -59837,5 +59838,17 @@
   "mercari:w&lt:m38935325134": {
     "price": 35000,
     "ts": 1778948138526
+  },
+  "mercari:Boris Bidjan:m77286038113": {
+    "price": 20800,
+    "ts": 1778951178820
+  },
+  "mercari:11 by Boris:m77286038113": {
+    "price": 20800,
+    "ts": 1778951486033
+  },
+  "mercari:Song for the Mute:m83347843547": {
+    "price": 12000,
+    "ts": 1778952330729
   }
 }
