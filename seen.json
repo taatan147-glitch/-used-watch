@@ -121,8 +121,8 @@
     "ts": 1774624362202
   },
   "mercari:unravel project:m29458702859": {
-    "price": 9180,
-    "ts": 1778790620440
+    "price": 9080,
+    "ts": 1778957660420
   },
   "mercari:unravel project:m97235259051": {
     "price": 28200,
@@ -47230,9 +47230,9 @@
     "ts": 1777267949030
   },
   "mercari:Rigards:m73431003688": {
-    "price": 63500,
+    "price": 63000,
     "lastNotifiedPrice": 63500,
-    "ts": 1778898703173
+    "ts": 1778959431032
   },
   "mercari:Andrew Driftwood:2JQQG59MZjrETJoX3cwGu9": {
     "price": 206265,
@@ -50383,8 +50383,8 @@
     "ts": 1777758130006
   },
   "mercari:ensou:m91448629188": {
-    "price": 4999,
-    "ts": 1778693567767
+    "price": 4699,
+    "ts": 1778958331836
   },
   "mercari:ensou:m83983745941": {
     "price": 5600,
@@ -59855,5 +59855,17 @@
   "mercari:augusta:m77370672207": {
     "price": 1000,
     "ts": 1778954913553
+  },
+  "mercari:daub:2JRJ4ZdTT3dXywtv3RJSWx": {
+    "price": 8000,
+    "ts": 1778957503565
+  },
+  "mercari:daub:2JRJ4K3pncr94JMWLnAuTR": {
+    "price": 8000,
+    "ts": 1778957505848
+  },
+  "mercari:daub:2JRJ44Sozb8ayrEgf4ggEV": {
+    "price": 8000,
+    "ts": 1778957507993
   }
 }
