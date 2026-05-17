@@ -16639,8 +16639,9 @@
     "ts": 1774779999378
   },
   "mercari:ansnam:3Tjse7adxaWLqK5PY4p2Sk": {
-    "price": 17400,
-    "ts": 1775832470691
+    "price": 15660,
+    "lastNotifiedPrice": 15660,
+    "ts": 1779052228664
   },
   "mercari:ansnam:2JM6R5qLCDnS4WHnpP5xVn": {
     "price": 28600,
@@ -39322,9 +39323,9 @@
     "ts": 1777284643355
   },
   "mercari:Poeme Bohemien:2JPgh9x6ZSkVNfm62Zazm4": {
-    "price": 20100,
+    "price": 19000,
     "lastNotifiedPrice": 19095,
-    "ts": 1779034747700
+    "ts": 1779052096592
   },
   "mercari:final home:m70538373586": {
     "price": 8800,
@@ -55156,8 +55157,8 @@
     "ts": 1778228273097
   },
   "mercari:KAVAL:m23873529457": {
-    "price": 16000,
-    "ts": 1779028266997
+    "price": 15900,
+    "ts": 1779051888408
   },
   "mercari:GUIDI:m77757749334": {
     "price": 79000,
@@ -57096,9 +57097,9 @@
     "ts": 1778515420451
   },
   "mercari:CHRISTIAN PEAU:m28899916490": {
-    "price": 8000,
-    "lastNotifiedPrice": 8000,
-    "ts": 1778776102633
+    "price": 7000,
+    "lastNotifiedPrice": 7000,
+    "ts": 1779052530572
   },
   "mercari:Nemeth:m67315629001": {
     "price": 38000,
@@ -57348,8 +57349,8 @@
     "ts": 1778565720042
   },
   "mercari:Innerraum:m60750126503": {
-    "price": 10400,
-    "ts": 1779007321427
+    "price": 10200,
+    "ts": 1779053182557
   },
   "mercari:John Alexander Skelton:m69146516041": {
     "price": 175000,
@@ -60514,5 +60515,9 @@
   "mercari:incarnation:9v5xcRpfGvSVPLMgWsbjUL": {
     "price": 1510,
     "ts": 1779041139553
+  },
+  "mercari:golem:m58411316147": {
+    "price": 1880,
+    "ts": 1779051960587
   }
 }
