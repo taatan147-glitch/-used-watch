@@ -5467,9 +5467,9 @@
     "ts": 1778332503273
   },
   "mercari:Bergfabel:m38352695468": {
-    "price": 37000,
-    "lastNotifiedPrice": 37000,
-    "ts": 1778862049129
+    "price": 36000,
+    "lastNotifiedPrice": 36000,
+    "ts": 1779045588052
   },
   "mercari:Bergfabel:m45441734361": {
     "price": 215,
@@ -5497,8 +5497,8 @@
     "ts": 1778332503273
   },
   "mercari:Bergfabel:m88141893008": {
-    "price": 28900,
-    "ts": 1778516122489
+    "price": 28500,
+    "ts": 1779045590053
   },
   "mercari:Bergfabel:m99891258375": {
     "price": 98,
@@ -22343,12 +22343,13 @@
     "ts": 1774784680249
   },
   "mercari:Camiel Fortgens:2JJioHo73vdkRs2Ljemp3g": {
-    "price": 25600,
-    "ts": 1778333622306
+    "price": 24375,
+    "lastNotifiedPrice": 24375,
+    "ts": 1779046642163
   },
   "mercari:Camiel Fortgens:2JJioHb3KrgptbfBgxkNjf": {
-    "price": 20452,
-    "ts": 1775767468021
+    "price": 23100,
+    "ts": 1779046644164
   },
   "mercari:Camiel Fortgens:m93663576848": {
     "price": 19500,
@@ -59883,9 +59884,9 @@
     "ts": 1778946911116
   },
   "mercari:Paul Harnden:m51860450038": {
-    "price": 98000,
+    "price": 89500,
     "lastNotifiedPrice": 80000,
-    "ts": 1779022966538
+    "ts": 1779044788821
   },
   "mercari:GUIDI:m39654568139": {
     "price": 185000,
