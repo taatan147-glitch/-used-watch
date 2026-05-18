@@ -3957,8 +3957,9 @@
     "ts": 1774626287885
   },
   "mercari:Nicolo Ceschi Berrini:m97239359859": {
-    "price": 76600,
-    "ts": 1778997775848
+    "price": 66500,
+    "lastNotifiedPrice": 66500,
+    "ts": 1779133247332
   },
   "mercari:Nicolo Ceschi Berrini:m60454718131": {
     "price": 13000,
@@ -18692,8 +18693,9 @@
     "ts": 1774781505069
   },
   "mercari:Boris Bidjan:m38392636993": {
-    "price": 135000,
-    "ts": 1776761007754
+    "price": 132000,
+    "lastNotifiedPrice": 132000,
+    "ts": 1779133457772
   },
   "mercari:Boris Bidjan:m43503325653": {
     "price": 24000,
@@ -35711,8 +35713,8 @@
     "ts": 1775319672397
   },
   "mercari:cerruti:m23718660345": {
-    "price": 5000,
-    "ts": 1778594595240
+    "price": 4800,
+    "ts": 1779132831495
   },
   "2ndstreet:Walter Van Beirendonck:2320725272604": {
     "price": 32890,
@@ -54898,8 +54900,9 @@
     "ts": 1778158481040
   },
   "mercari:masnada:m63813492592": {
-    "price": 25000,
-    "ts": 1778328521111
+    "price": 23000,
+    "lastNotifiedPrice": 23000,
+    "ts": 1779133735544
   },
   "mercari:Innerraum:m22015405719": {
     "price": 93000,
@@ -59129,9 +59132,9 @@
     "ts": 1779071460421
   },
   "mercari:CASEY CASEY:m21007045737": {
-    "price": 10500,
+    "price": 10400,
     "lastNotifiedPrice": 11000,
-    "ts": 1779023715443
+    "ts": 1779133413722
   },
   "2ndstreet:CASEY CASEY:2337511424277": {
     "price": 38390,
@@ -59142,8 +59145,8 @@
     "ts": 1778839493924
   },
   "mercari:first aid to the injured:m39839093503": {
-    "price": 9700,
-    "ts": 1779020275354
+    "price": 9600,
+    "ts": 1779133649073
   },
   "mercari:BERNHARD WILLHELM:m77413740615": {
     "price": 12000,
@@ -61098,5 +61101,17 @@
   "mercari:Injiri:2JRMKZDVPaajvWMY5v659w": {
     "price": 27900,
     "ts": 1779127707750
+  },
+  "mercari:HALLELUJAH:2JRPH6GJNPrFTG6zht3xqn": {
+    "price": 5993,
+    "ts": 1779132259473
+  },
+  "mercari:DEVOA:m37614189208": {
+    "price": 9999,
+    "ts": 1779133324607
+  },
+  "mercari:John Alexander Skelton:m76007689301": {
+    "price": 240000,
+    "ts": 1779134080956
   }
 }
