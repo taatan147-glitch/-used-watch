@@ -6726,8 +6726,8 @@
     "ts": 1778332721783
   },
   "mercari:DAMIR DOMA:m25332711259": {
-    "price": 10500,
-    "ts": 1778332721783
+    "price": 10400,
+    "ts": 1779139520790
   },
   "mercari:DAMIR DOMA:m78022951271": {
     "price": 36300,
@@ -38567,9 +38567,9 @@
     "ts": 1777204429414
   },
   "mercari:BERNHARD WILLHELM:m24838138758": {
-    "price": 18500,
+    "price": 18400,
     "lastNotifiedPrice": 18500,
-    "ts": 1779024046527
+    "ts": 1779139548094
   },
   "mercari:BERNHARD WILLHELM:m50122381277": {
     "price": 17900,
@@ -56794,8 +56794,8 @@
     "ts": 1778466459058
   },
   "mercari:Camiel Fortgens:m56856721540": {
-    "price": 74900,
-    "ts": 1779117375528
+    "price": 74800,
+    "ts": 1779140345302
   },
   "2ndstreet:sus-sous:2341608555171": {
     "price": 11990,
@@ -58321,8 +58321,8 @@
     "ts": 1778683065919
   },
   "mercari:Altieri:m17899039307": {
-    "price": 68700,
-    "ts": 1779015149791
+    "price": 68600,
+    "ts": 1779140009423
   },
   "mercari:Camiel Fortgens:m59616095991": {
     "price": 45000,
@@ -61113,5 +61113,9 @@
   "mercari:John Alexander Skelton:m76007689301": {
     "price": 240000,
     "ts": 1779134080956
+  },
+  "mercari:HALLELUJAH:2JRPSZTmjyhA6wSFmhdRvL": {
+    "price": 8826,
+    "ts": 1779138181950
   }
 }
