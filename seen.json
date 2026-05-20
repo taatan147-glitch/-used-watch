@@ -38206,8 +38206,9 @@
     "ts": 1775731228824
   },
   "mercari:Boris Bidjan:m55840401002": {
-    "price": 70000,
-    "ts": 1778332472941
+    "price": 58000,
+    "lastNotifiedPrice": 58000,
+    "ts": 1779305661078
   },
   "mercari:augusta:m30180972117": {
     "price": 600,
@@ -50272,9 +50273,9 @@
     "ts": 1777710836269
   },
   "mercari:Poell:m81052367509": {
-    "price": 74200,
+    "price": 74100,
     "lastNotifiedPrice": 74600,
-    "ts": 1779199863391
+    "ts": 1779305631602
   },
   "mercari:by Walid:m43058864109": {
     "price": 10500,
@@ -50294,9 +50295,9 @@
     "ts": 1777711150723
   },
   "mercari:Carol Christian Poell:m81052367509": {
-    "price": 74200,
+    "price": 74100,
     "lastNotifiedPrice": 74600,
-    "ts": 1779200351114
+    "ts": 1779306067236
   },
   "2ndstreet:TEO+NG:2337202467514": {
     "price": 8690,
@@ -59090,8 +59091,8 @@
     "ts": 1778800867192
   },
   "mercari:Andrea Incontri:m33029119247": {
-    "price": 3800,
-    "ts": 1778899319651
+    "price": 3500,
+    "ts": 1779307142199
   },
   "mercari:MITTAN:m93794162222": {
     "price": 31000,
@@ -59533,8 +59534,8 @@
     "ts": 1778861303920
   },
   "mercari:carpe diem:m36366423233": {
-    "price": 1200,
-    "ts": 1779210129249
+    "price": 1100,
+    "ts": 1779305396872
   },
   "mercari:CASEY CASEY:2JRF8FujhHgzqsXcGh9hcc": {
     "price": 22000,
@@ -61237,8 +61238,8 @@
     "ts": 1779132259473
   },
   "mercari:DEVOA:m37614189208": {
-    "price": 9999,
-    "ts": 1779133324607
+    "price": 9499,
+    "ts": 1779305530301
   },
   "mercari:John Alexander Skelton:m76007689301": {
     "price": 240000,
@@ -62388,5 +62389,29 @@
   "mercari:Suzusan:m69010823621": {
     "price": 39800,
     "ts": 1779297960859
+  },
+  "mercari:daub:m71433529453": {
+    "price": 7900,
+    "ts": 1779304675730
+  },
+  "mercari:KAVAL:2JRUJty9LCR7inUrAW4pgT": {
+    "price": 6000,
+    "ts": 1779304960791
+  },
+  "mercari:GUIDI:m84607577733": {
+    "price": 200000,
+    "ts": 1779305018918
+  },
+  "mercari:golem:2JRULkJuwnSKAedfR67CdX": {
+    "price": 1000,
+    "ts": 1779305035026
+  },
+  "mercari:Never Enough:2JNGUNaqAmFz6BPFnThys6": {
+    "price": 10480,
+    "ts": 1779306427309
+  },
+  "mercari:Song for the Mute:m12259969639": {
+    "price": 39400,
+    "ts": 1779306746547
   }
 }
