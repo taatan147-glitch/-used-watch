@@ -51973,8 +51973,8 @@
     "ts": 1779381352858
   },
   "mercari:HALLELUJAH:m15112310627": {
-    "price": 3000,
-    "ts": 1777965314472
+    "price": 2800,
+    "ts": 1779474570543
   },
   "mercari:HALLELUJAH:m32863319489": {
     "price": 1500,
@@ -63499,8 +63499,8 @@
     "ts": 1779456259932
   },
   "mercari:HALLELUJAH:m31669072886": {
-    "price": 1445,
-    "ts": 1779456262176
+    "price": 1333,
+    "ts": 1779474570543
   },
   "mercari:Portaille:m76532869122": {
     "price": 50000,
@@ -63653,5 +63653,9 @@
   "mercari:Camiel Fortgens:m48595293773": {
     "price": 13999,
     "ts": 1779473644732
+  },
+  "mercari:HALLELUJAH:2JRZ6ajPZA9FYp6a4GcZfq": {
+    "price": 12168,
+    "ts": 1779474570955
   }
 }
