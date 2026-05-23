@@ -12147,8 +12147,8 @@
     "ts": 1775282659898
   },
   "mercari:Tim Van Steenbergen:m88903628125": {
-    "price": 8200,
-    "ts": 1779362438451
+    "price": 8100,
+    "ts": 1779561709469
   },
   "mercari:Tim Van Steenbergen:m60146147089": {
     "price": 9800,
@@ -30573,8 +30573,9 @@
     "ts": 1775055740064
   },
   "mercari:cerruti:2JN9m2FLmqFi5EmQHRij29": {
-    "price": 3300,
-    "ts": 1775055751392
+    "price": 1700,
+    "lastNotifiedPrice": 1700,
+    "ts": 1779559513860
   },
   "2ndstreet:BONEVILLE:2329374484079": {
     "price": 11990,
@@ -57398,8 +57399,9 @@
     "ts": 1778765991238
   },
   "mercari:Camiel Fortgens:m96533661193": {
-    "price": 23300,
-    "ts": 1778524140997
+    "price": 22300,
+    "lastNotifiedPrice": 22300,
+    "ts": 1779561258487
   },
   "mercari:carpe diem:m39634523148": {
     "price": 1111,
@@ -60075,9 +60077,9 @@
     "ts": 1778936784027
   },
   "mercari:GUIDI:m63739224519": {
-    "price": 77777,
-    "lastNotifiedPrice": 77777,
-    "ts": 1778983675262
+    "price": 66666,
+    "lastNotifiedPrice": 66666,
+    "ts": 1779559464420
   },
   "mercari:GUIDI:m15669141266": {
     "price": 14800,
@@ -62321,8 +62323,9 @@
     "ts": 1779284485747
   },
   "mercari:GUIDI:m43151566948": {
-    "price": 208000,
-    "ts": 1779456848902
+    "price": 189000,
+    "lastNotifiedPrice": 189000,
+    "ts": 1779559466560
   },
   "mercari:GUIDI:m93128298192": {
     "price": 94500,
@@ -64260,5 +64263,13 @@
   "mercari:carpe diem:2JRbyXKxpbibFsW8i3akzz": {
     "price": 7868,
     "ts": 1779555920566
+  },
+  "mercari:CASEY CASEY:m47746625531": {
+    "price": 24000,
+    "ts": 1779560100602
+  },
+  "mercari:augusta:m39812767561": {
+    "price": 300,
+    "ts": 1779560194194
   }
 }
