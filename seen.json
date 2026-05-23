@@ -4898,8 +4898,8 @@
     "ts": 1774626760040
   },
   "mercari:CASEY CASEY:m50272225001": {
-    "price": 30000,
-    "ts": 1779517195821
+    "price": 38000,
+    "ts": 1779563617313
   },
   "mercari:CASEY CASEY:m53205089128": {
     "price": 164,
@@ -7725,8 +7725,8 @@
     "ts": 1778332990513
   },
   "mercari:D.HYGEN:m92434586405": {
-    "price": 47800,
-    "ts": 1779320066044
+    "price": 47700,
+    "ts": 1779564169895
   },
   "mercari:D.HYGEN:m73738058786": {
     "price": 415,
@@ -59658,8 +59658,8 @@
     "ts": 1778861303920
   },
   "mercari:carpe diem:m36366423233": {
-    "price": 900,
-    "ts": 1779472238613
+    "price": 800,
+    "ts": 1779563397701
   },
   "mercari:CASEY CASEY:2JRF8FujhHgzqsXcGh9hcc": {
     "price": 22000,
@@ -61029,8 +61029,9 @@
     "ts": 1779088149783
   },
   "mercari:Vexed Generation:m90370507439": {
-    "price": 58980,
-    "ts": 1779273794504
+    "price": 57980,
+    "lastNotifiedPrice": 57980,
+    "ts": 1779563785598
   },
   "2ndstreet:masahiko maruyama:2342362535478": {
     "price": 7590,
