@@ -20957,8 +20957,8 @@
     "ts": 1774782991153
   },
   "mercari:Nemeth:m35822307262": {
-    "price": 24000,
-    "ts": 1779391073199
+    "price": 23900,
+    "ts": 1779642948491
   },
   "mercari:Nemeth:2JLrqU5mus98HWm47m2AqR": {
     "price": 22420,
@@ -22010,9 +22010,9 @@
     "ts": 1774784014854
   },
   "mercari:Matthias Winkler:TRkEhP9wRcXPz65832mgM3": {
-    "price": 66528,
+    "price": 83160,
     "lastNotifiedPrice": 66528,
-    "ts": 1779505202716
+    "ts": 1779643415020
   },
   "mercari:Altieri:m62487370697": {
     "price": 62900,
@@ -24525,8 +24525,8 @@
     "ts": 1775311852979
   },
   "mercari:BONEVILLE:m73887749773": {
-    "price": 94000,
-    "ts": 1779173509062
+    "price": 93900,
+    "ts": 1779642162580
   },
   "mercari:BONEVILLE:2JMifnWEAAAYw4LRw5hFnP": {
     "price": 10340,
@@ -35946,9 +35946,9 @@
     "ts": 1779313603739
   },
   "mercari:ansnam:soNnxsBoNM37dC5gAQEsp9": {
-    "price": 18128,
+    "price": 22660,
     "lastNotifiedPrice": 18128,
-    "ts": 1779504051073
+    "ts": 1779642331932
   },
   "mercari:incarnation:m51007412816": {
     "price": 6500,
@@ -55436,8 +55436,8 @@
     "ts": 1778228273097
   },
   "mercari:KAVAL:m23873529457": {
-    "price": 15600,
-    "ts": 1779633108345
+    "price": 15500,
+    "ts": 1779642007784
   },
   "mercari:GUIDI:m77757749334": {
     "price": 79000,
@@ -61707,8 +61707,8 @@
     "ts": 1779329630919
   },
   "mercari:Paul Harnden:m59678268506": {
-    "price": 25000,
-    "ts": 1779199034448
+    "price": 24500,
+    "ts": 1779641951628
   },
   "2ndstreet:LAYER-0:2347072730656": {
     "price": 30690,
@@ -63096,9 +63096,9 @@
     "ts": 1779577577097
   },
   "mercari:Nemeth:m69547455509": {
-    "price": 15000,
+    "price": 14500,
     "lastNotifiedPrice": 15000,
-    "ts": 1779615579561
+    "ts": 1779642948491
   },
   "mercari:BERNHARD WILLHELM:m91756209712": {
     "price": 41000,
@@ -64782,5 +64782,9 @@
   "mercari:Nemeth:m47648190454": {
     "price": 20000,
     "ts": 1779639634855
+  },
+  "mercari:w&lt:m94803363266": {
+    "price": 185000,
+    "ts": 1779642807277
   }
 }
