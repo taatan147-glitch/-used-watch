@@ -3984,9 +3984,9 @@
     "ts": 1774626287885
   },
   "mercari:Nicolo Ceschi Berrini:m97239359859": {
-    "price": 66200,
+    "price": 66100,
     "lastNotifiedPrice": 66500,
-    "ts": 1779710537346
+    "ts": 1779741396011
   },
   "mercari:Nicolo Ceschi Berrini:m60454718131": {
     "price": 13000,
@@ -51322,8 +51322,8 @@
     "ts": 1777873306441
   },
   "mercari:augusta:m21209549513": {
-    "price": 3790,
-    "ts": 1777873394150
+    "price": 3590,
+    "ts": 1779741637514
   },
   "mercari:augusta:m20244467055": {
     "price": 444,
@@ -52488,12 +52488,12 @@
     "ts": 1779692667945
   },
   "mercari:sus-sous:m76804822354": {
-    "price": 13500,
-    "ts": 1778826379503
+    "price": 12900,
+    "ts": 1779740523180
   },
   "mercari:sus-sous:m70519256761": {
-    "price": 35400,
-    "ts": 1778826379503
+    "price": 34800,
+    "ts": 1779740523180
   },
   "mercari:sus-sous:m56357957219": {
     "price": 29100,
@@ -63171,8 +63171,9 @@
     "ts": 1779390997715
   },
   "mercari:MD75:m62197825491": {
-    "price": 59000,
-    "ts": 1779383329538
+    "price": 56000,
+    "lastNotifiedPrice": 56000,
+    "ts": 1779742344980
   },
   "2ndstreet:Camiel Fortgens:2342392618479": {
     "price": 11990,
@@ -65311,8 +65312,9 @@
     "ts": 1779721608740
   },
   "mercari:John Alexander Skelton:m52699366932": {
-    "price": 150000,
-    "ts": 1779721610915
+    "price": 135000,
+    "lastNotifiedPrice": 135000,
+    "ts": 1779742198538
   },
   "mercari:Injiri:m57474152505": {
     "price": 9999,
@@ -65373,5 +65375,9 @@
   "mercari:DAMIR DOMA:m71897738219": {
     "price": 44000,
     "ts": 1779734900976
+  },
+  "mercari:GUIDI:m64929273613": {
+    "price": 185000,
+    "ts": 1779740954765
   }
 }
