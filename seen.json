@@ -115,9 +115,9 @@
     "ts": 1774624360748
   },
   "mercari:unravel project:m95868947964": {
-    "price": 26000,
+    "price": 25600,
     "lastNotifiedPrice": 26000,
-    "ts": 1779381705087
+    "ts": 1779733838423
   },
   "mercari:unravel project:m74250296295": {
     "price": 75,
@@ -20971,8 +20971,8 @@
     "ts": 1774782991153
   },
   "mercari:Nemeth:m35822307262": {
-    "price": 23900,
-    "ts": 1779642948491
+    "price": 23800,
+    "ts": 1779734917008
   },
   "mercari:Nemeth:2JLrqU5mus98HWm47m2AqR": {
     "price": 22420,
@@ -64886,8 +64886,8 @@
     "ts": 1779675823682
   },
   "mercari:final home:m52249384266": {
-    "price": 8000,
-    "ts": 1779676076878
+    "price": 7500,
+    "ts": 1779734276022
   },
   "mercari:carpe diem:m75587014375": {
     "price": 9800,
@@ -65365,5 +65365,13 @@
   "mercari:Carol Christian Poell:m51194705884": {
     "price": 79990,
     "ts": 1779730030476
+  },
+  "mercari:carpe diem:2JRhJVepTZEJ2cAopiMStJ": {
+    "price": 11277,
+    "ts": 1779734415907
+  },
+  "mercari:DAMIR DOMA:m71897738219": {
+    "price": 44000,
+    "ts": 1779734900976
   }
 }
