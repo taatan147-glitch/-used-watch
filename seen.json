@@ -47067,8 +47067,8 @@
     "ts": 1777167168230
   },
   "mercari:MITTAN:m34335595943": {
-    "price": 18880,
-    "ts": 1779909880505
+    "price": 18780,
+    "ts": 1779999323149
   },
   "mercari:GUIDI:m76688452700": {
     "price": 138000,
@@ -60012,9 +60012,9 @@
     "ts": 1778897529799
   },
   "mercari:CASEY CASEY:m86830496073": {
-    "price": 34000,
+    "price": 33900,
     "lastNotifiedPrice": 34700,
-    "ts": 1779992205739
+    "ts": 1780000042360
   },
   "mercari:CASEY CASEY:m80574350521": {
     "price": 32000,
@@ -66966,8 +66966,8 @@
     "ts": 1779979718218
   },
   "mercari:augusta:m67406322452": {
-    "price": 400,
-    "ts": 1779979847092
+    "price": 600,
+    "ts": 1780000128953
   },
   "mercari:w&lt:m65833796138": {
     "price": 6200,
@@ -67004,5 +67004,13 @@
   "mercari:first aid to the injured:m17125881559": {
     "price": 17000,
     "ts": 1779992442946
+  },
+  "mercari:GUIDI:2JLupQYJpRL5dva9VM5Sct": {
+    "price": 18486,
+    "ts": 1779999431538
+  },
+  "mercari:ensou:m21319728878": {
+    "price": 9500,
+    "ts": 1779999909073
   }
 }
