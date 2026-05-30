@@ -18907,8 +18907,8 @@
     "ts": 1778942491552
   },
   "mercari:Boris Bidjan:m70181691390": {
-    "price": 60000,
-    "ts": 1774781542672
+    "price": 70000,
+    "ts": 1780172567551
   },
   "mercari:Boris Bidjan:m87166793682": {
     "price": 26500,
@@ -56625,8 +56625,8 @@
     "ts": 1778367767084
   },
   "mercari:cerruti:m62060952789": {
-    "price": 4466,
-    "ts": 1779837077651
+    "price": 4166,
+    "ts": 1780171973169
   },
   "mercari:ensou:m53389598508": {
     "price": 5000,
@@ -60126,9 +60126,9 @@
     "ts": 1778897529799
   },
   "mercari:CASEY CASEY:m86830496073": {
-    "price": 31300,
+    "price": 31200,
     "lastNotifiedPrice": 31400,
-    "ts": 1780143734546
+    "ts": 1780172521149
   },
   "mercari:CASEY CASEY:m80574350521": {
     "price": 32000,
@@ -68589,5 +68589,41 @@
   "mercari:Nemeth:m34155502610": {
     "price": 48000,
     "ts": 1780165691729
+  },
+  "mercari:HALLELUJAH:2JRvUnCH8AJX5ZEkEqVppZ": {
+    "price": 8800,
+    "ts": 1780171417837
+  },
+  "mercari:GUIDI:m41650537113": {
+    "price": 139980,
+    "ts": 1780171929394
+  },
+  "mercari:final home:m66473965345": {
+    "price": 12000,
+    "ts": 1780172171632
+  },
+  "mercari:CASEY CASEY:m51971683402": {
+    "price": 38000,
+    "ts": 1780172519147
+  },
+  "2ndstreet:CASEY CASEY:2341796346179": {
+    "price": 17490,
+    "ts": 1780172527750
+  },
+  "mercari:DAMIR DOMA:m21675683211": {
+    "price": 24000,
+    "ts": 1780172790935
+  },
+  "mercari:DAMIR DOMA:m19934456361": {
+    "price": 38000,
+    "ts": 1780172793207
+  },
+  "mercari:DAMIR DOMA:m13221316826": {
+    "price": 29800,
+    "ts": 1780172795382
+  },
+  "mercari:DAMIR DOMA:m34374578126": {
+    "price": 38000,
+    "ts": 1780172797587
   }
 }
