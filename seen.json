@@ -24678,8 +24678,8 @@
     "ts": 1775311852979
   },
   "mercari:BONEVILLE:m73887749773": {
-    "price": 93900,
-    "ts": 1779642162580
+    "price": 93800,
+    "ts": 1780164886414
   },
   "mercari:BONEVILLE:2JMifnWEAAAYw4LRw5hFnP": {
     "price": 10340,
@@ -54757,8 +54757,9 @@
     "ts": 1778055326645
   },
   "mercari:KAVAL:m32800188690": {
-    "price": 5831,
-    "ts": 1778790782527
+    "price": 4750,
+    "lastNotifiedPrice": 4750,
+    "ts": 1780164721399
   },
   "mercari:GUIDI:m87189327272": {
     "price": 25000,
@@ -65997,9 +65998,9 @@
     "ts": 1779804290323
   },
   "mercari:incarnation:m66440329399": {
-    "price": 22000,
-    "lastNotifiedPrice": 22000,
-    "ts": 1779979543127
+    "price": 20500,
+    "lastNotifiedPrice": 20500,
+    "ts": 1780165189558
   },
   "2ndstreet:cornelian taurus:2346332059087": {
     "price": 19690,
@@ -68569,7 +68570,24 @@
     "ts": 1780159072686
   },
   "mercari:w&lt:m64334912520": {
-    "price": 18000,
-    "ts": 1780161761953
+    "price": 15500,
+    "lastNotifiedPrice": 15500,
+    "ts": 1780165545242
+  },
+  "mercari:HALLELUJAH:m92016500490": {
+    "price": 3133,
+    "ts": 1780164248637
+  },
+  "mercari:cerruti:m41319894033": {
+    "price": 1200,
+    "ts": 1780164824834
+  },
+  "mercari:final home:m31127265309": {
+    "price": 11000,
+    "ts": 1780165034129
+  },
+  "mercari:Nemeth:m34155502610": {
+    "price": 48000,
+    "ts": 1780165691729
   }
 }
