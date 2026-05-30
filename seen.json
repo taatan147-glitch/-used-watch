@@ -16064,8 +16064,8 @@
     "ts": 1779710110712
   },
   "mercari:cerruti:m90722236276": {
-    "price": 2080,
-    "ts": 1780077786126
+    "price": 1980,
+    "ts": 1780161020946
   },
   "mercari:cerruti:m25159145970": {
     "price": 680,
@@ -36202,9 +36202,9 @@
     "ts": 1779902070272
   },
   "mercari:Paul Harnden:m31163993118": {
-    "price": 57900,
+    "price": 60000,
     "lastNotifiedPrice": 1100,
-    "ts": 1780157201078
+    "ts": 1780160862023
   },
   "mercari:Paul Harnden:m42049578223": {
     "price": 94000,
@@ -64631,9 +64631,9 @@
     "ts": 1779546613042
   },
   "mercari:C DIEM:m22789608543": {
-    "price": 23000,
+    "price": 24000,
     "lastNotifiedPrice": 23000,
-    "ts": 1780120942976
+    "ts": 1780161385885
   },
   "mercari:Never Enough:m38645953735": {
     "price": 3800,
@@ -65900,9 +65900,9 @@
     "ts": 1780151514935
   },
   "mercari:Paul Harnden:m74733897387": {
-    "price": 99999,
+    "price": 89999,
     "lastNotifiedPrice": 80000,
-    "ts": 1780120418955
+    "ts": 1780160862023
   },
   "trefac:Paul Harnden:1079003482181311": {
     "price": 132000,
@@ -68567,5 +68567,9 @@
   "mercari:Song for the Mute:m46242645802": {
     "price": 118600,
     "ts": 1780159072686
+  },
+  "mercari:w&lt:m64334912520": {
+    "price": 18000,
+    "ts": 1780161761953
   }
 }
