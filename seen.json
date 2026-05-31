@@ -12063,8 +12063,8 @@
     "ts": 1778334008275
   },
   "mercari:Matthew Miller:m36363498012": {
-    "price": 2590,
-    "ts": 1779875202480
+    "price": 2490,
+    "ts": 1780263082578
   },
   "mercari:Matthew Miller:m98265278695": {
     "price": 22890,
@@ -57020,8 +57020,9 @@
     "ts": 1778766478532
   },
   "mercari:ensou:m54148142991": {
-    "price": 32000,
-    "ts": 1778406041162
+    "price": 28000,
+    "lastNotifiedPrice": 28000,
+    "ts": 1780261473167
   },
   "mercari:ensou:m62397191198": {
     "price": 19000,
@@ -58557,9 +58558,9 @@
     "ts": 1778652659763
   },
   "mercari:ELENA DAWSON:m37519278979": {
-    "price": 128000,
+    "price": 168000,
     "lastNotifiedPrice": 128000,
-    "ts": 1780139072860
+    "ts": 1780261491833
   },
   "mercari:DEVOA:m52417814812": {
     "price": 3500,
@@ -60658,8 +60659,9 @@
     "ts": 1778975475027
   },
   "mercari:ensou:m57544441360": {
-    "price": 38000,
-    "ts": 1778975964580
+    "price": 36000,
+    "lastNotifiedPrice": 36000,
+    "ts": 1780261475318
   },
   "mercari:ensou:m22843772633": {
     "price": 165000,
@@ -61654,8 +61656,9 @@
     "ts": 1779115896106
   },
   "mercari:incarnation:m72701537463": {
-    "price": 40000,
-    "ts": 1779115913458
+    "price": 38000,
+    "lastNotifiedPrice": 38000,
+    "ts": 1780261401756
   },
   "mercari:incarnation:m53389929645": {
     "price": 8000,
@@ -64816,9 +64819,9 @@
     "ts": 1779581148277
   },
   "mercari:CHRISTIAN PEAU:m96242526214": {
-    "price": 19750,
+    "price": 24980,
     "lastNotifiedPrice": 19750,
-    "ts": 1780228045417
+    "ts": 1780261584288
   },
   "mercari:CASEY CASEY:m35553311642": {
     "price": 40000,
@@ -68813,8 +68816,8 @@
     "ts": 1780210678089
   },
   "mercari:GUIDI:m62210989055": {
-    "price": 106500,
-    "ts": 1780221129187
+    "price": 108800,
+    "ts": 1780261000196
   },
   "mercari:GUIDI:m73156560709": {
     "price": 53000,
@@ -69308,5 +69311,9 @@
   "mercari:Poell:m50733363809": {
     "price": 44000,
     "ts": 1780255287182
+  },
+  "mercari:Christopher Raeburn:m99234301067": {
+    "price": 11000,
+    "ts": 1780263052486
   }
 }
