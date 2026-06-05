@@ -52328,8 +52328,8 @@
     "ts": 1778464759584
   },
   "mercari:VINCENT JALBERT:m15938257686": {
-    "price": 16500,
-    "ts": 1778341278692
+    "price": 23800,
+    "ts": 1780681610893
   },
   "mercari:VINCENT JALBERT:m61964840146": {
     "price": 24400,
@@ -52337,8 +52337,8 @@
     "ts": 1780674518466
   },
   "mercari:VINCENT JALBERT:m55652496876": {
-    "price": 12999,
-    "ts": 1778175108696
+    "price": 22900,
+    "ts": 1780681610893
   },
   "mercari:VINCENT JALBERT:2JPQyLx9QLTcUnHFhAH9p4": {
     "price": 43890,
@@ -72436,5 +72436,9 @@
   "mercari:CASEY CASEY:m52254853270": {
     "price": 81640,
     "ts": 1780675783015
+  },
+  "mercari:HALLELUJAH:2JSCb844is2BzNcv7WFAJP": {
+    "price": 9115,
+    "ts": 1780681681695
   }
 }
