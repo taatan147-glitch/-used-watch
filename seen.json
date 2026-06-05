@@ -1658,8 +1658,8 @@
     "ts": 1780302939891
   },
   "mercari:joe chia:m60089012888": {
-    "price": 12300,
-    "ts": 1780577651595
+    "price": 12200,
+    "ts": 1780694779873
   },
   "mercari:joe chia:m64818591831": {
     "price": 9899,
@@ -47253,8 +47253,9 @@
     "ts": 1779754202395
   },
   "mercari:DEVOA:m41685506731": {
-    "price": 38000,
-    "ts": 1777156789780
+    "price": 36000,
+    "lastNotifiedPrice": 36000,
+    "ts": 1780695246203
   },
   "mercari:DEVOA:m31615510104": {
     "price": 50000,
@@ -53892,9 +53893,9 @@
     "ts": 1780590134750
   },
   "mercari:daub:2JPcgZzVsPZ44y7yHxgeGa": {
-    "price": 12378,
+    "price": 12478,
     "lastNotifiedPrice": 10205,
-    "ts": 1780674788262
+    "ts": 1780694439951
   },
   "mercari:daub:m17457105859": {
     "price": 18000,
@@ -68011,9 +68012,9 @@
     "ts": 1780092157762
   },
   "mercari:denis colomb:m80292975083": {
-    "price": 16800,
-    "lastNotifiedPrice": 16800,
-    "ts": 1780359908701
+    "price": 15800,
+    "lastNotifiedPrice": 15800,
+    "ts": 1780695261905
   },
   "mercari:manamis:m68723903078": {
     "price": 23000,
@@ -69184,9 +69185,9 @@
     "ts": 1780567107324
   },
   "mercari:C DIEM:m29412235924": {
-    "price": 22000,
+    "price": 23000,
     "lastNotifiedPrice": 22000,
-    "ts": 1780675530352
+    "ts": 1780695105698
   },
   "mercari:carpe diem:m88902663195": {
     "price": 3999,
@@ -70655,8 +70656,9 @@
     "ts": 1780455342810
   },
   "mercari:C DIEM:m49797711842": {
-    "price": 60000,
-    "ts": 1780455425406
+    "price": 59000,
+    "lastNotifiedPrice": 59000,
+    "ts": 1780695103697
   },
   "mercari:CASEY CASEY:m27935981410": {
     "price": 43000,
@@ -72514,5 +72516,17 @@
   "mercari:Hannes Roether:m71815994750": {
     "price": 3500,
     "ts": 1780690357635
+  },
+  "mercari:ensou:2JSD6r6iunYg9br7zoN9Vo": {
+    "price": 60800,
+    "ts": 1780695202609
+  },
+  "mercari:augusta:2JSD5yCc875bGMFFj2njSG": {
+    "price": 45800,
+    "ts": 1780695417723
+  },
+  "mercari:A1923:2JSD34DqLNAwaMPnkLJS4R": {
+    "price": 7380,
+    "ts": 1780695433841
   }
 }
