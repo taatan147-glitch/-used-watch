@@ -52352,8 +52352,8 @@
     "ts": 1778464759584
   },
   "mercari:VINCENT JALBERT:m15938257686": {
-    "price": 23800,
-    "ts": 1780681610893
+    "price": 29800,
+    "ts": 1780769008951
   },
   "mercari:VINCENT JALBERT:m61964840146": {
     "price": 24300,
@@ -72163,8 +72163,8 @@
     "ts": 1780652212910
   },
   "mercari:KAVAL:m92420901079": {
-    "price": 4085,
-    "ts": 1780688417083
+    "price": 3881,
+    "ts": 1780769567075
   },
   "mercari:GUIDI:m23106551825": {
     "price": 100000,
@@ -73223,5 +73223,13 @@
   "mercari:Nemeth:m13098644223": {
     "price": 8800,
     "ts": 1780766608597
+  },
+  "mercari:ensou:2JSFSUcEJr6pDbdU5ALbax": {
+    "price": 60800,
+    "ts": 1780770105382
+  },
+  "mercari:Boris Bidjan:2JSFM6AZM7hNxPqJd2sD2D": {
+    "price": 182389,
+    "ts": 1780770280445
   }
 }
