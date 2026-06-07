@@ -20757,8 +20757,8 @@
     "ts": 1780578515965
   },
   "mercari:first aid to the injured:m84521793203": {
-    "price": 12000,
-    "ts": 1777929391102
+    "price": 11900,
+    "ts": 1780860537027
   },
   "mercari:first aid to the injured:m42405557637": {
     "price": 21800,
@@ -21158,8 +21158,8 @@
     "ts": 1774782991153
   },
   "mercari:Nemeth:m35822307262": {
-    "price": 23100,
-    "ts": 1780689412100
+    "price": 23000,
+    "ts": 1780860593850
   },
   "mercari:Nemeth:2JLrqU5mus98HWm47m2AqR": {
     "price": 22420,
@@ -21790,8 +21790,8 @@
     "ts": 1774783598877
   },
   "mercari:D.HYGEN:m41009988753": {
-    "price": 59500,
-    "ts": 1776360324816
+    "price": 59400,
+    "ts": 1780860836449
   },
   "mercari:D.HYGEN:m49875362547": {
     "price": 24200,
@@ -25824,8 +25824,8 @@
     "ts": 1779692908707
   },
   "mercari:unravel project:m54911370480": {
-    "price": 19500,
-    "ts": 1777975346013
+    "price": 19400,
+    "ts": 1780859519363
   },
   "mercari:unravel project:m63391231974": {
     "price": 5900,
@@ -55195,8 +55195,8 @@
     "ts": 1778082326015
   },
   "mercari:HUSSEIN CHALAYAN:m98117174923": {
-    "price": 12300,
-    "ts": 1780741025242
+    "price": 12200,
+    "ts": 1780860523182
   },
   "mercari:BERNHARD WILLHELM:m19820161717": {
     "price": 48000,
@@ -61931,9 +61931,9 @@
     "ts": 1779780159011
   },
   "mercari:Ordinary People:m57264667240": {
-    "price": 12000,
-    "lastNotifiedPrice": 12000,
-    "ts": 1779261868846
+    "price": 10000,
+    "lastNotifiedPrice": 10000,
+    "ts": 1780861670385
   },
   "mercari:HALLELUJAH:2JRP7Jk6dVyZUvXYHWiL4F": {
     "price": 5269,
@@ -69460,9 +69460,9 @@
     "ts": 1780510073993
   },
   "mercari:BONEVILLE:m64326573325": {
-    "price": 35000,
+    "price": 45000,
     "lastNotifiedPrice": 32000,
-    "ts": 1780846198611
+    "ts": 1780859813935
   },
   "mercari:cornelian taurus:m66253579489": {
     "price": 39400,
@@ -73513,8 +73513,8 @@
     "ts": 1780816284065
   },
   "mercari:cerruti:m40743888643": {
-    "price": 1500,
-    "ts": 1780816286252
+    "price": 1600,
+    "ts": 1780859757791
   },
   "mercari:lumen et umbra:m73374215170": {
     "price": 39800,
@@ -73984,5 +73984,9 @@
   "mercari:cornelian taurus:m81034083121": {
     "price": 91200,
     "ts": 1780853051051
+  },
+  "mercari:HALLELUJAH:2JSHzmuxS6jLCtacBZWunq": {
+    "price": 2530,
+    "ts": 1780859169867
   }
 }
