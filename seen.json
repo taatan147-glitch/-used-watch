@@ -24911,8 +24911,8 @@
     "ts": 1775385408351
   },
   "mercari:avec ces freres:m32611337360": {
-    "price": 7500,
-    "ts": 1780510147411
+    "price": 7000,
+    "ts": 1780947091380
   },
   "mercari:avec ces freres:m81755724567": {
     "price": 24000,
@@ -49567,9 +49567,9 @@
     "ts": 1777527544998
   },
   "mercari:Boris Bidjan:m20738678992": {
-    "price": 14000,
+    "price": 18000,
     "lastNotifiedPrice": 12000,
-    "ts": 1780689150920
+    "ts": 1780947673286
   },
   "mercari:augusta:2JQSqooyEkTCvsfgVga6H7": {
     "price": 8000,
@@ -53955,9 +53955,9 @@
     "ts": 1780937288886
   },
   "mercari:daub:2JPcgZzVsPZ44y7yHxgeGa": {
-    "price": 12378,
+    "price": 12478,
     "lastNotifiedPrice": 10205,
-    "ts": 1780921545553
+    "ts": 1780946610940
   },
   "mercari:daub:m17457105859": {
     "price": 18000,
@@ -57234,8 +57234,8 @@
     "ts": 1778407353219
   },
   "mercari:Camiel Fortgens:m26491990622": {
-    "price": 13590,
-    "ts": 1780723640351
+    "price": 13490,
+    "ts": 1780948831301
   },
   "mercari:STOVAIGH:m70692830742": {
     "price": 95000,
@@ -70738,9 +70738,9 @@
     "ts": 1780454821480
   },
   "mercari:Portaille:m79709904409": {
-    "price": 16950,
+    "price": 15985,
     "lastNotifiedPrice": 16950,
-    "ts": 1780921744058
+    "ts": 1780946823691
   },
   "2ndstreet:MITTAN:2320539631840": {
     "price": 10890,
@@ -72233,8 +72233,8 @@
     "ts": 1780652212910
   },
   "mercari:KAVAL:m92420901079": {
-    "price": 3881,
-    "ts": 1780769567075
+    "price": 3687,
+    "ts": 1780946904086
   },
   "mercari:GUIDI:m23106551825": {
     "price": 100000,
@@ -73789,8 +73789,8 @@
     "ts": 1780827821641
   },
   "mercari:Nemeth:m71259473923": {
-    "price": 13500,
-    "ts": 1780827823795
+    "price": 13000,
+    "ts": 1780947931473
   },
   "mercari:Carol Christian Poell:m71726575908": {
     "price": 165000,
@@ -73994,8 +73994,8 @@
     "ts": 1780847395583
   },
   "mercari:John Alexander Skelton:m11170535095": {
-    "price": 85000,
-    "ts": 1780847397756
+    "price": 95000,
+    "ts": 1780948320400
   },
   "mercari:John Alexander Skelton:m17965957104": {
     "price": 100000,
@@ -74492,5 +74492,13 @@
   "mercari:Ordinary People:m92950931312": {
     "price": 3333,
     "ts": 1780939670133
+  },
+  "mercari:C DIEM:m69514082143": {
+    "price": 48980,
+    "ts": 1780947377413
+  },
+  "mercari:incarnation:m31159268094": {
+    "price": 3000,
+    "ts": 1780947412039
   }
 }
