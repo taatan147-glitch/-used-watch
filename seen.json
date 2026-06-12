@@ -1664,8 +1664,8 @@
     "ts": 1780302939891
   },
   "mercari:joe chia:m60089012888": {
-    "price": 11600,
-    "ts": 1781201483821
+    "price": 11500,
+    "ts": 1781264637592
   },
   "mercari:joe chia:m64818591831": {
     "price": 9899,
@@ -2329,9 +2329,9 @@
     "ts": 1778331921124
   },
   "mercari:art comes first:m73393086574": {
-    "price": 7800,
+    "price": 4800,
     "lastNotifiedPrice": 5500,
-    "ts": 1781201587378
+    "ts": 1781264739642
   },
   "mercari:art comes first:m56410979095": {
     "price": 3600,
@@ -4034,9 +4034,9 @@
     "ts": 1774626287885
   },
   "mercari:Nicolo Ceschi Berrini:m97239359859": {
-    "price": 42800,
+    "price": 42700,
     "lastNotifiedPrice": 42800,
-    "ts": 1781089888190
+    "ts": 1781265043714
   },
   "mercari:Nicolo Ceschi Berrini:m60454718131": {
     "price": 13000,
@@ -4700,8 +4700,9 @@
     "ts": 1774626638281
   },
   "mercari:cornelian taurus:m50970734567": {
-    "price": 38600,
-    "ts": 1781201979880
+    "price": 35000,
+    "lastNotifiedPrice": 35000,
+    "ts": 1781265156643
   },
   "mercari:cornelian taurus:m31463086479": {
     "price": 52980,
@@ -5593,8 +5594,8 @@
     "ts": 1778332503273
   },
   "mercari:Bergfabel:m56910690674": {
-    "price": 14000,
-    "ts": 1781090154108
+    "price": 13900,
+    "ts": 1781265277039
   },
   "mercari:Bergfabel:m11352127068": {
     "price": 90000,
@@ -10662,8 +10663,8 @@
     "ts": 1778925946331
   },
   "mercari:Marc Le Bihan:m91306570432": {
-    "price": 12500,
-    "ts": 1781203231174
+    "price": 12400,
+    "ts": 1781266356541
   },
   "mercari:Marc Le Bihan:m81265415221": {
     "price": 15600,
@@ -12156,9 +12157,9 @@
     "ts": 1780263082578
   },
   "mercari:Matthew Miller:m98265278695": {
-    "price": 22890,
+    "price": 22840,
     "lastNotifiedPrice": 23000,
-    "ts": 1779950915643
+    "ts": 1781266591340
   },
   "mercari:Carlos Campos:m27446618144": {
     "price": 3200,
@@ -13614,8 +13615,8 @@
     "ts": 1774638353101
   },
   "mercari:HUSSEIN CHALAYAN:m64032640610": {
-    "price": 4600,
-    "ts": 1781002385476
+    "price": 4500,
+    "ts": 1781265420344
   },
   "mercari:HUSSEIN CHALAYAN:m79783889696": {
     "price": 10110,
@@ -16171,8 +16172,8 @@
     "ts": 1780751851845
   },
   "mercari:cerruti:m90722236276": {
-    "price": 980,
-    "ts": 1781172841607
+    "price": 880,
+    "ts": 1781264654759
   },
   "mercari:cerruti:m25159145970": {
     "price": 680,
@@ -16465,12 +16466,12 @@
     "ts": 1774779699824
   },
   "mercari:kyoji maruyama:RqbHj9HWsUWNxokm7SGQNR": {
-    "price": 7900,
-    "ts": 1781220355013
+    "price": 7800,
+    "ts": 1781264807564
   },
   "mercari:kyoji maruyama:saeGoYBwJ3V7Z2pfqtBjYN": {
-    "price": 7900,
-    "ts": 1781220355013
+    "price": 7800,
+    "ts": 1781264807564
   },
   "mercari:kyoji maruyama:m24342756923": {
     "price": 6300,
@@ -18388,8 +18389,9 @@
     "ts": 1780637450696
   },
   "mercari:CHRISTIAN PEAU:m93621727101": {
-    "price": 51000,
-    "ts": 1781156363457
+    "price": 48000,
+    "lastNotifiedPrice": 48000,
+    "ts": 1781265171699
   },
   "mercari:CHRISTIAN PEAU:m62167208197": {
     "price": 6900,
@@ -19685,9 +19687,9 @@
     "ts": 1776207213153
   },
   "mercari:A1923:m41110049642": {
-    "price": 50000,
+    "price": 49800,
     "lastNotifiedPrice": 48900,
-    "ts": 1780827633542
+    "ts": 1781265312331
   },
   "mercari:A1923:vKpqWLiBwDWvzaPnzWVntN": {
     "price": 1600,
@@ -20218,9 +20220,9 @@
     "ts": 1774782337181
   },
   "mercari:Walter Van Beirendonck:m73787509095": {
-    "price": 28000,
-    "lastNotifiedPrice": 28000,
-    "ts": 1781202175597
+    "price": 25000,
+    "lastNotifiedPrice": 25000,
+    "ts": 1781265360361
   },
   "mercari:Walter Van Beirendonck:m98248524132": {
     "price": 8000,
@@ -20351,12 +20353,12 @@
     "ts": 1774782446099
   },
   "mercari:masahiko maruyama:2JMTNFzx4HwJQvireiaYFw": {
-    "price": 11000,
-    "ts": 1781173554635
+    "price": 10900,
+    "ts": 1781265400829
   },
   "mercari:masahiko maruyama:m85393650726": {
-    "price": 16500,
-    "ts": 1780922819765
+    "price": 16400,
+    "ts": 1781265400829
   },
   "mercari:masahiko maruyama:2JNHFbX4PcCXjjmeMpSEro": {
     "price": 4340,
@@ -21054,8 +21056,8 @@
     "ts": 1774782900375
   },
   "mercari:DAMIR DOMA:m52898978969": {
-    "price": 58500,
-    "ts": 1780922894345
+    "price": 58400,
+    "ts": 1781265472302
   },
   "mercari:DAMIR DOMA:m30097684972": {
     "price": 24600,
@@ -21433,8 +21435,8 @@
     "ts": 1774783164607
   },
   "mercari:masnada:vJQBYifAwQVLkaiShoxMDa": {
-    "price": 610,
-    "ts": 1781249741935
+    "price": 710,
+    "ts": 1781265515400
   },
   "mercari:masnada:m80673300944": {
     "price": 10000,
@@ -21851,14 +21853,14 @@
     "ts": 1779383074292
   },
   "mercari:DEEPTI:WG443ogWm9w8gFuKhEJxST": {
-    "price": 52624,
+    "price": 65780,
     "lastNotifiedPrice": 52624,
-    "ts": 1780049184064
+    "ts": 1781265748729
   },
   "mercari:DEEPTI:u3tnAwApwKxgafYVBCWRkb": {
-    "price": 147840,
+    "price": 184800,
     "lastNotifiedPrice": 147840,
-    "ts": 1780049186164
+    "ts": 1781265748729
   },
   "mercari:DEEPTI:m96323224587": {
     "price": 355000,
@@ -21899,9 +21901,9 @@
     "ts": 1774783737237
   },
   "mercari:Innerraum:B742BWvWzuBvw8ip6c3pZ9": {
-    "price": 62300,
+    "price": 69300,
     "lastNotifiedPrice": 62300,
-    "ts": 1779103932655
+    "ts": 1781265813542
   },
   "mercari:Innerraum:m13275290427": {
     "price": 45000,
@@ -23280,8 +23282,8 @@
     "ts": 1774785090703
   },
   "mercari:Pike Brothers:2JN95deEMwyZJuUMLcnfri": {
-    "price": 2880,
-    "ts": 1781003505493
+    "price": 2730,
+    "ts": 1781266369282
   },
   "mercari:Pike Brothers:2JLtrke56RYxBMCcujaxWE": {
     "price": 45000,
@@ -24054,9 +24056,9 @@
     "ts": 1779965561606
   },
   "mercari:Paul Harnden:2JKr5DJcTu3B89fbHjFLm3": {
-    "price": 164780,
-    "lastNotifiedPrice": 164780,
-    "ts": 1780129404776
+    "price": 159280,
+    "lastNotifiedPrice": 159280,
+    "ts": 1781264483987
   },
   "mercari:Paul Harnden:m71168915601": {
     "price": 98000,
@@ -24963,8 +24965,8 @@
     "ts": 1776591765041
   },
   "mercari:art comes first:m60895503612": {
-    "price": 5500,
-    "ts": 1781075467527
+    "price": 5000,
+    "ts": 1781264739642
   },
   "mercari:art comes first:5sC3d2AN2STkqcFMA69dv3": {
     "price": 3069,
@@ -26078,8 +26080,8 @@
     "ts": 1774851823155
   },
   "mercari:joe chia:m30911329288": {
-    "price": 20900,
-    "ts": 1781201483821
+    "price": 20800,
+    "ts": 1781264637592
   },
   "mercari:cerruti:m54622425253": {
     "price": 0,
@@ -28374,9 +28376,9 @@
     "ts": 1780344227199
   },
   "mercari:MITTAN:m14438427151": {
-    "price": 33000,
+    "price": 35000,
     "lastNotifiedPrice": 30000,
-    "ts": 1780472368025
+    "ts": 1781264500978
   },
   "2ndstreet:MITTAN:2337870796473": {
     "price": 19690,
@@ -29035,8 +29037,8 @@
     "ts": 1774975860612
   },
   "mercari:carpe diem:P85kUNo4DHNyZP67iShbme": {
-    "price": 711,
-    "ts": 1774975862805
+    "price": 706,
+    "ts": 1781264984686
   },
   "mercari:incarnation:m36323180916": {
     "price": 59800,
@@ -29911,9 +29913,9 @@
     "ts": 1780240843269
   },
   "mercari:GUIDI:m71396176644": {
-    "price": 174000,
+    "price": 173500,
     "lastNotifiedPrice": 174000,
-    "ts": 1781089418122
+    "ts": 1781264611822
   },
   "mercari:cerruti:m36456764771": {
     "price": 399,
@@ -34180,14 +34182,14 @@
     "ts": 1775215636813
   },
   "mercari:Paul Harnden:2JKwJFHVPaKrGkvi46itfp": {
-    "price": 69278,
-    "lastNotifiedPrice": 69278,
-    "ts": 1780129400369
+    "price": 64878,
+    "lastNotifiedPrice": 64878,
+    "ts": 1781264479652
   },
   "mercari:Paul Harnden:2JKr5DMt6uKCoXUsw3dMHh": {
-    "price": 181280,
-    "lastNotifiedPrice": 181280,
-    "ts": 1780129402559
+    "price": 175780,
+    "lastNotifiedPrice": 175780,
+    "ts": 1781264481804
   },
   "mercari:Paul Harnden:m49495253329": {
     "price": 105000,
@@ -37760,9 +37762,9 @@
     "ts": 1775574489077
   },
   "mercari:n/07:m40109571506": {
-    "price": 19400,
+    "price": 19300,
     "lastNotifiedPrice": 19400,
-    "ts": 1781173004105
+    "ts": 1781264820331
   },
   "mercari:carpe diem:m29441273448": {
     "price": 2790,
@@ -41874,9 +41876,9 @@
     "ts": 1776251095284
   },
   "mercari:CASEY CASEY:m51721892070": {
-    "price": 29600,
+    "price": 29500,
     "lastNotifiedPrice": 29600,
-    "ts": 1781202021651
+    "ts": 1781265204398
   },
   "mercari:augusta:2JPrcL9HMeNNWid3N2Pz4t": {
     "price": 26980,
@@ -42808,8 +42810,8 @@
     "ts": 1776422984376
   },
   "mercari:BONEVILLE:m76301217605": {
-    "price": 11800,
-    "ts": 1780663395966
+    "price": 11700,
+    "ts": 1781264708624
   },
   "mercari:art comes first:2JPwrmB2St3ZRXWYyFPTqQ": {
     "price": 34880,
@@ -43122,8 +43124,8 @@
     "ts": 1777168031361
   },
   "mercari:DAMIR DOMA:m26446710010": {
-    "price": 16700,
-    "ts": 1781202295859
+    "price": 16600,
+    "ts": 1781265472302
   },
   "mercari:BERNHARD WILLHELM:m80555101283": {
     "price": 40000,
@@ -43865,8 +43867,8 @@
     "ts": 1776580563546
   },
   "mercari:HUSSEIN CHALAYAN:m88546500759": {
-    "price": 4500,
-    "ts": 1778653130583
+    "price": 4200,
+    "ts": 1781265413645
   },
   "mercari:DAMIR DOMA:m12369357205": {
     "price": 28500,
@@ -44977,14 +44979,14 @@
     "ts": 1779360199801
   },
   "mercari:ansnam:2JQ9StPqz8QRyQdVQ6NSye": {
-    "price": 22000,
+    "price": 21250,
     "lastNotifiedPrice": 20400,
-    "ts": 1779762015719
+    "ts": 1781264872402
   },
   "mercari:ansnam:2JQ9Ss6tUZQ68eXWGuyut8": {
-    "price": 26750,
+    "price": 25875,
     "lastNotifiedPrice": 24800,
-    "ts": 1779762015719
+    "ts": 1781264872402
   },
   "mercari:incarnation:m20163574912": {
     "price": 35000,
@@ -45064,9 +45066,9 @@
     "ts": 1778400461632
   },
   "mercari:carpe diem:m58034713742": {
-    "price": 50000,
-    "lastNotifiedPrice": 50000,
-    "ts": 1781013231246
+    "price": 48000,
+    "lastNotifiedPrice": 48000,
+    "ts": 1781264989295
   },
   "mercari:ensou:m80606187732": {
     "price": 10000,
@@ -46413,16 +46415,16 @@
     "ts": 1777021623666
   },
   "mercari:avec ces freres:m79413474665": {
-    "price": 4500,
-    "ts": 1780904122481
+    "price": 4200,
+    "ts": 1781264721409
   },
   "mercari:art comes first:m15335894445": {
     "price": 12500,
     "ts": 1779948881407
   },
   "mercari:art comes first:m79413474665": {
-    "price": 4500,
-    "ts": 1780904138780
+    "price": 4200,
+    "ts": 1781264739642
   },
   "2ndstreet:art comes first:2337881279668": {
     "price": 8690,
@@ -47218,9 +47220,9 @@
     "ts": 1777126785789
   },
   "mercari:Bergfabel:m10362074354": {
-    "price": 28700,
+    "price": 28600,
     "lastNotifiedPrice": 29000,
-    "ts": 1781202092413
+    "ts": 1781265277039
   },
   "mercari:augusta:2JQLFMWmitnoACEArPDmCg": {
     "price": 112800,
@@ -48191,9 +48193,9 @@
     "ts": 1780240845270
   },
   "mercari:cerruti:m25400982972": {
-    "price": 23000,
+    "price": 22900,
     "lastNotifiedPrice": 23000,
-    "ts": 1781172832971
+    "ts": 1781264654759
   },
   "mercari:cerruti:m71904199493": {
     "price": 24200,
@@ -48785,8 +48787,8 @@
     "ts": 1780151701372
   },
   "mercari:cerruti:m73807742372": {
-    "price": 1500,
-    "ts": 1781155856753
+    "price": 1400,
+    "ts": 1781264650313
   },
   "mercari:cerruti:m72668830532": {
     "price": 2170,
@@ -49425,9 +49427,9 @@
     "ts": 1777601216043
   },
   "mercari:DEVOA:m14285603960": {
-    "price": 26000,
-    "lastNotifiedPrice": 26000,
-    "ts": 1780846625829
+    "price": 25000,
+    "lastNotifiedPrice": 25000,
+    "ts": 1781265112998
   },
   "mercari:CASEY CASEY:2JQWkBZNuapNgRbLPByVYV": {
     "price": 25600,
@@ -50136,8 +50138,8 @@
     "ts": 1777614930074
   },
   "mercari:HUSSEIN CHALAYAN:m42905192064": {
-    "price": 5780,
-    "ts": 1781202244611
+    "price": 5680,
+    "ts": 1781265420344
   },
   "mercari:HUSSEIN CHALAYAN:m59500966701": {
     "price": 1999,
@@ -54026,9 +54028,9 @@
     "ts": 1781074954698
   },
   "mercari:daub:m17457105859": {
-    "price": 18000,
-    "lastNotifiedPrice": 18000,
-    "ts": 1780490060312
+    "price": 16000,
+    "lastNotifiedPrice": 16000,
+    "ts": 1781264267584
   },
   "mercari:daub:2JPCpHMU4Gk8zF4x84jAh2": {
     "price": 8450,
@@ -56663,9 +56665,9 @@
     "ts": 1778318983757
   },
   "mercari:Bergfabel:m54477047696": {
-    "price": 77400,
+    "price": 77300,
     "lastNotifiedPrice": 78000,
-    "ts": 1781220783599
+    "ts": 1781265277039
   },
   "mercari:augusta:m46849482888": {
     "price": 2580,
@@ -57906,8 +57908,8 @@
     "ts": 1779359477772
   },
   "mercari:HALLELUJAH:m86241047005": {
-    "price": 7580,
-    "ts": 1778503132884
+    "price": 7180,
+    "ts": 1781264097084
   },
   "mercari:MITTAN:m85878773415": {
     "price": 25000,
@@ -58642,9 +58644,9 @@
     "ts": 1779360662537
   },
   "mercari:HUSSEIN CHALAYAN:m37477274904": {
-    "price": 3999,
+    "price": 3600,
     "lastNotifiedPrice": 4000,
-    "ts": 1781156607182
+    "ts": 1781265420344
   },
   "mercari:Innerraum:m81547267283": {
     "price": 25000,
@@ -59633,8 +59635,8 @@
     "ts": 1778760615655
   },
   "mercari:BERNHARD WILLHELM:m18391196531": {
-    "price": 26100,
-    "ts": 1781202336254
+    "price": 26000,
+    "ts": 1781265500480
   },
   "mercari:BERNHARD WILLHELM:m71179262490": {
     "price": 30000,
@@ -60378,8 +60380,8 @@
     "ts": 1778872594727
   },
   "mercari:MITTAN:m66299411698": {
-    "price": 10500,
-    "ts": 1780652187729
+    "price": 10000,
+    "ts": 1781264498760
   },
   "mercari:Nemeth:m66418100177": {
     "price": 30000,
@@ -60568,8 +60570,9 @@
     "ts": 1778918876466
   },
   "mercari:DEVOA:m95580499700": {
-    "price": 49800,
-    "ts": 1778919012936
+    "price": 48000,
+    "lastNotifiedPrice": 48000,
+    "ts": 1781265115282
   },
   "mercari:CASEY CASEY:m35297703667": {
     "price": 25000,
@@ -61947,8 +61950,8 @@
     "ts": 1779115915645
   },
   "mercari:DEVOA:m65718764286": {
-    "price": 24000,
-    "ts": 1781213294408
+    "price": 23900,
+    "ts": 1781265112756
   },
   "mercari:DEVOA:m25873895479": {
     "price": 29400,
@@ -61993,8 +61996,8 @@
     "ts": 1779116544665
   },
   "mercari:Leon Emanuel Blanck:m92965972828": {
-    "price": 55800,
-    "ts": 1781202678798
+    "price": 55700,
+    "ts": 1781265852340
   },
   "mercari:Never Enough:m31790340382": {
     "price": 6500,
@@ -62747,8 +62750,8 @@
     "ts": 1779260619011
   },
   "mercari:HUSSEIN CHALAYAN:m56515227470": {
-    "price": 2280,
-    "ts": 1781013702691
+    "price": 2180,
+    "ts": 1781265420344
   },
   "mercari:Nemeth:m13299924601": {
     "price": 5000,
@@ -63571,8 +63574,8 @@
     "ts": 1779361025376
   },
   "mercari:DAMIR DOMA:m79847978672": {
-    "price": 18900,
-    "ts": 1781090362732
+    "price": 18800,
+    "ts": 1781265472302
   },
   "2ndstreet:DAMIR DOMA:2334993501076": {
     "price": 19690,
@@ -63850,9 +63853,9 @@
     "ts": 1779408368706
   },
   "mercari:final home:m29454694761": {
-    "price": 13000,
+    "price": 16000,
     "lastNotifiedPrice": 13000,
-    "ts": 1780922183014
+    "ts": 1781264846693
   },
   "mercari:ansnam:ZPCH7yTVbKhjSa3B9AmWZc": {
     "price": 8100,
@@ -64713,8 +64716,8 @@
     "ts": 1779524529892
   },
   "mercari:cerruti:m56245953360": {
-    "price": 2380,
-    "ts": 1781075372749
+    "price": 2280,
+    "ts": 1781264657047
   },
   "2ndstreet:final home:2338401463345": {
     "price": 32890,
@@ -64795,9 +64798,9 @@
     "ts": 1779532251093
   },
   "mercari:MITTAN:m10376008187": {
-    "price": 13900,
+    "price": 13800,
     "lastNotifiedPrice": 14000,
-    "ts": 1781101530852
+    "ts": 1781264500978
   },
   "2ndstreet:LAYER-0:2319066272183": {
     "price": 8690,
@@ -65353,9 +65356,9 @@
     "ts": 1779616517235
   },
   "mercari:cerruti:m93526953138": {
-    "price": 4499,
-    "lastNotifiedPrice": 4499,
-    "ts": 1780751841200
+    "price": 2999,
+    "lastNotifiedPrice": 2999,
+    "ts": 1781264655046
   },
   "mercari:christophe lemaire:m83632554923": {
     "price": 6380,
@@ -67000,8 +67003,9 @@
     "ts": 1779900877294
   },
   "mercari:Boris Bidjan:m88790709167": {
-    "price": 56000,
-    "ts": 1779900914688
+    "price": 54800,
+    "lastNotifiedPrice": 54800,
+    "ts": 1781265248755
   },
   "mercari:BIEK VERSTAPPEN:m39316975977": {
     "price": 17000,
@@ -67420,8 +67424,8 @@
     "ts": 1779967789831
   },
   "mercari:Andrea Incontri:m56817169700": {
-    "price": 7700,
-    "ts": 1780639132353
+    "price": 7600,
+    "ts": 1781266642631
   },
   "mercari:HALLELUJAH:m36669034701": {
     "price": 20000,
@@ -67806,8 +67810,8 @@
     "ts": 1780048548540
   },
   "mercari:Poell:M4fwEK8ktDgvoZWsPm9Mv7": {
-    "price": 594000,
-    "ts": 1780048565606
+    "price": 660000,
+    "ts": 1781265219866
   },
   "mercari:Bergfabel:2JRrXbSCEvgkh8jZsDGN3F": {
     "price": 33900,
@@ -67846,8 +67850,8 @@
     "ts": 1780048910157
   },
   "mercari:Carol Christian Poell:M4fwEK8ktDgvoZWsPm9Mv7": {
-    "price": 594000,
-    "ts": 1780049070806
+    "price": 660000,
+    "ts": 1781265649096
   },
   "mercari:Innerraum:m16341872917": {
     "price": 55000,
@@ -68194,9 +68198,9 @@
     "ts": 1780653244557
   },
   "mercari:Altieri:m86319152408": {
-    "price": 68000,
+    "price": 61200,
     "lastNotifiedPrice": 56500,
-    "ts": 1781221428321
+    "ts": 1781265944900
   },
   "mercari:MITTAN:m59743781542": {
     "price": 5999,
@@ -68375,8 +68379,9 @@
     "ts": 1780119977633
   },
   "trefac:CAPERTICA:3090063257883351": {
-    "price": 6600,
-    "ts": 1780120201717
+    "price": 5500,
+    "lastNotifiedPrice": 5500,
+    "ts": 1781264297641
   },
   "mercari:MITTAN:m21250621523": {
     "price": 24500,
@@ -69109,8 +69114,8 @@
     "ts": 1780194234051
   },
   "mercari:kyoji maruyama:m22584763308": {
-    "price": 4780,
-    "ts": 1781172990574
+    "price": 4880,
+    "ts": 1781264807564
   },
   "mercari:mixed up:m70409916319": {
     "price": 480,
@@ -69362,9 +69367,9 @@
     "ts": 1781201810455
   },
   "mercari:C DIEM:m29412235924": {
-    "price": 25000,
+    "price": 24000,
     "lastNotifiedPrice": 22000,
-    "ts": 1781220506527
+    "ts": 1781264967578
   },
   "mercari:carpe diem:m88902663195": {
     "price": 3999,
@@ -69561,9 +69566,9 @@
     "ts": 1780510073993
   },
   "mercari:BONEVILLE:m64326573325": {
-    "price": 43000,
+    "price": 40000,
     "lastNotifiedPrice": 32000,
-    "ts": 1781172895773
+    "ts": 1781264708624
   },
   "mercari:cornelian taurus:m66253579489": {
     "price": 39000,
@@ -70423,8 +70428,8 @@
     "ts": 1780380170696
   },
   "mercari:HALLELUJAH:m36661519577": {
-    "price": 4200,
-    "ts": 1780739637055
+    "price": 3800,
+    "ts": 1781264094798
   },
   "2ndstreet:MITTAN:2338555199718": {
     "price": 21890,
@@ -70591,8 +70596,8 @@
     "ts": 1780409787155
   },
   "mercari:cerruti:m26672617208": {
-    "price": 3180,
-    "ts": 1781172841607
+    "price": 3080,
+    "ts": 1781264654759
   },
   "mercari:christophe lemaire:m97611742401": {
     "price": 8880,
@@ -71257,8 +71262,8 @@
     "ts": 1780491132321
   },
   "mercari:by Walid:m66440498888": {
-    "price": 37200,
-    "ts": 1781173401219
+    "price": 37100,
+    "ts": 1781265233158
   },
   "mercari:Boris Bidjan:m80606918529": {
     "price": 19900,
@@ -71441,9 +71446,9 @@
     "ts": 1780522235329
   },
   "mercari:Hannes Roether:m62588162399": {
-    "price": 2900,
+    "price": 2800,
     "lastNotifiedPrice": 3000,
-    "ts": 1781203177103
+    "ts": 1781266317923
   },
   "mercari:KAVAL:2JS8GoktbfZrFcondSTqGH": {
     "price": 27800,
@@ -71522,8 +71527,8 @@
     "ts": 1780552829249
   },
   "mercari:cerruti:m74427450131": {
-    "price": 600,
-    "ts": 1781201503469
+    "price": 500,
+    "ts": 1781264654758
   },
   "mercari:cerruti:m59710883557": {
     "price": 1380,
@@ -73084,9 +73089,9 @@
     "ts": 1780732741717
   },
   "mercari:DEVOA:m16823081324": {
-    "price": 28500,
+    "price": 28000,
     "lastNotifiedPrice": 28500,
-    "ts": 1780833863416
+    "ts": 1781265114999
   },
   "mercari:DEVOA:m29559353011": {
     "price": 89800,
@@ -73340,8 +73345,8 @@
     "ts": 1781090241242
   },
   "mercari:masahiko maruyama:m92057937008": {
-    "price": 12880,
-    "ts": 1780752650522
+    "price": 12680,
+    "ts": 1781265400829
   },
   "mercari:HUSSEIN CHALAYAN:m87453025523": {
     "price": 45000,
@@ -73545,13 +73550,13 @@
     "ts": 1781173455067
   },
   "mercari:HUSSEIN CHALAYAN:m37321700261": {
-    "price": 11000,
-    "lastNotifiedPrice": 11000,
-    "ts": 1781202240395
+    "price": 9900,
+    "lastNotifiedPrice": 9900,
+    "ts": 1781265416057
   },
   "mercari:HUSSEIN CHALAYAN:m73772309714": {
-    "price": 37300,
-    "ts": 1781115645896
+    "price": 37200,
+    "ts": 1781265420344
   },
   "mercari:Nemeth:m74785970652": {
     "price": 16800,
@@ -73799,9 +73804,9 @@
     "ts": 1781202719801
   },
   "mercari:m.a+:m28294463277": {
-    "price": 185000,
-    "lastNotifiedPrice": 185000,
-    "ts": 1781202720252
+    "price": 180000,
+    "lastNotifiedPrice": 180000,
+    "ts": 1781265891092
   },
   "mercari:m.a+:m65730545119": {
     "price": 380000,
@@ -73973,8 +73978,8 @@
     "ts": 1780834179546
   },
   "mercari:BERNHARD WILLHELM:m73698314495": {
-    "price": 12900,
-    "ts": 1781013802156
+    "price": 12800,
+    "ts": 1781265502623
   },
   "mercari:BERNHARD WILLHELM:m21402676848": {
     "price": 100000,
@@ -74021,12 +74026,13 @@
     "ts": 1780840073342
   },
   "mercari:BERNHARD WILLHELM:m23629611118": {
-    "price": 21999,
-    "ts": 1780840093543
+    "price": 19999,
+    "lastNotifiedPrice": 19999,
+    "ts": 1781265498479
   },
   "mercari:BERNHARD WILLHELM:m23686095166": {
-    "price": 18999,
-    "ts": 1780840095941
+    "price": 18499,
+    "ts": 1781265502623
   },
   "mercari:BERNHARD WILLHELM:2JSHSd4c5nLFo2yN5X3ANj": {
     "price": 17259,
@@ -74055,9 +74061,9 @@
     "ts": 1781116811565
   },
   "mercari:TEN-C:m33642683772": {
-    "price": 30000,
+    "price": 35000,
     "lastNotifiedPrice": 30000,
-    "ts": 1781248256243
+    "ts": 1781263997041
   },
   "mercari:HALLELUJAH:m89837700510": {
     "price": 420,
@@ -74234,8 +74240,8 @@
     "ts": 1780888980693
   },
   "mercari:Marc Le Bihan:m52143219746": {
-    "price": 24800,
-    "ts": 1781014736349
+    "price": 24700,
+    "ts": 1781266356541
   },
   "2ndstreet:テンシー:2338880586979": {
     "price": 25190,
@@ -74414,8 +74420,9 @@
     "ts": 1780921807953
   },
   "mercari:LABEL UNDER CONSTRUCTION:m20759271001": {
-    "price": 24800,
-    "ts": 1780921819449
+    "price": 22800,
+    "lastNotifiedPrice": 22800,
+    "ts": 1781264527255
   },
   "mercari:GUIDI:m76652172601": {
     "price": 90000,
@@ -74524,8 +74531,9 @@
     "ts": 1780922933631
   },
   "mercari:BERNHARD WILLHELM:m37673934705": {
-    "price": 24900,
-    "ts": 1780922935738
+    "price": 23900,
+    "lastNotifiedPrice": 23900,
+    "ts": 1781265500622
   },
   "trefac:BERNHARD WILLHELM:3090066068127712": {
     "price": 8800,
@@ -74577,8 +74585,8 @@
     "ts": 1780937629504
   },
   "mercari:incarnation:m80054749131": {
-    "price": 2399,
-    "ts": 1781115221566
+    "price": 2199,
+    "ts": 1781265004158
   },
   "mercari:augusta:2JSLFk8JW5FQzPRDBL2jmZ": {
     "price": 5865,
@@ -74815,12 +74823,12 @@
     "ts": 1780986560447
   },
   "mercari:augusta:m75319943876": {
-    "price": 1400,
-    "ts": 1780986604148
+    "price": 1300,
+    "ts": 1781265294832
   },
   "mercari:augusta:m81580369566": {
-    "price": 12160,
-    "ts": 1781213451081
+    "price": 11550,
+    "ts": 1781265299245
   },
   "mercari:augusta:m10096282273": {
     "price": 6980,
@@ -74936,8 +74944,8 @@
     "ts": 1781001975323
   },
   "mercari:DEVOA:m23628478684": {
-    "price": 65400,
-    "ts": 1781201941421
+    "price": 65000,
+    "ts": 1781265112756
   },
   "mercari:cornelian taurus:2JSNKaXdX9256fS3G8kW2H": {
     "price": 63500,
@@ -75535,9 +75543,9 @@
     "ts": 1781059878373
   },
   "mercari:Suzusan:m21812285622": {
-    "price": 35900,
-    "lastNotifiedPrice": 35900,
-    "ts": 1781203157017
+    "price": 34100,
+    "lastNotifiedPrice": 34100,
+    "ts": 1781266302946
   },
   "2ndstreet:Private White V.C.:2348031336322": {
     "price": 14190,
@@ -75588,8 +75596,8 @@
     "ts": 1781075316974
   },
   "mercari:cerruti:m81988222611": {
-    "price": 2300,
-    "ts": 1781075366282
+    "price": 2200,
+    "ts": 1781264657047
   },
   "mercari:cerruti:m19913552490": {
     "price": 5999,
@@ -75806,8 +75814,8 @@
     "ts": 1781089326616
   },
   "mercari:individual sentiments:m27558592444": {
-    "price": 28100,
-    "ts": 1781201789510
+    "price": 28000,
+    "ts": 1781264946745
   },
   "mercari:carpe diem:2JSQtvynBwkp7yCyxmhykF": {
     "price": 8810,
@@ -75850,8 +75858,8 @@
     "ts": 1781090076691
   },
   "mercari:by Walid:m38488553165": {
-    "price": 49900,
-    "ts": 1781090101897
+    "price": 49800,
+    "ts": 1781265233158
   },
   "mercari:Boris Bidjan:2JSR3gGiTPb8wXozL8YhYS": {
     "price": 19459,
@@ -75891,8 +75899,8 @@
     "ts": 1781091125101
   },
   "mercari:Araki Yuu:m64071781412": {
-    "price": 93100,
-    "ts": 1781203064872
+    "price": 93000,
+    "ts": 1781266219987
   },
   "mercari:Song for the Mute:2JSQk8tbtrQ6wKcMuvp4pZ": {
     "price": 34699,
@@ -76625,5 +76633,185 @@
   "mercari:Andrea Incontri:m70414126746": {
     "price": 3000,
     "ts": 1781250853342
+  },
+  "mercari:HALLELUJAH:m46297196595": {
+    "price": 12800,
+    "ts": 1781264095082
+  },
+  "mercari:HALLELUJAH:m12573881069": {
+    "price": 4000,
+    "ts": 1781264097256
+  },
+  "mercari:CAPERTICA:2JSVtMTyPS3SvBLcsZUtoW": {
+    "price": 8600,
+    "ts": 1781264282914
+  },
+  "mercari:CAPERTICA:2JSVtHxiFwpSeb7WVcHPni": {
+    "price": 8600,
+    "ts": 1781264285115
+  },
+  "mercari:CAPERTICA:2JSVtHtuaTM4S9TXmxj3vy": {
+    "price": 8600,
+    "ts": 1781264287241
+  },
+  "mercari:MITTAN:m33258206168": {
+    "price": 16000,
+    "ts": 1781264498975
+  },
+  "mercari:KAVAL:2JSW6Bvozdhc2LyP5E9Fuv": {
+    "price": 39800,
+    "ts": 1781264542753
+  },
+  "mercari:KAVAL:2JSVzhgyVhpMcgVxAi4fPU": {
+    "price": 58800,
+    "ts": 1781264544922
+  },
+  "mercari:KAVAL:2JSVzfHX7Voepc9iAL45SM": {
+    "price": 41800,
+    "ts": 1781264547074
+  },
+  "mercari:GUIDI:m44148968555": {
+    "price": 53000,
+    "ts": 1781264601096
+  },
+  "mercari:GUIDI:m37694051464": {
+    "price": 33000,
+    "ts": 1781264605501
+  },
+  "mercari:GUIDI:m46621354968": {
+    "price": 110000,
+    "ts": 1781264607645
+  },
+  "mercari:GUIDI:m44740976766": {
+    "price": 188000,
+    "ts": 1781264609822
+  },
+  "mercari:cerruti:m12435046590": {
+    "price": 3800,
+    "ts": 1781264650565
+  },
+  "mercari:cerruti:m28438118632": {
+    "price": 6000,
+    "ts": 1781264652759
+  },
+  "mercari:art comes first:m57996017473": {
+    "price": 5800,
+    "ts": 1781264735425
+  },
+  "mercari:art comes first:m20128485850": {
+    "price": 5500,
+    "ts": 1781264737642
+  },
+  "mercari:christophe lemaire:2JSW4m4nHMVZAiTwhLRUaV": {
+    "price": 19900,
+    "ts": 1781264779225
+  },
+  "trefac:ansnam:3005020358350044": {
+    "price": 33000,
+    "ts": 1781264880783
+  },
+  "trefac:ansnam:3005020358367044": {
+    "price": 44000,
+    "ts": 1781264883187
+  },
+  "mercari:artificial eye:m75543296122": {
+    "price": 30000,
+    "ts": 1781264931816
+  },
+  "mercari:carpe diem:2JSW6bqJ3hiTHEC8zkmvUg": {
+    "price": 21480,
+    "ts": 1781264980555
+  },
+  "mercari:carpe diem:2JSVzmGGLjh2CUVKytdKZc": {
+    "price": 14980,
+    "ts": 1781264982685
+  },
+  "mercari:carpe diem:2JSVs9J6gYyf9nGui72wfn": {
+    "price": 37800,
+    "ts": 1781264984865
+  },
+  "mercari:carpe diem:m24183222470": {
+    "price": 3000,
+    "ts": 1781264987112
+  },
+  "mercari:ensou:m69356979177": {
+    "price": 5300,
+    "ts": 1781265069631
+  },
+  "mercari:ensou:m77436290314": {
+    "price": 7980,
+    "ts": 1781265071795
+  },
+  "mercari:CASEY CASEY:m85025512764": {
+    "price": 29800,
+    "ts": 1781265199992
+  },
+  "mercari:CASEY CASEY:2JSVsoQxNsfKSArtjHN3NQ": {
+    "price": 31400,
+    "ts": 1781265202398
+  },
+  "mercari:Poell:m89997081977": {
+    "price": 270000,
+    "ts": 1781265217866
+  },
+  "mercari:Boris Bidjan:m94557311515": {
+    "price": 56500,
+    "ts": 1781265246282
+  },
+  "mercari:augusta:m11523422245": {
+    "price": 990,
+    "ts": 1781265290161
+  },
+  "mercari:augusta:2JSW46yMmKkMwCEWtUS8uP": {
+    "price": 20480,
+    "ts": 1781265292832
+  },
+  "mercari:augusta:2JSVyukBCGJkY59uqM9tuk": {
+    "price": 45800,
+    "ts": 1781265295001
+  },
+  "mercari:augusta:m23629082551": {
+    "price": 4500,
+    "ts": 1781265297244
+  },
+  "mercari:HUSSEIN CHALAYAN:m31025022008": {
+    "price": 4220,
+    "ts": 1781265413894
+  },
+  "mercari:HUSSEIN CHALAYAN:2JSW29h4CQXsZVhzNpP8oZ": {
+    "price": 4280,
+    "ts": 1781265418344
+  },
+  "mercari:11 by Boris:m94557311515": {
+    "price": 56500,
+    "ts": 1781265541093
+  },
+  "mercari:Carol Christian Poell:m89997081977": {
+    "price": 270000,
+    "ts": 1781265647095
+  },
+  "mercari:D.GNAK:m40174694258": {
+    "price": 12500,
+    "ts": 1781265701078
+  },
+  "mercari:MD75:2JSVrwkfzX2mwD4V9wZJuY": {
+    "price": 1780,
+    "ts": 1781265958125
+  },
+  "mercari:Never Enough:2JSTBF8r3nCDc4MTuqkoep": {
+    "price": 4939,
+    "ts": 1781265985968
+  },
+  "mercari:Song for the Mute:m88615130021": {
+    "price": 30000,
+    "ts": 1781266285268
+  },
+  "trefac:Song for the Mute:3016009221121352": {
+    "price": 19800,
+    "ts": 1781266295656
+  },
+  "mercari:Rynshu:2JSVvYC9Nvks7oTWAAEkFr": {
+    "price": 4280,
+    "ts": 1781266537570
   }
 }
