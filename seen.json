@@ -20804,8 +20804,8 @@
     "ts": 1780860537027
   },
   "mercari:first aid to the injured:m42405557637": {
-    "price": 21800,
-    "ts": 1777976518078
+    "price": 21700,
+    "ts": 1781378914169
   },
   "mercari:first aid to the injured:m94145064242": {
     "price": 6900,
@@ -22329,8 +22329,8 @@
     "ts": 1778429941757
   },
   "mercari:MD75:m46722474306": {
-    "price": 59700,
-    "ts": 1777997842936
+    "price": 59600,
+    "ts": 1781379418409
   },
   "mercari:MD75:m84175873073": {
     "price": 16000,
@@ -40289,8 +40289,8 @@
     "ts": 1775986404566
   },
   "mercari:THAMANYAH:m97041717080": {
-    "price": 29700,
-    "ts": 1777995909244
+    "price": 29600,
+    "ts": 1781377907499
   },
   "mercari:THAMANYAH:m16924055344": {
     "price": 87000,
@@ -40878,8 +40878,8 @@
     "ts": 1776081600940
   },
   "mercari:ISAAC SELLAM:m24658449229": {
-    "price": 39900,
-    "ts": 1777980037997
+    "price": 39800,
+    "ts": 1781378132032
   },
   "mercari:GUIDI:m71383800503": {
     "price": 240000,
@@ -48807,8 +48807,8 @@
     "ts": 1780151701372
   },
   "mercari:cerruti:m73807742372": {
-    "price": 1300,
-    "ts": 1781333813031
+    "price": 1200,
+    "ts": 1781378200050
   },
   "mercari:cerruti:m72668830532": {
     "price": 2170,
@@ -52468,8 +52468,9 @@
     "ts": 1778464759584
   },
   "2ndstreet:YUTA MATSUOKA:2338554529134": {
-    "price": 27390,
-    "ts": 1778464759584
+    "price": 19690,
+    "lastNotifiedPrice": 19690,
+    "ts": 1781377582159
   },
   "2ndstreet:YUTA MATSUOKA:2344191746360": {
     "price": 43890,
@@ -53736,14 +53737,14 @@
     "ts": 1779576343005
   },
   "mercari:ISABEL BENENATO:2JPRb62GUHyKnJEoeadT4v": {
-    "price": 67800,
-    "lastNotifiedPrice": 67800,
-    "ts": 1778860874654
+    "price": 51800,
+    "lastNotifiedPrice": 51800,
+    "ts": 1781377799421
   },
   "mercari:ISABEL BENENATO:2JPRaENmeyW9gbqncyWhne": {
-    "price": 73800,
-    "lastNotifiedPrice": 73800,
-    "ts": 1779566731485
+    "price": 69800,
+    "lastNotifiedPrice": 69800,
+    "ts": 1781377784287
   },
   "mercari:ISABEL BENENATO:2JPRYz2VeZyaGief5NCVQg": {
     "price": 197800,
@@ -57532,9 +57533,9 @@
     "ts": 1779456837954
   },
   "mercari:golem:2JQzyT9UTScAZoSNKRkCfD": {
-    "price": 11652,
-    "lastNotifiedPrice": 11652,
-    "ts": 1779761732438
+    "price": 6928,
+    "lastNotifiedPrice": 6928,
+    "ts": 1781378172197
   },
   "mercari:ensou:m53051394089": {
     "price": 3980,
@@ -59879,8 +59880,8 @@
     "ts": 1778791553918
   },
   "mercari:Nemeth:7PJYxssRXCvaLgWBCmmwu5": {
-    "price": 5308,
-    "ts": 1780084326999
+    "price": 5139,
+    "ts": 1781378965910
   },
   "mercari:HALLELUJAH:m68083404388": {
     "price": 2000,
@@ -62375,9 +62376,9 @@
     "ts": 1779198935420
   },
   "mercari:ROGGYKEI:m98947972132": {
-    "price": 28400,
-    "lastNotifiedPrice": 29000,
-    "ts": 1781285843692
+    "price": 28000,
+    "lastNotifiedPrice": 28000,
+    "ts": 1781378011266
   },
   "mercari:Paul Harnden:m59678268506": {
     "price": 23000,
@@ -62813,9 +62814,9 @@
     "ts": 1779261707714
   },
   "mercari:ISABEL BENENATO:2JPmtV3Hd4wpT8cHpE5PPw": {
-    "price": 66800,
-    "lastNotifiedPrice": 66800,
-    "ts": 1779576338573
+    "price": 62800,
+    "lastNotifiedPrice": 62800,
+    "ts": 1781377777902
   },
   "mercari:ISABEL BENENATO:2JPmtKezRo7S4hyNM5WrZA": {
     "price": 34800,
@@ -62840,14 +62841,14 @@
     "ts": 1779272510297
   },
   "mercari:ISABEL BENENATO:2JPRb5oAXkMtXgaihciBvM": {
-    "price": 73800,
-    "lastNotifiedPrice": 73800,
-    "ts": 1779566722696
+    "price": 66800,
+    "lastNotifiedPrice": 66800,
+    "ts": 1781377782156
   },
   "mercari:ISABEL BENENATO:2JPRaEodDFjspifvPongFA": {
-    "price": 84800,
-    "lastNotifiedPrice": 84800,
-    "ts": 1779566724923
+    "price": 80800,
+    "lastNotifiedPrice": 80800,
+    "ts": 1781377801576
   },
   "mercari:ISABEL BENENATO:2JPRa7AZZnUA6pWnWTYFuF": {
     "price": 91800,
@@ -76365,8 +76366,9 @@
     "ts": 1781200875030
   },
   "mercari:Paul Harnden:m29805142334": {
-    "price": 45000,
-    "ts": 1781201327912
+    "price": 44000,
+    "lastNotifiedPrice": 44000,
+    "ts": 1781378052666
   },
   "trefac:MITTAN:3049005876002289": {
     "price": 11000,
@@ -76587,8 +76589,9 @@
     "ts": 1781357594263
   },
   "mercari:lumen et umbra:m14484272602": {
-    "price": 19000,
-    "ts": 1781364960991
+    "price": 17000,
+    "lastNotifiedPrice": 17000,
+    "ts": 1781378213317
   },
   "mercari:christophe lemaire:2JSVWV7rgWFkTJe9aHKP3A": {
     "price": 12100,
@@ -77596,5 +77599,41 @@
   "mercari:Boris Bidjan:m47198395643": {
     "price": 43000,
     "ts": 1781371687139
+  },
+  "mercari:HALLELUJAH:m33388477048": {
+    "price": 4999,
+    "ts": 1781377658940
+  },
+  "mercari:ISABEL BENENATO:2JPmorbPjU7o9EyYukiXNK": {
+    "price": 224800,
+    "ts": 1781377780057
+  },
+  "mercari:ISABEL BENENATO:2JNiSCNtmw7AEtnvW7b3Qh": {
+    "price": 75800,
+    "ts": 1781377786557
+  },
+  "mercari:ISABEL BENENATO:2JNiRufC5CBfakukAhNJ5j": {
+    "price": 51800,
+    "ts": 1781377788669
+  },
+  "mercari:ISABEL BENENATO:2JNiRYthFkhAaKBPk5rUf9": {
+    "price": 28480,
+    "ts": 1781377790780
+  },
+  "mercari:ISABEL BENENATO:2JNiRYXiW2qHsaKXWkCN8Q": {
+    "price": 28480,
+    "ts": 1781377792902
+  },
+  "mercari:ISABEL BENENATO:2JNiRYEiEzKwghLSHmB8Ws": {
+    "price": 28480,
+    "ts": 1781377795063
+  },
+  "mercari:ISABEL BENENATO:2JNiQnnY968vbqUAWGRiZn": {
+    "price": 92800,
+    "ts": 1781377797280
+  },
+  "mercari:carpe diem:m10279391931": {
+    "price": 480,
+    "ts": 1781378509457
   }
 }
