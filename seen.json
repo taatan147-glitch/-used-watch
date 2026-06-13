@@ -57610,8 +57610,8 @@
     "ts": 1781075377454
   },
   "mercari:MITTAN:m33255769714": {
-    "price": 19800,
-    "ts": 1781132248725
+    "price": 19500,
+    "ts": 1781384930301
   },
   "mercari:MITTAN:m96296174207": {
     "price": 19800,
@@ -70320,12 +70320,12 @@
     "ts": 1780353189520
   },
   "mercari:ISABEL BENENATO:2JS2jzTSqymhse2pVsBpe5": {
-    "price": 61800,
-    "ts": 1780353191690
+    "price": 64800,
+    "ts": 1781384673419
   },
   "mercari:ISABEL BENENATO:2JS2jzKfLXSZFmf3sE4TXR": {
-    "price": 61800,
-    "ts": 1780353193800
+    "price": 64800,
+    "ts": 1781384673419
   },
   "mercari:GUIDI:m16877198957": {
     "price": 3800,
@@ -76933,8 +76933,9 @@
     "ts": 1781358234780
   },
   "mercari:masahiko maruyama:m93607143518": {
-    "price": 40000,
-    "ts": 1781276040895
+    "price": 33333,
+    "lastNotifiedPrice": 33333,
+    "ts": 1781385739431
   },
   "mercari:HUSSEIN CHALAYAN:m22704456495": {
     "price": 58888,
@@ -77635,5 +77636,21 @@
   "mercari:carpe diem:m10279391931": {
     "price": 480,
     "ts": 1781378509457
+  },
+  "mercari:ISABEL BENENATO:2JQn6Hti7Vy5uuYbZvNfGa": {
+    "price": 246800,
+    "ts": 1781384671416
+  },
+  "mercari:Boris Bidjan:m32260071682": {
+    "price": 5000,
+    "ts": 1781385596077
+  },
+  "mercari:Boris Bidjan:m82385312632": {
+    "price": 5000,
+    "ts": 1781385598302
+  },
+  "mercari:Injiri:m81687717852": {
+    "price": 50000,
+    "ts": 1781386711075
   }
 }
