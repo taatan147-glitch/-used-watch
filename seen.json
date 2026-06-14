@@ -72675,8 +72675,8 @@
     "ts": 1780675184534
   },
   "mercari:cerruti:m21736605888": {
-    "price": 3180,
-    "ts": 1780675188899
+    "price": 2780,
+    "ts": 1781464612338
   },
   "mercari:final home:m57700348517": {
     "price": 36000,
@@ -73491,9 +73491,9 @@
     "ts": 1780770105382
   },
   "mercari:Boris Bidjan:2JSFM6AZM7hNxPqJd2sD2D": {
-    "price": 149620,
-    "lastNotifiedPrice": 149620,
-    "ts": 1781450699523
+    "price": 144622,
+    "lastNotifiedPrice": 144622,
+    "ts": 1781465156184
   },
   "mercari:incarnation:2JSFbZ9k4PURGX2xueGwmd": {
     "price": 9268,
@@ -74666,9 +74666,9 @@
     "ts": 1781396231149
   },
   "mercari:DAMIR DOMA:2JSLCM98BqCT3ukyynYd9T": {
-    "price": 50689,
-    "lastNotifiedPrice": 50689,
-    "ts": 1781334624746
+    "price": 49061,
+    "lastNotifiedPrice": 49061,
+    "ts": 1781465360538
   },
   "mercari:Nemeth:m10602852864": {
     "price": 25000,
@@ -76896,8 +76896,8 @@
     "ts": 1781265985968
   },
   "mercari:Song for the Mute:m88615130021": {
-    "price": 30000,
-    "ts": 1781266285268
+    "price": 29900,
+    "ts": 1781466144397
   },
   "trefac:Song for the Mute:3016009221121352": {
     "price": 19800,
@@ -77053,8 +77053,9 @@
     "ts": 1781295191582
   },
   "mercari:Ordinary People:m97917496736": {
-    "price": 69000,
-    "ts": 1781296199599
+    "price": 66000,
+    "lastNotifiedPrice": 66000,
+    "ts": 1781466349397
   },
   "mercari:HALLELUJAH:2JLj8Q8rgeRhxMY5x2vsFC": {
     "price": 2980,
@@ -78173,5 +78174,21 @@
   "mercari:Daniele Basta:m87448819350": {
     "price": 35000,
     "ts": 1781458469414
+  },
+  "mercari:final home:m46799443029": {
+    "price": 8800,
+    "ts": 1781464793779
+  },
+  "mercari:incarnation:m41781699587": {
+    "price": 140000,
+    "ts": 1781464932161
+  },
+  "mercari:ensou:2JSc69qhUpjSR9vp7RyXgh": {
+    "price": 60800,
+    "ts": 1781464998066
+  },
+  "mercari:cornelian taurus:m65697982600": {
+    "price": 25000,
+    "ts": 1781465076514
   }
 }
