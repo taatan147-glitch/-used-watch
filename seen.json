@@ -3383,9 +3383,9 @@
     "ts": 1780490824836
   },
   "mercari:individual sentiments:m72241723599": {
-    "price": 27700,
+    "price": 27600,
     "lastNotifiedPrice": 28000,
-    "ts": 1781365241335
+    "ts": 1781471598894
   },
   "mercari:individual sentiments:m49702971774": {
     "price": 357,
@@ -14250,8 +14250,8 @@
     "ts": 1778333622306
   },
   "mercari:Camiel Fortgens:m81297324647": {
-    "price": 11111,
-    "ts": 1780212513488
+    "price": 10500,
+    "ts": 1781472846283
   },
   "2ndstreet:Camiel Fortgens:2333746964281": {
     "price": 10890,
@@ -23399,9 +23399,9 @@
     "ts": 1781451866855
   },
   "mercari:Johan Ku:2JNdcZhVrMzZb3pQWQJAab": {
-    "price": 1961,
+    "price": 2980,
     "lastNotifiedPrice": 1788,
-    "ts": 1781233684020
+    "ts": 1781473043223
   },
   "mercari:Ordinary People:m36752392876": {
     "price": 0,
@@ -23825,9 +23825,9 @@
     "ts": 1776986129775
   },
   "mercari:Andrea Incontri:2JJgnWHKsTLmDrruczFajd": {
-    "price": 5880,
+    "price": 5980,
     "lastNotifiedPrice": 3588,
-    "ts": 1781233873526
+    "ts": 1781473225193
   },
   "mercari:Andrea Incontri:m55310797602": {
     "price": 2299,
@@ -38868,9 +38868,9 @@
     "ts": 1775766156834
   },
   "mercari:DEVOA:m60701297666": {
-    "price": 18800,
-    "lastNotifiedPrice": 18800,
-    "ts": 1780265272520
+    "price": 16500,
+    "lastNotifiedPrice": 16500,
+    "ts": 1781471751347
   },
   "mercari:CASEY CASEY:m23813701714": {
     "price": 100000,
@@ -49533,8 +49533,8 @@
     "ts": 1780120516538
   },
   "mercari:augusta:2JKJ3iSeXJuYtHKTfDfYew": {
-    "price": 1295,
-    "ts": 1777507238788
+    "price": 1850,
+    "ts": 1781471910375
   },
   "mercari:Song for the Mute:2JNm5h4yZoXwU2QDmJevpA": {
     "price": 50414,
@@ -76272,9 +76272,9 @@
     "ts": 1781157461317
   },
   "mercari:Song for the Mute:m15612342321": {
-    "price": 34000,
-    "lastNotifiedPrice": 34000,
-    "ts": 1781233509996
+    "price": 32000,
+    "lastNotifiedPrice": 32000,
+    "ts": 1781472873136
   },
   "mercari:Song for the Mute:2JSShzTa8MDtqW8MJxZ9Zo": {
     "price": 49814,
@@ -77070,9 +77070,9 @@
     "ts": 1781306413250
   },
   "mercari:C DIEM:m44955261440": {
-    "price": 16580,
+    "price": 16200,
     "lastNotifiedPrice": 16800,
-    "ts": 1781422272229
+    "ts": 1781471620033
   },
   "mercari:DEVOA:m64413210012": {
     "price": 28000,
@@ -78190,5 +78190,17 @@
   "mercari:cornelian taurus:m65697982600": {
     "price": 25000,
     "ts": 1781465076514
+  },
+  "mercari:HALLELUJAH:m88601979921": {
+    "price": 680,
+    "ts": 1781470807797
+  },
+  "mercari:GUIDI:m79572265652": {
+    "price": 260000,
+    "ts": 1781471283192
+  },
+  "mercari:Nemeth:m20381743248": {
+    "price": 14800,
+    "ts": 1781472088995
   }
 }
