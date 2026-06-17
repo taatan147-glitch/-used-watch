@@ -16478,8 +16478,8 @@
     "ts": 1774779699824
   },
   "mercari:kyoji maruyama:RqbHj9HWsUWNxokm7SGQNR": {
-    "price": 7800,
-    "ts": 1781694187701
+    "price": 7900,
+    "ts": 1781734079211
   },
   "mercari:kyoji maruyama:saeGoYBwJ3V7Z2pfqtBjYN": {
     "price": 7800,
@@ -17772,9 +17772,9 @@
     "ts": 1775975190454
   },
   "mercari:DEVOA:m78967704095": {
-    "price": 33900,
+    "price": 34900,
     "lastNotifiedPrice": 33900,
-    "ts": 1781422424278
+    "ts": 1781734373942
   },
   "mercari:DEVOA:2JHorHLTFWZKYw62A8AyHc": {
     "price": 45800,
@@ -38551,8 +38551,8 @@
     "ts": 1780266086086
   },
   "mercari:Camiel Fortgens:m19510483504": {
-    "price": 14400,
-    "ts": 1781652385692
+    "price": 14300,
+    "ts": 1781735498756
   },
   "mercari:Injiri:m57349284052": {
     "price": 21000,
@@ -67947,9 +67947,9 @@
     "ts": 1781265649096
   },
   "mercari:Innerraum:m16341872917": {
-    "price": 49000,
-    "lastNotifiedPrice": 49000,
-    "ts": 1781677688174
+    "price": 47000,
+    "lastNotifiedPrice": 47000,
+    "ts": 1781735053025
   },
   "mercari:m.a+:m67015084542": {
     "price": 31500,
@@ -68294,8 +68294,8 @@
     "ts": 1780092444554
   },
   "mercari:DAMIR DOMA:m72299966489": {
-    "price": 10200,
-    "ts": 1781633857846
+    "price": 10900,
+    "ts": 1781734725812
   },
   "mercari:Altieri:m86319152408": {
     "price": 59900,
@@ -69288,9 +69288,9 @@
     "ts": 1780210678089
   },
   "mercari:GUIDI:m62210989055": {
-    "price": 95000,
+    "price": 9999999,
     "lastNotifiedPrice": 95000,
-    "ts": 1781693983086
+    "ts": 1781733893481
   },
   "mercari:GUIDI:m73156560709": {
     "price": 39800,
@@ -74641,9 +74641,9 @@
     "ts": 1780922745383
   },
   "mercari:w&lt:m69208699904": {
-    "price": 35000,
-    "lastNotifiedPrice": 35000,
-    "ts": 1781058872988
+    "price": 33000,
+    "lastNotifiedPrice": 33000,
+    "ts": 1781734610379
   },
   "mercari:w&lt:m58585438852": {
     "price": 50000,
@@ -78163,8 +78163,9 @@
     "ts": 1781613256193
   },
   "mercari:Never Enough:m23706148086": {
-    "price": 6800,
-    "ts": 1781443791290
+    "price": 5800,
+    "lastNotifiedPrice": 5800,
+    "ts": 1781735224533
   },
   "mercari:Professor.E:m96705769936": {
     "price": 25000,
@@ -79515,5 +79516,9 @@
   "mercari:ensou:2JSjwCJ3unjJjEBrPSmi9H": {
     "price": 60800,
     "ts": 1781727234668
+  },
+  "mercari:GUIDI:m95844968095": {
+    "price": 79000,
+    "ts": 1781733891479
   }
 }
