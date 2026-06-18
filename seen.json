@@ -25491,8 +25491,8 @@
     "ts": 1774797028991
   },
   "mercari:Ordinary People:2JHusTs4fR48S3tijjx6JX": {
-    "price": 3237,
-    "ts": 1781657295742
+    "price": 3137,
+    "ts": 1781815681878
   },
   "mercari:Ordinary People:3thVi83NxVKyF9maHDQSEA": {
     "price": 9072,
@@ -41432,9 +41432,9 @@
     "ts": 1776165051720
   },
   "mercari:HUSSEIN CHALAYAN:2JPpS2QFX958nBY8J57ha3": {
-    "price": 63603,
-    "lastNotifiedPrice": 62853,
-    "ts": 1781719565412
+    "price": 60266,
+    "lastNotifiedPrice": 60266,
+    "ts": 1781814626552
   },
   "mercari:Nemeth:m93840919523": {
     "price": 17777,
@@ -46265,8 +46265,8 @@
     "ts": 1780816657365
   },
   "mercari:cornelian taurus:m50883366310": {
-    "price": 5200,
-    "ts": 1780303529087
+    "price": 5000,
+    "ts": 1781814389787
   },
   "mercari:Boris Bidjan:m67260379994": {
     "price": 9000,
@@ -55209,8 +55209,8 @@
     "ts": 1778065625473
   },
   "mercari:cerruti:m95197991900": {
-    "price": 1700,
-    "ts": 1781633048082
+    "price": 1600,
+    "ts": 1781813920510
   },
   "mercari:mixed up:m59292557262": {
     "price": 600,
@@ -77355,9 +77355,9 @@
     "ts": 1781334128657
   },
   "mercari:carpe diem:m88772477023": {
-    "price": 25000,
+    "price": 23000,
     "lastNotifiedPrice": 20000,
-    "ts": 1781442774625
+    "ts": 1781814226839
   },
   "mercari:carpe diem:m51554337695": {
     "price": 50000,
@@ -78278,9 +78278,9 @@
     "ts": 1781807376017
   },
   "mercari:Second/Layer:m67457083579": {
-    "price": 9800,
+    "price": 19800,
     "lastNotifiedPrice": 9800,
-    "ts": 1781796283939
+    "ts": 1781815694779
   },
   "mercari:carpe diem:m59161712920": {
     "price": 4500,
@@ -79894,5 +79894,9 @@
   "mercari:Never Enough:m63678342222": {
     "price": 4800,
     "ts": 1781807102697
+  },
+  "mercari:DAMIR DOMA:m14224687298": {
+    "price": 150000,
+    "ts": 1781814680373
   }
 }
