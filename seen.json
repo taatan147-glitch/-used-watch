@@ -54100,9 +54100,9 @@
     "ts": 1780937288886
   },
   "mercari:daub:2JPcgZzVsPZ44y7yHxgeGa": {
-    "price": 12857,
+    "price": 12757,
     "lastNotifiedPrice": 10205,
-    "ts": 1781497813514
+    "ts": 1781783297030
   },
   "mercari:daub:m17457105859": {
     "price": 16000,
@@ -54248,13 +54248,13 @@
     "ts": 1780120191970
   },
   "mercari:CAPERTICA:m76850843955": {
-    "price": 14800,
+    "price": 14600,
     "lastNotifiedPrice": 15000,
-    "ts": 1781421602154
+    "ts": 1781783309842
   },
   "mercari:CAPERTICA:m65727065008": {
-    "price": 11500,
-    "ts": 1781497827027
+    "price": 11400,
+    "ts": 1781783309842
   },
   "mercari:CAPERTICA:2JKorKHupdnm66GHSzsk6t": {
     "price": 9680,
@@ -79703,5 +79703,13 @@
   "mercari:Professor.E:m22492136164": {
     "price": 60000,
     "ts": 1781769530240
+  },
+  "trefac:VINCENT JALBERT:3050004638164460": {
+    "price": 19800,
+    "ts": 1781783066509
+  },
+  "mercari:HALLELUJAH:m97902379067": {
+    "price": 7500,
+    "ts": 1781783126276
   }
 }
