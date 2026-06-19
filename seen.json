@@ -43487,9 +43487,9 @@
     "ts": 1780130421108
   },
   "mercari:DAMIR DOMA:m50280135851": {
-    "price": 28000,
+    "price": 21000,
     "lastNotifiedPrice": 18000,
-    "ts": 1781719618411
+    "ts": 1781904175042
   },
   "mercari:Nemeth:m93809857173": {
     "price": 17600,
@@ -48346,9 +48346,9 @@
     "ts": 1777354002431
   },
   "mercari:Nemeth:m86549210848": {
-    "price": 18800,
-    "lastNotifiedPrice": 19000,
-    "ts": 1781422798582
+    "price": 18000,
+    "lastNotifiedPrice": 18000,
+    "ts": 1781904190481
   },
   "mercari:Nemeth:2JQRZLm58Tv4q49no7Ltu9": {
     "price": 70600,
@@ -59416,8 +59416,8 @@
     "ts": 1779260365746
   },
   "mercari:Bergfabel:m10279378059": {
-    "price": 6400,
-    "ts": 1781829557139
+    "price": 6300,
+    "ts": 1781903996945
   },
   "mercari:HALLELUJAH:m97707899578": {
     "price": 8888,
@@ -67960,8 +67960,8 @@
     "ts": 1780048885854
   },
   "mercari:BERNHARD WILLHELM:m58814818552": {
-    "price": 15000,
-    "ts": 1781612921535
+    "price": 14900,
+    "ts": 1781904207702
   },
   "2ndstreet:BERNHARD WILLHELM:2349230065051": {
     "price": 14190,
@@ -71010,8 +71010,8 @@
     "ts": 1780455756880
   },
   "mercari:augusta:m46186676986": {
-    "price": 1900,
-    "ts": 1780455761223
+    "price": 1800,
+    "ts": 1781904010097
   },
   "mercari:Nemeth:m88717955930": {
     "price": 8000,
@@ -77416,12 +77416,12 @@
     "ts": 1781334447173
   },
   "mercari:augusta:m12373534685": {
-    "price": 3000,
-    "ts": 1781651427464
+    "price": 2700,
+    "ts": 1781904010097
   },
   "mercari:augusta:m48392406375": {
-    "price": 3000,
-    "ts": 1781651427464
+    "price": 2700,
+    "ts": 1781904010097
   },
   "mercari:augusta:2JSXutjqtQCsEWiGSRRPzP": {
     "price": 1646,
@@ -79983,8 +79983,9 @@
     "ts": 1781849843979
   },
   "mercari:carpe diem:m24500296466": {
-    "price": 3980,
-    "ts": 1781850161991
+    "price": 2750,
+    "lastNotifiedPrice": 2750,
+    "ts": 1781903736431
   },
   "mercari:ensou:2JSohmsQwVTav8uh6efq3s": {
     "price": 15994,
@@ -80263,5 +80264,13 @@
   "mercari:BERNHARD WILLHELM:m68306448134": {
     "price": 15000,
     "ts": 1781890427280
+  },
+  "mercari:Nemeth:m11093083900": {
+    "price": 24999,
+    "ts": 1781904188389
+  },
+  "mercari:BERNHARD WILLHELM:m90606918570": {
+    "price": 18000,
+    "ts": 1781904205700
   }
 }
