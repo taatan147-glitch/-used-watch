@@ -274,10 +274,8 @@ async function searchMercari(page, rule) {
 // セカンドストリート検索
 // ============================================================
 async function search2ndStreet(page, rule) {
-  const searchUrl = "https://www.2ndstreet.jp/search?" + new URLSearchParams({
-    keyword: rule.keyword,
-    sortBy: "arrival",
-  });
+  const keyword = String(rule.keyword || "").trim();
+  const searchUrl = "https://www.2ndstreet.jp/search?keyword=" + encodeURIComponent(keyword).replace(/%20/g, "+");
 
   await page.setCookie({
     name: "OptanonAlertBoxClosed",
@@ -286,37 +284,45 @@ async function search2ndStreet(page, rule) {
   });
 
   await page.goto(searchUrl, { waitUntil: "networkidle2", timeout: 60000 });
-  await sleep(5000);
+  await sleep(7000);
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 12; i++) {
     await page.evaluate(() => window.scrollBy(0, window.innerHeight));
-    await sleep(1000);
+    await sleep(1200);
   }
+
+  const pageInfo = await page.evaluate(() => ({
+    url: location.href,
+    title: document.title,
+    bodyText: document.body.innerText.slice(0, 500),
+    linkCount: document.querySelectorAll("a[href]").length
+  }));
+  console.log(`  → セカスト表示URL: ${pageInfo.url}`);
+  console.log(`  → セカスト本文先頭: ${pageInfo.bodyText.replace(/\n/g, " ").slice(0, 160)}`);
 
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
 
-    const candidates = Array.from(document.querySelectorAll("a[href]"));
+    const cards = Array.from(document.querySelectorAll("a[href]"));
 
-    for (const link of candidates) {
+    for (const link of cards) {
       const url = link.href || "";
       if (!url.includes("2ndstreet.jp")) continue;
-      if (!url.includes("/goods/") && !url.includes("goodsId")) continue;
+      if (!url.includes("/goods/detail/") && !url.includes("goodsId")) continue;
 
       const id =
         url.match(/goodsId\/(\d+)/)?.[1] ||
         url.match(/goodsId=(\d+)/)?.[1] ||
         url.match(/goods\/detail\/goodsId\/(\d+)/)?.[1] ||
         url.match(/\/goods\/detail\/(\d+)/)?.[1] ||
-        url.match(/\/goods\/(\d+)/)?.[1] ||
         "";
 
       if (!id || seen.has(id)) continue;
       seen.add(id);
 
       let card = link;
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 10; i++) {
         if (!card.parentElement) break;
         card = card.parentElement;
         const txt = card.textContent || "";
@@ -324,39 +330,32 @@ async function search2ndStreet(page, rule) {
           txt.includes("商品の状態") ||
           txt.includes("サイズ") ||
           txt.includes("¥") ||
-          txt.includes("￥") ||
-          card.querySelector("img")
-        ) {
-          break;
-        }
+          txt.includes("￥")
+        ) break;
       }
 
       const img = card.querySelector("img") || link.querySelector("img");
-      const thumbnail = img?.src || img?.getAttribute("data-src") || "";
-
       const rawText = (card.textContent || "").replace(/\s+/g, " ").trim();
 
       const title =
         img?.alt?.trim() ||
         rawText.split(/サイズ|商品の状態|¥|￥/)[0].trim();
 
-      const priceContent =
+      const priceText = (
         card.querySelector("[itemprop='price'][content]")?.getAttribute("content") ||
         card.querySelector("[class*='priceNum']")?.textContent ||
         card.querySelector("[class*='price']")?.textContent ||
         rawText.match(/[¥￥]\s*([\d,]+)/)?.[1] ||
-        "";
-
-      const priceText = String(priceContent).replace(/[^\d]/g, "");
-      const price = priceText ? Number(priceText) : 0;
+        ""
+      ).replace(/[^\d]/g, "");
 
       results.push({
         site: "2ndstreet",
         id,
         title,
-        price,
+        price: priceText ? Number(priceText) : 0,
         url,
-        thumbnail
+        thumbnail: img?.src || img?.getAttribute("data-src") || ""
       });
     }
 
