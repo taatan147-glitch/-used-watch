@@ -530,14 +530,20 @@ async function sendDiscord(webhookUrl, item, rule, type = "new", prevPrice = 0) 
 function matchRule(item, rule) {
   const title = (item.title || "").toLowerCase();
   const keyword = (rule.keyword || "").toLowerCase();
-  if (!title.includes(keyword)) return false;
+
+  if (item.site !== "2ndstreet") {
+    if (!title.includes(keyword)) return false;
+  }
+
   for (const ng of rule.excludes || []) {
     if (title.includes(String(ng).toLowerCase())) return false;
   }
+
   if (rule.maxPriceYen) {
     const max = Number(rule.maxPriceYen);
     if (max > 0 && Number(item.price || 0) > max) return false;
   }
+
   return true;
 }
 
