@@ -88,7 +88,11 @@ async function main() {
         });
 
         if (site === "mercari")        items = await searchMercari(page, rule);
-        else if (site === "2ndstreet") items = await search2ndStreet(page, rule);
+        else if (site === "2ndstreet") {
+          // セカストは連続アクセスでAccess Deniedになりやすいため、少し待つ
+          await sleep(8000 + Math.floor(Math.random() * 7000));
+          items = await search2ndStreet(page, rule);
+        }
         else if (site === "trefac")    items = await searchTrefac(page, rule);
         else {
           console.log("  → 未対応サイト");
@@ -275,7 +279,11 @@ async function searchMercari(page, rule) {
 // ============================================================
 async function search2ndStreet(page, rule) {
   const keyword = String(rule.keyword || "").trim();
-  const searchUrl = "https://www.2ndstreet.jp/search?keyword=" + encodeURIComponent(keyword).replace(/%20/g, "+");
+
+  // ブラウザ手入力に近いURL形式にする（スペースは +）
+  const searchUrl =
+    "https://www.2ndstreet.jp/search?keyword=" +
+    encodeURIComponent(keyword).replace(/%20/g, "+");
 
   await page.setCookie({
     name: "OptanonAlertBoxClosed",
@@ -283,46 +291,109 @@ async function search2ndStreet(page, rule) {
     domain: ".2ndstreet.jp",
   });
 
-  await page.goto(searchUrl, { waitUntil: "networkidle2", timeout: 60000 });
+  // 連続アクセス感を減らす
+  await sleep(5000 + Math.floor(Math.random() * 5000));
+
+  await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
   await sleep(7000);
 
-  for (let i = 0; i < 12; i++) {
+  // 遅延描画・追加読み込み対策
+  for (let i = 0; i < 8; i++) {
     await page.evaluate(() => window.scrollBy(0, window.innerHeight));
     await sleep(1200);
   }
 
+  // Access Denied / 表示内容確認用ログ
   const pageInfo = await page.evaluate(() => ({
     url: location.href,
-    title: document.title,
-    bodyText: document.body.innerText.slice(0, 500),
-    linkCount: document.querySelectorAll("a[href]").length
+    bodyText: document.body.innerText.slice(0, 240),
   }));
   console.log(`  → セカスト表示URL: ${pageInfo.url}`);
-  console.log(`  → セカスト本文先頭: ${pageInfo.bodyText.replace(/\n/g, " ").slice(0, 160)}`);
+  console.log(`  → セカスト本文先頭: ${pageInfo.bodyText.replace(/\n/g, " ").slice(0, 180)}`);
+
+  // dataLayerから商品名・価格を取得（取れる場合は補完に使う）
+  const dataLayerMap = await page.evaluate(() => {
+    const map = {};
+    try {
+      if (!window.dataLayer) return map;
+      window.dataLayer.forEach((entry) => {
+        const impressions = entry?.ecommerce?.impressions || entry?.ecommerce?.items || [];
+        impressions.forEach((item) => {
+          const id = String(item.id || item.item_id || "");
+          if (id) {
+            map[id] = {
+              name: item.name || item.item_name || "",
+              price: Number(item.price || 0),
+            };
+          }
+        });
+      });
+    } catch (e) {}
+    return map;
+  });
 
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
 
-    const cards = Array.from(document.querySelectorAll("a[href]"));
+    // 旧仕様の goodsid 付きカードを最優先
+    document.querySelectorAll("li.itemCard[goodsid], li[goodsid], div.itemCard[goodsid], div[goodsid]").forEach((card) => {
+      const goodsId = card.getAttribute("goodsid") || "";
+      if (!goodsId || seen.has(goodsId)) return;
+      seen.add(goodsId);
 
-    for (const link of cards) {
+      const link =
+        card.querySelector("a.itemCard_inner, a[href*='goodsId'], a[href*='/goods/detail/']") ||
+        card.querySelector("a[href]");
+      const url = link?.href || "";
+
+      const img = card.querySelector(".itemCard_img img, img");
+      const imgSrc = img?.getAttribute("src") || img?.getAttribute("data-src") || "";
+      const thumbnail = imgSrc.startsWith("http") ? imgSrc : "";
+
+      const body = card.querySelector(".itemCard_body, [class*='body'], [class*='Body']");
+      const bodyText = (body?.textContent || card.textContent || "").trim().replace(/\s+/g, " ");
+      const titleFromHtml =
+        img?.alt?.trim() ||
+        bodyText.split(/サイズ|商品の状態|¥|￥/)[0].trim();
+
+      const priceElWithContent = card.querySelector("[itemprop='price'][content]");
+      let price = 0;
+      if (priceElWithContent) {
+        price = Number(priceElWithContent.getAttribute("content")) || 0;
+      } else {
+        const priceNumEl = card.querySelector("[class*=priceNum], [class*=price-num], [class*=price]");
+        const priceMatch = (priceNumEl?.textContent || card.textContent || "").match(/[¥￥]?\s*([\d,]{3,})/);
+        price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
+      }
+
+      if (url || goodsId) {
+        results.push({
+          site: "2ndstreet",
+          id: goodsId,
+          titleFromHtml,
+          price,
+          url: url || `https://www.2ndstreet.jp/goods/detail/goodsId/${goodsId}/`,
+          thumbnail
+        });
+      }
+    });
+
+    // 新しめのリンク構造にも対応
+    document.querySelectorAll("a[href*='/goods/detail/'], a[href*='goodsId']").forEach((link) => {
       const url = link.href || "";
-      if (!url.includes("2ndstreet.jp")) continue;
-      if (!url.includes("/goods/detail/") && !url.includes("goodsId")) continue;
-
-      const id =
+      const goodsId =
         url.match(/goodsId\/(\d+)/)?.[1] ||
         url.match(/goodsId=(\d+)/)?.[1] ||
         url.match(/goods\/detail\/goodsId\/(\d+)/)?.[1] ||
         url.match(/\/goods\/detail\/(\d+)/)?.[1] ||
         "";
 
-      if (!id || seen.has(id)) continue;
-      seen.add(id);
+      if (!goodsId || seen.has(goodsId)) return;
+      seen.add(goodsId);
 
       let card = link;
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 8; i++) {
         if (!card.parentElement) break;
         card = card.parentElement;
         const txt = card.textContent || "";
@@ -330,41 +401,63 @@ async function search2ndStreet(page, rule) {
           txt.includes("商品の状態") ||
           txt.includes("サイズ") ||
           txt.includes("¥") ||
-          txt.includes("￥")
-        ) break;
+          txt.includes("￥") ||
+          card.querySelector("img")
+        ) {
+          break;
+        }
       }
 
       const img = card.querySelector("img") || link.querySelector("img");
       const rawText = (card.textContent || "").replace(/\s+/g, " ").trim();
 
-      const title =
+      const titleFromHtml =
         img?.alt?.trim() ||
         rawText.split(/サイズ|商品の状態|¥|￥/)[0].trim();
 
-      const priceText = (
+      const priceContent =
         card.querySelector("[itemprop='price'][content]")?.getAttribute("content") ||
         card.querySelector("[class*='priceNum']")?.textContent ||
         card.querySelector("[class*='price']")?.textContent ||
         rawText.match(/[¥￥]\s*([\d,]+)/)?.[1] ||
-        ""
-      ).replace(/[^\d]/g, "");
+        "";
+
+      const priceText = String(priceContent).replace(/[^\d]/g, "");
+      const price = priceText ? Number(priceText) : 0;
 
       results.push({
         site: "2ndstreet",
-        id,
-        title,
-        price: priceText ? Number(priceText) : 0,
+        id: goodsId,
+        titleFromHtml,
+        price,
         url,
         thumbnail: img?.src || img?.getAttribute("data-src") || ""
       });
-    }
+    });
 
     return results;
   });
 
   console.log(`  → セカスト生取得 ${items.length} 件`);
 
-  return items.filter((i) => matchRule(i, rule));
+  // dataLayerの商品名でタイトルを補完、サムネURLを構築
+  const enriched = items.map((item) => {
+    const dl = dataLayerMap[item.id];
+    const title = (item.titleFromHtml && item.titleFromHtml.length > 3)
+      ? item.titleFromHtml
+      : (dl?.name || `セカスト商品 ${item.id}`);
+    const price = item.price || dl?.price || 0;
+
+    let thumbnail = item.thumbnail;
+    if (!thumbnail && item.id.length >= 10) {
+      const id = item.id;
+      thumbnail = `https://cdn2.2ndstreet.jp/img/pc/goods/${id.slice(0,6)}/${id.slice(6,8)}/${id.slice(8)}/1.jpg`;
+    }
+
+    return { site: "2ndstreet", id: item.id, title, price, url: item.url, thumbnail };
+  });
+
+  return enriched.filter((i) => matchRule(i, rule));
 }
 // ============================================================
 // トレファクファッション検索
@@ -525,11 +618,12 @@ async function sendDiscord(webhookUrl, item, rule, type = "new", prevPrice = 0) 
 // ============================================================
 // ユーティリティ
 // ============================================================
-
 function matchRule(item, rule) {
   const title = (item.title || "").toLowerCase();
   const keyword = (rule.keyword || "").toLowerCase();
 
+  // セカストは検索結果ページ自体がキーワードで絞られているため、
+  // 「テンシー」検索で商品タイトルが「Ten-C」など、表記がズレても通す
   if (item.site !== "2ndstreet") {
     if (!title.includes(keyword)) return false;
   }
