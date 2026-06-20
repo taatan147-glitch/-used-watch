@@ -288,54 +288,56 @@ async function search2ndStreet(page, rule) {
   await page.goto(searchUrl, { waitUntil: "networkidle2", timeout: 60000 });
   await sleep(5000);
 
-  // セカストはスクロールで商品が増えるため、下まで読み込む
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 10; i++) {
     await page.evaluate(() => window.scrollBy(0, window.innerHeight));
-    await sleep(1200);
+    await sleep(1000);
   }
 
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
 
-    const links = Array.from(document.querySelectorAll(
-      "a[href*='/goods/detail/goodsId/'], a[href*='goodsId']"
-    ));
+    const candidates = Array.from(document.querySelectorAll("a[href]"));
 
-    for (const link of links) {
+    for (const link of candidates) {
       const url = link.href || "";
+      if (!url.includes("2ndstreet.jp")) continue;
+      if (!url.includes("/goods/") && !url.includes("goodsId")) continue;
+
       const id =
         url.match(/goodsId\/(\d+)/)?.[1] ||
         url.match(/goodsId=(\d+)/)?.[1] ||
+        url.match(/goods\/detail\/goodsId\/(\d+)/)?.[1] ||
+        url.match(/\/goods\/detail\/(\d+)/)?.[1] ||
+        url.match(/\/goods\/(\d+)/)?.[1] ||
         "";
 
       if (!id || seen.has(id)) continue;
       seen.add(id);
 
       let card = link;
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 8; i++) {
         if (!card.parentElement) break;
         card = card.parentElement;
+        const txt = card.textContent || "";
         if (
-          card.textContent?.includes("商品の状態") ||
-          card.textContent?.includes("サイズ") ||
-          card.querySelector("[itemprop='price'], [class*='price']")
+          txt.includes("商品の状態") ||
+          txt.includes("サイズ") ||
+          txt.includes("¥") ||
+          txt.includes("￥") ||
+          card.querySelector("img")
         ) {
           break;
         }
       }
 
-      const img = card.querySelector("img");
-      const thumbnail =
-        img?.src ||
-        img?.getAttribute("data-src") ||
-        "";
+      const img = card.querySelector("img") || link.querySelector("img");
+      const thumbnail = img?.src || img?.getAttribute("data-src") || "";
 
-      const rawText = card.textContent?.replace(/\s+/g, " ").trim() || "";
+      const rawText = (card.textContent || "").replace(/\s+/g, " ").trim();
 
       const title =
         img?.alt?.trim() ||
-        card.querySelector("[class*='brand'], [class*='Brand']")?.textContent?.trim() ||
         rawText.split(/サイズ|商品の状態|¥|￥/)[0].trim();
 
       const priceContent =
@@ -365,7 +367,6 @@ async function search2ndStreet(page, rule) {
 
   return items.filter((i) => matchRule(i, rule));
 }
-
 // ============================================================
 // トレファクファッション検索
 // ============================================================
