@@ -285,68 +285,75 @@ async function search2ndStreet(page, rule) {
     domain: ".2ndstreet.jp",
   });
 
-  await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
-  await sleep(4000);
+  await page.goto(searchUrl, { waitUntil: "networkidle2", timeout: 60000 });
+  await sleep(6000);
 
-  // dataLayerから商品名・価格を取得（最も信頼性が高い）
-  const dataLayerMap = await page.evaluate(() => {
-    const map = {};
-    try {
-      if (!window.dataLayer) return map;
-      window.dataLayer.forEach((entry) => {
-        const impressions = entry?.ecommerce?.impressions || entry?.ecommerce?.items || [];
-        impressions.forEach((item) => {
-          const id = String(item.id || item.item_id || "");
-          if (id) map[id] = {
-            name: item.name || item.item_name || "",
-            price: Number(item.price || 0),
-          };
-        });
-      });
-    } catch (e) {}
-    return map;
-  });
+  await page.waitForSelector(
+    "li.itemCard, li[goodsid], a[href*='/goods/detail/'], a[href*='goodsId']",
+    { timeout: 15000 }
+  ).catch(() => {});
 
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
 
-    document.querySelectorAll("li.itemCard[goodsid], li[goodsid]").forEach((card) => {
-      const goodsId = card.getAttribute("goodsid") || "";
-      if (!goodsId || seen.has(goodsId)) return;
+    const cards = Array.from(document.querySelectorAll(
+      "li.itemCard, li[goodsid], div.itemCard, a[href*='/goods/detail/'], a[href*='goodsId']"
+    ));
+
+    for (const el of cards) {
+      const card = el.closest("li") || el.closest("div") || el;
+      const link = card.querySelector("a[href*='/goods/detail/'], a[href*='goodsId'], a.itemCard_inner") || 
+                   (el.matches("a") ? el : null);
+
+      const url = link?.href || "";
+      if (!url) continue;
+
+      const goodsId =
+        card.getAttribute("goodsid") ||
+        url.match(/goodsId[=/](\d+)/)?.[1] ||
+        url.match(/goodsId=(\d+)/)?.[1] ||
+        url.match(/goodsId\/(\d+)/)?.[1] ||
+        url.match(/goods\/detail\/goodsId\/(\d+)/)?.[1] ||
+        url.match(/\/goods\/detail\/(\d+)/)?.[1] ||
+        "";
+
+      if (!goodsId || seen.has(goodsId)) continue;
       seen.add(goodsId);
 
-      const link = card.querySelector("a.itemCard_inner, a[href*=goodsId]");
-      const url = link?.href || "";
+      const img = card.querySelector("img");
+      const thumbnail = img?.src || img?.getAttribute("data-src") || "";
 
-      const img = card.querySelector(".itemCard_img img");
-      const imgSrc = img?.getAttribute("src") || "";
-      const thumbnail = imgSrc.startsWith("https://cdn2") ? imgSrc : "";
+      const title =
+        img?.alt?.trim() ||
+        card.querySelector(".itemCard_name, .itemName, .goodsName, [class*='name'], [class*='Name']")?.textContent?.trim() ||
+        card.textContent?.trim()?.replace(/\s+/g, " ").split(/サイズ|商品の状態|¥|￥/)[0]?.trim() ||
+        "";
 
-      // タイトル：itemCard_bodyのテキストから「サイズ」より前を取得
-      const body = card.querySelector(".itemCard_body");
-      const bodyText = body?.textContent?.trim().replace(/\s+/g, " ") || "";
-      const titleFromHtml = bodyText.split(/サイズ|商品の状態/)[0].trim();
+      const priceContent =
+        card.querySelector("[itemprop='price'][content]")?.getAttribute("content") ||
+        card.querySelector("[class*='priceNum']")?.textContent ||
+        card.querySelector("[class*='price']")?.textContent ||
+        "";
 
-      // 価格：itemprop="price"のcontent属性が最も正確（20%OFFバッジの誤取得を防ぐ）
-      const priceElWithContent = card.querySelector("[itemprop='price'][content]");
-      let price = 0;
-      if (priceElWithContent) {
-        price = Number(priceElWithContent.getAttribute("content")) || 0;
-      } else {
-        // fallback: priceNumクラスのテキスト（先頭の数値のみ）
-        const priceNumEl = card.querySelector("[class*=priceNum], [class*=price-num]");
-        const priceMatch = (priceNumEl?.textContent || "").match(/^[\s¥￥]*([\d,]+)/);
-        price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
-      }
+      const priceText = String(priceContent).replace(/[^\d]/g, "");
+      const price = priceText ? Number(priceText) : 0;
 
-      if (url) {
-        results.push({ site: "2ndstreet", id: goodsId, titleFromHtml, price, url, thumbnail });
-      }
-    });
+      results.push({
+        site: "2ndstreet",
+        id: goodsId,
+        title,
+        price,
+        url,
+        thumbnail
+      });
+    }
+
     return results;
   });
 
+  return items.filter((i) => matchRule(i, rule));
+}
   // dataLayerの商品名でタイトルを補完、サムネURLを構築
   const enriched = items.map((item) => {
     const dl = dataLayerMap[item.id];
