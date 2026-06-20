@@ -286,54 +286,63 @@ async function search2ndStreet(page, rule) {
   });
 
   await page.goto(searchUrl, { waitUntil: "networkidle2", timeout: 60000 });
-  await sleep(6000);
+  await sleep(5000);
 
-  await page.waitForSelector(
-    "li.itemCard, li[goodsid], a[href*='/goods/detail/'], a[href*='goodsId']",
-    { timeout: 15000 }
-  ).catch(() => {});
+  // セカストはスクロールで商品が増えるため、下まで読み込む
+  for (let i = 0; i < 8; i++) {
+    await page.evaluate(() => window.scrollBy(0, window.innerHeight));
+    await sleep(1200);
+  }
 
   const items = await page.evaluate(() => {
     const results = [];
     const seen = new Set();
 
-    const cards = Array.from(document.querySelectorAll(
-      "li.itemCard, li[goodsid], div.itemCard, a[href*='/goods/detail/'], a[href*='goodsId']"
+    const links = Array.from(document.querySelectorAll(
+      "a[href*='/goods/detail/goodsId/'], a[href*='goodsId']"
     ));
 
-    for (const el of cards) {
-      const card = el.closest("li") || el.closest("div") || el;
-      const link = card.querySelector("a[href*='/goods/detail/'], a[href*='goodsId'], a.itemCard_inner") || 
-                   (el.matches("a") ? el : null);
-
-      const url = link?.href || "";
-      if (!url) continue;
-
-      const goodsId =
-        card.getAttribute("goodsid") ||
-        url.match(/goodsId[=/](\d+)/)?.[1] ||
-        url.match(/goodsId=(\d+)/)?.[1] ||
+    for (const link of links) {
+      const url = link.href || "";
+      const id =
         url.match(/goodsId\/(\d+)/)?.[1] ||
-        url.match(/goods\/detail\/goodsId\/(\d+)/)?.[1] ||
-        url.match(/\/goods\/detail\/(\d+)/)?.[1] ||
+        url.match(/goodsId=(\d+)/)?.[1] ||
         "";
 
-      if (!goodsId || seen.has(goodsId)) continue;
-      seen.add(goodsId);
+      if (!id || seen.has(id)) continue;
+      seen.add(id);
+
+      let card = link;
+      for (let i = 0; i < 6; i++) {
+        if (!card.parentElement) break;
+        card = card.parentElement;
+        if (
+          card.textContent?.includes("商品の状態") ||
+          card.textContent?.includes("サイズ") ||
+          card.querySelector("[itemprop='price'], [class*='price']")
+        ) {
+          break;
+        }
+      }
 
       const img = card.querySelector("img");
-      const thumbnail = img?.src || img?.getAttribute("data-src") || "";
+      const thumbnail =
+        img?.src ||
+        img?.getAttribute("data-src") ||
+        "";
+
+      const rawText = card.textContent?.replace(/\s+/g, " ").trim() || "";
 
       const title =
         img?.alt?.trim() ||
-        card.querySelector(".itemCard_name, .itemName, .goodsName, [class*='name'], [class*='Name']")?.textContent?.trim() ||
-        card.textContent?.trim()?.replace(/\s+/g, " ").split(/サイズ|商品の状態|¥|￥/)[0]?.trim() ||
-        "";
+        card.querySelector("[class*='brand'], [class*='Brand']")?.textContent?.trim() ||
+        rawText.split(/サイズ|商品の状態|¥|￥/)[0].trim();
 
       const priceContent =
         card.querySelector("[itemprop='price'][content]")?.getAttribute("content") ||
         card.querySelector("[class*='priceNum']")?.textContent ||
         card.querySelector("[class*='price']")?.textContent ||
+        rawText.match(/[¥￥]\s*([\d,]+)/)?.[1] ||
         "";
 
       const priceText = String(priceContent).replace(/[^\d]/g, "");
@@ -341,7 +350,7 @@ async function search2ndStreet(page, rule) {
 
       results.push({
         site: "2ndstreet",
-        id: goodsId,
+        id,
         title,
         price,
         url,
@@ -351,6 +360,8 @@ async function search2ndStreet(page, rule) {
 
     return results;
   });
+
+  console.log(`  → セカスト生取得 ${items.length} 件`);
 
   return items.filter((i) => matchRule(i, rule));
 }
