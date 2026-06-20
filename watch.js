@@ -354,26 +354,7 @@ async function search2ndStreet(page, rule) {
 
   return items.filter((i) => matchRule(i, rule));
 }
-  // dataLayerの商品名でタイトルを補完、サムネURLを構築
-  const enriched = items.map((item) => {
-    const dl = dataLayerMap[item.id];
-    const title = (item.titleFromHtml && item.titleFromHtml.length > 3)
-      ? item.titleFromHtml
-      : (dl?.name || `セカスト商品 ${item.id}`);
-    const price = item.price || dl?.price || 0;
 
-    // サムネがない場合はgoodsIdから構築
-    let thumbnail = item.thumbnail;
-    if (!thumbnail && item.id.length >= 10) {
-      const id = item.id;
-      thumbnail = `https://cdn2.2ndstreet.jp/img/pc/goods/${id.slice(0,6)}/${id.slice(6,8)}/${id.slice(8)}/1.jpg`;
-    }
-
-    return { site: "2ndstreet", id: item.id, title, price, url: item.url, thumbnail };
-  });
-
-  return enriched;
-}
 // ============================================================
 // トレファクファッション検索
 // ============================================================
