@@ -78,8 +78,24 @@ async function main() {
 
         if (site === "mercari")        items = await searchMercari(page, rule);
         else if (site === "2ndstreet") {
-          await sleep(3000 + Math.floor(Math.random() * 3000));
+          // Akamai対策：ランダム待機（5〜12秒）
+          await sleep(5000 + Math.floor(Math.random() * 7000));
           items = await search2ndStreet(page, rule);
+          // Access Deniedの場合は長めに待ってリトライ
+          if (items.length === 0) {
+            const check = await page.evaluate(() => document.body?.innerText?.slice(0, 100) || "");
+            if (check.includes("Access Denied") || check.includes("permission")) {
+              console.log("  → Access Denied検出、30秒待機してリトライ...");
+              await page.close();
+              await sleep(30000);
+              const retryPage = await browser.newPage();
+              await retryPage.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36");
+              await retryPage.setExtraHTTPHeaders({ "accept-language": "ja-JP,ja;q=0.9" });
+              items = await search2ndStreet(retryPage, rule);
+              await retryPage.close();
+              continue;
+            }
+          }
         }
         else if (site === "trefac")    items = await searchTrefac(page, rule);
         else {
