@@ -34,8 +34,8 @@ jobs:
             libxdamage1 libxfixes3 libxrandr2 libgbm1 \
             libasound2t64 libpango-1.0-0 libcairo2
 
-      - name: Puppeteer をインストール
-        run: npm install puppeteer
+      - name: パッケージをインストール
+        run: npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
 
       - name: 監視スクリプト実行
         env:
