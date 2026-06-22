@@ -8877,8 +8877,8 @@
     "ts": 1782152323550
   },
   "mercari:MD75:m51378000715": {
-    "price": 1700,
-    "ts": 1782072485565
+    "price": 1600,
+    "ts": 1782163491314
   },
   "mercari:MD75:m94261929296": {
     "price": 28000,
@@ -36299,8 +36299,8 @@
     "ts": 1775319672397
   },
   "mercari:cerruti:m23718660345": {
-    "price": 3800,
-    "ts": 1781805856518
+    "price": 3700,
+    "ts": 1782161351490
   },
   "2ndstreet:Walter Van Beirendonck:2320725272604": {
     "price": 32890,
@@ -51892,9 +51892,9 @@
     "ts": 1777872358075
   },
   "mercari:Paul Harnden:m84205658678": {
-    "price": 50000,
+    "price": 39800,
     "lastNotifiedPrice": 40000,
-    "ts": 1782149868789
+    "ts": 1782161103565
   },
   "mercari:MITTAN:m33030891267": {
     "price": 24800,
@@ -73186,9 +73186,9 @@
     "ts": 1782028294464
   },
   "mercari:Bergfabel:m93732681797": {
-    "price": 13600,
-    "lastNotifiedPrice": 14000,
-    "ts": 1781850449526
+    "price": 13000,
+    "lastNotifiedPrice": 13000,
+    "ts": 1782162359879
   },
   "2ndstreet:Bergfabel:2332874629369": {
     "price": 8690,
@@ -81242,9 +81242,9 @@
     "ts": 1782017023285
   },
   "mercari:w&lt:m73656896001": {
-    "price": 28000,
-    "lastNotifiedPrice": 28500,
-    "ts": 1782111427823
+    "price": 26500,
+    "lastNotifiedPrice": 26500,
+    "ts": 1782162477995
   },
   "mercari:w&lt:m44643494413": {
     "price": 22000,
@@ -82180,5 +82180,17 @@
   "mercari:Camiel Fortgens:m95637006806": {
     "price": 33333,
     "ts": 1782153078596
+  },
+  "mercari:GUIDI:m21555231533": {
+    "price": 103950,
+    "ts": 1782161282929
+  },
+  "mercari:carpe diem:m83587089847": {
+    "price": 3200,
+    "ts": 1782161895274
+  },
+  "mercari:w&lt:m51517768064": {
+    "price": 28000,
+    "ts": 1782162475883
   }
 }
