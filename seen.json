@@ -6832,8 +6832,8 @@
     "ts": 1774627650170
   },
   "mercari:DAMIR DOMA:m72610507616": {
-    "price": 13130,
-    "ts": 1781173626214
+    "price": 13030,
+    "ts": 1782246408359
   },
   "mercari:DAMIR DOMA:m62872763797": {
     "price": 64,
@@ -8879,8 +8879,8 @@
     "ts": 1782237970179
   },
   "mercari:MD75:m51378000715": {
-    "price": 1600,
-    "ts": 1782163491314
+    "price": 1500,
+    "ts": 1782247278762
   },
   "mercari:MD75:m94261929296": {
     "price": 28000,
@@ -13683,8 +13683,8 @@
     "ts": 1781927466895
   },
   "mercari:HUSSEIN CHALAYAN:m79783889696": {
-    "price": 10110,
-    "ts": 1781173569792
+    "price": 10010,
+    "ts": 1782246319879
   },
   "mercari:first aid to the injured:m15457615533": {
     "price": 29700,
@@ -18955,9 +18955,9 @@
     "ts": 1774781440777
   },
   "mercari:by Walid:m70914038913": {
-    "price": 90000,
-    "lastNotifiedPrice": 90000,
-    "ts": 1782071130881
+    "price": 89000,
+    "lastNotifiedPrice": 89000,
+    "ts": 1782246045043
   },
   "mercari:by Walid:m33030605333": {
     "price": 32800,
@@ -69945,14 +69945,14 @@
     "ts": 1780602422241
   },
   "mercari:Carol Christian Poell:m50733363809": {
-    "price": 32000,
+    "price": 44000,
     "lastNotifiedPrice": 29900,
-    "ts": 1782071805192
+    "ts": 1782246706121
   },
   "mercari:Poell:m50733363809": {
-    "price": 32000,
+    "price": 44000,
     "lastNotifiedPrice": 29900,
-    "ts": 1782071105300
+    "ts": 1782246024637
   },
   "mercari:Christopher Raeburn:m99234301067": {
     "price": 7000,
@@ -79120,9 +79120,9 @@
     "ts": 1781612259466
   },
   "mercari:individual sentiments:m46375771100": {
-    "price": 13000,
-    "lastNotifiedPrice": 13333,
-    "ts": 1781868469233
+    "price": 12000,
+    "lastNotifiedPrice": 12000,
+    "ts": 1782245615370
   },
   "mercari:individual sentiments:2JSdGNsUD6h7dBwDXPNFnf": {
     "price": 10395,
@@ -82654,5 +82654,33 @@
   "mercari:Bergfabel:m53037505516": {
     "price": 55000,
     "ts": 1782236636038
+  },
+  "mercari:unravel project:m30072546909": {
+    "price": 6000,
+    "ts": 1782244761202
+  },
+  "mercari:GUIDI:m48670552383": {
+    "price": 220000,
+    "ts": 1782245066400
+  },
+  "mercari:golem:m15777092155": {
+    "price": 2000,
+    "ts": 1782245094718
+  },
+  "mercari:christophe lemaire:m51460670488": {
+    "price": 19999,
+    "ts": 1782245345436
+  },
+  "mercari:w&lt:m10907833030": {
+    "price": 42000,
+    "ts": 1782246224933
+  },
+  "mercari:m.a+:m12584485582": {
+    "price": 350000,
+    "ts": 1782247127667
+  },
+  "mercari:Marc Le Bihan:m72684047863": {
+    "price": 3500,
+    "ts": 1782248345083
   }
 }
