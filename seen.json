@@ -20946,8 +20946,8 @@
     "ts": 1774782775997
   },
   "mercari:Schonberger:JndR3MLtGgWbFUiujYtqFR": {
-    "price": 655,
-    "ts": 1781962899249
+    "price": 838,
+    "ts": 1782416412609
   },
   "mercari:Schonberger:GFZjS7ztFUreuoeszgjZoF": {
     "price": 932,
@@ -50128,9 +50128,9 @@
     "ts": 1777562414213
   },
   "mercari:Vexed Generation:m68968796877": {
-    "price": 60999,
+    "price": 58999,
     "lastNotifiedPrice": 58999,
-    "ts": 1782406292572
+    "ts": 1782416271187
   },
   "mercari:Nemeth:2JGuSXjGxUvQB3RpoUtETr": {
     "price": 100000,
@@ -79764,8 +79764,8 @@
     "ts": 1781718211878
   },
   "mercari:cerruti:m61618851604": {
-    "price": 4280,
-    "ts": 1782235633323
+    "price": 4080,
+    "ts": 1782415103960
   },
   "mercari:ensou:2JSjwCJ3unjJjEBrPSmi9H": {
     "price": 60800,
@@ -81889,8 +81889,8 @@
     "ts": 1782082904898
   },
   "mercari:MITTAN:m28111776925": {
-    "price": 15880,
-    "ts": 1782333621644
+    "price": 15780,
+    "ts": 1782414870603
   },
   "mercari:cerruti:m22888504181": {
     "price": 1800,
@@ -83032,8 +83032,9 @@
     "ts": 1782307514624
   },
   "mercari:GUIDI:m85504456778": {
-    "price": 38400,
-    "ts": 1782405086371
+    "price": 36000,
+    "lastNotifiedPrice": 36000,
+    "ts": 1782415032592
   },
   "mercari:golem:m16265018118": {
     "price": 2800,
@@ -83044,9 +83045,9 @@
     "ts": 1782307668563
   },
   "mercari:final home:m35959194515": {
-    "price": 13500,
-    "lastNotifiedPrice": 14000,
-    "ts": 1782394380741
+    "price": 13000,
+    "lastNotifiedPrice": 13000,
+    "ts": 1782415432424
   },
   "mercari:incarnation:2JT4UtYvXPAm94bregCvHX": {
     "price": 1210,
@@ -83565,8 +83566,8 @@
     "ts": 1782394601680
   },
   "mercari:carpe diem:2JT735vqUkufHGsCuUg6Nd": {
-    "price": 14980,
-    "ts": 1782394603830
+    "price": 31800,
+    "ts": 1782415651880
   },
   "mercari:carpe diem:m80563461619": {
     "price": 7000,
@@ -83641,8 +83642,9 @@
     "ts": 1782397048755
   },
   "mercari:GUIDI:m61735734138": {
-    "price": 110000,
-    "ts": 1782405073332
+    "price": 105000,
+    "lastNotifiedPrice": 105000,
+    "ts": 1782415034751
   },
   "mercari:GUIDI:m79772032236": {
     "price": 29800,
@@ -83667,5 +83669,21 @@
   "mercari:Camiel Fortgens:2JT7LToNmjemDjuznrdVMG": {
     "price": 28600,
     "ts": 1782408067117
+  },
+  "mercari:HALLELUJAH:m52213112963": {
+    "price": 40000,
+    "ts": 1782414200966
+  },
+  "mercari:incarnation:2JT7UZFNwmcJsiyimvapE8": {
+    "price": 500,
+    "ts": 1782415673323
+  },
+  "mercari:incarnation:2JT7UYzd4JxRb7cNQyweTN": {
+    "price": 300,
+    "ts": 1782415675469
+  },
+  "mercari:ensou:2JT7egRwik9472NP3heypr": {
+    "price": 23980,
+    "ts": 1782415794698
   }
 }
