@@ -2501,8 +2501,9 @@
     "ts": 1774625488500
   },
   "mercari:GEOFFREY B SMALL:m68846662053": {
-    "price": 83000,
-    "ts": 1781768276592
+    "price": 80000,
+    "lastNotifiedPrice": 80000,
+    "ts": 1782767294103
   },
   "mercari:GEOFFREY B SMALL:m17737147775": {
     "price": 151,
@@ -23956,9 +23957,9 @@
     "ts": 1776986129775
   },
   "mercari:Andrea Incontri:2JJgnWHKsTLmDrruczFajd": {
-    "price": 3588,
+    "price": 5980,
     "lastNotifiedPrice": 3588,
-    "ts": 1782524260932
+    "ts": 1782771558698
   },
   "mercari:Andrea Incontri:m55310797602": {
     "price": 2299,
@@ -41265,9 +41266,9 @@
     "ts": 1776098121564
   },
   "mercari:DEVOA:m77986747298": {
-    "price": 32620,
+    "price": 32520,
     "lastNotifiedPrice": 32720,
-    "ts": 1782435203972
+    "ts": 1782767869319
   },
   "mercari:CASEY CASEY:m90730225273": {
     "price": 28200,
@@ -49670,9 +49671,9 @@
     "ts": 1777601216043
   },
   "mercari:DEVOA:m14285603960": {
-    "price": 22000,
-    "lastNotifiedPrice": 22000,
-    "ts": 1782319037392
+    "price": 21000,
+    "lastNotifiedPrice": 21000,
+    "ts": 1782767867319
   },
   "mercari:CASEY CASEY:2JQWkBZNuapNgRbLPByVYV": {
     "price": 25600,
@@ -82587,8 +82588,8 @@
     "ts": 1782204071169
   },
   "mercari:Poeme Bohemien:m40676511197": {
-    "price": 14000,
-    "ts": 1782641543962
+    "price": 13500,
+    "ts": 1782767273189
   },
   "mercari:carpe diem:m36044387140": {
     "price": 3500,
@@ -83273,8 +83274,8 @@
     "ts": 1782346266431
   },
   "mercari:carpe diem:m66224558769": {
-    "price": 880,
-    "ts": 1782661118374
+    "price": 800,
+    "ts": 1782767658463
   },
   "mercari:carpe diem:2JSW4qRgRKncj6dpYH8mDr": {
     "price": 21480,
@@ -85110,9 +85111,9 @@
     "ts": 1782630674314
   },
   "mercari:BONEVILLE:m72227144412": {
-    "price": 500,
+    "price": 600,
     "lastNotifiedPrice": 400,
-    "ts": 1782752008049
+    "ts": 1782767201278
   },
   "mercari:BONEVILLE:m56900087203": {
     "price": 22000,
@@ -85824,5 +85825,9 @@
   "2ndstreet:Suzusan:2338783230115": {
     "price": 6490,
     "ts": 1782763485234
+  },
+  "mercari:ensou:m66849449429": {
+    "price": 12000,
+    "ts": 1782767793085
   }
 }
