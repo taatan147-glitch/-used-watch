@@ -50998,8 +50998,8 @@
     "ts": 1777698572921
   },
   "mercari:augusta:m35677406806": {
-    "price": 1580,
-    "ts": 1782739943971
+    "price": 1480,
+    "ts": 1782942585630
   },
   "mercari:augusta:2JQd86kMis9p4P6VLDTi8Y": {
     "price": 85800,
@@ -78962,8 +78962,8 @@
     "ts": 1782041347177
   },
   "mercari:DEVOA:m80825575105": {
-    "price": 59000,
-    "ts": 1782826478914
+    "price": 58900,
+    "ts": 1782942313828
   },
   "mercari:CHRISTIAN PEAU:2JSdYkzAFNti6uP3NnqZAb": {
     "price": 12800,
@@ -80642,9 +80642,9 @@
     "ts": 1781914101602
   },
   "mercari:CASEY CASEY:m68996955701": {
-    "price": 64990,
+    "price": 63999,
     "lastNotifiedPrice": 64990,
-    "ts": 1782927466995
+    "ts": 1782942448223
   },
   "mercari:augusta:m50442573772": {
     "price": 450,
@@ -85418,8 +85418,8 @@
     "ts": 1782837092998
   },
   "mercari:cerruti:m87797347952": {
-    "price": 16150,
-    "ts": 1782760486885
+    "price": 15343,
+    "ts": 1782941585372
   },
   "mercari:cerruti:m68982192581": {
     "price": 550,
@@ -86957,5 +86957,9 @@
   "2ndstreet:Suzusan:2339214141475": {
     "price": 19690,
     "ts": 1782938146283
+  },
+  "mercari:augusta:m10239890968": {
+    "price": 900,
+    "ts": 1782942585981
   }
 }
