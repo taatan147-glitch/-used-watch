@@ -55577,8 +55577,8 @@
     "ts": 1778082326015
   },
   "mercari:HUSSEIN CHALAYAN:m98117174923": {
-    "price": 10900,
-    "ts": 1782826955572
+    "price": 10800,
+    "ts": 1782936332948
   },
   "mercari:BERNHARD WILLHELM:m19820161717": {
     "price": 48000,
@@ -78313,8 +78313,8 @@
     "ts": 1782475026651
   },
   "mercari:art comes first:m51166238497": {
-    "price": 5480,
-    "ts": 1781422044766
+    "price": 4730,
+    "ts": 1782935274818
   },
   "mercari:ansnam:m40296898072": {
     "price": 24000,
@@ -86941,5 +86941,21 @@
   "2ndstreet:Camiel Fortgens:2347461531093": {
     "price": 16390,
     "ts": 1782929564476
+  },
+  "mercari:GUIDI:m88029419324": {
+    "price": 30000,
+    "ts": 1782935065958
+  },
+  "mercari:ensou:m36713562015": {
+    "price": 7000,
+    "ts": 1782935802969
+  },
+  "mercari:John Alexander Skelton:2JTPCQHKt2UaDJsjjJR7VY": {
+    "price": 200941,
+    "ts": 1782937012830
+  },
+  "2ndstreet:Suzusan:2339214141475": {
+    "price": 19690,
+    "ts": 1782938146283
   }
 }
