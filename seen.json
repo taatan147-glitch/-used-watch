@@ -23299,9 +23299,9 @@
     "ts": 1774784936328
   },
   "mercari:Suzusan:2JHra3qWYUrEWscDfHpkKL": {
-    "price": 28000,
+    "price": 20784,
     "lastNotifiedPrice": 20239,
-    "ts": 1782755006170
+    "ts": 1783029638166
   },
   "mercari:Suzusan:tQeUBH4pKqbQmPfH3Mzjpi": {
     "price": 38500,
@@ -41823,9 +41823,9 @@
     "ts": 1776196864249
   },
   "mercari:forme d'expression:m54378183804": {
-    "price": 18500,
-    "lastNotifiedPrice": 18500,
-    "ts": 1783020941122
+    "price": 17500,
+    "lastNotifiedPrice": 17500,
+    "ts": 1783027309645
   },
   "mercari:DEVOA:m25793771156": {
     "price": 31000,
@@ -44983,9 +44983,9 @@
     "ts": 1776735339865
   },
   "mercari:BERNHARD WILLHELM:m99436206773": {
-    "price": 8000,
+    "price": 7777,
     "lastNotifiedPrice": 8000,
-    "ts": 1782192940689
+    "ts": 1783028000717
   },
   "mercari:Second/Layer:m23026603149": {
     "price": 5800,
@@ -54021,8 +54021,9 @@
     "ts": 1781377784287
   },
   "mercari:ISABEL BENENATO:2JPRYz2VeZyaGief5NCVQg": {
-    "price": 197800,
-    "ts": 1777966144210
+    "price": 168800,
+    "lastNotifiedPrice": 168800,
+    "ts": 1783025937754
   },
   "mercari:ISABEL BENENATO:2JQZGRoicVS2kHWvVHTAUD": {
     "price": 107800,
@@ -67882,8 +67883,8 @@
     "ts": 1780032435519
   },
   "mercari:w&lt:m65833796138": {
-    "price": 6200,
-    "ts": 1779979910597
+    "price": 5800,
+    "ts": 1783027765021
   },
   "mercari:DAMIR DOMA:m79909671725": {
     "price": 23600,
@@ -68398,8 +68399,9 @@
     "ts": 1780077255933
   },
   "mercari:ISABEL BENENATO:2JNiJtwoVtnR9N8pjznPxi": {
-    "price": 28480,
-    "ts": 1780077273505
+    "price": 20480,
+    "lastNotifiedPrice": 20480,
+    "ts": 1783025939891
   },
   "mercari:ISABEL BENENATO:2JNZCQtPruF2FAs6NDzzTm": {
     "price": 34800,
@@ -71876,9 +71878,9 @@
     "ts": 1780522235329
   },
   "mercari:Hannes Roether:m62588162399": {
-    "price": 2000,
+    "price": 1900,
     "lastNotifiedPrice": 2000,
-    "ts": 1782425944439
+    "ts": 1783029693830
   },
   "mercari:KAVAL:2JS8GoktbfZrFcondSTqGH": {
     "price": 27800,
@@ -87010,8 +87012,9 @@
     "ts": 1782958943084
   },
   "mercari:art comes first:m32862482724": {
-    "price": 39000,
-    "ts": 1782959167275
+    "price": 37800,
+    "lastNotifiedPrice": 37800,
+    "ts": 1783026772751
   },
   "mercari:carpe diem:m19206714165": {
     "price": 5000,
@@ -87385,5 +87388,13 @@
     "price": 8999,
     "lastNotifiedPrice": 8999,
     "ts": 1783021500596
+  },
+  "mercari:cerruti:m79974663645": {
+    "price": 2200,
+    "ts": 1783026633826
+  },
+  "mercari:augusta:m14874723463": {
+    "price": 3800,
+    "ts": 1783027670439
   }
 }
