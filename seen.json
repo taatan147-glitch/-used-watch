@@ -25850,8 +25850,9 @@
     "ts": 1775974303280
   },
   "mercari:unravel project:2JKRL8gH6meGkiogLn5LC4": {
-    "price": 8100,
-    "ts": 1782491292360
+    "price": 7100,
+    "lastNotifiedPrice": 7100,
+    "ts": 1783019890353
   },
   "mercari:unravel project:2JHxWcnWXL4i5mYideepy9": {
     "price": 6000,
@@ -41822,9 +41823,9 @@
     "ts": 1776196864249
   },
   "mercari:forme d'expression:m54378183804": {
-    "price": 19500,
-    "lastNotifiedPrice": 19500,
-    "ts": 1782927231196
+    "price": 18500,
+    "lastNotifiedPrice": 18500,
+    "ts": 1783020941122
   },
   "mercari:DEVOA:m25793771156": {
     "price": 31000,
@@ -63564,8 +63565,8 @@
     "ts": 1780425681050
   },
   "mercari:art comes first:m61949362575": {
-    "price": 5680,
-    "ts": 1782915925527
+    "price": 5000,
+    "ts": 1783020407268
   },
   "mercari:christophe lemaire:m76038060762": {
     "price": 380,
@@ -64281,8 +64282,8 @@
     "ts": 1782876292111
   },
   "mercari:augusta:m99721138207": {
-    "price": 700,
-    "ts": 1779417005884
+    "price": 800,
+    "ts": 1783021310710
   },
   "mercari:D.HYGEN:m35435001173": {
     "price": 42000,
@@ -83110,8 +83111,8 @@
     "ts": 1782286984263
   },
   "mercari:Camiel Fortgens:m19241289487": {
-    "price": 64700,
-    "ts": 1782997713757
+    "price": 64600,
+    "ts": 1783023294476
   },
   "mercari:Camiel Fortgens:m63295549436": {
     "price": 19500,
@@ -85906,8 +85907,8 @@
     "ts": 1782752949541
   },
   "mercari:carpe diem:m95087630470": {
-    "price": 980,
-    "ts": 1782761036064
+    "price": 1080,
+    "ts": 1783020831140
   },
   "mercari:Avant Toi:2JTJ36XVsaWTag6ikGpwAP": {
     "price": 110300,
@@ -86075,8 +86076,9 @@
     "ts": 1782826642560
   },
   "mercari:augusta:2JTKMSiDCitHpbrYRHotJ5": {
-    "price": 35800,
-    "ts": 1782804014770
+    "price": 29980,
+    "lastNotifiedPrice": 29980,
+    "ts": 1783021308708
   },
   "mercari:augusta:m64947704148": {
     "price": 1500,
@@ -87380,7 +87382,8 @@
     "ts": 1783015199795
   },
   "mercari:HUSSEIN CHALAYAN:m52767453853": {
-    "price": 14999,
-    "ts": 1783015369969
+    "price": 8999,
+    "lastNotifiedPrice": 8999,
+    "ts": 1783021500596
   }
 }
