@@ -35,8 +35,8 @@
     "ts": 1781201208207
   },
   "mercari:MAVRANYMA:m38367059176": {
-    "price": 10499,
-    "ts": 1781316920276
+    "price": 10199,
+    "ts": 1783105750272
   },
   "mercari:OLMAR and MIRTA:m43992332221": {
     "price": 48700,
@@ -23980,12 +23980,12 @@
     "ts": 1782910307504
   },
   "mercari:Andrea Incontri:m55310797602": {
-    "price": 2299,
-    "ts": 1781319183262
+    "price": 2399,
+    "ts": 1783110589817
   },
   "mercari:Andrea Incontri:m23984915955": {
-    "price": 5699,
-    "ts": 1781319183262
+    "price": 5399,
+    "ts": 1783110589817
   },
   "mercari:Andrea Incontri:2JGNVhDsRHNFWbmwRGpqUN": {
     "price": 11400,
@@ -67674,8 +67674,9 @@
     "ts": 1779965120126
   },
   "mercari:daub:m53094422020": {
-    "price": 23500,
-    "ts": 1779965319327
+    "price": 21500,
+    "lastNotifiedPrice": 21500,
+    "ts": 1783105621388
   },
   "mercari:CAPERTICA:2JRosdXyFrLiRVpMwbX7Ke": {
     "price": 6500,
@@ -75917,9 +75918,9 @@
     "ts": 1781047887293
   },
   "mercari:Camiel Fortgens:m22559294454": {
-    "price": 21000,
-    "lastNotifiedPrice": 21000,
-    "ts": 1782977870358
+    "price": 20000,
+    "lastNotifiedPrice": 20000,
+    "ts": 1783109120812
   },
   "mercari:sus-sous:2JSPxKR2tZmv5jAmucNaDo": {
     "price": 16800,
@@ -77521,8 +77522,8 @@
     "ts": 1781294734415
   },
   "mercari:DAMIR DOMA:m73185853183": {
-    "price": 22000,
-    "ts": 1781295187269
+    "price": 24000,
+    "ts": 1783107448011
   },
   "mercari:DAMIR DOMA:m30695095151": {
     "price": 24000,
@@ -82103,8 +82104,8 @@
     "ts": 1782082904898
   },
   "mercari:MITTAN:m28111776925": {
-    "price": 15080,
-    "ts": 1783013929948
+    "price": 14980,
+    "ts": 1783105974184
   },
   "mercari:cerruti:m22888504181": {
     "price": 1800,
@@ -86579,9 +86580,9 @@
     "ts": 1783087505596
   },
   "mercari:HALLELUJAH:m93705133387": {
-    "price": 36500,
+    "price": 36000,
     "lastNotifiedPrice": 36999,
-    "ts": 1783098829269
+    "ts": 1783105334457
   },
   "mercari:HALLELUJAH:m35461295008": {
     "price": 25000,
@@ -87987,5 +87988,13 @@
   "mercari:CASEY CASEY:m77558507080": {
     "price": 12000,
     "ts": 1783100627038
+  },
+  "mercari:BERNHARD WILLHELM:m76626065676": {
+    "price": 25000,
+    "ts": 1783107496972
+  },
+  "mercari:Rigards:m60067145665": {
+    "price": 120000,
+    "ts": 1783108815372
   }
 }
