@@ -51,4 +51,4 @@ jobs:
           git add seen.json
           git diff --cached --quiet && echo "変更なし" && exit 0
           git commit -m "Update seen.json [skip ci]"
-          git push origin HEAD:main
+          git push origin HEAD:main --force
