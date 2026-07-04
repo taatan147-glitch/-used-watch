@@ -59,11 +59,19 @@ async function main() {
 
   let notified = 0;
   let skipped = 0;
+  let secondStreetBlockedUntil = 0; // ブロック解除予定時刻
 
   try {
     for (const rule of rules) {
       const site = String(rule.site || "").toLowerCase();
       console.log(`\n[${site}] "${rule.keyword}" を監視中...`);
+
+      // セカストがブロック中なら解除まで待機
+      if (site === "2ndstreet" && Date.now() < secondStreetBlockedUntil) {
+        const waitSec = Math.ceil((secondStreetBlockedUntil - Date.now()) / 1000);
+        console.log(`  → ブロック解除待ち（残り約${waitSec}秒）...`);
+        await sleep(secondStreetBlockedUntil - Date.now());
+      }
 
       let items = [];
       try {
@@ -78,21 +86,17 @@ async function main() {
 
         if (site === "mercari")        items = await searchMercari(page, rule);
         else if (site === "2ndstreet") {
-          // Akamai対策：ランダム待機（5〜12秒）
-          await sleep(5000 + Math.floor(Math.random() * 7000));
+          // Akamai対策：ランダム待機（5〜10秒）
+          await sleep(5000 + Math.floor(Math.random() * 5000));
           items = await search2ndStreet(page, rule);
-          // Access Deniedの場合は長めに待ってリトライ
+          // Access Deniedの場合は90秒待機してから次のキーワードへ
           if (items.length === 0) {
-            const check = await page.evaluate(() => document.body?.innerText?.slice(0, 100) || "");
+            const check = await page.evaluate(() => document.body?.innerText?.slice(0, 100) || "").catch(() => "");
             if (check.includes("Access Denied") || check.includes("permission")) {
-              console.log("  → Access Denied検出、30秒待機してリトライ...");
+              console.log("  → Access Denied検出。90秒後に再開します...");
+              secondStreetBlockedUntil = Date.now() + 90000;
               await page.close();
-              await sleep(30000);
-              const retryPage = await browser.newPage();
-              await retryPage.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36");
-              await retryPage.setExtraHTTPHeaders({ "accept-language": "ja-JP,ja;q=0.9" });
-              items = await search2ndStreet(retryPage, rule);
-              await retryPage.close();
+              await sleep(90000);
               continue;
             }
           }
