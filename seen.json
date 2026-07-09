@@ -12941,9 +12941,9 @@
     "ts": 1774636926799
   },
   "mercari:MITTAN:m69817223583": {
-    "price": 29500,
+    "price": 28000,
     "lastNotifiedPrice": 24500,
-    "ts": 1782958788786
+    "ts": 1783625560165
   },
   "trefac:MITTAN:1086001223708418": {
     "price": 19800,
@@ -14016,8 +14016,8 @@
     "ts": 1778332768577
   },
   "mercari:masnada:m43749252604": {
-    "price": 5000,
-    "ts": 1778332768577
+    "price": 5100,
+    "ts": 1783627101534
   },
   "mercari:masnada:m67726267341": {
     "price": 110000,
@@ -23988,8 +23988,8 @@
     "ts": 1774785631552
   },
   "mercari:Matthew Miller:m78356616485": {
-    "price": 4300,
-    "ts": 1782173566844
+    "price": 4200,
+    "ts": 1783631649536
   },
   "mercari:Parkchoonmoo:2JMQmCeU7KQQ4JcFXZppG3": {
     "price": 28272,
@@ -34157,8 +34157,8 @@
     "ts": 1775206514155
   },
   "mercari:augusta:m87903077600": {
-    "price": 1400,
-    "ts": 1783251138168
+    "price": 1300,
+    "ts": 1783626754291
   },
   "mercari:augusta:m67176624826": {
     "price": 3000,
@@ -38694,9 +38694,9 @@
     "ts": 1775693666992
   },
   "mercari:MITTAN:m35696645835": {
-    "price": 34000,
+    "price": 37000,
     "lastNotifiedPrice": 34000,
-    "ts": 1783617897219
+    "ts": 1783625560165
   },
   "2ndstreet:LAYER-0:2343862365916": {
     "price": 32890,
@@ -57089,9 +57089,9 @@
     "ts": 1782042325702
   },
   "mercari:John Alexander Skelton:m42915084165": {
-    "price": 200000,
+    "price": 350000,
     "lastNotifiedPrice": 200000,
-    "ts": 1782493583523
+    "ts": 1783627612156
   },
   "2ndstreet:TEO+NG:2345001902419": {
     "price": 14190,
@@ -74710,24 +74710,24 @@
     "ts": 1780853758753
   },
   "mercari:John Alexander Skelton:m70779968746": {
-    "price": 79000,
+    "price": 90000,
     "lastNotifiedPrice": 79000,
-    "ts": 1783068420832
+    "ts": 1783627612156
   },
   "mercari:John Alexander Skelton:m92440087867": {
-    "price": 79000,
+    "price": 120000,
     "lastNotifiedPrice": 79000,
-    "ts": 1783068418830
+    "ts": 1783627612155
   },
   "mercari:John Alexander Skelton:m11170535095": {
-    "price": 79000,
+    "price": 90000,
     "lastNotifiedPrice": 79000,
-    "ts": 1783068420832
+    "ts": 1783627612156
   },
   "mercari:John Alexander Skelton:m17965957104": {
-    "price": 79000,
+    "price": 150000,
     "lastNotifiedPrice": 79000,
-    "ts": 1783068420832
+    "ts": 1783627612156
   },
   "mercari:Leon Louis:m36856896090": {
     "price": 77777,
@@ -90645,9 +90645,9 @@
     "ts": 1783599368440
   },
   "mercari:CASEY CASEY:m69729821406": {
-    "price": 89000,
-    "lastNotifiedPrice": 89000,
-    "ts": 1783599366195
+    "price": 85000,
+    "lastNotifiedPrice": 85000,
+    "ts": 1783626620599
   },
   "mercari:Poell:m51295549788": {
     "price": 450000,
@@ -91082,5 +91082,17 @@
   "mercari:w&lt:m44440268132": {
     "price": 35000,
     "ts": 1783619169806
+  },
+  "mercari:Walter Van Beirendonck:m36810864693": {
+    "price": 35000,
+    "ts": 1783626856454
+  },
+  "mercari:first aid to the injured:m82725706753": {
+    "price": 10890,
+    "ts": 1783626968784
+  },
+  "mercari:first aid to the injured:m14526422282": {
+    "price": 10890,
+    "ts": 1783626970903
   }
 }
