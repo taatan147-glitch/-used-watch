@@ -4080,9 +4080,9 @@
     "ts": 1774626287885
   },
   "mercari:Nicolo Ceschi Berrini:m97239359859": {
-    "price": 32600,
+    "price": 32500,
     "lastNotifiedPrice": 32600,
-    "ts": 1783586763360
+    "ts": 1783708981699
   },
   "mercari:Nicolo Ceschi Berrini:m60454718131": {
     "price": 13000,
@@ -25060,8 +25060,9 @@
     "ts": 1776447975257
   },
   "mercari:BONEVILLE:m15187367394": {
-    "price": 79000,
-    "ts": 1774794645356
+    "price": 78000,
+    "lastNotifiedPrice": 78000,
+    "ts": 1783708477311
   },
   "mercari:BONEVILLE:m65846467240": {
     "price": 85000,
@@ -83299,8 +83300,8 @@
     "ts": 1782286984263
   },
   "mercari:Camiel Fortgens:m19241289487": {
-    "price": 62900,
-    "ts": 1783697996895
+    "price": 62800,
+    "ts": 1783713335041
   },
   "mercari:Camiel Fortgens:m63295549436": {
     "price": 19500,
@@ -84208,8 +84209,8 @@
     "ts": 1782451318461
   },
   "mercari:christophe lemaire:m80532649883": {
-    "price": 7090,
-    "ts": 1783420703130
+    "price": 6790,
+    "ts": 1783708586834
   },
   "2ndstreet:kyoji maruyama:2342156224182": {
     "price": 4290,
@@ -87343,8 +87344,9 @@
     "ts": 1782974960104
   },
   "mercari:final home:m70734467174": {
-    "price": 53000,
-    "ts": 1782975213839
+    "price": 50000,
+    "lastNotifiedPrice": 50000,
+    "ts": 1783708694747
   },
   "2ndstreet:final home:2347980715301": {
     "price": 8690,
@@ -88011,8 +88013,9 @@
     "ts": 1783693599478
   },
   "mercari:CHRISTIAN PEAU:2JTTRXCredB94s6WQFGHVT": {
-    "price": 13900,
-    "ts": 1783076193915
+    "price": 12900,
+    "lastNotifiedPrice": 12900,
+    "ts": 1783709184426
   },
   "2ndstreet:CHRISTIAN PEAU:2342735388311": {
     "price": 6490,
@@ -91528,8 +91531,9 @@
     "ts": 1783694667061
   },
   "mercari:John Alexander Skelton:m76627878284": {
-    "price": 80000,
-    "ts": 1783694669250
+    "price": 75000,
+    "lastNotifiedPrice": 75000,
+    "ts": 1783710189923
   },
   "mercari:John Alexander Skelton:m10637297695": {
     "price": 298000,
@@ -91578,5 +91582,9 @@
   "mercari:Walter Van Beirendonck:m92983824513": {
     "price": 33000,
     "ts": 1783702148704
+  },
+  "mercari:cerruti:m59092054258": {
+    "price": 27800,
+    "ts": 1783708385864
   }
 }
