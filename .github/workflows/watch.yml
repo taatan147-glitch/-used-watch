@@ -48,8 +48,17 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          cp seen.json /tmp/seen_new.json
+          git fetch origin main
+          git reset --hard origin/main
+          node -e "
+            const fs = require('fs');
+            const remote = JSON.parse(fs.readFileSync('seen.json', 'utf8'));
+            const local = JSON.parse(fs.readFileSync('/tmp/seen_new.json', 'utf8'));
+            const merged = { ...remote, ...local };
+            fs.writeFileSync('seen.json', JSON.stringify(merged, null, 2));
+          "
           git add seen.json
           git diff --cached --quiet && echo "変更なし" && exit 0
           git commit -m "Update seen.json [skip ci]"
-          git pull origin main --rebase --strategy-option=theirs
           git push origin HEAD:main
