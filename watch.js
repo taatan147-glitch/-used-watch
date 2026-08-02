@@ -46,6 +46,7 @@ async function main() {
 
   const browser = await puppeteerExtra.launch({
     headless: true,
+    protocolTimeout: 120000,
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
