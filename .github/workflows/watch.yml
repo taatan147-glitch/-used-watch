@@ -2,7 +2,7 @@ name: 中古サイト新着監視
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 */2 * * *"
   workflow_dispatch:
 
 concurrency:
