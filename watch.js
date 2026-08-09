@@ -46,7 +46,7 @@ async function main() {
 
   const browser = await puppeteerExtra.launch({
     headless: true,
-    protocolTimeout: 120000,
+    protocolTimeout: 180000,
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
@@ -55,6 +55,9 @@ async function main() {
       "--no-first-run",
       "--no-zygote",
       "--single-process",
+      "--disable-extensions",
+      "--disable-background-networking",
+      "--memory-pressure-off",
     ],
   });
 
