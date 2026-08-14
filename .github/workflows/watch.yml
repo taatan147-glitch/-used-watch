@@ -2,7 +2,7 @@ name: 中古サイト新着監視
 
 on:
   schedule:
-    - cron: "0 */2 * * *"
+    - cron: "0 */3 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -53,10 +53,14 @@ jobs:
           git reset --hard origin/main
           node -e "
             const fs = require('fs');
-            const remote = JSON.parse(fs.readFileSync('seen.json', 'utf8'));
-            const local = JSON.parse(fs.readFileSync('/tmp/seen_new.json', 'utf8'));
-            const merged = { ...remote, ...local };
-            fs.writeFileSync('seen.json', JSON.stringify(merged, null, 2));
+            try {
+              const remote = JSON.parse(fs.readFileSync('seen.json', 'utf8'));
+              const local = JSON.parse(fs.readFileSync('/tmp/seen_new.json', 'utf8'));
+              const merged = { ...remote, ...local };
+              fs.writeFileSync('seen.json', JSON.stringify(merged, null, 2));
+            } catch(e) {
+              console.log('マージエラー:', e.message);
+            }
           "
           git add seen.json
           git diff --cached --quiet && echo "変更なし" && exit 0
