@@ -28,11 +28,11 @@ async function main() {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
   if (!webhookUrl) throw new Error("DISCORD_WEBHOOK_URL が未設定です");
 
-  const workerUrl = process.env.WORKER_URL;
-  if (!workerUrl) throw new Error("WORKER_URL が未設定です");
+  const worker = process.env.WORKER_;
+  if (!worker) throw new Error("WORKER_ が未設定です");
 
-  console.log(`設定を取得中: ${workerUrl}/settings`);
-  const settingsRes = await fetch(`${workerUrl}/settings`);
+  console.log(`設定を取得中: ${worker}/settings`);
+  const settingsRes = await fetch(`${worker}/settings`);
   if (!settingsRes.ok) throw new Error(`設定取得失敗: ${settingsRes.status}`);
   const settings = await settingsRes.json();
   const rules = Array.isArray(settings.rules) ? settings.rules : [];
@@ -125,7 +125,7 @@ async function main() {
 
         if (!existing) {
           try {
-            await sendDiscord(webhookUrl, item, rule, "new");
+            await sendDiscord(webhook, item, rule, "new");
             seen[key] = { price: item.price, ts: Date.now() };
             notified++;
             console.log(`  → 新着通知: ${item.title}`);
@@ -156,7 +156,7 @@ async function main() {
                 continue;
               }
               try {
-                await sendDiscord(webhookUrl, item, rule, "price_down", lastNotifiedPrice);
+                await sendDiscord(webhook, item, rule, "price_down", lastNotifiedPrice);
                 seen[key] = { price: curPrice, lastNotifiedPrice: curPrice, ts: Date.now() };
                 notified++;
                 console.log(`  → メルカリ累計値下げ通知 -${totalDrop}円: ${item.title}`);
@@ -168,7 +168,7 @@ async function main() {
             }
 
             try {
-              await sendDiscord(webhookUrl, item, rule, "price_down", prevPrice);
+              await sendDiscord(webhook, item, rule, "price_down", prevPrice);
               seen[key] = { price: curPrice, lastNotifiedPrice: curPrice, ts: Date.now() };
               notified++;
               console.log(`  → 値下げ通知: ${item.title} ¥${prevPrice}→¥${curPrice}`);
@@ -238,9 +238,9 @@ async function searchMercari(page, rule) {
         id: String(item.id || ""),
         title: String(item.name || ""),
         price: Number(item.price || 0),
-        url: item.shopName
-          ? `https://jp.mercari.com/shops/product/${item.id}`
-          : `https://jp.mercari.com/item/${item.id}`,
+        url: /^m\d+$/.test(String(item.id || ""))
+  ? `https://jp.mercari.com/item/${item.id}`
+  : `https://jp.mercari.com/shops/product/${item.id}`,
         thumbnail: item.thumbnails?.[0] || "",
       }))
       .filter((i) => i.id && i.title)
