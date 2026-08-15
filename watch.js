@@ -28,8 +28,8 @@ async function main() {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
   if (!webhookUrl) throw new Error("DISCORD_WEBHOOK_URL が未設定です");
 
-  const worker = process.env.WORKER_;
-  if (!worker) throw new Error("WORKER_ が未設定です");
+  const worker = process.env.WORKER_URL;
+if (!worker) throw new Error("WORKER_URL が未設定です");
 
   console.log(`設定を取得中: ${worker}/settings`);
   const settingsRes = await fetch(`${worker}/settings`);
