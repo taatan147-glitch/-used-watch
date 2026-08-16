@@ -125,7 +125,7 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
 
         if (!existing) {
           try {
-            await sendDiscord(webhook, item, rule, "new");
+            await sendDiscord(webhookUrl, item, rule, "new");
             seen[key] = { price: item.price, ts: Date.now() };
             notified++;
             console.log(`  → 新着通知: ${item.title}`);
@@ -156,7 +156,7 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
                 continue;
               }
               try {
-                await sendDiscord(webhook, item, rule, "price_down", lastNotifiedPrice);
+                await sendDiscord(webhookUrl, item, rule, "price_down", lastNotifiedPrice);
                 seen[key] = { price: curPrice, lastNotifiedPrice: curPrice, ts: Date.now() };
                 notified++;
                 console.log(`  → メルカリ累計値下げ通知 -${totalDrop}円: ${item.title}`);
@@ -168,7 +168,7 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
             }
 
             try {
-              await sendDiscord(webhook, item, rule, "price_down", prevPrice);
+              await sendDiscord(webhookUrl, item, rule, "price_down", prevPrice);
               seen[key] = { price: curPrice, lastNotifiedPrice: curPrice, ts: Date.now() };
               notified++;
               console.log(`  → 値下げ通知: ${item.title} ¥${prevPrice}→¥${curPrice}`);
