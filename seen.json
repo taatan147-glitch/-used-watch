@@ -72889,9 +72889,9 @@
     "ts": 1780553392647
   },
   "mercari:denis colomb:m14524820918": {
-    "price": 17686,
+    "price": 17685,
     "lastNotifiedPrice": 17800,
-    "ts": 1787057553880
+    "ts": 1787089250097
   },
   "trefac:cornelian taurus:1027010155574031": {
     "price": 22000,
@@ -81816,8 +81816,8 @@
     "ts": 1781965388572
   },
   "mercari:Evan Kinori:m34476510401": {
-    "price": 25000,
-    "ts": 1786977068284
+    "price": 24900,
+    "ts": 1787095207554
   },
   "mercari:Camiel Fortgens:m87109029130": {
     "price": 12000,
@@ -84991,8 +84991,8 @@
     "ts": 1782451318461
   },
   "mercari:christophe lemaire:m80532649883": {
-    "price": 3590,
-    "ts": 1787002694523
+    "price": 3490,
+    "ts": 1787088720621
   },
   "2ndstreet:kyoji maruyama:2342156224182": {
     "price": 4290,
@@ -92400,8 +92400,8 @@
     "ts": 1783692785853
   },
   "mercari:cerruti:m11274006171": {
-    "price": 999,
-    "ts": 1783692788009
+    "price": 799,
+    "ts": 1787088552379
   },
   "mercari:kyoji maruyama:m14848705548": {
     "price": 7700,
@@ -94553,9 +94553,9 @@
     "ts": 1784082911537
   },
   "mercari:Puro Secret:m50290437870": {
-    "price": 9800,
+    "price": 9000,
     "lastNotifiedPrice": 9800,
-    "ts": 1786934651268
+    "ts": 1787094919855
   },
   "mercari:Christopher Raeburn:m38190653099": {
     "price": 12800,
@@ -99927,8 +99927,8 @@
     "ts": 1785062880092
   },
   "mercari:vandalize:m12209956559": {
-    "price": 12000,
-    "ts": 1787002491287
+    "price": 11900,
+    "ts": 1787088530661
   },
   "mercari:vandalize:m22128018449": {
     "price": 20800,
@@ -103772,8 +103772,8 @@
     "ts": 1785722633746
   },
   "mercari:cerruti:m84341645120": {
-    "price": 2600,
-    "ts": 1787002514952
+    "price": 2500,
+    "ts": 1787088552379
   },
   "mercari:carpe diem:m33560871678": {
     "price": 19000,
@@ -108522,8 +108522,8 @@
     "ts": 1786712203209
   },
   "mercari:GUIDI:m41602428479": {
-    "price": 73600,
-    "ts": 1787067449850
+    "price": 73400,
+    "ts": 1787088466317
   },
   "mercari:GUIDI:m31360028422": {
     "price": 76800,
@@ -110296,5 +110296,13 @@
   "mercari:BERNHARD WILLHELM:m95756044867": {
     "price": 18700,
     "ts": 1787081123432
+  },
+  "2ndstreet:cornelian taurus:2338401528693": {
+    "price": 27390,
+    "ts": 1787089312520
+  },
+  "mercari:Second/Layer:m62328721275": {
+    "price": 52000,
+    "ts": 1787095626054
   }
 }
