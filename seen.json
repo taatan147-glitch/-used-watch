@@ -5683,22 +5683,23 @@
     "ts": 1780228128189
   },
   "2ndstreet:Boris Bidjan:2333117348856": {
-    "price": 7590,
-    "ts": 1774626981485
+    "price": 5313,
+    "lastNotifiedPrice": 5313,
+    "ts": 1787341063028
   },
   "2ndstreet:Boris Bidjan:2340837400146": {
     "price": 7590,
     "ts": 1774626982947
   },
   "2ndstreet:Boris Bidjan:2338163778374": {
-    "price": 21890,
-    "lastNotifiedPrice": 17512,
-    "ts": 1785119315935
+    "price": 15323,
+    "lastNotifiedPrice": 15323,
+    "ts": 1787341065277
   },
   "2ndstreet:Boris Bidjan:2339213665583": {
-    "price": 52690,
+    "price": 42152,
     "lastNotifiedPrice": 42152,
-    "ts": 1785119315935
+    "ts": 1787341067510
   },
   "2ndstreet:Boris Bidjan:2338401341117": {
     "price": 49390,
@@ -5875,14 +5876,14 @@
     "ts": 1778565399529
   },
   "2ndstreet:Bergfabel:2319974122235": {
-    "price": 10890,
+    "price": 8712,
     "lastNotifiedPrice": 8712,
-    "ts": 1785119363831
+    "ts": 1787341115339
   },
   "2ndstreet:Bergfabel:2320088359059": {
-    "price": 16390,
+    "price": 13112,
     "lastNotifiedPrice": 13112,
-    "ts": 1785119363831
+    "ts": 1787341117618
   },
   "2ndstreet:Bergfabel:2333513788782": {
     "price": 16390,
@@ -5897,19 +5898,19 @@
     "ts": 1778466114440
   },
   "2ndstreet:Bergfabel:2320088296613": {
-    "price": 14190,
+    "price": 11352,
     "lastNotifiedPrice": 11352,
-    "ts": 1785119363831
+    "ts": 1787341119868
   },
   "2ndstreet:Bergfabel:2320088296620": {
-    "price": 17490,
+    "price": 13992,
     "lastNotifiedPrice": 13992,
-    "ts": 1785119363831
+    "ts": 1787341122106
   },
   "2ndstreet:Bergfabel:2345201195369": {
-    "price": 38390,
-    "lastNotifiedPrice": 30712,
-    "ts": 1785119363831
+    "price": 32890,
+    "lastNotifiedPrice": 32890,
+    "ts": 1787341124323
   },
   "2ndstreet:Bergfabel:2338554979724": {
     "price": 19690,
@@ -5935,8 +5936,9 @@
     "ts": 1785844197544
   },
   "2ndstreet:Bergfabel:2336863700220": {
-    "price": 32890,
-    "ts": 1778466114440
+    "price": 23023,
+    "lastNotifiedPrice": 23023,
+    "ts": 1787341133281
   },
   "2ndstreet:Bergfabel:2343632138825": {
     "price": 30690,
@@ -5988,9 +5990,9 @@
     "ts": 1774627106735
   },
   "2ndstreet:augusta:2318785676869": {
-    "price": 6490,
+    "price": 5192,
     "lastNotifiedPrice": 5192,
-    "ts": 1785119387195
+    "ts": 1787341156939
   },
   "2ndstreet:augusta:2330273728799": {
     "price": 14190,
@@ -6001,9 +6003,9 @@
     "ts": 1774627117645
   },
   "2ndstreet:augusta:2341001510661": {
-    "price": 8690,
+    "price": 6952,
     "lastNotifiedPrice": 6952,
-    "ts": 1785119387195
+    "ts": 1787341159221
   },
   "2ndstreet:augusta:2320475839386": {
     "price": 6490,
@@ -6031,9 +6033,9 @@
     "ts": 1776082609978
   },
   "2ndstreet:augusta:2344300629560": {
-    "price": 4290,
-    "lastNotifiedPrice": 3432,
-    "ts": 1785119387195
+    "price": 3003,
+    "lastNotifiedPrice": 3003,
+    "ts": 1787341161442
   },
   "2ndstreet:augusta:2320423080228": {
     "price": 2530,
@@ -8166,9 +8168,9 @@
     "ts": 1783563193272
   },
   "2ndstreet:D.HYGEN:2341201257991": {
-    "price": 14190,
+    "price": 11352,
     "lastNotifiedPrice": 11352,
-    "ts": 1785120081652
+    "ts": 1787343884377
   },
   "2ndstreet:D.HYGEN:2346431724312": {
     "price": 16390,
@@ -8193,19 +8195,19 @@
     "ts": 1774628314001
   },
   "2ndstreet:D.HYGEN:2319833480070": {
-    "price": 25190,
+    "price": 20152,
     "lastNotifiedPrice": 20152,
-    "ts": 1785120081652
+    "ts": 1787343886599
   },
   "2ndstreet:D.HYGEN:2335341971473": {
-    "price": 6490,
+    "price": 5192,
     "lastNotifiedPrice": 5192,
-    "ts": 1785120081652
+    "ts": 1787343888819
   },
   "2ndstreet:D.HYGEN:2340582335540": {
-    "price": 30690,
+    "price": 24552,
     "lastNotifiedPrice": 24552,
-    "ts": 1785120081652
+    "ts": 1787343891033
   },
   "2ndstreet:D.HYGEN:2340582335557": {
     "price": 19690,
@@ -8217,9 +8219,9 @@
     "ts": 1774628323577
   },
   "2ndstreet:D.HYGEN:2319101708561": {
-    "price": 17490,
+    "price": 13992,
     "lastNotifiedPrice": 13992,
-    "ts": 1785120081652
+    "ts": 1787343893257
   },
   "2ndstreet:D.HYGEN:2340582129545": {
     "price": 17490,
@@ -8607,9 +8609,9 @@
     "ts": 1775386658733
   },
   "2ndstreet:John Alexander Skelton:2327844546104": {
-    "price": 76890,
+    "price": 61512,
     "lastNotifiedPrice": 61512,
-    "ts": 1785120254453
+    "ts": 1787344065380
   },
   "2ndstreet:John Alexander Skelton:2344921683606": {
     "price": 54890,
@@ -13942,14 +13944,14 @@
     "ts": 1776853829693
   },
   "2ndstreet:Bergfabel:2339875097272": {
-    "price": 43890,
+    "price": 35112,
     "lastNotifiedPrice": 35112,
-    "ts": 1785119363831
+    "ts": 1787341126596
   },
   "2ndstreet:Bergfabel:2345200802541": {
-    "price": 19690,
-    "lastNotifiedPrice": 19690,
-    "ts": 1782134365291
+    "price": 13783,
+    "lastNotifiedPrice": 13783,
+    "ts": 1787341131064
   },
   "2ndstreet:Bergfabel:2319043512448": {
     "price": 21890,
@@ -37476,8 +37478,9 @@
     "ts": 1787295529830
   },
   "2ndstreet:CASEY CASEY:2318853810515": {
-    "price": 19690,
-    "ts": 1775421640705
+    "price": 15752,
+    "lastNotifiedPrice": 15752,
+    "ts": 1787341009348
   },
   "mercari:Walter Van Beirendonck:m96588943219": {
     "price": 45555,
@@ -44188,9 +44191,9 @@
     "ts": 1786713523736
   },
   "2ndstreet:Boris Bidjan:2349230033784": {
-    "price": 43890,
-    "lastNotifiedPrice": 35112,
-    "ts": 1785119315935
+    "price": 32890,
+    "lastNotifiedPrice": 32890,
+    "ts": 1787341060800
   },
   "mercari:augusta:m16419881953": {
     "price": 800,
@@ -56295,8 +56298,8 @@
     "ts": 1778082326015
   },
   "mercari:HUSSEIN CHALAYAN:m98117174923": {
-    "price": 8000,
-    "ts": 1787243180617
+    "price": 7900,
+    "ts": 1787341781104
   },
   "mercari:BERNHARD WILLHELM:m19820161717": {
     "price": 48000,
@@ -60036,9 +60039,9 @@
     "ts": 1779924584721
   },
   "2ndstreet:Bergfabel:2346610181738": {
-    "price": 10890,
-    "lastNotifiedPrice": 10890,
-    "ts": 1783507174763
+    "price": 8712,
+    "lastNotifiedPrice": 8712,
+    "ts": 1787341113043
   },
   "mercari:augusta:WDwqynT6YUoRpjZuJnyNkS": {
     "price": 880,
@@ -66844,9 +66847,9 @@
     "ts": 1786504201763
   },
   "mercari:Nemeth:2JRfnXYGh6o5hBN9hmArQd": {
-    "price": 51756,
+    "price": 54480,
     "lastNotifiedPrice": 50060,
-    "ts": 1786758096562
+    "ts": 1787342331381
   },
   "2ndstreet:Nemeth:2340805528193": {
     "price": 38390,
@@ -69018,9 +69021,9 @@
     "ts": 1781265219866
   },
   "mercari:Bergfabel:2JRrXbSCEvgkh8jZsDGN3F": {
-    "price": 31900,
-    "lastNotifiedPrice": 32205,
-    "ts": 1786676046978
+    "price": 30400,
+    "lastNotifiedPrice": 30400,
+    "ts": 1787341099690
   },
   "mercari:augusta:m23906273543": {
     "price": 700,
@@ -75261,9 +75264,9 @@
     "ts": 1780827617847
   },
   "mercari:Nemeth:2JSGyh3ivcdPn3VtmsHvqg": {
-    "price": 291565,
+    "price": 306910,
     "lastNotifiedPrice": 291565,
-    "ts": 1786758094560
+    "ts": 1787342331381
   },
   "mercari:Nemeth:m71259473923": {
     "price": 12999,
@@ -88938,9 +88941,9 @@
     "ts": 1786159429663
   },
   "mercari:CHRISTIAN PEAU:2JTTRXCredB94s6WQFGHVT": {
-    "price": 9900,
-    "lastNotifiedPrice": 9900,
-    "ts": 1786189978331
+    "price": 8900,
+    "lastNotifiedPrice": 8900,
+    "ts": 1787340949616
   },
   "2ndstreet:CHRISTIAN PEAU:2342735388311": {
     "price": 6490,
@@ -89492,8 +89495,9 @@
     "ts": 1786928582532
   },
   "mercari:GUIDI:m63171529110": {
-    "price": 74000,
-    "ts": 1783173049632
+    "price": 69800,
+    "lastNotifiedPrice": 69800,
+    "ts": 1787340116275
   },
   "mercari:GUIDI:m21714635054": {
     "price": 16500,
@@ -102749,12 +102753,12 @@
     "ts": 1785844056681
   },
   "mercari:by Walid:m19282277408": {
-    "price": 43600,
-    "ts": 1787252484351
+    "price": 43500,
+    "ts": 1787341020707
   },
   "mercari:BIEK VERSTAPPEN:m90726631990": {
-    "price": 61600,
-    "ts": 1787252709469
+    "price": 61500,
+    "ts": 1787341078637
   },
   "mercari:BIEK VERSTAPPEN:m28894954788": {
     "price": 44000,
@@ -103761,9 +103765,9 @@
     "ts": 1787080078943
   },
   "mercari:Vexed Generation:m15006643028": {
-    "price": 75000,
+    "price": 80000,
     "lastNotifiedPrice": 75000,
-    "ts": 1787048317869
+    "ts": 1787341449086
   },
   "mercari:DAMIR DOMA:m94289119722": {
     "price": 30000,
@@ -104067,9 +104071,9 @@
     "ts": 1785748932342
   },
   "mercari:final home:m30125993296": {
-    "price": 9500,
-    "lastNotifiedPrice": 10000,
-    "ts": 1786712619866
+    "price": 9000,
+    "lastNotifiedPrice": 9000,
+    "ts": 1787340489575
   },
   "mercari:mixed up:m37529047531": {
     "price": 4500,
@@ -106567,8 +106571,8 @@
     "ts": 1786335630161
   },
   "mercari:GUIDI:m20643858502": {
-    "price": 22700,
-    "ts": 1786587940197
+    "price": 21800,
+    "ts": 1787340120500
   },
   "mercari:cerruti:m80691284216": {
     "price": 800,
@@ -108211,8 +108215,8 @@
     "ts": 1786661943495
   },
   "mercari:HORISAKI:m41479175104": {
-    "price": 149200,
-    "ts": 1787153866202
+    "price": 149000,
+    "ts": 1787340094763
   },
   "mercari:GUIDI:m50673895006": {
     "price": 160000,
@@ -108651,8 +108655,9 @@
     "ts": 1786712203209
   },
   "mercari:GUIDI:m41602428479": {
-    "price": 73400,
-    "ts": 1787088466317
+    "price": 71200,
+    "lastNotifiedPrice": 71200,
+    "ts": 1787340118500
   },
   "mercari:GUIDI:m31360028422": {
     "price": 76800,
@@ -110061,8 +110066,8 @@
     "ts": 1786981973537
   },
   "mercari:GUIDI:m87744982660": {
-    "price": 27777,
-    "ts": 1787326894440
+    "price": 27000,
+    "ts": 1787340120500
   },
   "mercari:carpe diem:m23329407796": {
     "price": 4800,
@@ -111509,5 +111514,13 @@
   "mercari:Marc Le Bihan:m80244098940": {
     "price": 31000,
     "ts": 1787333973141
+  },
+  "2ndstreet:Boris Bidjan:2318854734445": {
+    "price": 32890,
+    "ts": 1787341058491
+  },
+  "2ndstreet:John Alexander Skelton:2319382691248": {
+    "price": 104390,
+    "ts": 1787344063159
   }
 }
