@@ -2,7 +2,7 @@ name: 中古サイト新着監視
 
 on:
   schedule:
-    - cron: "0 */3 * * *"
+    - cron: "13 */3 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -12,6 +12,7 @@ concurrency:
 jobs:
   watch:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: write
     steps:
