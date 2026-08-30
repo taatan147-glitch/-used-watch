@@ -44,9 +44,10 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
   const puppeteerExtra = addExtra(puppeteer);
   puppeteerExtra.use(StealthPlugin());
 
-  const browser = await puppeteerExtra.launch({
+  let browser = await puppeteerExtra.launch({
     headless: true,
     protocolTimeout: 180000,
+    timeout: 60000,
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
@@ -54,12 +55,38 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
       "--disable-gpu",
       "--no-first-run",
       "--no-zygote",
-      "--single-process",
       "--disable-extensions",
       "--disable-background-networking",
       "--memory-pressure-off",
     ],
   });
+
+  // ブラウザが切断/クラッシュした場合に自動で再起動するヘルパー
+  // （--single-process を外したことで単一ページのクラッシュがブラウザ全体を道連れにしなくなったが、
+  //   568件規模の長時間実行では念のための保険として用意）
+  async function ensureBrowser() {
+    if (!browser || !browser.connected) {
+      console.log("  → ブラウザが切断されていたため再起動します...");
+      try { await browser.close(); } catch (e) {}
+      browser = await puppeteerExtra.launch({
+        headless: true,
+        protocolTimeout: 180000,
+        timeout: 60000,
+        args: [
+          "--no-sandbox",
+          "--disable-setuid-sandbox",
+          "--disable-dev-shm-usage",
+          "--disable-gpu",
+          "--no-first-run",
+          "--no-zygote",
+          "--disable-extensions",
+          "--disable-background-networking",
+          "--memory-pressure-off",
+        ],
+      });
+    }
+    return browser;
+  }
 
   let notified = 0;
   let skipped = 0;
@@ -69,6 +96,9 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
     for (const rule of rules) {
       const site = String(rule.site || "").toLowerCase();
       console.log(`\n[${site}] "${rule.keyword}" を監視中...`);
+
+      // ブラウザが切断されていないか確認し、必要なら再起動
+      await ensureBrowser();
 
       // セカストがブロック中なら解除まで待機
       if (site === "2ndstreet" && Date.now() < secondStreetBlockedUntil) {
