@@ -24,6 +24,15 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+// Fisher-Yatesシャッフル（配列を破壊的にランダムな順序へ並び替える）
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 async function main() {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
   if (!webhookUrl) throw new Error("DISCORD_WEBHOOK_URL が未設定です");
@@ -37,7 +46,8 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
   const settings = await settingsRes.json();
   const rules = Array.isArray(settings.rules) ? settings.rules : [];
   if (!rules.length) throw new Error("rulesが0件です");
-  console.log(`ルール${rules.length}件を取得しました`);
+  shuffleArray(rules); // 毎回同じ場所でエラーが起きても影響するルールが偏らないよう、監視順をランダム化
+  console.log(`ルール${rules.length}件を取得しました（監視順はランダム化済み）`);
   const seen = loadSeen();
 
   // stealth プラグインを適用
