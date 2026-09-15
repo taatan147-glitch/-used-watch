@@ -73144,9 +73144,9 @@
     "ts": 1780553392647
   },
   "mercari:denis colomb:m14524820918": {
-    "price": 17647,
+    "price": 17646,
     "lastNotifiedPrice": 17800,
-    "ts": 1789432856065
+    "ts": 1789509587107
   },
   "trefac:cornelian taurus:1027010155574031": {
     "price": 22000,
@@ -80384,9 +80384,9 @@
     "ts": 1781564984869
   },
   "mercari:Bergfabel:m83718360762": {
-    "price": 15000,
-    "lastNotifiedPrice": 15900,
-    "ts": 1787404076485
+    "price": 13800,
+    "lastNotifiedPrice": 13800,
+    "ts": 1789510191220
   },
   "mercari:augusta:2JSf4dPRXTCcUWuZDiBHsY": {
     "price": 117800,
@@ -118303,8 +118303,9 @@
     "ts": 1788784854050
   },
   "mercari:CAPERTICA:2JWTGDzVLwHofyBQZBnvj4": {
-    "price": 8900,
-    "ts": 1788784873152
+    "price": 7340,
+    "lastNotifiedPrice": 7340,
+    "ts": 1789510120294
   },
   "mercari:Boris Bidjan:2JWTZiZKM4JyUoD5gRLXTR": {
     "price": 154000,
@@ -118978,9 +118979,9 @@
     "ts": 1789450848903
   },
   "mercari:CHEREVICHKIOTVICHKI:m46529402833": {
-    "price": 27777,
-    "lastNotifiedPrice": 27777,
-    "ts": 1789392264571
+    "price": 25000,
+    "lastNotifiedPrice": 25000,
+    "ts": 1789510593144
   },
   "mercari:D.GNAK:m43078087181": {
     "price": 3000,
@@ -119711,9 +119712,9 @@
     "ts": 1789059841197
   },
   "mercari:GUIDI:m54352361391": {
-    "price": 77700,
+    "price": 77000,
     "lastNotifiedPrice": 76000,
-    "ts": 1789493475947
+    "ts": 1789510042522
   },
   "mercari:mixed up:m91346877843": {
     "price": 750,
@@ -119983,9 +119984,9 @@
     "ts": 1789126808659
   },
   "mercari:Boris Bidjan:m71166665403": {
-    "price": 13800,
-    "lastNotifiedPrice": 13900,
-    "ts": 1789472741941
+    "price": 12900,
+    "lastNotifiedPrice": 12900,
+    "ts": 1789507624322
   },
   "mercari:w&lt:2JWdmXfdmnW3UETiY4Yn2r": {
     "price": 38370,
@@ -120096,8 +120097,9 @@
     "ts": 1789144192979
   },
   "mercari:Innerraum:2JWeDJi85FKtVSXEtWUJWD": {
-    "price": 164700,
-    "ts": 1789144333591
+    "price": 162000,
+    "lastNotifiedPrice": 162000,
+    "ts": 1789509344271
   },
   "mercari:Innerraum:m11164037442": {
     "price": 40000,
@@ -120232,12 +120234,14 @@
     "ts": 1789187950188
   },
   "mercari:A1923:2JWfa94aY7Sx33eXeWPUwA": {
-    "price": 155200,
-    "ts": 1789188118613
+    "price": 152700,
+    "lastNotifiedPrice": 152700,
+    "ts": 1789509092768
   },
   "mercari:A1923:2JWfa8tfp67swXReUWenQS": {
-    "price": 322700,
-    "ts": 1789188121023
+    "price": 317400,
+    "lastNotifiedPrice": 317400,
+    "ts": 1789509095006
   },
   "mercari:cerruti:m60759797545": {
     "price": 5300,
@@ -120680,8 +120684,9 @@
     "ts": 1789274989844
   },
   "mercari:Evan Kinori:m95716822776": {
-    "price": 298000,
-    "ts": 1789393864812
+    "price": 238000,
+    "lastNotifiedPrice": 238000,
+    "ts": 1789510462481
   },
   "mercari:masahiko maruyama:2JWiHZqBhtjFfEMx7Ddj66": {
     "price": 16900,
@@ -120912,13 +120917,13 @@
     "ts": 1789365769510
   },
   "mercari:John Alexander Skelton:m68051708541": {
-    "price": 160000,
-    "lastNotifiedPrice": 160000,
-    "ts": 1789317249749
+    "price": 130000,
+    "lastNotifiedPrice": 130000,
+    "ts": 1789510424549
   },
   "mercari:John Alexander Skelton:m60268807105": {
-    "price": 200000,
-    "ts": 1789302617102
+    "price": 199999,
+    "ts": 1789510426549
   },
   "mercari:Suzusan:m53487753800": {
     "price": 15000,
@@ -121310,8 +121315,9 @@
     "ts": 1789476093246
   },
   "mercari:GUIDI:m17274437343": {
-    "price": 230000,
-    "ts": 1789392283250
+    "price": 220000,
+    "lastNotifiedPrice": 220000,
+    "ts": 1789510040521
   },
   "mercari:GUIDI:m27074698553": {
     "price": 220000,
@@ -121908,5 +121914,17 @@
   "mercari:incarnation:2JWm4z3ejUM98aJjDLgFeY": {
     "price": 8817,
     "ts": 1789495556447
+  },
+  "mercari:TEN-C:m79584517699": {
+    "price": 95000,
+    "ts": 1789507448098
+  },
+  "mercari:Nemeth:m13008765137": {
+    "price": 2500,
+    "ts": 1789509192883
+  },
+  "mercari:w&lt:m28406378947": {
+    "price": 25000,
+    "ts": 1789510658451
   }
 }
