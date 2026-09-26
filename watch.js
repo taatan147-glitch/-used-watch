@@ -454,8 +454,10 @@ async function sendDiscord(webhookUrl, item, rule, type = "new", prevPrice = 0) 
     ? `~~¥${Number(prevPrice).toLocaleString("ja-JP")}~~ → **${curPriceText}** 📉`
     : curPriceText;
   const emoji = type === "price_down" ? "📉" : "🆕";
+  // Discord検索で安いものを絞り込めるよう、1万円以下の場合は目印を入れる
+  const cheapTag = Number(item.price || 0) > 0 && Number(item.price) <= 10000 ? " 【一万円以下】" : "";
 
-  const text = [`${emoji} **${label}** ／ ${rule.keyword}`, item.title, priceText, item.url].join("\n");
+  const text = [`${emoji} **${label}** ／ ${rule.keyword}${cheapTag}`, item.title, priceText, item.url].join("\n");
 
   const sendWithRetry = async (fetchFn, retries = 3) => {
     for (let i = 0; i < retries; i++) {
