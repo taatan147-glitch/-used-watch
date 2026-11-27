@@ -1,0 +1,85 @@
+name: セカスト環境更新テスト
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.22.0"
+
+      - name: テスト用の新しいブラウザを準備
+        timeout-minutes: 5
+        run: npm install --no-save --package-lock=false --no-audit --no-fund puppeteer@25.19.0 puppeteer-extra@3.3.6 puppeteer-extra-plugin-stealth@2.11.2
+
+      - name: 元の検索処理でRRLを1回確認
+        timeout-minutes: 3
+        shell: bash
+        run: |
+          timeout 150s node --input-type=module <<'JS'
+          import { readFileSync, writeFileSync, appendFileSync, unlinkSync } from "node:fs";
+          import { addExtra } from "puppeteer-extra";
+          import StealthPlugin from "puppeteer-extra-plugin-stealth";
+          import puppeteer from "puppeteer";
+
+          const source = readFileSync("watch.js", "utf8").trimEnd();
+          const footer = "main().catch((e) => { console.error(e); process.exit(1); });";
+          if (!source.endsWith(footer) || source.split(footer).length !== 2) {
+            throw new Error("watch.jsの末尾が想定と異なるため、テストを中止します。");
+          }
+          const testFile = ".secondstreet-runtime-source.mjs";
+          writeFileSync(testFile, source.slice(0, -footer.length) + "\nexport { search2ndStreet };\n");
+          let browser;
+          const report = { node: process.version, classification: "test_error", httpStatus: null, items: 0 };
+          try {
+            const { search2ndStreet } = await import("./" + testFile);
+            const extra = addExtra(puppeteer);
+            extra.use(StealthPlugin());
+            browser = await extra.launch({
+              headless: true, protocolTimeout: 180000, timeout: 60000,
+              args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage",
+                "--disable-gpu", "--no-first-run", "--no-zygote", "--disable-extensions",
+                "--disable-background-networking", "--memory-pressure-off"],
+            });
+            report.browser = await browser.version();
+            const page = await browser.newPage();
+            report.userAgent = await page.evaluate(() => navigator.userAgent);
+            await page.setExtraHTTPHeaders({ "accept-language": "ja-JP,ja;q=0.9" });
+            page.on("response", (response) => {
+              if (response.request().isNavigationRequest() && response.frame() === page.mainFrame()) {
+                report.httpStatus = response.status();
+              }
+            });
+            await new Promise((resolve) => setTimeout(resolve, 5000 + Math.floor(Math.random() * 5000)));
+            const items = await search2ndStreet(page, { site: "2ndstreet", keyword: "RRL", excludes: [] });
+            const text = await page.evaluate(() => document.body?.innerText || "");
+            const html = await page.content();
+            report.title = await page.title();
+            report.items = items.length;
+            report.pricedItems = items.filter((item) => item.price > 0).length;
+            report.classification = report.httpStatus === 403 || /Access Denied|permission to access/i.test(text)
+              ? "access_denied"
+              : items.length > 0 ? "products_detected"
+                : /bm-verify|akamai-interstitialchallenge|\/_sec\/verify/.test(html)
+                  ? "verification_page" : "products_not_confirmed";
+          } catch (error) {
+            report.error = error.message;
+          } finally {
+            if (browser) await browser.close().catch(() => {});
+            unlinkSync(testFile);
+            console.log(JSON.stringify(report, null, 2));
+            if (process.env.GITHUB_STEP_SUMMARY) {
+              appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+                "```json\n" + JSON.stringify(report, null, 2) + "\n```\n");
+            }
+          }
+          if (report.classification !== "products_detected") process.exitCode = 1;
+          JS
