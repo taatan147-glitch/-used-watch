@@ -119,21 +119,20 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
 
       let items = [];
       try {
-        const page = await browser.newPage();
+                const page = await browser.newPage();
 
-        await page.setUserAgent(
-          if (site !== "2ndstreet") {
-  　　　　await page.setUserAgent(
-    　　　　"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-  　　　　);
-　　　　　} else {
-　　　　　  console.log(`  → セカスト実行環境: ${process.version} / ${await browser.version()}`);
-　　　　　  console.log(`  → セカストUser-Agent: ${await page.evaluate(() => navigator.userAgent)}`);
-　　　　　}
+        if (site !== "2ndstreet") {
+          await page.setUserAgent(
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+          );
+        } else {
+          console.log(`  → セカスト実行環境: ${process.version} / ${await browser.version()}`);
+          console.log(`  → セカストUser-Agent: ${await page.evaluate(() => navigator.userAgent)}`);
+        }
+
         await page.setExtraHTTPHeaders({
           "accept-language": "ja-JP,ja;q=0.9",
         });
-
         if (site === "mercari")        items = await searchMercari(page, rule);
         else if (site === "2ndstreet") {
           // Akamai対策：ランダム待機（5〜10秒）
