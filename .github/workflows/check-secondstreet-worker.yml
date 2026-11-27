@@ -1,0 +1,114 @@
+name: セカスト本番接続確認（通知なし）
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.22.0"
+      - name: 元の監視環境を準備
+        timeout-minutes: 5
+        run: npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
+      - name: 3キーワードの商品名・価格を確認
+        timeout-minutes: 4
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          SECONDSTREET_TOKEN: ${{ secrets.SECONDSTREET_TOKEN }}
+        run: |
+          timeout 230s node --input-type=module <<'JS'
+          import { readFileSync, writeFileSync, unlinkSync, appendFileSync } from "node:fs";
+          import { addExtra } from "puppeteer-extra";
+          import StealthPlugin from "puppeteer-extra-plugin-stealth";
+          import puppeteer from "puppeteer";
+          if (!process.env.SECONDSTREET_TOKEN || !process.env.WORKER_URL) throw new Error("必要なSecretsが未設定です");
+          const original = readFileSync("watch.js", "utf8").trimEnd();
+          const footer = "main().catch((e) => { console.error(e); process.exit(1); });";
+          if (!original.endsWith(footer) || original.split(footer).length !== 2) throw new Error("watch.jsの末尾を確認してください");
+          const file = ".secondstreet-check-source.mjs";
+          writeFileSync(file, original.slice(0, -footer.length) + "\nexport { search2ndStreet };\n");
+          const results = [];
+          const networkFetch = fetch;
+          let browser;
+          let failed = false;
+          try {
+            const response = await fetch(process.env.WORKER_URL.replace(/\/$/, "") + "/settings", { signal: AbortSignal.timeout(15000) });
+            if (!response.ok) throw new Error("監視ルールの取得に失敗しました");
+            const settings = await response.json();
+            const registered = (Array.isArray(settings.rules) ? settings.rules : []).filter((rule) =>
+              String(rule.site || "").toLowerCase() === "2ndstreet" && typeof rule.keyword === "string" && rule.keyword.trim());
+            if (!registered.length) throw new Error("セカストの監視ルールが0件です");
+            const rrl = { site: "2ndstreet", keyword: "RRL", excludes: [] };
+            const selected = [rrl];
+            for (const rule of registered) {
+              if (selected.length === 3) break;
+              if (!selected.some((item) => item.keyword.trim().toLowerCase() === rule.keyword.trim().toLowerCase())) selected.push(rule);
+            }
+            const { search2ndStreet } = await import("./" + file);
+            const extra = addExtra(puppeteer);
+            extra.use(StealthPlugin());
+            browser = await extra.launch({ headless: true, timeout: 60000, protocolTimeout: 60000,
+              args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage", "--disable-gpu"] });
+            for (const rule of selected) {
+              let page;
+              let workerColo;
+              try {
+                const remote = await fetch("https://chase-secondstreet-check.brand-searcher-lancher.workers.dev/fetch", {
+                  method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + process.env.SECONDSTREET_TOKEN },
+                  body: JSON.stringify({ keyword: rule.keyword }), signal: AbortSignal.timeout(35000), redirect: "error",
+                });
+                workerColo = remote.headers.get("x-bridge-colo");
+                if (!remote.ok) {
+                  const detail = await remote.json().catch(() => ({}));
+                  const source = Number.isInteger(detail.sourceStatus) ? " / 取得先HTTP " + detail.sourceStatus : "";
+                  throw new Error("中継HTTP " + remote.status + " / " + (/^[a-z_]+$/.test(detail.error || "") ? detail.error : "bridge_error") + source);
+                }
+                const html = await remote.text();
+                const url = new URL("https://www.2ndstreet.jp/search?keyword=" + encodeURIComponent(rule.keyword.trim()).replace(/%20/g, "+") + "&sortBy=arrival").href;
+                page = await browser.newPage();
+                await page.setJavaScriptEnabled(false);
+                await page.setRequestInterception(true);
+                let supplied = false;
+                page.on("request", (request) => {
+                  if (!supplied && request.isNavigationRequest() && request.frame() === page.mainFrame() && request.url() === url) {
+                    supplied = true;
+                    request.respond({ status: 200, contentType: "text/html; charset=utf-8", body: html }).catch(() => {});
+                  } else request.abort().catch(() => {});
+                });
+                globalThis.fetch = async (target, options) => {
+                  if (String(target) !== "https://chase-secondstreet-check.brand-searcher-lancher.workers.dev/fetch" ||
+                      options?.headers?.Authorization !== "Bearer " + process.env.SECONDSTREET_TOKEN ||
+                      JSON.parse(options.body).keyword !== rule.keyword.trim()) throw new Error("想定外の通信を中止しました");
+                  return new Response(html, { headers: remote.headers });
+                };
+                const items = await search2ndStreet(page, rule);
+                const priced = items.filter((item) => item.price > 0).length;
+                results.push({ keyword: rule.keyword, workerColo, title: await page.title(),
+                  items: items.length, pricedItems: priced, samples: items.slice(0, 2).map(({ title, price, url }) => ({ title, price, url })) });
+                if ((rule === rrl && !items.length) || (items.length > 0 && !priced)) failed = true;
+              } catch (error) {
+                failed = true;
+                results.push({ keyword: rule.keyword, workerColo, error: error.message });
+              } finally {
+                globalThis.fetch = networkFetch;
+                if (page) await page.close().catch(() => {});
+              }
+              await new Promise((resolve) => setTimeout(resolve, 5000));
+            }
+          } finally {
+            if (browser) await browser.close().catch(() => {});
+            unlinkSync(file);
+            const output = JSON.stringify({ results, notificationSent: false }, null, 2);
+            console.log(output);
+            if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, "```json\n" + output + "\n```\n");
+          }
+          if (failed) process.exitCode = 1;
+          JS
