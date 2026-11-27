@@ -498,7 +498,7 @@ jobs:
               env: browserEnvironment(process.env), args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
                 '--disable-quic', '--disable-background-networking', '--disable-extensions', '--no-first-run',
                 '--proxy-server=' + proxy.url, '--proxy-bypass-list=<-loopback>',
-                '--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE localhost'] });
+                '--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1'] });
             report.browserVersion = await browser.version();
             report.userAgent = await browser.userAgent();
             const page = await browser.newPage();
