@@ -1,0 +1,549 @@
+# 手動診断専用v2。SSHの停止理由を秘密情報を除いて記録します。
+name: セカスト単体診断（Xserver経由 v2）
+'on':
+  workflow_dispatch: {}
+permissions: {}
+concurrency:
+  group: secondstreet-xserver-diagnostic
+  cancel-in-progress: true
+jobs:
+  diagnose:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Node.js セットアップ
+      uses: actions/setup-node@v6
+      with:
+        node-version: 22.22.0
+    - name: 診断用フォルダと仮想画面を準備
+      run: |
+        mkdir -p "$RUNNER_TEMP/secondstreet-xserver-diagnostic"
+        if ! command -v xvfb-run >/dev/null 2>&1 || ! command -v xauth >/dev/null 2>&1; then
+          sudo apt-get update
+          sudo apt-get install -y xvfb xauth
+        fi
+    - name: 診断ライブラリとChromeを準備
+      working-directory: ${{ runner.temp }}/secondstreet-xserver-diagnostic
+      run: |
+        npm init --yes > /dev/null
+        npm install --ignore-scripts --no-audit --no-fund puppeteer@25.18.1 ssh2@1.17.0
+        npx --no-install puppeteer browsers install chrome
+    - name: Xserver経由でRRLを1回だけ診断
+      working-directory: ${{ runner.temp }}/secondstreet-xserver-diagnostic
+      env:
+        XSERVER_HOST: ${{ secrets.XSERVER_HOST }}
+        XSERVER_USER: ${{ secrets.XSERVER_USER }}
+        XSERVER_HOST_FINGERPRINT: ${{ secrets.XSERVER_HOST_FINGERPRINT }}
+        XSERVER_SSH_PRIVATE_KEY: ${{ secrets.XSERVER_SSH_PRIVATE_KEY }}
+        XSERVER_SSH_PASSPHRASE: ${{ secrets.XSERVER_SSH_PASSPHRASE }}
+      run: |
+        cat > diagnostic.mjs <<'CHASE_XSERVER_DIAGNOSTIC_JS'
+        /**
+         * CHASE: one public RRL search, with Chrome's HTTPS carried through Xserver SSH.
+         * No remote shell, commands, file transfers, login, or CAPTCHA interaction.
+         * A loopback-only CONNECT proxy permits only 2ndstreet.jp HTTPS destinations.
+         * Credentials are never written to disk, reported, or inherited by Chrome.
+         */
+        import { createHash, createPrivateKey, timingSafeEqual } from 'node:crypto';
+        import { createServer } from 'node:http';
+        import { writeFile, appendFile } from 'node:fs/promises';
+        import { resolve } from 'node:path';
+        import { fileURLToPath } from 'node:url';
+        import { setTimeout as delay } from 'node:timers/promises';
+        import ssh2 from 'ssh2';
+
+        export const SEARCH_URL = 'https://www.2ndstreet.jp/search?keyword=RRL&sortBy=arrival';
+        export const SECRET_NAMES = [
+          'XSERVER_HOST', 'XSERVER_USER', 'XSERVER_HOST_FINGERPRINT',
+          'XSERVER_SSH_PRIVATE_KEY', 'XSERVER_SSH_PASSPHRASE',
+        ];
+        export const MESSAGES = {
+          products_detected: '商品データを取得できました。価格と複数回の安定性は別途確認が必要です。',
+          access_denied: 'セカストからアクセス拒否が返りました。この診断では再試行しません。',
+          verification_required: '確認画面を検出したため、操作せず終了しました。',
+          invalid_configuration: 'GitHub Secretsの不足または形式を確認してください。',
+          key_data_incomplete: '秘密鍵の開始行と終了行が揃っていません。新しい.keyの全文をSecretへ登録してください。',
+          key_passphrase_missing: '暗号化された秘密鍵ですが、パスフレーズのSecretが空です。',
+          key_decryption_failed: '秘密鍵を復号できません。新しい鍵と、その鍵を作成したときのパスフレーズの組合せを確認してください。',
+          key_format_unsupported: 'この秘密鍵の形式または暗号方式には、診断コード側の対応が必要です。',
+          key_parse_error: '秘密鍵を読み込めません。改行を含む全文のコピーと鍵の形式を確認してください。',
+          host_key_mismatch: 'サーバーパネルのホスト鍵フィンガープリントと一致しません。接続を停止しました。',
+          ssh_authentication_error: 'SSHの公開鍵登録、秘密鍵、パスフレーズを確認してください。',
+          ssh_connection_error: 'XserverへのSSH接続ができません。SSHのON設定とアクセス制限を確認してください。',
+          ssh_server_disconnect: 'Xserver側からSSH接続が終了されました。表示される理由と新しい鍵のON設定を確認してください。',
+          ssh_signing_error: '鍵の読み込み後、認証用の署名に失敗しました。コード側の鍵・暗号方式への対応を確認します。',
+          ssh_algorithm_mismatch: 'SSH接続で使用する暗号方式を合意できませんでした。コード側の対応を確認します。',
+          ssh_forwarding_denied: 'SSH認証は通りましたが、サーバーが通信の転送を拒否しました。',
+          tunnel_error: 'Xserver経由の通信が成立しませんでした。セカストのHTTP拒否とは区別してください。',
+          budget_exceeded: '診断の通信上限に達したため終了しました。',
+          redirected: '検索ページから別のページへの移動を検出したため終了しました。',
+          http_error: 'HTTPエラーが返りました。ステータスだけでは原因を断定できません。',
+          missing_fields: '商品カードはありますが、必要な項目が不足しています。',
+          empty_results: '検索結果0件の表示を確認しました。',
+          selector_mismatch: '商品リンクはありますが、抽出条件に一致しませんでした。',
+          navigation_error: '検索ページの読み込みが完了しませんでした。',
+          unexpected_page: '商品一覧、0件、アクセス拒否のいずれとも判別できませんでした。',
+          runtime_error: '診断用ブラウザの準備または実行に失敗しました。',
+          diagnostic_timeout: '診断の制限時間に達したため終了しました。',
+        };
+
+        function failure(kind) { return Object.assign(new Error(kind), { kind }); }
+
+        export function configuration(env) {
+          const host = (env.XSERVER_HOST || '').trim();
+          const username = (env.XSERVER_USER || '').trim();
+          const fingerprint = (env.XSERVER_HOST_FINGERPRINT || '').trim();
+          const privateKey = (env.XSERVER_SSH_PRIVATE_KEY || '').replace(/\r\n/g, '\n').trim() + '\n';
+          const passphrase = env.XSERVER_SSH_PASSPHRASE || undefined;
+          if (!/^(?:sv\d+\.xserver\.jp|[a-z\d][a-z\d-]*\.xsrv\.jp)$/i.test(host) ||
+              !/^[a-z\d][a-z\d_-]{0,63}$/i.test(username) ||
+              !/^SHA256:[A-Za-z\d+/]{43}$/.test(fingerprint) ||
+              privateKey.length > 32000 ||
+              !/^-----BEGIN (?:(?:OPENSSH|RSA|EC|ENCRYPTED) )?PRIVATE KEY-----\n/.test(privateKey)) {
+            throw failure('invalid_configuration');
+          }
+          return { host, username, fingerprint, privateKey, passphrase, port: 10022 };
+        }
+
+        export function browserEnvironment(env) {
+          return Object.fromEntries(Object.entries(env).filter(([name]) =>
+            !name.startsWith('XSERVER_') && !name.startsWith('SSH_') &&
+            !/TOKEN|SECRET|PASSWORD|PASSPHRASE|PRIVATE_KEY|WEBHOOK|WORKER_URL/.test(name)
+          ));
+        }
+
+        export function fingerprintMatches(key, expected) {
+          const actual = 'SHA256:' + createHash('sha256').update(key).digest('base64').replace(/=+$/, '');
+          return actual.length === expected.length && timingSafeEqual(Buffer.from(actual), Buffer.from(expected));
+        }
+
+        export function preparePrivateKey(config, state) {
+          state.stage = 'private_key_read';
+          state.passphrasePresent = !!config.passphrase;
+          const header = config.privateKey.match(/^-----BEGIN ((?:(?:OPENSSH|RSA|EC|ENCRYPTED) )?PRIVATE KEY)-----\n/)?.[1];
+          const formats = { 'OPENSSH PRIVATE KEY': 'openssh', 'RSA PRIVATE KEY': 'pem-rsa',
+            'EC PRIVATE KEY': 'pem-ec', 'PRIVATE KEY': 'pkcs8', 'ENCRYPTED PRIVATE KEY': 'pkcs8-encrypted' };
+          state.keyFormat = formats[header] || 'unknown';
+          if (!header || !config.privateKey.trimEnd().endsWith('-----END ' + header + '-----')) {
+            state.keyParseStatus = 'incomplete'; throw failure('key_data_incomplete');
+          }
+          let acceptedKey = config.privateKey;
+          let acceptedPassphrase = config.passphrase;
+          let parsed = ssh2.utils.parseKey(acceptedKey, acceptedPassphrase);
+          if (parsed instanceof Error && (state.keyFormat === 'pkcs8' || state.keyFormat === 'pkcs8-encrypted')) {
+            if (state.keyFormat === 'pkcs8-encrypted' && !config.passphrase) {
+              state.keyParseStatus = 'passphrase_missing'; throw failure('key_passphrase_missing');
+            }
+            let keyObject;
+            try {
+              keyObject = createPrivateKey({ key: config.privateKey, format: 'pem', passphrase: config.passphrase });
+            } catch (error) {
+              // Map known OpenSSL categories; never log raw errors or key data.
+              if (/unsupported/i.test(String(error.code) + ' ' + String(error.reason))) {
+                state.keyParseStatus = 'unsupported'; throw failure('key_format_unsupported');
+              }
+              state.keyParseStatus = state.keyFormat === 'pkcs8-encrypted' ? 'decryption_failed' : 'invalid_data';
+              throw failure(state.keyFormat === 'pkcs8-encrypted' ? 'key_decryption_failed' : 'key_parse_error');
+            }
+            const type = keyObject.asymmetricKeyType;
+            if (type !== 'rsa' && type !== 'ec') {
+              state.keyParseStatus = 'unsupported'; throw failure('key_format_unsupported');
+            }
+            // Normalize RSA/EC PKCS#8 only in memory. The registered public key and
+            // original encrypted Secret do not change; nothing is written to disk.
+            let normalized = keyObject.export({ format: 'pem', type: type === 'rsa' ? 'pkcs1' : 'sec1' });
+            parsed = ssh2.utils.parseKey(normalized);
+            acceptedKey = normalized;
+            acceptedPassphrase = undefined;
+            normalized = '';
+            keyObject = undefined;
+            state.keyNormalizedInMemory = true;
+          }
+          if (parsed instanceof Error) {
+            const message = String(parsed.message);
+            const kind = /no passphrase given/i.test(message) ? 'key_passphrase_missing' :
+              /bad passphrase|decrypt|integrity check failed/i.test(message) ? 'key_decryption_failed' :
+              /unsupported|not supported/i.test(message) ? 'key_format_unsupported' : 'key_parse_error';
+            state.keyParseStatus = kind.slice(4);
+            throw failure(kind);
+          }
+          if (Array.isArray(parsed)) parsed = parsed[0];
+          if (!parsed?.isPrivateKey?.()) { state.keyParseStatus = 'invalid_data'; throw failure('key_parse_error'); }
+          state.keyParseStatus = 'ok';
+          state.sshPublicKeyType = /^[a-z\d@._-]{1,80}$/i.test(parsed.type || '') ? parsed.type : 'unknown';
+          return { privateKey: acceptedKey, passphrase: acceptedPassphrase };
+        }
+
+        export function safeSshError(error, config) {
+          const codes = new Set(['ECONNRESET', 'ECONNREFUSED', 'ECONNABORTED', 'EPIPE', 'ETIMEDOUT',
+            'ENOTFOUND', 'EAI_AGAIN', 'EHOSTUNREACH', 'ENETUNREACH', 'ERR_OSSL_UNSUPPORTED',
+            'ERR_OSSL_EVP_UNSUPPORTED', 'ERR_CRYPTO_INVALID_KEY_OBJECT_TYPE']);
+          const levels = new Set(['client-authentication', 'client-socket', 'client-timeout',
+            'client-dns', 'client-ssh', 'handshake', 'protocol', 'agent']);
+          let message = String(error?.message || 'SSH connection ended');
+          // Only error text is considered. It is scrubbed before truncation; no raw
+          // exception or debug dump is ever logged. Any PEM-looking text is omitted.
+          if (/-----BEGIN|-----END/.test(message)) message = 'Private-key details omitted';
+          for (const value of [config.privateKey, config.passphrase, config.host, config.username, config.fingerprint]) {
+            if (typeof value === 'string' && value.length) message = message.split(value).join('[redacted]');
+          }
+          message = message.replace(/[A-Za-z\d+/_=-]{24,}/g, '[redacted-token]')
+            .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, ' ').slice(0, 600);
+          return { code: Number.isSafeInteger(error?.code) && error.code >= 0 && error.code <= 255
+            ? error.code : (codes.has(error?.code) ? error.code : null),
+          level: levels.has(error?.level) ? error.level : null, message };
+        }
+
+        export function sshErrorKind(error, state) {
+          if (state.hostKeyMismatch) return 'host_key_mismatch';
+          const message = String(error?.message || '');
+          if (/error (?:while )?signing|signature.*(?:failed|error)/i.test(message)) return 'ssh_signing_error';
+          if (/no matching|no compatible.*(?:cipher|algorithm)|handshake.*(?:cipher|algorithm)/i.test(message)) return 'ssh_algorithm_mismatch';
+          if (error?.level === 'client-authentication' || /authentication|privatekey|private key|passphrase|decrypt/i.test(message)) return 'ssh_authentication_error';
+          if (Number.isSafeInteger(error?.code) && error.code >= 0 && error.code <= 255) return 'ssh_server_disconnect';
+          return 'ssh_connection_error';
+        }
+
+        export async function openSsh(config, state, Client = ssh2.Client) {
+          const prepared = preparePrivateKey(config, state);
+          state.stage = 'ssh_connect';
+          const connection = new Client();
+          state.connection = connection;
+          let verified = false;
+          let ready = false;
+          const errorKind = (error) => {
+            state.sshError ||= safeSshError(error, config);
+            return sshErrorKind(error, state);
+          };
+          await new Promise((accept, reject) => {
+            let settled = false;
+            const rejectOnce = (kind) => {
+              state.sshFailure = kind;
+              if (!settled) { settled = true; reject(failure(kind)); }
+            };
+            connection.on('error', (error) => rejectOnce(errorKind(error)));
+            connection.on('close', () => {
+              if (!state.stopping) {
+                state.sshFailure ||= 'ssh_connection_error';
+                state.sshError ||= { code: null, level: null, message: 'SSH socket closed before authentication completed' };
+                if (!settled) rejectOnce(state.sshFailure);
+                if (ready) state.breakTunnels?.();
+              }
+            });
+            connection.on('handshake', () => { state.sshHandshakeCompleted = true; });
+            connection.once('ready', () => {
+              if (!verified) { rejectOnce('host_key_mismatch'); connection.destroy(); return; }
+              ready = true;
+              state.hostKeyVerified = true;
+              state.sshAuthenticated = true;
+              state.stage = 'ssh_authenticated';
+              if (!settled) { settled = true; accept(); }
+            });
+            try {
+              connection.connect({
+                host: config.host, port: config.port, username: config.username,
+                privateKey: prepared.privateKey, passphrase: prepared.passphrase,
+                authHandler: ['publickey'], tryKeyboard: false, agent: undefined,
+                debug: (line) => {
+                  // Keep only booleans from known packet labels, never the debug text.
+                  if (line.includes('Outbound:') && line.includes('USERAUTH_REQUEST (publickey')) state.sshPublicKeyOffered = true;
+                  if (line.includes('Inbound:') && line.includes('USERAUTH_PK_OK')) state.sshPublicKeyAcceptedForSigning = true;
+                  if (line.includes('Inbound:') && line.includes('USERAUTH_FAILURE')) state.sshAuthenticationRejected = true;
+                },
+                readyTimeout: 15000, keepaliveInterval: 10000, keepaliveCountMax: 2,
+                hostVerifier: (key) => {
+                  verified = fingerprintMatches(key, config.fingerprint);
+                  state.hostKeyMismatch = !verified;
+                  state.hostKeyVerified = verified;
+                  if (verified) state.stage = 'host_key_verified';
+                  return verified;
+                },
+              });
+            } catch (error) { rejectOnce(errorKind(error)); }
+          });
+          return connection;
+        }
+
+        export function allowedDestination(authority) {
+          if (typeof authority !== 'string' || authority.length > 259) return false;
+          return /^(?:[a-z\d](?:[a-z\d-]*[a-z\d])?\.)*2ndstreet\.jp:443$/i.test(authority);
+        }
+
+        export async function createTunnelProxy(connection, state, limits = {}) {
+          const maxBytes = limits.maxBytes ?? 32 * 1024 * 1024;
+          const maxConnections = limits.maxConnections ?? 96;
+          const maxActive = limits.maxActive ?? 12;
+          const sockets = new Set();
+          let pending = 0;
+          const channels = new Set();
+          Object.assign(state, { tunnelAttempts: 0, tunnelConnections: 0, forwardingFailures: 0,
+            forwardingDenied: false, blockedDestinations: 0, transferredBytes: 0 });
+          const server = createServer({ maxHeaderSize: 4096 }, (_req, res) => {
+            res.writeHead(403, { Connection: 'close' }); res.end();
+          });
+          state.breakTunnels = () => {
+            for (const socket of sockets) socket.destroy();
+            for (const channel of channels) channel.destroy();
+          };
+          const countBytes = (data) => {
+            state.transferredBytes += data.length;
+            if (state.transferredBytes > maxBytes) {
+              state.budgetExceeded = true; state.breakTunnels();
+            }
+          };
+          server.on('connection', (socket) => {
+            sockets.add(socket);
+            socket.once('close', () => sockets.delete(socket));
+            socket.on('error', () => {});
+            socket.setTimeout(45000, () => socket.destroy());
+          });
+          server.on('clientError', (_error, socket) => socket.destroy());
+          server.on('connect', (request, socket, head) => {
+            if (!allowedDestination(request.url)) {
+              state.blockedDestinations++;
+              socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n'); return;
+            }
+            if (state.stopping || state.sshFailure || state.budgetExceeded ||
+                state.tunnelAttempts >= maxConnections || channels.size + pending >= maxActive) {
+              if (state.tunnelAttempts >= maxConnections) state.budgetExceeded = true;
+              socket.end('HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\n\r\n'); return;
+            }
+            state.tunnelAttempts++;
+            pending++;
+            const hostname = request.url.slice(0, -4).toLowerCase();
+            socket.pause();
+            const timer = setTimeout(() => socket.destroy(), 20000);
+            timer.unref();
+            const onForward = (error, channel) => {
+              clearTimeout(timer);
+              pending--;
+              if (error) {
+                state.forwardingFailures++;
+                if (error.reason === 1 || error.code === 1 || /administratively prohibited/i.test(error.message || '')) {
+                  state.forwardingDenied = true;
+                }
+                if (!socket.destroyed) socket.end('HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\n\r\n');
+                return;
+              }
+              if (socket.destroyed || state.stopping || state.budgetExceeded || state.sshFailure) {
+                channel.destroy(); socket.destroy(); return;
+              }
+              channels.add(channel);
+              state.tunnelConnections++;
+              channel.on('error', () => socket.destroy());
+              channel.once('close', () => { channels.delete(channel); socket.destroy(); });
+              socket.once('close', () => channel.destroy());
+              socket.write('HTTP/1.1 200 Connection Established\r\n\r\n');
+              socket.on('data', countBytes);
+              channel.on('data', countBytes);
+              if (head.length) { countBytes(head); channel.write(head); }
+              socket.pipe(channel); channel.pipe(socket); socket.resume();
+            };
+            try { connection.forwardOut('127.0.0.1', 0, hostname, 443, onForward); }
+            catch { clearTimeout(timer); pending--; state.forwardingFailures++; socket.destroy(); }
+          });
+          server.requestTimeout = 10000;
+          server.headersTimeout = 10000;
+          await new Promise((accept, reject) => {
+            const fail = () => reject(failure('runtime_error'));
+            server.once('error', fail);
+            server.listen(0, '127.0.0.1', () => { server.removeListener('error', fail); accept(); });
+          });
+          server.on('error', () => state.breakTunnels());
+          return {
+            url: 'http://127.0.0.1:' + server.address().port,
+            close: () => new Promise((accept) => { state.breakTunnels(); server.close(() => accept()); }),
+          };
+        }
+
+        export function safePublicUrl(raw, search = false) {
+          try {
+            const url = new URL(raw);
+            if (url.protocol !== 'https:' || !allowedDestination(url.hostname + ':443') || url.port) return '';
+            const safe = new URL(url.origin + url.pathname);
+            if (search) for (const key of ['keyword', 'sortBy']) {
+              if (url.searchParams.has(key)) safe.searchParams.set(key, url.searchParams.get(key));
+            }
+            return safe.href;
+          } catch { return ''; }
+        }
+
+        export async function collectSnapshot(page) {
+          return page.evaluate(() => {
+            const title = document.title || '';
+            const text = document.body?.innerText || '';
+            const start = text.slice(0, 2000);
+            const heading = document.querySelector('h1')?.textContent?.trim() || '';
+            const denialDetected = /^access denied\b/i.test(title.trim()) || /^access denied\b/i.test(heading) ||
+              /^\s*access denied\b/i.test(start) || /you don't have permission to access/i.test(start);
+            const verificationDetected = !denialDetected &&
+              /verify (?:that )?you are human|checking your browser|human verification|just a moment|captcha|ロボットではない|人間であることを確認|アクセスの確認が必要/i.test(title + ' ' + start);
+            const emptyResultsDetected = /検索結果\s*[：:]?\s*0\s*(?:点|件)/.test(text) ||
+              /(?:検索条件に一致する|お探しの|該当する)商品(?:は|が)(?:見つかりません|ありません)/.test(text);
+            const cards = [...document.querySelectorAll('li.itemCard[goodsid], li[goodsid]')];
+            const links = [...document.querySelectorAll('a[href]')].filter((a) =>
+              /\/goods\/detail\/|[?&/]goodsId[=/]/i.test(a.getAttribute('href') || ''));
+            const seen = new Set();
+            const items = [];
+            for (const card of cards) {
+              const id = (card.getAttribute('goodsid') || '').trim();
+              if (!id || seen.has(id)) continue;
+              seen.add(id);
+              const link = card.querySelector("a.itemCard_inner, a[href*='goodsId']");
+              const image = card.querySelector('.itemCard_img img, img');
+              const body = card.querySelector('.itemCard_body');
+              const name = image?.alt?.trim() || (body?.textContent || '').trim().replace(/\s+/g, ' ').split(/サイズ|商品の状態|¥|￥/)[0].trim();
+              let url;
+              try { url = new URL(link?.href || '', location.href); } catch { continue; }
+              if (!name || !link || url.protocol !== 'https:' || url.port ||
+                  !/(^|\.)2ndstreet\.jp$/i.test(url.hostname) || !/\/goods\/detail\//i.test(url.pathname)) continue;
+              const rawPrice = card.querySelector("[itemprop='price'][content]")?.getAttribute('content') ||
+                card.querySelector('[class*=priceNum], [class*=price-num]')?.textContent || '';
+              const match = rawPrice.match(/^[\s¥￥]*([\d,]+)(?:\.0+)?(?:\s|円|$)/);
+              const price = match ? Number(match[1].replace(/,/g, '')) : 0;
+              items.push({ id: id.slice(0, 100), title: name.slice(0, 250),
+                price: Number.isSafeInteger(price) && price > 0 ? price : 0, url: url.origin + url.pathname });
+            }
+            return { title: title.slice(0, 250), heading: heading.slice(0, 250), denialDetected, verificationDetected,
+              emptyResultsDetected, cardCount: cards.length, productLinkCount: links.length,
+              usableItemCount: items.length, itemsWithPrice: items.filter((i) => i.price > 0).length, samples: items.slice(0, 3) };
+          });
+        }
+
+        export function classify(report, state) {
+          if (report.httpStatus >= 400 && report.denialDetected) return 'access_denied';
+          if (state.timedOut) return 'diagnostic_timeout';
+          if (state.budgetExceeded) return 'budget_exceeded';
+          if (state.forwardingDenied) return 'ssh_forwarding_denied';
+          if (state.sshFailure) return state.sshFailure;
+          if (!state.tunnelConnections) return 'tunnel_error';
+          if (report.denialDetected) return 'access_denied';
+          if (report.verificationDetected) return 'verification_required';
+          if (report.httpStatus >= 400) return 'http_error';
+          if (state.redirectBlocked || (report.httpStatus >= 300 && report.httpStatus < 400)) return 'redirected';
+          if (report.usableItemCount > 0 && report.httpStatus === 200) return 'products_detected';
+          if (report.cardCount > 0) return 'missing_fields';
+          if (report.navigationError) return 'navigation_error';
+          if (report.emptyResultsDetected && report.httpStatus === 200) return 'empty_results';
+          if (report.productLinkCount > 0) return 'selector_mismatch';
+          return 'unexpected_page';
+        }
+
+        export async function diagnosePage(page, state, { settleMs = 4000, readyTimeoutMs = 12000 } = {}) {
+          let searchRequests = 0;
+          let requestCount = 0;
+          await page.setRequestInterception(true);
+          page.on('request', (request) => {
+            void (async () => {
+              let url;
+              try { url = new URL(request.url()); } catch { await request.abort(); return; }
+              if (++requestCount > 180) { state.budgetExceeded = true; await request.abort(); return; }
+              const allowed = url.protocol === 'https:' && !url.port && allowedDestination(url.hostname + ':443');
+              const mainNavigation = request.isNavigationRequest() && request.frame() === page.mainFrame();
+              if (mainNavigation) {
+                if (request.url() !== SEARCH_URL || searchRequests++ > 0) {
+                  state.redirectBlocked = true; await request.abort(); return;
+                }
+              }
+              if (!allowed || ['image', 'media', 'font'].includes(request.resourceType())) { await request.abort(); return; }
+              await request.continue();
+            })().catch(() => {});
+          });
+          const result = { httpStatus: null, navigationError: false };
+          try {
+            const response = await page.goto(SEARCH_URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
+            result.httpStatus = response?.status() ?? null;
+          } catch { result.navigationError = true; }
+          let snapshot = await collectSnapshot(page);
+          if (result.httpStatus === 200 && !snapshot.denialDetected && !snapshot.verificationDetected) {
+            if (settleMs) await delay(settleMs);
+            if (!snapshot.cardCount && readyTimeoutMs) {
+              await page.waitForFunction(() => document.querySelector('li[goodsid]') ||
+                /^access denied\b/i.test(document.title.trim()) || /ロボットではない|人間であることを確認/.test(document.body?.innerText || ''),
+              { timeout: readyTimeoutMs }).catch(() => {});
+            }
+            snapshot = await collectSnapshot(page);
+          }
+          return { ...result, ...snapshot, finalUrl: safePublicUrl(page.url(), true), searchRequests };
+        }
+
+        export async function main() {
+          const report = { schemaVersion: 1, testVersion: 'xserver-chrome-v2', startedAt: new Date().toISOString(),
+            nodeVersion: process.version, platform: process.platform, keyword: 'RRL', searchUrl: SEARCH_URL,
+            mode: 'github-chrome-via-xserver-ssh', puppeteerVersion: '25.18.1', sshLibraryVersion: '1.17.0',
+            limitations: 'Fresh Chrome profile; HTTPS to 2ndstreet.jp only. Images/media/fonts are omitted. One search is not proof of stable monitoring.' };
+          const state = {};
+          let browser;
+          let proxy;
+          let config;
+          let timer;
+          try {
+            config = configuration(process.env);
+            for (const name of Object.keys(process.env)) if (name.startsWith('XSERVER_')) delete process.env[name];
+            timer = setTimeout(() => {
+              state.timedOut = true; state.breakTunnels?.(); state.connection?.destroy();
+              void browser?.close().catch(() => {});
+            }, 90000);
+            const connection = await openSsh(config, state);
+            config.privateKey = ''; config.passphrase = undefined;
+            proxy = await createTunnelProxy(connection, state);
+            state.stage = 'browser_start';
+            const { default: puppeteer } = await import('puppeteer');
+            if (state.timedOut) throw failure('diagnostic_timeout');
+            browser = await puppeteer.launch({ headless: false, timeout: 30000, protocolTimeout: 60000,
+              env: browserEnvironment(process.env), args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
+                '--disable-quic', '--disable-background-networking', '--disable-extensions', '--no-first-run',
+                '--proxy-server=' + proxy.url, '--proxy-bypass-list=<-loopback>',
+                '--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE localhost'] });
+            report.browserVersion = await browser.version();
+            report.userAgent = await browser.userAgent();
+            const page = await browser.newPage();
+            state.stage = 'search';
+            Object.assign(report, await diagnosePage(page, state));
+            report.classification = classify(report, state);
+          } catch (error) {
+            report.classification = state.timedOut ? 'diagnostic_timeout' : state.budgetExceeded ? 'budget_exceeded' : state.forwardingDenied ? 'ssh_forwarding_denied' :
+              (error.kind && MESSAGES[error.kind] ? error.kind : (state.sshFailure || 'runtime_error'));
+          } finally {
+            clearTimeout(timer);
+            state.stopping = true;
+            if (config) { config.privateKey = ''; config.passphrase = undefined; }
+            for (const name of Object.keys(process.env)) if (name.startsWith('XSERVER_')) delete process.env[name];
+            state.breakTunnels?.();
+            state.connection?.destroy();
+            if (browser) await browser.close().catch(() => {});
+            if (proxy) await proxy.close();
+            Object.assign(report, { hostKeyVerified: !!state.hostKeyVerified, sshAuthenticated: !!state.sshAuthenticated,
+              failureStage: report.classification === 'products_detected' ? null : (state.stage || 'configuration'),
+              keyFormat: state.keyFormat || 'unknown', keyParseStatus: state.keyParseStatus || 'not_checked',
+              passphrasePresent: !!state.passphrasePresent, keyNormalizedInMemory: !!state.keyNormalizedInMemory,
+              sshPublicKeyType: state.sshPublicKeyType || 'unknown', sshHandshakeCompleted: !!state.sshHandshakeCompleted,
+              sshPublicKeyOffered: !!state.sshPublicKeyOffered, sshPublicKeyAcceptedForSigning: !!state.sshPublicKeyAcceptedForSigning,
+              sshAuthenticationRejected: !!state.sshAuthenticationRejected, sshError: state.sshError || null,
+              tunnelConnections: state.tunnelConnections || 0, forwardingFailures: state.forwardingFailures || 0,
+              blockedDestinations: state.blockedDestinations || 0, transferredBytes: state.transferredBytes || 0,
+              finishedAt: new Date().toISOString() });
+            report.message = MESSAGES[report.classification] || MESSAGES.runtime_error;
+            const json = JSON.stringify(report, null, 2);
+            await writeFile('diagnostic-result.json', json + '\n', { mode: 0o600 });
+            console.log(json);
+            if (process.env.GITHUB_STEP_SUMMARY) {
+              const escaped = json.replace(/[<>&`]/g, (char) => '\\u' + char.charCodeAt(0).toString(16).padStart(4, '0'));
+              await appendFile(process.env.GITHUB_STEP_SUMMARY, '# セカスト診断（Xserver経由のChrome）\n\n' +
+                '- 判定: ' + report.classification + '\n- SSH認証: ' + report.sshAuthenticated +
+                '\n- HTTP: ' + (report.httpStatus ?? '未取得') + '\n- 商品取得: ' + (report.usableItemCount ?? 0) +
+                '\n\n```json\n' + escaped + '\n```\n');
+            }
+          }
+          if (report.classification !== 'products_detected') process.exitCode = 1;
+        }
+
+        if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+          main().catch(() => { console.error('診断結果の保存に失敗しました。'); process.exitCode = 1; });
+        }
+        CHASE_XSERVER_DIAGNOSTIC_JS
+        xvfb-run -a node diagnostic.mjs
