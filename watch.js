@@ -381,7 +381,7 @@ async function search2ndStreet(page, rule) {
       if (priceElWithContent) {
         price = Number(priceElWithContent.getAttribute("content")) || 0;
       } else {
-        const priceNumEl = card.querySelector("[class*=priceNum], [class*=price-num]");
+        const priceNumEl = card.querySelector("[class*=priceNum], [class*=price-num]") || card.querySelector(".itemCard_price");
         const priceMatch = (priceNumEl?.textContent || "").match(/^[\s¥￥]*([\d,]+)/);
         price = priceMatch ? Number(priceMatch[1].replace(/,/g, "")) : 0;
       }
