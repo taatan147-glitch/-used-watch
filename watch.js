@@ -100,7 +100,8 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
 
   let notified = 0;
   let skipped = 0;
-  let secondStreetBlockedUntil = 0; // ブロック解除予定時刻
+  let secondStreetFailures = 0;
+  let secondStreetStopped = 0;
 
   try {
     for (const rule of rules) {
@@ -110,24 +111,22 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
       // ブラウザが切断されていないか確認し、必要なら再起動
       await ensureBrowser();
 
-      // セカストがブロック中なら解除まで待機
-      if (site === "2ndstreet" && Date.now() < secondStreetBlockedUntil) {
-        const waitSec = Math.ceil((secondStreetBlockedUntil - Date.now()) / 1000);
-        console.log(`  → ブロック解除待ち（残り約${waitSec}秒）...`);
-        await sleep(secondStreetBlockedUntil - Date.now());
+      if (site === "2ndstreet" && secondStreetFailures >= 3) {
+        secondStreetStopped++;
+        continue;
       }
 
       let items = [];
+      let page;
       try {
-                const page = await browser.newPage();
+        page = await browser.newPage();
 
         if (site !== "2ndstreet") {
           await page.setUserAgent(
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
           );
         } else {
-          console.log(`  → セカスト実行環境: ${process.version} / ${await browser.version()}`);
-          console.log(`  → セカストUser-Agent: ${await page.evaluate(() => navigator.userAgent)}`);
+          console.log("  → セカスト取得経路: Cloudflare");
         }
 
         await page.setExtraHTTPHeaders({
@@ -135,33 +134,25 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
         });
         if (site === "mercari")        items = await searchMercari(page, rule);
         else if (site === "2ndstreet") {
-          // Akamai対策：ランダム待機（5〜10秒）
           await sleep(5000 + Math.floor(Math.random() * 5000));
           items = await search2ndStreet(page, rule);
-          // Access Deniedの場合は90秒待機してから次のキーワードへ
-          if (items.length === 0) {
-            const check = await page.evaluate(() => document.body?.innerText?.slice(0, 100) || "").catch(() => "");
-            if (check.includes("Access Denied") || check.includes("permission")) {
-              console.log("  → Access Denied検出。90秒後に再開します...");
-              secondStreetBlockedUntil = Date.now() + 90000;
-              await page.close();
-              await sleep(90000);
-              continue;
-            }
-          }
+          secondStreetFailures = 0;
         }
         else if (site === "trefac")    items = await searchTrefac(page, rule);
         else {
           console.log("  → 未対応サイト");
-          await page.close();
           continue;
         }
 
-        await page.close();
         console.log(`  → ${items.length} 件取得`);
       } catch (e) {
         console.error(`  → エラー: ${e.message}`);
+        if (site === "2ndstreet" && ++secondStreetFailures === 3) {
+          console.error("  → セカストが3回連続で取得に失敗。この巡回の残りのセカスト検索を停止します。");
+        }
         continue;
+      } finally {
+        if (page) await page.close().catch(() => {});
       }
 
       for (const item of items) {
@@ -234,6 +225,8 @@ if (!worker) throw new Error("WORKER_URL が未設定です");
 
   saveSeen(seen);
   console.log(`\n✅ 完了: 通知${notified}件 / スキップ${skipped}件`);
+  if (secondStreetStopped) console.log(`セカスト取得停止により未処理: ${secondStreetStopped}ルール`);
+  if (secondStreetFailures >= 3) process.exitCode = 1;
 }
 
 // ============================================================
@@ -318,30 +311,36 @@ async function searchMercari(page, rule) {
 }
 
 // ============================================================
-// セカンドストリート検索（stealth対応版）
+// セカンドストリート検索（Cloudflare取得・静的HTML解析）
 // ============================================================
 async function search2ndStreet(page, rule) {
-  const keyword = String(rule.keyword || "").trim();
-  const searchUrl =
-    "https://www.2ndstreet.jp/search?keyword=" +
-    encodeURIComponent(keyword).replace(/%20/g, "+") +
-    "&sortBy=arrival";
-
-  await page.setCookie({
-    name: "OptanonAlertBoxClosed",
-    value: new Date().toISOString(),
-    domain: ".2ndstreet.jp",
+  const token = process.env.SECONDSTREET_TOKEN;
+  if (!token) throw new Error("SECONDSTREET_TOKEN が未設定です");
+  const response = await fetch("https://chase-secondstreet-check.brand-searcher-lancher.workers.dev/fetch", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
+    body: JSON.stringify({ keyword: String(rule.keyword || "").trim() }),
+    signal: AbortSignal.timeout(35000),
+    redirect: "error",
   });
-
-  await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 60000 });
-  await sleep(4000);
-
-  // Access Denied チェック
-  const bodyText = await page.evaluate(() => document.body.innerText.slice(0, 200));
-  if (bodyText.includes("Access Denied") || bodyText.includes("permission")) {
-    console.log(`  → セカストAccess Denied（stealthでも検出）`);
-    return [];
+  if (!response.ok) {
+    const detail = await response.json().catch(() => null);
+    const reason = /^[a-z_]+$/.test(detail?.error || "") ? detail.error : "bridge_error";
+    throw new Error(`セカスト中継: ${reason} (HTTP ${response.status})`);
   }
+  if (!(response.headers.get("content-type") || "").includes("text/html")) {
+    throw new Error("セカスト中継の応答がHTMLではありません");
+  }
+  const html = await response.text();
+  if (Buffer.byteLength(html, "utf8") > 3 * 1024 * 1024) throw new Error("セカストHTMLがサイズ上限を超えています");
+  if (!["product_html_received", "product_html_not_confirmed"].includes(response.headers.get("x-bridge-classification"))) {
+    throw new Error("セカストの商品ページを確認できませんでした");
+  }
+  // HTMLを静的に解析する。ページ内のスクリプトや外部リソースは実行・取得しない。
+  await page.setJavaScriptEnabled(false);
+  await page.setRequestInterception(true);
+  page.on("request", (request) => { request.abort().catch(() => {}); });
+  await page.setContent(html, { waitUntil: "domcontentloaded", timeout: 30000 });
 
   const dataLayerMap = await page.evaluate(() => {
     const map = {};
@@ -404,7 +403,7 @@ async function search2ndStreet(page, rule) {
       const id = item.id;
       thumbnail = `https://cdn2.2ndstreet.jp/img/pc/goods/${id.slice(0,6)}/${id.slice(6,8)}/${id.slice(8)}/1.jpg`;
     }
-    return { site: "2ndstreet", id: item.id, title, price, url: item.url, thumbnail };
+    return { site: "2ndstreet", id: item.id, title, price, url: new URL(item.url, "https://www.2ndstreet.jp").href, thumbnail };
   });
 
   return enriched.filter((i) => matchRule(i, rule));
